@@ -1,0 +1,13 @@
+{
+  "name": "Fliperama DS",
+  "version": "0.21.0",
+  "phase": "Fase 7.2",
+  "channel": "Estável",
+  "publishedAt": "2026-08-03T12:40:00Z",
+  "notes": [
+    "Motion Beat DS adicionado como o 18º laboratório jogável.",
+    "Modos Aprendiz, Desafio e Acessível com precisão temporal e combo.",
+    "Controles por teclado, toque e gamepad, além de áudio sintetizado com Web Audio.",
+    "Conteúdo educacional de BPM, filas de eventos, acessibilidade e sincronização."
+  ]
+}
