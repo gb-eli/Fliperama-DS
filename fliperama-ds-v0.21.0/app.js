@@ -171,22 +171,41 @@
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DEFAULT_SETTINGS = void 0;
     exports.isPlatformSettings = isPlatformSettings;
+    exports.migratePlatformSettings = migratePlatformSettings;
     exports.DEFAULT_SETTINGS = {
-        schemaVersion: 1,
+        schemaVersion: 2,
         graphicsMode: 'automatico',
         reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
         muted: false,
         showPerformance: false,
+        theme: 'escuro',
     };
     function isPlatformSettings(value) {
         if (!value || typeof value !== 'object')
             return false;
         const candidate = value;
-        return candidate.schemaVersion === 1
+        return candidate.schemaVersion === 2
             && ['automatico', 'baixo', 'medio', 'alto', 'ultra', 'historico'].includes(candidate.graphicsMode ?? '')
             && typeof candidate.reducedMotion === 'boolean'
             && typeof candidate.muted === 'boolean'
-            && typeof candidate.showPerformance === 'boolean';
+            && typeof candidate.showPerformance === 'boolean'
+            && ['escuro', 'claro', 'retro'].includes(candidate.theme ?? '');
+    }
+    function migratePlatformSettings(value) {
+        if (isPlatformSettings(value))
+            return value;
+        if (value && typeof value === 'object') {
+            const legacy = value;
+            return {
+                ...exports.DEFAULT_SETTINGS,
+                graphicsMode: ['automatico', 'baixo', 'medio', 'alto', 'ultra', 'historico'].includes(legacy.graphicsMode ?? '') ? legacy.graphicsMode : exports.DEFAULT_SETTINGS.graphicsMode,
+                reducedMotion: typeof legacy.reducedMotion === 'boolean' ? legacy.reducedMotion : exports.DEFAULT_SETTINGS.reducedMotion,
+                muted: typeof legacy.muted === 'boolean' ? legacy.muted : exports.DEFAULT_SETTINGS.muted,
+                showPerformance: typeof legacy.showPerformance === 'boolean' ? legacy.showPerformance : exports.DEFAULT_SETTINGS.showPerformance,
+                theme: ['escuro', 'claro', 'retro'].includes(legacy.theme ?? '') ? legacy.theme : exports.DEFAULT_SETTINGS.theme,
+            };
+        }
+        return exports.DEFAULT_SETTINGS;
     }
     
   };
@@ -203,7 +222,7 @@
         #database;
         async loadSettings() {
             const value = await this.#get(SETTINGS_STORE, 'platform');
-            return (0, platform_settings_1.isPlatformSettings)(value) ? value : platform_settings_1.DEFAULT_SETTINGS;
+            return (0, platform_settings_1.migratePlatformSettings)(value);
         }
         saveSettings(settings) {
             return this.#put(SETTINGS_STORE, settings, 'platform');
@@ -15045,16 +15064,16 @@
     const graphicsLabels = { automatico: 'Automático', baixo: 'Baixo', medio: 'Médio', alto: 'Alto', ultra: 'Ultra', historico: 'Histórico' };
     const roadmapStatusLabels = { concluido: 'Concluído', 'em-andamento': 'Em andamento', 'proxima-fase': 'Próxima fase', planejado: 'Planejado' };
     const BUILD_INFO = {
-        version: '0.21.0',
-        label: 'v0.21.0',
-        phase: 'Fase 7.2',
+        version: '0.23.0',
+        label: 'v0.23.0',
+        phase: 'Fase 7.4',
         channel: 'Estável',
-        publishedAt: '2026-08-03T12:40:00Z',
+        publishedAt: '2026-08-03T15:10:00Z',
         notes: [
-            'Motion Beat DS adicionado como o 18º laboratório jogável.',
-            'Três modos: Aprendiz, Desafio e Acessível, com cálculo de precisão temporal e combo.',
-            'Controles por teclado, toque e gamepad, áudio sintetizado com Web Audio e salvamento da faixa.',
-            'História dos jogos de ritmo, lógica, pseudocódigo, comparação técnica e roadmap educacional atualizados.',
+            'Catálogo reorganizado com visualizações em grade, compacta e agrupada por eras.',
+            'Menu mobile e filtros móveis passaram a funcionar em gavetas independentes.',
+            'Cada era ganhou identidade visual, contagem de jogos e destaque próprio no catálogo.',
+            'Museu recebeu modo vitrine, navegação anterior/próximo e carrosséis por coleção.',
         ],
     };
     const storage = new arcade_storage_1.ArcadeStorage();
@@ -15072,34 +15091,81 @@
     let editorLayout = ['nnnnnnnn', 'nrrnnrrn', 'nnebbenn', 'n.e..e.n', 'nnb..bnn'].join('');
     let puzzleEditorLayout = ['.......', '.###.#.', '...#.#.', '##.#...', '...###.', '.#.....', '...##..'].join('');
     const selectedOptions = Object.fromEntries(Object.entries(gameProfiles).map(([id, profile]) => [id, profile.defaultOption]));
+    let museumView = 'todos';
+    let museumSearchQuery = '';
+    let activeMuseumIndex = 0;
+    let catalogView = 'grade';
+    let catalogSort = 'cronologico';
     const app = document.querySelector('#app');
     if (!app)
         throw new Error('Elemento #app não encontrado');
     app.innerHTML = `
+      <div id="intro-overlay" class="intro-overlay" hidden>
+        <div class="intro-shell">
+          <div class="intro-marquee"><span>FLIPERAMA DS</span><span>INSERT COIN · EDUCAÇÃO + JOGOS + HISTÓRIA</span></div>
+          <div class="intro-cabinet" aria-hidden="true">
+            <div class="cabinet-screen"><span>DS</span><small>READY PLAYER CLASS</small></div>
+            <div class="cabinet-controls"><i></i><b></b><b></b><b></b></div>
+          </div>
+          <p class="eyebrow">ABERTURA DO FLIPERAMA</p>
+          <h2>Bem-vindo ao <span>Fliperama DS</span></h2>
+          <p>Entre em uma experiência organizada por épocas, tecnologias, museus e laboratórios jogáveis. A abertura aparece uma vez por sessão e pode ser revista nas configurações.</p>
+          <div class="intro-progress"><span></span></div>
+          <div class="intro-actions"><button id="intro-enter" class="button primary">Entrar no fliperama</button><button id="intro-skip" class="button secondary">Pular abertura</button></div>
+        </div>
+      </div>
       <header class="topbar">
         <a class="brand" href="#inicio" aria-label="Fliperama DS — início"><span class="brand-mark" aria-hidden="true">DS</span><span><strong>FLIPERAMA DS</strong><small>A Evolução dos Jogos · plataforma completa</small></span></a>
-        <nav aria-label="Navegação principal"><a href="#linha-do-tempo">Linha do tempo</a><a href="#catalogo">Laboratórios</a><a href="#planejamento">Planejamento</a><a href="#museu">Museu</a><a href="#desempenho">Desempenho</a><a href="#arquitetura">Como funciona</a></nav>
-        <div class="topbar-actions"><button id="version-toggle" class="version-chip" aria-label="Abrir controle de versão">${BUILD_INFO.label}</button><button id="settings-toggle" class="icon-button" aria-label="Abrir configurações" aria-expanded="false">⚙</button></div>
+        <nav class="desktop-nav" aria-label="Navegação principal"><a href="#linha-do-tempo">Linha do tempo</a><a href="#explorar">Explorar</a><a href="#catalogo">Laboratórios</a><a href="#planejamento">Planejamento</a><a href="#museu">Museu</a><a href="#desempenho">Desempenho</a><a href="#arquitetura">Como funciona</a></nav>
+        <div class="topbar-actions"><button id="theme-indicator" class="version-chip" aria-label="Tema visual atual">Tema · Escuro</button><button id="version-toggle" class="version-chip" aria-label="Abrir controle de versão">${BUILD_INFO.label}</button><button id="settings-toggle" class="icon-button" aria-label="Abrir configurações" aria-expanded="false">⚙</button><button id="mobile-menu-toggle" class="icon-button mobile-only" aria-label="Abrir menu" aria-expanded="false">☰</button></div>
       </header>
+      <div id="mobile-menu-backdrop" class="drawer-backdrop" hidden></div>
+      <aside id="mobile-menu" class="mobile-menu" aria-label="Menu móvel" hidden>
+        <div class="mobile-menu-head"><div><p class="eyebrow">NAVEGAÇÃO</p><h2>Fliperama DS</h2></div><button id="mobile-menu-close" class="icon-button" aria-label="Fechar menu">×</button></div>
+        <nav class="mobile-nav"><a href="#inicio">Início</a><a href="#explorar">Mapa do portal</a><a href="#linha-do-tempo">Linha do tempo</a><a href="#catalogo">Laboratórios</a><a href="#planejamento">Planejamento</a><a href="#museu">Museu</a><a href="#desempenho">Desempenho</a><a href="#arquitetura">Como funciona</a></nav>
+        <div class="mobile-menu-actions"><button id="mobile-version-shortcut" class="button secondary">Controle de versão</button><button id="mobile-settings-shortcut" class="button secondary">Configurações</button></div>
+      </aside>
       <aside id="settings-panel" class="settings-panel" aria-label="Configurações" hidden>
         <div class="settings-head"><div><p class="eyebrow">PREFERÊNCIAS</p><h2>Configurações</h2></div><button id="settings-close" class="icon-button" aria-label="Fechar configurações">×</button></div>
+        <div class="settings-section"><span class="settings-label">Tema visual</span><div id="theme-picker" class="theme-picker" role="radiogroup" aria-label="Tema visual"><button class="theme-option" data-theme-option="escuro" aria-pressed="false">Escuro</button><button class="theme-option" data-theme-option="claro" aria-pressed="false">Claro</button><button class="theme-option" data-theme-option="retro" aria-pressed="false">Retrô</button></div></div>
         <label>Qualidade gráfica<select id="graphics-mode">${game_manifest_1.GRAPHICS_MODES.map((mode) => `<option value="${mode}">${graphicsLabels[mode]}</option>`).join('')}</select></label>
         <label class="switch-row"><span>Reduzir movimentos</span><input id="reduced-motion" type="checkbox"></label>
         <label class="switch-row"><span>Silenciar áudio</span><input id="muted" type="checkbox"></label>
         <label class="switch-row"><span>Exibir desempenho</span><input id="show-performance" type="checkbox"></label>
+        <button id="replay-intro" class="button secondary settings-replay">Rever abertura do fliperama</button>
         <p class="settings-note">As preferências ficam neste dispositivo e podem ser alteradas a qualquer momento.</p>
       </aside>
       <main id="inicio">
         <section class="hero">
-          <div class="hero-copy"><p class="eyebrow">${BUILD_INFO.phase.toUpperCase()} · RITMO, MOVIMENTO E ACESSIBILIDADE</p><h1>Jogue a história.<br><span>Entenda a evolução.</span></h1><p class="lead">O Fliperama DS agora permite navegar por categoria, tecnologia, empresa, época e status. A plataforma reúne jogos jogáveis, próximos lançamentos, controle de atualização e um museu de consoles, controles e sensores.</p><div class="hero-actions"><a class="button primary" href="#catalogo">Abrir laboratórios</a><a class="button secondary" href="#planejamento">Ver próximos jogos</a></div></div>
+          <div class="hero-copy"><p class="eyebrow">${BUILD_INFO.phase.toUpperCase()} · ORGANIZAÇÃO, TEMAS E MUSEU REFINADO</p><h1>Jogue a história.<br><span>Encontre tudo melhor.</span></h1><p class="lead">O Fliperama DS agora traz abertura temática, opções visuais Escuro, Claro e Retrô, navegação reorganizada e um museu melhor distribuído para consoles, controles e sensores.</p><div class="hero-actions"><a class="button primary" href="#catalogo">Abrir laboratórios</a><a class="button secondary" href="#museu">Abrir museu</a></div></div>
           <div class="hero-panel" aria-label="Status da plataforma"><div class="scanline"></div><p class="panel-title">NÚCLEO DO SISTEMA</p><dl><div><dt>Catálogo</dt><dd>${catalog.length} módulos independentes</dd></div><div><dt>Jogos completos</dt><dd>${playableCount} laboratórios jogáveis</dd></div><div><dt>Museus</dt><dd>${museum_hardware_1.CONSOLE_MUSEUM.length + museum_hardware_1.CONTROLLER_MUSEUM.length + museum_hardware_1.SENSOR_MUSEUM.length} fichas técnicas</dd></div><div><dt>Versão</dt><dd>${BUILD_INFO.label}</dd></div><div><dt>Qualidade</dt><dd id="active-quality">Automático</dd></div></dl></div>
         </section>
+        <section id="explorar" class="section section-map"><div class="section-heading"><p class="eyebrow">MAPA DO PORTAL</p><h2>Entre pela área que fizer mais sentido</h2><p>O portal foi reorganizado para facilitar a localização de jogos, guias, planejamento, museu e desempenho.</p></div><div class="explorer-grid"><a class="explorer-card" href="#linha-do-tempo"><strong>Linha do tempo</strong><span>Marcos históricos, empresas, pessoas e tecnologias.</span></a><a class="explorer-card" href="#catalogo"><strong>Laboratórios</strong><span>Filtros por categoria, tecnologia, empresa, status e busca.</span></a><a class="explorer-card" href="#planejamento"><strong>Planejamento</strong><span>Próximas fases, migrações e novos jogos previstos.</span></a><a class="explorer-card" href="#museu"><strong>Museu</strong><span>Consoles, controles e sensores organizados por coleção.</span></a><a class="explorer-card" href="#desempenho"><strong>Desempenho</strong><span>Benchmark, qualidade gráfica e adaptação por dispositivo.</span></a><button id="map-version-shortcut" class="explorer-card explorer-card-button"><strong>Controle de versão</strong><span>Veja atualização publicada, data/hora e status do cache.</span></button></div></section>
         <section id="linha-do-tempo" class="section"><div class="section-heading"><p class="eyebrow">LINHA DO TEMPO · 1952–2026</p><h2>Do CRT de laboratório aos mundos em 360°</h2><p>Os registros estão em ordem de lançamento e informam pessoas, empresas, plataformas, sistemas, tecnologia, modelo comercial e relação com cada laboratório do Fliperama DS.</p></div><div class="timeline" role="list">${game_manifest_1.ERAS.map((era) => `<button class="era" data-era="${era}" role="listitem"><span>${era}</span><strong>${eraLabels[era]}</strong></button>`).join('')}</div><div class="milestone-heading"><strong id="milestone-title">Todos os marcos históricos</strong><span id="milestone-count">${museum_timeline_1.MUSEUM_TIMELINE.length} registros</span></div><div id="milestone-strip" class="milestone-strip"></div></section>
-        <section id="catalogo" class="section catalog-section"><div class="section-heading row"><div><p class="eyebrow">CATÁLOGO MODULAR</p><h2 id="catalog-title">Escolha seu jogo com filtros inteligentes</h2><p>Use a busca lateral para encontrar experiências por gênero, tecnologia, empresa, época e status de lançamento.</p></div><button id="clear-filter" class="text-button" hidden>Limpar filtros</button></div><div class="catalog-layout"><aside class="catalog-sidebar"><p class="sidebar-title">Encontrar jogos</p><label>Busca rápida<input id="catalog-search" type="search" placeholder="Ex.: corrida, Atari, puzzle, câmera"></label><label>Categoria<select id="genre-filter"></select></label><label>Tecnologia<select id="technology-filter"></select></label><label>Empresa<select id="company-filter"></select></label><div class="quick-filter-group"><span>Atalhos</span><div id="quick-filters" class="quick-filters"><button class="quick-filter active" data-quick-filter="todos">Todos</button><button class="quick-filter" data-quick-filter="jogaveis">Jogáveis</button><button class="quick-filter" data-quick-filter="recentes">Recentes</button><button class="quick-filter" data-quick-filter="em-breve">Em breve</button></div></div><div id="catalog-summary" class="catalog-summary"></div></aside><div class="catalog-content-area"><div class="catalog-toolbar"><div id="active-filters" class="active-filters"></div></div><div id="highlights-strip" class="highlights-strip"></div><div id="game-grid" class="game-grid"></div></div></div></section>
+        <section id="catalogo" class="section catalog-section">
+          <div class="section-heading row"><div><p class="eyebrow">CATÁLOGO MODULAR</p><h2 id="catalog-title">Escolha seu jogo com filtros inteligentes</h2><p>Agora você pode navegar em grade, modo compacto ou agrupado por eras, além de ordenar os jogos conforme a necessidade da aula.</p></div><div class="section-heading-actions"><button id="catalog-filter-toggle" class="button secondary mobile-only">Filtros</button><button id="clear-filter" class="text-button" hidden>Limpar filtros</button></div></div>
+          <div id="era-spotlight" class="era-spotlight" aria-label="Destaques por era"></div>
+          <div id="catalog-filter-backdrop" class="drawer-backdrop" hidden></div>
+          <div class="catalog-layout">
+            <aside id="catalog-sidebar" class="catalog-sidebar"><div class="catalog-sidebar-head"><p class="sidebar-title">Encontrar jogos</p><button id="catalog-filter-close" class="icon-button mobile-only" aria-label="Fechar filtros">×</button></div><label>Busca rápida<input id="catalog-search" type="search" placeholder="Ex.: corrida, Atari, puzzle, câmera"></label><label>Categoria<select id="genre-filter"></select></label><label>Tecnologia<select id="technology-filter"></select></label><label>Empresa<select id="company-filter"></select></label><div class="quick-filter-group"><span>Atalhos</span><div id="quick-filters" class="quick-filters"><button class="quick-filter active" data-quick-filter="todos">Todos</button><button class="quick-filter" data-quick-filter="jogaveis">Jogáveis</button><button class="quick-filter" data-quick-filter="recentes">Recentes</button><button class="quick-filter" data-quick-filter="em-breve">Em breve</button></div></div><div id="catalog-summary" class="catalog-summary"></div></aside>
+            <div class="catalog-content-area"><div class="catalog-toolbar"><div id="active-filters" class="active-filters"></div><div class="catalog-display-tools"><label>Ordenar<select id="catalog-sort"><option value="cronologico">Cronologia</option><option value="recentes">Mais recentes</option><option value="titulo">Título A–Z</option><option value="jogaveis">Jogáveis primeiro</option></select></label><div class="catalog-view-switch" role="group" aria-label="Modo de visualização"><button class="catalog-view active" data-catalog-view="grade" aria-pressed="true">Grade</button><button class="catalog-view" data-catalog-view="compacto" aria-pressed="false">Compacto</button><button class="catalog-view" data-catalog-view="eras" aria-pressed="false">Por eras</button></div></div></div><div id="highlights-strip" class="highlights-strip"></div><div id="game-grid" class="game-grid" data-view="grade"></div></div>
+          </div>
+        </section>
         <section id="planejamento" class="section roadmap-section"><div class="section-heading"><p class="eyebrow">PRÓXIMAS FASES</p><h2>Jogos planejados, migrações e melhorias do portal</h2><p>O roadmap mistura o que já está entregue, o que entrou agora e quais experiências serão construídas nas próximas fases.</p></div><div id="roadmap-grid" class="roadmap-grid"></div></section>
-        <section id="museu" class="section museum-section"><div class="section-heading"><p class="eyebrow">MUSEU INTERATIVO</p><h2>Consoles, controles e sensores que moldaram os jogos</h2><p>Além da história dos jogos, o Fliperama DS passa a documentar a evolução do hardware, dos periféricos e das formas de interação.</p></div><div class="museum-stack"><div><div class="museum-heading"><h3>Museu de consoles</h3><span>2D + estudo 3D conceitual</span></div><div id="museum-consoles" class="museum-grid"></div></div><div><div class="museum-heading"><h3>Museu de controles</h3><span>Arcade, digital, analógico e especializado</span></div><div id="museum-controllers" class="museum-grid"></div></div><div><div class="museum-heading"><h3>Museu de sensores e periféricos</h3><span>Corpo, câmera, movimento e simulação</span></div><div id="museum-sensors" class="museum-grid"></div></div></div></section>
+        <section id="museu" class="section museum-section">
+          <div class="section-heading"><p class="eyebrow">MUSEU INTERATIVO</p><h2>Consoles, controles e sensores em modo vitrine</h2><p>Selecione uma coleção, pesquise um item ou navegue pela vitrine principal. Os carrosséis preservam a leitura no celular sem empilhar cartões intermináveis.</p></div>
+          <div class="museum-toolbar"><div class="museum-tabs" role="tablist" aria-label="Coleções do museu"><button class="museum-tab active" data-museum-view="todos" aria-selected="true">Visão geral</button><button class="museum-tab" data-museum-view="consoles" aria-selected="false">Consoles</button><button class="museum-tab" data-museum-view="controles" aria-selected="false">Controles</button><button class="museum-tab" data-museum-view="sensores" aria-selected="false">Sensores</button></div><label class="museum-search">Buscar item<input id="museum-search" type="search" placeholder="Ex.: PlayStation, Kinect, volante, joystick"></label></div>
+          <div class="museum-overview"><article><strong>${museum_hardware_1.CONSOLE_MUSEUM.length}</strong><span>Consoles catalogados</span></article><article><strong>${museum_hardware_1.CONTROLLER_MUSEUM.length}</strong><span>Controles catalogados</span></article><article><strong>${museum_hardware_1.SENSOR_MUSEUM.length}</strong><span>Sensores e periféricos</span></article></div>
+          <section class="museum-showcase" aria-live="polite"><div id="museum-showcase-visual" class="museum-showcase-visual"></div><div class="museum-showcase-content"><p id="museum-showcase-type" class="eyebrow"></p><div class="museum-showcase-title-row"><h3 id="museum-showcase-title"></h3><span id="museum-showcase-counter"></span></div><p id="museum-showcase-description"></p><dl id="museum-showcase-specs"></dl><div class="museum-showcase-actions"><button id="museum-prev" class="button secondary">← Anterior</button><button id="museum-next" class="button secondary">Próximo →</button><a id="museum-showcase-source" class="button primary" target="_blank" rel="noreferrer">Consultar fonte</a></div></div></section>
+          <div class="museum-stack">
+            <section class="museum-group" data-museum-group="consoles"><div class="museum-heading"><div><h3>Museu de consoles</h3><span>2D + estudo 3D conceitual</span></div><div class="carousel-controls"><button data-carousel-target="museum-consoles" data-carousel-direction="-1" aria-label="Consoles anteriores">←</button><button data-carousel-target="museum-consoles" data-carousel-direction="1" aria-label="Próximos consoles">→</button></div></div><div id="museum-consoles" class="museum-grid museum-carousel"></div></section>
+            <section class="museum-group" data-museum-group="controles"><div class="museum-heading"><div><h3>Museu de controles</h3><span>Arcade, digital, analógico e especializado</span></div><div class="carousel-controls"><button data-carousel-target="museum-controllers" data-carousel-direction="-1" aria-label="Controles anteriores">←</button><button data-carousel-target="museum-controllers" data-carousel-direction="1" aria-label="Próximos controles">→</button></div></div><div id="museum-controllers" class="museum-grid museum-carousel"></div></section>
+            <section class="museum-group" data-museum-group="sensores"><div class="museum-heading"><div><h3>Museu de sensores e periféricos</h3><span>Corpo, câmera, movimento e simulação</span></div><div class="carousel-controls"><button data-carousel-target="museum-sensors" data-carousel-direction="-1" aria-label="Sensores anteriores">←</button><button data-carousel-target="museum-sensors" data-carousel-direction="1" aria-label="Próximos sensores">→</button></div></div><div id="museum-sensors" class="museum-grid museum-carousel"></div></section>
+          </div>
+          <div id="museum-empty" class="empty-state museum-empty" hidden><h3>Nenhum item encontrado</h3><p>Ajuste a busca do museu ou troque a coleção selecionada.</p></div>
+        </section>
         <section id="desempenho" class="section performance-section"><div class="section-heading"><p class="eyebrow">DESEMPENHO</p><h2>Qualidade adequada ao seu dispositivo</h2><p>O teste curto observa estabilidade de quadros e capacidades gerais. A recomendação nunca bloqueia sua escolha manual.</p></div><div class="performance-card"><div id="benchmark-status"><strong>Teste ainda não executado</strong><span>Leva menos de um segundo e não envia dados.</span></div><button id="run-benchmark" class="button primary">Executar benchmark</button><div id="benchmark-result" class="benchmark-result" hidden></div></div></section>
-        <section id="arquitetura" class="section architecture"><div class="section-heading"><p class="eyebrow">ARQUITETURA</p><h2>Um portal leve. Motores isolados.</h2></div><div class="architecture-grid"><article><span>01</span><h3>Portal</h3><p>Catálogo, histórico, museus e preferências carregam sem antecipar os jogos.</p></article><article><span>02</span><h3>Curadoria</h3><p>Filtros, roadmap e controle de versão ajudam o aluno a entender o que já existe e o que ainda será construído.</p></article><article><span>03</span><h3>Renderização</h3><p>Phaser 2D, WebGL puro e Three.js entram apenas quando uma experiência precisa deles.</p></article><article><span>04</span><h3>Persistência</h3><p>Configurações e progresso usam dados versionados, nunca objetos do motor.</p></article></div></section>
+        <section id="arquitetura" class="section architecture"><div class="section-heading"><p class="eyebrow">ARQUITETURA</p><h2>Um portal leve. Motores isolados.</h2></div><div class="architecture-grid"><article><span>01</span><h3>Portal</h3><p>Catálogo, histórico, museus e preferências carregam sem antecipar os jogos.</p></article><article><span>02</span><h3>Curadoria</h3><p>Filtros, roadmap, abertura, temas e controle de versão ajudam o aluno a localizar o que precisa.</p></article><article><span>03</span><h3>Renderização</h3><p>Phaser 2D, WebGL puro e Three.js entram apenas quando uma experiência precisa deles.</p></article><article><span>04</span><h3>Persistência</h3><p>Configurações, tema, abertura e progresso usam dados versionados, nunca objetos do motor.</p></article></div></section>
       </main>
       <dialog id="details-dialog" class="details-dialog">
         <article class="details-shell">
@@ -15143,6 +15209,7 @@
     const milestoneStrip = query('#milestone-strip');
     const settingsPanel = query('#settings-panel');
     const settingsToggle = query('#settings-toggle');
+    const introOverlay = query('#intro-overlay');
     const versionToggle = query('#version-toggle');
     const versionDialog = query('#version-dialog');
     const gameDialog = query('#game-dialog');
@@ -15152,8 +15219,17 @@
     const technologyFilter = query('#technology-filter');
     const companyFilter = query('#company-filter');
     const catalogSummary = query('#catalog-summary');
+    const museumSearch = query('#museum-search');
     const activeFiltersHost = query('#active-filters');
     const highlightsStrip = query('#highlights-strip');
+    const museumEmpty = query('#museum-empty');
+    const eraSpotlight = query('#era-spotlight');
+    const catalogSidebar = query('#catalog-sidebar');
+    const catalogFilterBackdrop = query('#catalog-filter-backdrop');
+    const catalogSortSelect = query('#catalog-sort');
+    const mobileMenu = query('#mobile-menu');
+    const mobileMenuBackdrop = query('#mobile-menu-backdrop');
+    const mobileMenuToggle = query('#mobile-menu-toggle');
     function activeProfile() {
         const profile = gameProfiles[activeGameId];
         if (!profile)
@@ -15216,6 +15292,31 @@
             return true;
         });
     }
+    function sortGames(games) {
+        const sorted = [...games];
+        if (catalogSort === 'recentes')
+            return sorted.sort((first, second) => second.releasePhase - first.releasePhase || second.year - first.year || first.title.localeCompare(second.title, 'pt-BR'));
+        if (catalogSort === 'titulo')
+            return sorted.sort((first, second) => first.title.localeCompare(second.title, 'pt-BR'));
+        if (catalogSort === 'jogaveis')
+            return sorted.sort((first, second) => Number((0, dynamic_game_loader_1.supportsPlayableModule)(second.id)) - Number((0, dynamic_game_loader_1.supportsPlayableModule)(first.id)) || first.year - second.year);
+        return sorted.sort((first, second) => first.year - second.year || first.title.localeCompare(second.title, 'pt-BR'));
+    }
+    function renderEraSpotlight() {
+        eraSpotlight.innerHTML = game_manifest_1.ERAS.map((era) => {
+            const games = catalog.filter((game) => game.era === era);
+            const playable = games.filter((game) => (0, dynamic_game_loader_1.supportsPlayableModule)(game.id)).length;
+            return `<button class="era-spotlight-card" data-era-spotlight="${era}"><span>${era}</span><strong>${eraLabels[era]}</strong><small>${games.length} jogos · ${playable} jogáveis</small></button>`;
+        }).join('');
+        eraSpotlight.querySelectorAll('[data-era-spotlight]').forEach((button) => button.addEventListener('click', () => {
+            const era = button.dataset.eraSpotlight;
+            setEraFilter(catalogFilters.era === era ? undefined : era);
+            document.querySelector('#catalogo')?.scrollIntoView({ behavior: settings.reducedMotion ? 'auto' : 'smooth', block: 'start' });
+        }));
+    }
+    function syncEraSpotlight() {
+        eraSpotlight.querySelectorAll('[data-era-spotlight]').forEach((button) => button.classList.toggle('active', button.dataset.eraSpotlight === catalogFilters.era));
+    }
     function renderHighlights() {
         const recent = catalog.filter((game) => (0, dynamic_game_loader_1.supportsPlayableModule)(game.id)).slice().sort((first, second) => second.releasePhase - first.releasePhase || second.year - first.year).slice(0, 4);
         const upcoming = catalog.filter((game) => game.status === 'planejado').slice().sort((first, second) => first.releasePhase - second.releasePhase).slice(0, 4);
@@ -15245,8 +15346,16 @@
     }
     function applyCatalogFilters() {
         syncCatalogForms();
-        const filtered = matchingGames();
+        syncEraSpotlight();
+        const filtered = sortGames(matchingGames());
         catalogTitle.textContent = catalogFilters.era ? `Laboratórios · ${eraLabels[catalogFilters.era]} · ${catalogFilters.era}` : 'Escolha seu jogo com filtros inteligentes';
+        catalogSortSelect.value = catalogSort;
+        gameGrid.dataset.view = catalogView;
+        document.querySelectorAll('.catalog-view').forEach((button) => {
+            const active = button.dataset.catalogView === catalogView;
+            button.classList.toggle('active', active);
+            button.setAttribute('aria-pressed', String(active));
+        });
         renderCatalogSummary(filtered);
         renderActiveFilterChips();
         renderGames(filtered);
@@ -15254,8 +15363,100 @@
     function renderRoadmap() {
         query('#roadmap-grid').innerHTML = roadmap_1.ARCADE_ROADMAP.map((item) => `<article class="roadmap-card"><div class="roadmap-top"><span>${item.phase}</span><b>${roadmapStatusLabels[item.status]}</b></div><h3>${item.title}</h3><p>${item.summary}</p><dl class="roadmap-specs"><div><dt>Engine</dt><dd>${item.engine}</dd></div><div><dt>Visual</dt><dd>${item.dimension}</dd></div><div><dt>Modos</dt><dd>${item.gameModes.join(', ')}</dd></div><div><dt>Controles</dt><dd>${item.controls.join(', ')}</dd></div><div><dt>Gráficos</dt><dd>${item.graphics.join(', ')}</dd></div><div><dt>Aprendizagem</dt><dd>${item.learning.join(', ')}</dd></div></dl><div class="tags">${item.technology.map((technology) => `<span>${technology}</span>`).join('')}</div><footer><strong>${item.category}</strong></footer></article>`).join('');
     }
-    function renderMuseumGroup(targetId, items) {
-        query(`#${targetId}`).innerHTML = items.map((item) => `<article class="museum-card"><div class="museum-card-top"><span>${item.year}</span><b>${item.company}</b></div><h3>${item.title}</h3><div class="museum-visuals"><div class="museum-shot" data-mode="2D"><span>Vista 2D</span><strong>${item.detail2d}</strong></div><div class="museum-shot" data-mode="3D"><span>Estudo 3D</span><strong>${item.detail3d}</strong></div></div><p>${item.contribution}</p><dl><div><dt>Geração</dt><dd>${item.generation}</dd></div><div><dt>Tecnologia</dt><dd>${item.originalTechnology}</dd></div></dl><a class="source-link" href="${item.sourceUrl}" target="_blank" rel="noreferrer">${item.sourceLabel} ↗</a></article>`).join('');
+    function museumSearchIndex(item) {
+        return [item.title, item.company, item.generation, item.originalTechnology, item.detail2d, item.detail3d, item.contribution].join(' ').toLowerCase();
+    }
+    function allMuseumEntries() {
+        return [
+            ...museum_hardware_1.CONSOLE_MUSEUM.map((item, index) => ({ group: 'consoles', item, index })),
+            ...museum_hardware_1.CONTROLLER_MUSEUM.map((item, index) => ({ group: 'controles', item, index })),
+            ...museum_hardware_1.SENSOR_MUSEUM.map((item, index) => ({ group: 'sensores', item, index })),
+        ];
+    }
+    function visibleMuseumEntries() {
+        return allMuseumEntries().filter((entry) => {
+            const matchesView = museumView === 'todos' || entry.group === museumView;
+            const matchesQuery = museumSearchQuery === '' || museumSearchIndex(entry.item).includes(museumSearchQuery);
+            return matchesView && matchesQuery;
+        });
+    }
+    function museumGroupLabel(group) {
+        return group === 'consoles' ? 'Console' : group === 'controles' ? 'Controle' : 'Sensor ou periférico';
+    }
+    function renderMuseumShowcase() {
+        const entries = visibleMuseumEntries();
+        const showcase = query('.museum-showcase');
+        if (entries.length === 0) {
+            showcase.hidden = true;
+            return;
+        }
+        showcase.hidden = false;
+        activeMuseumIndex = ((activeMuseumIndex % entries.length) + entries.length) % entries.length;
+        const entry = entries[activeMuseumIndex] ?? entries[0];
+        if (!entry)
+            return;
+        const { item } = entry;
+        query('#museum-showcase-type').textContent = `${museumGroupLabel(entry.group)} · ${item.year}`;
+        query('#museum-showcase-title').textContent = item.title;
+        query('#museum-showcase-counter').textContent = `${activeMuseumIndex + 1} / ${entries.length}`;
+        query('#museum-showcase-description').textContent = item.contribution;
+        query('#museum-showcase-specs').innerHTML = `<div><dt>Empresa</dt><dd>${item.company}</dd></div><div><dt>Geração</dt><dd>${item.generation}</dd></div><div><dt>Tecnologia</dt><dd>${item.originalTechnology}</dd></div>`;
+        query('#museum-showcase-visual').innerHTML = `<div class="showcase-plate" data-showcase-group="${entry.group}"><span>${item.year}</span><strong>${item.title}</strong><small>${item.company}</small></div><div class="showcase-perspective"><span>Estudo 2D</span><p>${item.detail2d}</p><span>Estudo 3D</span><p>${item.detail3d}</p></div>`;
+        const source = query('#museum-showcase-source');
+        source.href = item.sourceUrl;
+        source.textContent = `${item.sourceLabel} ↗`;
+        document.querySelectorAll('.museum-card').forEach((card) => {
+            card.classList.toggle('active', card.dataset.museumCard === entry.group && Number(card.dataset.museumIndex) === entry.index);
+        });
+    }
+    function selectMuseumEntry(group, index) {
+        const entries = visibleMuseumEntries();
+        const selected = entries.findIndex((entry) => entry.group === group && entry.index === index);
+        if (selected < 0)
+            return;
+        activeMuseumIndex = selected;
+        renderMuseumShowcase();
+        document.querySelector('.museum-showcase')?.scrollIntoView({ behavior: settings.reducedMotion ? 'auto' : 'smooth', block: 'center' });
+    }
+    function moveMuseum(direction) {
+        const entries = visibleMuseumEntries();
+        if (entries.length === 0)
+            return;
+        activeMuseumIndex = (activeMuseumIndex + direction + entries.length) % entries.length;
+        renderMuseumShowcase();
+    }
+    function renderMuseumGroup(targetId, group, items) {
+        const target = query(`#${targetId}`);
+        target.innerHTML = items.map((item, index) => `<article class="museum-card" data-museum-card="${group}" data-museum-index="${index}" data-search="${museumSearchIndex(item).replace(/"/g, '&quot;')}"><div class="museum-card-top"><span>${item.year}</span><b>${item.company}</b></div><h3>${item.title}</h3><div class="museum-visuals"><div class="museum-shot" data-mode="2D"><span>Vista 2D</span><strong>${item.detail2d}</strong></div><div class="museum-shot" data-mode="3D"><span>Estudo 3D</span><strong>${item.detail3d}</strong></div></div><p>${item.contribution}</p><dl><div><dt>Geração</dt><dd>${item.generation}</dd></div><div><dt>Tecnologia</dt><dd>${item.originalTechnology}</dd></div></dl><button class="museum-select" data-museum-select="${group}" data-museum-index="${index}">Exibir na vitrine</button><a class="source-link" href="${item.sourceUrl}" target="_blank" rel="noreferrer">${item.sourceLabel} ↗</a></article>`).join('');
+        target.querySelectorAll('[data-museum-select]').forEach((button) => button.addEventListener('click', () => selectMuseumEntry(button.dataset.museumSelect, Number(button.dataset.museumIndex))));
+    }
+    function applyMuseumFilters() {
+        let visibleCards = 0;
+        document.querySelectorAll('.museum-tab').forEach((button) => {
+            const active = button.dataset.museumView === museumView;
+            button.classList.toggle('active', active);
+            button.setAttribute('aria-selected', String(active));
+        });
+        document.querySelectorAll('.museum-group').forEach((group) => {
+            const groupName = group.dataset.museumGroup;
+            let groupVisibleCount = 0;
+            group.querySelectorAll('.museum-card').forEach((card) => {
+                const matchesView = museumView === 'todos' || card.dataset.museumCard === museumView;
+                const matchesQuery = museumSearchQuery === '' || (card.dataset.search ?? '').includes(museumSearchQuery);
+                const visible = matchesView && matchesQuery;
+                card.hidden = !visible;
+                if (visible) {
+                    visibleCards += 1;
+                    groupVisibleCount += 1;
+                }
+            });
+            group.hidden = Boolean(groupName) && (groupVisibleCount === 0 || (museumView !== 'todos' && groupName !== museumView));
+        });
+        const entries = visibleMuseumEntries();
+        if (activeMuseumIndex >= entries.length)
+            activeMuseumIndex = 0;
+        museumEmpty.hidden = visibleCards !== 0;
+        renderMuseumShowcase();
     }
     function formatDateTime(value) {
         return new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(value));
@@ -15299,28 +15500,43 @@
         versionDialogCheckedAt = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' }).format(new Date());
         query('#version-checked').textContent = versionDialogCheckedAt;
     }
+    function gameCardMarkup(game) {
+        const playable = (0, dynamic_game_loader_1.supportsPlayableModule)(game.id);
+        const presentation = (0, game_presentations_1.gamePresentation)(game);
+        return `<article class="game-card" data-runtime="${game.runtime}" data-era="${game.era}" data-game-card="${game.id}">
+        <div class="era-ribbon"><span>${game.era}</span><strong>${eraLabels[game.era]}</strong></div>
+        <div class="card-visual">
+          <span class="runtime">${game.runtime.toUpperCase()}</span>
+          <img class="card-preview primary-preview" src="${presentation.previews[0]}" alt="Prévia de ${game.title}" loading="lazy">
+          <img class="card-preview secondary-preview" src="${presentation.previews[1]}" alt="Segunda prévia de ${game.title}" loading="lazy">
+          <img class="card-logo" src="${presentation.logoUrl}" alt="Logo ${game.title}" loading="lazy">
+          <span class="phase">FASE ${game.releasePhase}</span>
+          <span class="preview-hint">Passe o mouse para outra tela</span>
+        </div>
+        <div class="card-content"><div class="card-meta"><span>${game.year} · ${game.era}</span><span>${statusLabels[game.status]}</span></div><h3>${game.title}</h3><p>${game.subtitle}</p><div class="tags">${[...game.genre.slice(0, 2), ...game.educationalConcepts.slice(0, 2)].slice(0, 4).map((tag) => `<span>${tag}</span>`).join('')}</div><div class="card-footer"><span>${gameCompany(game)}</span><span>${game.mobileReady ? 'Mobile ✓' : 'Desktop'}</span></div><div class="card-actions"><button class="card-action details" data-details-id="${game.id}">Ver prévia e instruções</button><button class="card-action ${playable ? 'playable' : ''}" data-game-id="${game.id}" ${playable ? '' : 'disabled'}>${playable ? 'Abrir laboratório' : `Planejado · Fase ${game.releasePhase}`}</button></div></div>
+      </article>`;
+    }
+    function bindGameCards() {
+        gameGrid.querySelectorAll('[data-details-id]').forEach((button) => button.addEventListener('click', () => openGameDetails(button.dataset.detailsId ?? '')));
+        gameGrid.querySelectorAll('[data-game-id]:not(:disabled)').forEach((button) => button.addEventListener('click', () => void openGame(button.dataset.gameId ?? '')));
+    }
     function renderGames(games) {
         if (games.length === 0) {
             gameGrid.innerHTML = '<article class="empty-state"><h3>Nenhum jogo encontrado</h3><p>Ajuste a busca ou remova filtros para ver todo o catálogo disponível.</p></article>';
             return;
         }
-        gameGrid.innerHTML = games.map((game) => {
-            const playable = (0, dynamic_game_loader_1.supportsPlayableModule)(game.id);
-            const presentation = (0, game_presentations_1.gamePresentation)(game);
-            return `<article class="game-card" data-runtime="${game.runtime}" data-game-card="${game.id}">
-          <div class="card-visual">
-            <span class="runtime">${game.runtime.toUpperCase()}</span>
-            <img class="card-preview primary-preview" src="${presentation.previews[0]}" alt="Prévia de ${game.title}" loading="lazy">
-            <img class="card-preview secondary-preview" src="${presentation.previews[1]}" alt="Segunda prévia de ${game.title}" loading="lazy">
-            <img class="card-logo" src="${presentation.logoUrl}" alt="Logo ${game.title}" loading="lazy">
-            <span class="phase">FASE ${game.releasePhase}</span>
-            <span class="preview-hint">Passe o mouse para outra tela</span>
-          </div>
-          <div class="card-content"><div class="card-meta"><span>${game.year} · ${game.era}</span><span>${statusLabels[game.status]}</span></div><h3>${game.title}</h3><p>${game.subtitle}</p><div class="tags">${[...game.genre.slice(0, 2), ...game.educationalConcepts.slice(0, 2)].slice(0, 4).map((tag) => `<span>${tag}</span>`).join('')}</div><div class="card-footer"><span>${gameCompany(game)}</span><span>${game.mobileReady ? 'Mobile ✓' : 'Desktop'}</span></div><div class="card-actions"><button class="card-action details" data-details-id="${game.id}">Ver prévia e instruções</button><button class="card-action ${playable ? 'playable' : ''}" data-game-id="${game.id}" ${playable ? '' : 'disabled'}>${playable ? 'Abrir laboratório' : `Planejado · Fase ${game.releasePhase}`}</button></div></div>
-        </article>`;
-        }).join('');
-        gameGrid.querySelectorAll('[data-details-id]').forEach((button) => button.addEventListener('click', () => openGameDetails(button.dataset.detailsId ?? '')));
-        gameGrid.querySelectorAll('[data-game-id]:not(:disabled)').forEach((button) => button.addEventListener('click', () => void openGame(button.dataset.gameId ?? '')));
+        if (catalogView === 'eras') {
+            gameGrid.innerHTML = game_manifest_1.ERAS.map((era) => {
+                const eraGames = games.filter((game) => game.era === era);
+                if (eraGames.length === 0)
+                    return '';
+                return `<section class="catalog-era-group" data-era-group="${era}"><header><div><span>${era}</span><h3>${eraLabels[era]}</h3></div><small>${eraGames.length} ${eraGames.length === 1 ? 'jogo' : 'jogos'}</small></header><div class="catalog-era-games">${eraGames.map(gameCardMarkup).join('')}</div></section>`;
+            }).join('');
+        }
+        else {
+            gameGrid.innerHTML = games.map(gameCardMarkup).join('');
+        }
+        bindGameCards();
     }
     function renderGuideMarkup(game, presentation) {
         const section = (title, items) => `<section><h4>${title}</h4><ol>${items.map((item) => `<li>${item}</li>`).join('')}</ol></section>`;
@@ -16061,12 +16277,71 @@
         const stored = sessionStorage.getItem('fliperama-ds-recommended-mode') ?? sessionStorage.getItem('arcade-ds-recommended-mode');
         return stored ?? 'medio';
     }
+    function themeLabel(theme) {
+        return theme === 'claro' ? 'Claro' : theme === 'retro' ? 'Retrô' : 'Escuro';
+    }
+    function openIntro(force = false) {
+        if (!force && sessionStorage.getItem('fliperama-ds-intro-seen') === '1') {
+            introOverlay.hidden = true;
+            return;
+        }
+        introOverlay.hidden = false;
+        requestAnimationFrame(() => introOverlay.classList.add('visible'));
+        document.body.classList.add('intro-open');
+        sessionStorage.setItem('fliperama-ds-intro-seen', '1');
+    }
+    function closeIntro() {
+        introOverlay.classList.remove('visible');
+        window.setTimeout(() => { introOverlay.hidden = true; }, 260);
+        document.body.classList.remove('intro-open');
+    }
+    function openMobileMenu() {
+        mobileMenu.hidden = false;
+        mobileMenuBackdrop.hidden = false;
+        requestAnimationFrame(() => {
+            mobileMenu.classList.add('open');
+            mobileMenuBackdrop.classList.add('visible');
+        });
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('drawer-open');
+    }
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        mobileMenuBackdrop.classList.remove('visible');
+        window.setTimeout(() => {
+            mobileMenu.hidden = true;
+            mobileMenuBackdrop.hidden = true;
+        }, 220);
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        if (!catalogSidebar.classList.contains('open'))
+            document.body.classList.remove('drawer-open');
+    }
+    function openCatalogFilters() {
+        catalogSidebar.classList.add('open');
+        catalogFilterBackdrop.hidden = false;
+        requestAnimationFrame(() => catalogFilterBackdrop.classList.add('visible'));
+        document.body.classList.add('drawer-open');
+    }
+    function closeCatalogFilters() {
+        catalogSidebar.classList.remove('open');
+        catalogFilterBackdrop.classList.remove('visible');
+        window.setTimeout(() => { catalogFilterBackdrop.hidden = true; }, 220);
+        if (!mobileMenu.classList.contains('open'))
+            document.body.classList.remove('drawer-open');
+    }
     async function updateSettings(next) {
         settings = next;
         document.documentElement.dataset.motion = settings.reducedMotion ? 'reduced' : 'full';
+        document.documentElement.dataset.theme = settings.theme;
         query('#active-quality').textContent = graphicsLabels[settings.graphicsMode];
         query('#quality-value').textContent = graphicsLabels[resolvedGraphicsMode()].toUpperCase();
         query('#performance-overlay').hidden = !settings.showPerformance;
+        query('#theme-indicator').textContent = `Tema · ${themeLabel(settings.theme)}`;
+        document.querySelectorAll('.theme-option').forEach((button) => {
+            const active = button.dataset.themeOption === settings.theme;
+            button.classList.toggle('active', active);
+            button.setAttribute('aria-pressed', String(active));
+        });
         await storage.saveSettings(settings);
     }
     function syncSettingsForm() {
@@ -16102,15 +16377,40 @@
         });
     }
     document.querySelectorAll('.era').forEach((button) => button.addEventListener('click', () => setEraFilter(button.dataset.era)));
-    clearFilter.addEventListener('click', () => { catalogFilters.genre = 'todos'; catalogFilters.technology = 'todos'; catalogFilters.company = 'todos'; catalogFilters.query = ''; catalogFilters.quick = 'todos'; setEraFilter(); });
+    clearFilter.addEventListener('click', () => { catalogFilters.genre = 'todos'; catalogFilters.technology = 'todos'; catalogFilters.company = 'todos'; catalogFilters.query = ''; catalogFilters.quick = 'todos'; setEraFilter(); closeCatalogFilters(); });
     catalogSearch.addEventListener('input', () => { catalogFilters.query = catalogSearch.value; applyCatalogFilters(); });
     genreFilter.addEventListener('change', () => { catalogFilters.genre = genreFilter.value; applyCatalogFilters(); });
     technologyFilter.addEventListener('change', () => { catalogFilters.technology = technologyFilter.value; applyCatalogFilters(); });
     companyFilter.addEventListener('change', () => { catalogFilters.company = companyFilter.value; applyCatalogFilters(); });
     document.querySelectorAll('.quick-filter').forEach((button) => button.addEventListener('click', () => { catalogFilters.quick = button.dataset.quickFilter; applyCatalogFilters(); }));
+    catalogSortSelect.addEventListener('change', () => { catalogSort = catalogSortSelect.value; applyCatalogFilters(); });
+    document.querySelectorAll('.catalog-view').forEach((button) => button.addEventListener('click', () => { catalogView = button.dataset.catalogView; applyCatalogFilters(); }));
+    query('#catalog-filter-toggle').addEventListener('click', openCatalogFilters);
+    query('#catalog-filter-close').addEventListener('click', closeCatalogFilters);
+    catalogFilterBackdrop.addEventListener('click', closeCatalogFilters);
+    document.querySelectorAll('.museum-tab').forEach((button) => button.addEventListener('click', () => { museumView = button.dataset.museumView; activeMuseumIndex = 0; applyMuseumFilters(); }));
+    museumSearch.addEventListener('input', () => { museumSearchQuery = museumSearch.value.trim().toLowerCase(); activeMuseumIndex = 0; applyMuseumFilters(); });
+    query('#museum-prev').addEventListener('click', () => moveMuseum(-1));
+    query('#museum-next').addEventListener('click', () => moveMuseum(1));
+    document.querySelectorAll('[data-carousel-target]').forEach((button) => button.addEventListener('click', () => {
+        const target = query(`#${button.dataset.carouselTarget}`);
+        const direction = Number(button.dataset.carouselDirection) || 1;
+        target.scrollBy({ left: direction * Math.max(280, target.clientWidth * .75), behavior: settings.reducedMotion ? 'auto' : 'smooth' });
+    }));
     settingsToggle.addEventListener('click', () => { settingsPanel.hidden = !settingsPanel.hidden; settingsToggle.setAttribute('aria-expanded', String(!settingsPanel.hidden)); });
+    mobileMenuToggle.addEventListener('click', openMobileMenu);
+    query('#mobile-menu-close').addEventListener('click', closeMobileMenu);
+    mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+    mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMobileMenu));
+    query('#mobile-version-shortcut').addEventListener('click', () => { closeMobileMenu(); void refreshVersionDialog(); versionDialog.showModal(); });
+    query('#mobile-settings-shortcut').addEventListener('click', () => { closeMobileMenu(); settingsPanel.hidden = false; settingsToggle.setAttribute('aria-expanded', 'true'); });
+    query('#map-version-shortcut').addEventListener('click', () => { void refreshVersionDialog(); versionDialog.showModal(); });
+    query('#intro-enter').addEventListener('click', closeIntro);
+    query('#intro-skip').addEventListener('click', closeIntro);
     versionToggle.addEventListener('click', () => { void refreshVersionDialog(); versionDialog.showModal(); });
     query('#settings-close').addEventListener('click', () => { settingsPanel.hidden = true; settingsToggle.setAttribute('aria-expanded', 'false'); });
+    document.querySelectorAll('.theme-option').forEach((button) => button.addEventListener('click', () => void updateSettings({ ...settings, theme: button.dataset.themeOption })));
+    query('#replay-intro').addEventListener('click', () => openIntro(true));
     query('#graphics-mode').addEventListener('change', (event) => void updateSettings({ ...settings, graphicsMode: event.currentTarget.value }));
     ['reduced-motion', 'muted', 'show-performance'].forEach((id) => query(`#${id}`).addEventListener('change', (event) => {
         const property = id === 'reduced-motion' ? 'reducedMotion' : id === 'show-performance' ? 'showPerformance' : 'muted';
@@ -16139,6 +16439,14 @@
     });
     document.querySelectorAll('.game-tabs button').forEach((button) => button.addEventListener('click', () => showGamePanel(button.dataset.panel ?? 'play')));
     gameDialog.addEventListener('cancel', (event) => { event.preventDefault(); void closeGame(); });
+    window.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape')
+            return;
+        if (mobileMenu.classList.contains('open'))
+            closeMobileMenu();
+        if (catalogSidebar.classList.contains('open'))
+            closeCatalogFilters();
+    });
     window.addEventListener('keydown', (event) => {
         if (!gameDialog.open || query('#panel-play').hidden || !query('#game-onboarding').hidden)
             return;
@@ -16176,15 +16484,17 @@
         return element;
     }
     configureCatalogFilters();
+    renderEraSpotlight();
     renderHighlights();
     renderRoadmap();
-    renderMuseumGroup('museum-consoles', museum_hardware_1.CONSOLE_MUSEUM);
-    renderMuseumGroup('museum-controllers', museum_hardware_1.CONTROLLER_MUSEUM);
-    renderMuseumGroup('museum-sensors', museum_hardware_1.SENSOR_MUSEUM);
+    renderMuseumGroup('museum-consoles', 'consoles', museum_hardware_1.CONSOLE_MUSEUM);
+    renderMuseumGroup('museum-controllers', 'controles', museum_hardware_1.CONTROLLER_MUSEUM);
+    renderMuseumGroup('museum-sensors', 'sensores', museum_hardware_1.SENSOR_MUSEUM);
+    applyMuseumFilters();
     applyCatalogFilters();
     renderMilestones(museum_timeline_1.MUSEUM_TIMELINE);
     void refreshVersionDialog();
-    void storage.loadSettings().then((stored) => { settings = stored; syncSettingsForm(); }).catch(() => syncSettingsForm());
+    void storage.loadSettings().then((stored) => { settings = stored; syncSettingsForm(); openIntro(); }).catch(() => { syncSettingsForm(); openIntro(); });
     if ('serviceWorker' in navigator && (location.protocol !== 'file:'))
         void navigator.serviceWorker.register('./sw.js');
     
