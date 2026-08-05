@@ -1,0 +1,14 @@
+{
+  "name": "Fliperama DS",
+  "version": "0.34.1",
+  "phase": "Fase 7.15R — Auditoria de CPU, multiplayer e qualidade",
+  "channel": "Estável · revisão funcional",
+  "publishedAt": "2026-08-04T21:46:53-03:00",
+  "codeBase": "v0.34.0 / Fase 7.15A — expansão dos clássicos arcade",
+  "notes": [
+    "Board Arena recebeu adversário local para dois jogadores, CPU Surpresa e quatro estratégias de CPU.",
+    "Vector Tennis recebeu dois jogadores locais, reação variável e estratégias probabilísticas sem rastreamento previsível.",
+    "Controles, saves, perfis, explicações, contexto histórico e previews competitivos foram revisados.",
+    "A Dama permanece uma variante didática simplificada e essa limitação agora é informada claramente."
+  ]
+}
