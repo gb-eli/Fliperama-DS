@@ -1,4 +1,4 @@
-const VERSION = '0.39.0';
+const VERSION = '0.39.0-hotfix1';
 const CACHE_PREFIX = 'fliperama-ds-';
 const SHELL_CACHE = `${CACHE_PREFIX}shell-v${VERSION}`;
 const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v${VERSION}`;

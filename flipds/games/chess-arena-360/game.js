@@ -1,6 +1,6 @@
 import * as THREE from '../voxelcraft-ds/vendor/three/three.module.min.js';
 const {ChessEngine,squareName}=globalThis.ChessArenaEngine,{chooseMove}=globalThis.ChessArenaAI;
-const qs=new URLSearchParams(location.search),reduced=qs.get('reduced')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches,quality=qs.get('quality')||'medio';
+const qs=new URLSearchParams(location.search),reduced=qs.get('reduced')==='1'||(typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches),quality=qs.get('quality')||'medio';
 const modeEl=document.getElementById('mode'),statusEl=document.getElementById('status'),turnEl=document.getElementById('turn'),stateEl=document.getElementById('state'),movesEl=document.getElementById('moves'),historyEl=document.getElementById('history');
 const storedMode=localStorage.getItem('fliperama-chess-mode')||qs.get('mode')||'cpu-normal';modeEl.value=[...modeEl.options].some(o=>o.value===storedMode)?storedMode:'cpu-normal';
 let engine=new ChessEngine(),selected=-1,pendingPromotion=null,paused=false,cpuThinking=false,topView=false,ended=false;

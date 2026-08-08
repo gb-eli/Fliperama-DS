@@ -2,7 +2,7 @@ const params = new URLSearchParams(location.search);
 const embedded = params.get('embed') === '1';
 let visualStyle = params.get('style') === 'historico' ? 'historico' : 'moderno';
 const quality = params.get('quality') || 'medium';
-const reducedMotion = params.get('reduced') === '1' || matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reducedMotion = params.get('reduced') === '1' || (typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches);
 const muted = params.get('muted') === '1';
 
 const canvas = document.querySelector('#game');
@@ -105,7 +105,7 @@ function keyToAction(code) {
   return '';
 }
 function setupTouch() {
-  touchControls.hidden = !(matchMedia('(pointer: coarse)').matches || innerWidth < 760);
+  touchControls.hidden = !((typeof matchMedia==='function'&&matchMedia('(pointer: coarse)').matches) || innerWidth < 760);
   document.querySelectorAll('[data-action]').forEach((button) => {
     const action = button.dataset.action;
     const down = (event) => { event.preventDefault(); button.classList.add('active'); if (!externalHeld.has(action)) externalPressed.add(action); externalHeld.add(action); unlockAudio(); if (action === 'reset-level') resetLevel(); };
@@ -236,4 +236,4 @@ function roundRect(x,y,w,h,r){ctx.beginPath();ctx.roundRect?.(x,y,w,h,r);if(ctx.
 function rectFromArray(a){return{x:a[0],y:a[1],w:a[2],h:a[3]};}
 function intersects(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;}
 function clamp(v,min,max){return Math.max(min,Math.min(max,v));}
-function resize(){const rect=canvas.getBoundingClientRect();const dpr=Math.min(2,window.devicePixelRatio||1);const w=Math.max(640,Math.round(rect.width*dpr)),h=Math.max(360,Math.round(rect.height*dpr));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}const sx=w/960,sy=h/540;ctx.setTransform(sx,0,0,sy,0,0);touchControls.hidden=!(matchMedia('(pointer: coarse)').matches||innerWidth<760);}
+function resize(){const rect=canvas.getBoundingClientRect();const dpr=Math.min(2,window.devicePixelRatio||1);const w=Math.max(640,Math.round(rect.width*dpr)),h=Math.max(360,Math.round(rect.height*dpr));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}const sx=w/960,sy=h/540;ctx.setTransform(sx,0,0,sy,0,0);touchControls.hidden=!((typeof matchMedia==='function'&&matchMedia('(pointer: coarse)').matches)||innerWidth<760);}

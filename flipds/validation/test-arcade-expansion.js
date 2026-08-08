@@ -12,7 +12,7 @@ const req=loadBundle(); const results=[];
 function test(name,condition,detail=''){results.push({name,status:condition?'pass':'fail',detail});if(!condition)process.exitCode=1;}
 function eq(name,actual,expected){test(name,JSON.stringify(actual)===JSON.stringify(expected),`obtido ${JSON.stringify(actual)} · esperado ${JSON.stringify(expected)}`);}
 
-test('Expansão arcade preservada na v0.39.0',version.version==='0.39.0'&&app.includes("version: '0.39.0'")&&sw.includes("VERSION = '0.39.0'"));
+test('Expansão arcade preservada na v0.39.0',String(version.version).startsWith('0.39.0')&&(app.includes("version: '0.39.0'") || app.includes("version: '0.39.0-hotfix1'"))&&(sw.includes("VERSION = '0.39.0'") || sw.includes("VERSION = '0.39.0-hotfix1'")));
 test('Fase pública atual sincronizada',version.phase.includes('Fase 7.28')&&app.includes('Chess Arena 360')); 
 test('Interface de missão inserida',app.includes('arcade-mission-card')&&app.includes('MISSÃO DA CAMPANHA'));
 test('Interface de medalha inserida',app.includes('result-medal')&&app.includes('Medalha de ouro'));

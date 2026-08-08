@@ -21,7 +21,7 @@ export async function startGame({
   try{probeContext=probe.getContext('webgl2',{failIfMajorPerformanceCaveat:true})||probe.getContext('webgl',{failIfMajorPerformanceCaveat:true});}catch{}
   if(!probeContext&&!window.WebGLRenderingContext&&!window.WebGL2RenderingContext)throw new Error('Este navegador ou aparelho não oferece WebGL para executar o mundo 3D.');
 
-  const mobile=matchMedia('(pointer:coarse)').matches;
+  const mobile=(typeof matchMedia==='function'&&matchMedia('(pointer:coarse)').matches);
   const presets={
     economy:{view:1,pixel:.48,shadow:false,animals:0,trees:5,grass:0,clouds:0,queuePerFrame:1,fog:.045,warm:1},
     low:{view:2,pixel:.62,shadow:false,animals:3,trees:10,grass:0,clouds:3,queuePerFrame:1,fog:.032,warm:3},

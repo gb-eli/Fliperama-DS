@@ -2,7 +2,7 @@
   "product": "Fliperama DS",
   "version": "0.39.0",
   "phase": "Fase 7.28 — Chess Arena 360 · Estratégia 3D",
-  "generatedAt": "2026-08-08T19:16:44.420Z",
+  "generatedAt": "2026-08-08T20:08:52.425Z",
   "moduleCount": 120,
   "summary": {
     "games": 25,
@@ -983,7 +983,7 @@
         {
           "label": "Aleatoriedade controlada",
           "status": "pass",
-          "detail": "8 respostas diferentes observadas no nível Iniciante."
+          "detail": "7 respostas diferentes observadas no nível Iniciante."
         },
         {
           "label": "Dama · iniciante",

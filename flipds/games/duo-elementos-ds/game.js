@@ -4,7 +4,7 @@ const params = new URLSearchParams(location.search);
 const embedded = params.get('embed') === '1';
 let mode = params.get('mode') === 'local' ? 'local' : 'solo';
 const quality = params.get('quality') || 'medium';
-const reducedMotion = params.get('reduced') === '1' || matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reducedMotion = params.get('reduced') === '1' || (typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches);
 const muted = params.get('muted') === '1';
 
 const canvas = document.querySelector('#game');
@@ -114,7 +114,7 @@ function setupMessageBridge() {
 }
 
 function setupTouchControls() {
-  const coarse = matchMedia('(pointer: coarse)').matches || innerWidth < 760;
+  const coarse = (typeof matchMedia==='function'&&matchMedia('(pointer: coarse)').matches) || innerWidth < 760;
   touchControls.hidden = !coarse;
   document.querySelectorAll('[data-action]').forEach((button) => {
     if (button.dataset.touchBound === '1') return;
@@ -602,7 +602,7 @@ function elementColor(element) { return element === 'ember' ? COLORS.ember : COL
 function intersects(a,b) { return a.x < b.x+b.w && a.x+a.w > b.x && a.y < b.y+b.h && a.y+a.h > b.y; }
 function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
 function roundRect(context,x,y,w,h,r){ const rr=Math.min(r,w/2,h/2); context.beginPath(); context.moveTo(x+rr,y); context.arcTo(x+w,y,x+w,y+h,rr); context.arcTo(x+w,y+h,x,y+h,rr); context.arcTo(x,y+h,x,y,rr); context.arcTo(x,y,x+w,y,rr); context.closePath(); }
-function resize(){ const coarse = matchMedia('(pointer: coarse)').matches || innerWidth < 760; touchControls.hidden = !coarse; }
+function resize(){ const coarse = (typeof matchMedia==='function'&&matchMedia('(pointer: coarse)').matches) || innerWidth < 760; touchControls.hidden = !coarse; }
 
 addEventListener('keydown', (event) => {
   if (embedded) return;

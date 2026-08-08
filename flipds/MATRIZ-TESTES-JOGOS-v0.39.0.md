@@ -1,6 +1,6 @@
 # Matriz de testes dos jogos — Fliperama DS v0.37.2
 
-Gerada em: 2026-08-08T19:16:44.420Z
+Gerada em: 2026-08-08T20:08:52.425Z
 
 - Jogos analisados: **25**
 - Aprovados nesta camada: **25**
@@ -139,7 +139,7 @@ Gerada em: 2026-08-08T19:16:44.420Z
 - **APROVADO — Jogo da Velha · estrategista:** Turno da CPU separado, atraso visual e resposta concluída.
 - **APROVADO — Jogo da Velha · mestre:** Turno da CPU separado, atraso visual e resposta concluída.
 - **APROVADO — Minimax Mestre:** A CPU Mestre não perdeu em 100 partidas contra jogadas aleatórias.
-- **APROVADO — Aleatoriedade controlada:** 8 respostas diferentes observadas no nível Iniciante.
+- **APROVADO — Aleatoriedade controlada:** 7 respostas diferentes observadas no nível Iniciante.
 - **APROVADO — Dama · iniciante:** Destinos legais, tempo de análise e retorno de turno validados.
 - **APROVADO — Dama · normal:** Destinos legais, tempo de análise e retorno de turno validados.
 - **APROVADO — Dama · estrategista:** Destinos legais, tempo de análise e retorno de turno validados.

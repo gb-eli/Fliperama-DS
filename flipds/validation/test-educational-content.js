@@ -18,7 +18,7 @@ const playableIds = [...app.matchAll(/'([a-z0-9-]+)': \(\) => Promise\.resolve\(
 const uniquePlayable = [...new Set(playableIds)];
 const fields = ['experienceType','stageLabel','modes','difficulties','graphics','progression','historyFacts','curiosities','codeTitle','codeLanguage','codeExample','qualityNotes'];
 
-test('Versão pública sincronizada em v0.39.0', version.version === '0.39.0' && app.includes("version: '0.39.0'") && sw.includes("VERSION = '0.39.0'"));
+test('Versão pública sincronizada em v0.39.0', String(version.version).startsWith('0.39.0') && (app.includes("version: '0.39.0'") || app.includes("version: '0.39.0-hotfix1'")) && (sw.includes("VERSION = '0.39.0'") || sw.includes("VERSION = '0.39.0-hotfix1'")));
 test('25 experiências jogáveis detectadas', uniquePlayable.length === 25, `${uniquePlayable.length} detectadas`);
 test('25 fichas educacionais disponíveis', Object.keys(learning).length === 25, `${Object.keys(learning).length} fichas`);
 test('Cobertura de todos os runtimes jogáveis', uniquePlayable.every(id => learning[id]), uniquePlayable.filter(id => !learning[id]).join(', '));

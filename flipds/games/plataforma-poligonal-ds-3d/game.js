@@ -1,5 +1,5 @@
 import * as THREE from '../voxelcraft-ds/vendor/three/three.module.min.js';
-const params=new URLSearchParams(location.search);const quality=params.get('quality')||'medio';const reduced=params.get('reduced')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches;const muted=params.get('muted')==='1';
+const params=new URLSearchParams(location.search);const quality=params.get('quality')||'medio';const reduced=params.get('reduced')==='1'||(typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches);const muted=params.get('muted')==='1';
 const world=await fetch('./world.json').then(r=>r.json());const areas=world.areas;const el=id=>document.getElementById(id);
 const SAVE_KEY='fliperama-plataforma-poligonal-3d';const SOURCE='fliperama-ds-plataforma-poligonal';
 let portalPaused=false,areaIndex=0,lives=3,score=0,collected=new Set(),checkpoint=null,invulnerable=0,gameFinished=false;

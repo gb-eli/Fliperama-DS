@@ -9,7 +9,7 @@ const app=read('app.js'), sw=read('sw.js'), index=read('index.html'), education=
 const manifest=json('games/voxelcraft-ds/manifest.json'), storage=read('games/voxelcraft-ds/js/storage.js'), voxel=read('games/voxelcraft-ds/js/game.js'), voxelApp=read('games/voxelcraft-ds/js/app.js');
 const three=json('validation/three-d-campaign-results-v0.36.2.json'), voxelResult=json('validation/voxelcraft-campaign-results-v0.36.2.json'), audit=json('validation/game-audit-results.json'), physics=json('validation/platform-physics-test-results.json');
 
-test('Expansão v0.36.2 preservada na release atual',version.version==='0.39.0'&&app.includes("version: '0.39.0'")&&sw.includes("VERSION = '0.39.0'")&&index.includes('v0.39.0'),'A release atual preserva a expansão histórica.');
+test('Expansão v0.36.2 preservada na release atual',String(version.version).startsWith('0.39.0')&&(app.includes("version: '0.39.0'") || app.includes("version: '0.39.0-hotfix1'"))&&(sw.includes("VERSION = '0.39.0'") || sw.includes("VERSION = '0.39.0-hotfix1'"))&&index.includes('v0.39.0'),'A release atual preserva a expansão histórica.');
 test('Release atual identificada',version.phase.includes('Fase 7.28')&&app.includes('Fase 7.28'),'A release atual está identificada sem remover o conteúdo da Fase 7.17C.');
 test('Setor · schema 3',app.includes('campaignStage: 1, completedStages: 0')&&app.includes('Campanha concluída: três protocolos poligonais sincronizados.'),'Setor Poligonal possui estado de campanha schema 3.');
 test('Setor · protocolo 1',app.includes('Protocolo 1/3 — Geometria Base'),'Primeiro protocolo exige geometria e núcleos.');

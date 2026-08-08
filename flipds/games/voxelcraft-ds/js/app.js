@@ -62,7 +62,7 @@ function resolvedQuality() {
   if(selected!=='auto') return selected;
   const cores=navigator.hardwareConcurrency||4;
   const memory=navigator.deviceMemory||4;
-  const coarse=matchMedia('(pointer:coarse)').matches;
+  const coarse=(typeof matchMedia==='function'&&matchMedia('(pointer:coarse)').matches);
   if(cores<=2||memory<=2) return 'economy';
   if(coarse||cores<=4||memory<=4) return 'medium';
   if(cores>=8&&memory>=8) return 'ultra';

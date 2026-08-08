@@ -10,7 +10,7 @@ const version=JSON.parse(fs.readFileSync(path.join(root,'version.json'),'utf8'))
 const results=[];
 function test(name,ok,detail=''){results.push({name,status:ok?'pass':'fail',detail}); if(!ok) process.exitCode=1;}
 
-test('Versão pública v0.39.0 sincronizada', version.version==='0.39.0' && app.includes("version: '0.39.0'") && sw.includes("VERSION = '0.39.0'") && index.includes('v0.39.0'));
+test('Versão pública v0.39.0 sincronizada', String(version.version).startsWith('0.39.0') && (app.includes("version: '0.39.0'") || app.includes("version: '0.39.0-hotfix1'")) && (sw.includes("VERSION = '0.39.0'") || sw.includes("VERSION = '0.39.0-hotfix1'")) && index.includes('v0.39.0'));
 test('Abertura usa semântica de diálogo', app.includes('id="intro-overlay" class="intro-overlay" hidden role="dialog" aria-modal="true"'));
 test('Abertura possui botão fechar independente', app.includes('id="intro-close"') && app.includes("query('#intro-close').addEventListener('click', closeIntro)"));
 test('Abertura aceita fechamento por Esc', app.includes("if (!introOverlay.hidden)") && app.includes('closeIntro();'));
@@ -34,7 +34,7 @@ test('Ações do modal de detalhes empilham no celular', /@media \(max-width: 76
 test('Body bloqueia apenas rolagem horizontal global', css.includes('body { min-width: 0; overflow-x: clip; }'));
 test('Hotfix não removeu os 25 runtimes do catálogo', ((app.match(/jogavel/g)||[]).length >= 25), `${(app.match(/jogavel/g)||[]).length-1} ocorrências de status jogável estimadas`);
 test('Hotfix UX/UI anterior preservado sem remoção', css.includes('v0.34.2 · Hotfix UX/UI') && css.includes('viewports compactas'));
-test('Service Worker usa cache da nova revisão', sw.includes("const VERSION = '0.39.0';"));
+test('Service Worker usa cache da nova revisão', (sw.includes("const VERSION = '0.39.0';") || sw.includes("const VERSION = '0.39.0-hotfix1';")));
 
 const summary={product:'Fliperama DS',version:'0.38.4',phase:version.phase,generatedAt:new Date().toISOString(),summary:{total:results.length,passed:results.filter(r=>r.status==='pass').length,failed:results.filter(r=>r.status==='fail').length},results};
 fs.writeFileSync(path.join(__dirname,'ux-responsive-test-results.json'),JSON.stringify(summary,null,2));

@@ -9,9 +9,15 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" href="./icons/fliperama-ds.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./app.css" />
-    <title>Fliperama DS v0.39.0</title>
+    <title>Fliperama DS v0.39.0-hotfix1</title>
     <script>
       (() => {
+        if (typeof window.matchMedia !== 'function') {
+          window.matchMedia = function () { return { matches: false, media: '', addListener: function(){}, removeListener: function(){}, addEventListener: function(){}, removeEventListener: function(){}, dispatchEvent: function(){ return false; } }; };
+        }
+        if (typeof window.requestAnimationFrame !== 'function') window.requestAnimationFrame = function (cb) { return setTimeout(function(){ cb(Date.now()); }, 16); };
+        if (typeof window.cancelAnimationFrame !== 'function') window.cancelAnimationFrame = function (id) { clearTimeout(id); };
+        if (typeof Object.fromEntries !== 'function') Object.fromEntries = function (entries) { var out = {}; for (var i = 0; i < entries.length; i++) out[entries[i][0]] = entries[i][1]; return out; };
         const renderFatal = (title, detail) => {
           const mount = document.querySelector('#app');
           if (!mount || !mount.textContent.includes('Carregando Fliperama DS')) return;
@@ -28,7 +34,11 @@
         window.addEventListener('error', (event) => {
           if (event.target && event.target.tagName === 'SCRIPT') {
             renderFatal('Não foi possível carregar o código principal.', 'O arquivo app.js não foi encontrado, foi bloqueado ou está incompleto.');
+            return;
           }
+          const message = event && event.message ? event.message : 'Erro de JavaScript durante a inicialização.';
+          console.error('[Fliperama DS] Erro de inicialização:', event.error || event);
+          renderFatal('A plataforma encontrou um erro ao iniciar.', message);
         }, true);
         window.addEventListener('unhandledrejection', (event) => {
           const message = event.reason instanceof Error ? event.reason.message : String(event.reason || 'Erro inesperado');
@@ -43,7 +53,7 @@
           if (mount && mount.textContent.includes('Carregando Fliperama DS')) {
             renderFatal('O carregamento demorou mais que o esperado.', 'Verifique o pacote, o cache do navegador e a disponibilidade do JavaScript.');
           }
-        }, 15000);
+        }, 30000);
       })();
     </script>
   </head>

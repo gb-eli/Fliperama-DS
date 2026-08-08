@@ -18,7 +18,7 @@ const expectedGroups = { consoles: 6, controles: 5, sensores: 4 };
 const ids = catalog.items.map((item) => item.id);
 const uniqueIds = new Set(ids);
 
-test('Versão pública sincronizada em v0.39.0', version.version === '0.39.0' && app.includes("version: '0.39.0'") && sw.includes("VERSION = '0.39.0'"));
+test('Versão pública sincronizada em v0.39.0', String(version.version).startsWith('0.39.0') && (app.includes("version: '0.39.0'") || app.includes("version: '0.39.0-hotfix1'")) && (sw.includes("VERSION = '0.39.0'") || sw.includes("VERSION = '0.39.0-hotfix1'")));
 test('Catálogo do museu usa schemaVersion 1', catalog.schemaVersion === 1);
 test('Catálogo possui 15 itens', catalog.items.length === 15, String(catalog.items.length));
 test('Todos os IDs do museu são únicos', uniqueIds.size === catalog.items.length);
