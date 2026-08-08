@@ -182,7 +182,7 @@
     exports.DEFAULT_SETTINGS = {
         schemaVersion: 2,
         graphicsMode: 'automatico',
-        reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+        reducedMotion: typeof window.matchMedia === 'function' ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false,
         muted: false,
         showPerformance: false,
         theme: 'escuro',
@@ -19369,12 +19369,14 @@ senao:
     const graphicsLabels = { automatico: 'Automático', baixo: 'Baixo', medio: 'Médio', alto: 'Alto', ultra: 'Ultra', historico: 'Histórico' };
     const roadmapStatusLabels = { concluido: 'Concluído', 'em-andamento': 'Em andamento', 'proxima-fase': 'Próxima fase', planejado: 'Planejado' };
     const BUILD_INFO = {
-        version: '0.39.0',
-        label: 'v0.39.0',
-        phase: 'Fase 7.28 — Chess Arena 360 · Estratégia 3D',
+        version: '0.39.0-hotfix1',
+        label: 'v0.39.0 · HF1',
+        phase: 'Fase 7.28H — Hotfix de inicialização',
         channel: 'Estável · novos jogos',
         publishedAt: '2026-08-08T15:54:00-03:00',
         notes: [
+            'Corrige o bloqueio de inicialização causado por eras inválidas no catálogo.',
+            'Torna o roadmap tolerante a campos opcionais e adiciona compatibilidade para APIs ausentes.',
             'Chess Arena 360 entra como a 25ª experiência jogável, com tabuleiro Three.js, câmera orbital e visão superior.',
             'O motor implementa roque, en passant, promoção, xeque, xeque-mate, afogamento, repetição tripla, regra dos 50 lances e material insuficiente.',
             'Há multiplayer local e quatro níveis de CPU; os níveis Estratégica e Mestre usam minimax com poda alpha-beta.',
@@ -19677,7 +19679,7 @@ senao:
         renderGames(filtered);
     }
     function renderRoadmap() {
-        query('#roadmap-grid').innerHTML = roadmap_1.ARCADE_ROADMAP.map((item) => `<article class="roadmap-card"><div class="roadmap-top"><span>${item.phase}</span><b>${roadmapStatusLabels[item.status]}</b></div><h3>${item.title}</h3><p>${item.summary}</p><dl class="roadmap-specs"><div><dt>Engine</dt><dd>${item.engine}</dd></div><div><dt>Visual</dt><dd>${item.dimension}</dd></div><div><dt>Modos</dt><dd>${item.gameModes.join(', ')}</dd></div><div><dt>Controles</dt><dd>${item.controls.join(', ')}</dd></div><div><dt>Gráficos</dt><dd>${item.graphics.join(', ')}</dd></div><div><dt>Aprendizagem</dt><dd>${item.learning.join(', ')}</dd></div></dl><div class="tags">${item.technology.map((technology) => `<span>${technology}</span>`).join('')}</div><footer><strong>${item.category}</strong></footer></article>`).join('');
+        query('#roadmap-grid').innerHTML = roadmap_1.ARCADE_ROADMAP.map((item) => `<article class="roadmap-card"><div class="roadmap-top"><span>${item.phase}</span><b>${roadmapStatusLabels[item.status]}</b></div><h3>${item.title}</h3><p>${item.summary}</p><dl class="roadmap-specs"><div><dt>Engine</dt><dd>${item.engine}</dd></div><div><dt>Visual</dt><dd>${item.dimension}</dd></div><div><dt>Modos</dt><dd>${(item.gameModes ?? []).join(', ') || '—'}</dd></div><div><dt>Controles</dt><dd>${(item.controls ?? []).join(', ') || '—'}</dd></div><div><dt>Gráficos</dt><dd>${(item.graphics ?? []).join(', ') || '—'}</dd></div><div><dt>Aprendizagem</dt><dd>${(item.learning ?? []).join(', ') || '—'}</dd></div></dl><div class="tags">${(item.technology ?? []).map((technology) => `<span>${technology}</span>`).join('')}</div><footer><strong>${item.category}</strong></footer></article>`).join('');
     }
     function museumSearchIndex(item) {
         return [item.title, item.company, item.generation, item.originalTechnology, item.detail2d, item.detail3d, item.contribution].join(' ').toLowerCase();
@@ -20945,7 +20947,7 @@ senao:
     function resolvedGraphicsMode() {
         if (settings.graphicsMode !== 'automatico')
             return settings.graphicsMode;
-        const stored = sessionStorage.getItem('fliperama-ds-recommended-mode') ?? sessionStorage.getItem('arcade-ds-recommended-mode');
+        const stored = typeof sessionStorage !== 'undefined' ? (sessionStorage.getItem('fliperama-ds-recommended-mode') ?? sessionStorage.getItem('arcade-ds-recommended-mode')) : null;
         return stored ?? 'medio';
     }
     function themeLabel(theme) {
@@ -21041,7 +21043,7 @@ senao:
         query('#benchmark-status').innerHTML = '<strong>Medindo estabilidade</strong><span>Mantenha esta aba visível por um instante.</span>';
         const result = await (0, device_benchmark_1.runDeviceBenchmark)();
         showBenchmark(result);
-        sessionStorage.setItem('fliperama-ds-recommended-mode', result.recommendedMode);
+        try { if (typeof sessionStorage !== 'undefined') sessionStorage.setItem('fliperama-ds-recommended-mode', result.recommendedMode); } catch {}
         button.disabled = false;
         button.textContent = 'Testar novamente';
     }
@@ -22516,7 +22518,7 @@ senao:
       "slug": "chess-arena-360",
       "title": "Chess Arena 360",
       "subtitle": "Xadrez 3D completo · multiplayer local · CPU progressiva",
-      "era": "1950-atual",
+      "era": "2020-atual",
       "year": 2026,
       "genre": [
             "tabuleiro",
@@ -22575,7 +22577,7 @@ senao:
         "slug": "mundo-plataforma-ds-360",
         "title": "Mundo Plataforma DS 360",
         "subtitle": "Vale Nexus + Vila Tecnológica + Floresta de Circuitos + Região Industrial · mundo persistente · câmera 360°",
-        "era": "2000-atual",
+        "era": "2020-atual",
         "year": 2026,
         "genre": [
           "plataforma",
@@ -22643,7 +22645,7 @@ senao:
         "slug": "plataforma-poligonal-ds-3d",
         "title": "Plataforma Poligonal DS 3D",
         "subtitle": "Quatro áreas conectadas · terceira pessoa · 12 fragmentos",
-        "era": "1990-atual",
+        "era": "2020-atual",
         "year": 2026,
         "genre": ["plataforma", "3D", "ação", "aventura"],
         "technology": ["Three.js", "câmera terceira pessoa", "AABB 3D", "Gamepad API", "save local"],
@@ -22664,7 +22666,7 @@ senao:
               "slug": "hexa-reactor",
               "title": "Hexa Reactor",
               "subtitle": "Puzzle hexagonal autoral · 12 níveis de fluxo",
-              "era": "1980-atual",
+              "era": "2020-atual",
               "year": 2026,
               "genre": [
                       "puzzle",
@@ -22720,7 +22722,7 @@ senao:
         "slug": "crystal-cascade-3d",
         "title": "Crystal Cascade 3D",
         "subtitle": "Match-3 autoral · 12 fases prismáticas",
-        "era": "2010-atual",
+        "era": "2020-atual",
         "year": 2026,
         "genre": ["puzzle", "match-3", "casual", "estratégia"],
         "technology": ["Three.js", "DOM 3D", "matriz 8×8", "cascatas", "save local"],
@@ -22741,7 +22743,7 @@ senao:
         "slug": "plataforma-classica-ds",
         "title": "Plataforma Clássica DS",
         "subtitle": "Mundo 1 · Campo dos Pixels · seis fases autorais",
-        "era": "1980-1999",
+        "era": "1990-1999",
         "year": 1990,
         "genre": [
           "plataforma",
