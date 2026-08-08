@@ -122,6 +122,13 @@
         'polygon-sector-94': () => Promise.resolve().then(() => __importStar(__require("games/polygon-sector-94/index"))),
         'camera-evolution': () => Promise.resolve().then(() => __importStar(__require("games/camera-evolution/index"))),
         'voxelcraft-ds': () => Promise.resolve().then(() => __importStar(__require("games/voxelcraft-ds/index"))),
+        'mundo-plataforma-ds-360': () => Promise.resolve().then(() => __importStar(__require("games/mundo-plataforma-ds-360/index"))),
+        'plataforma-poligonal-ds-3d': () => Promise.resolve().then(() => __importStar(__require("games/plataforma-poligonal-ds-3d/index"))),
+        'crystal-cascade-3d': () => Promise.resolve().then(() => __importStar(__require("games/crystal-cascade-3d/index"))),
+        'hexa-reactor': () => Promise.resolve().then(() => __importStar(__require("games/hexa-reactor/index"))),
+        'plataforma-classica-ds': () => Promise.resolve().then(() => __importStar(__require("games/plataforma-classica-ds/index"))),
+        'duo-elementos-ds': () => Promise.resolve().then(() => __importStar(__require("games/duo-elementos-ds/index"))),
+        'chess-arena-360': () => Promise.resolve().then(() => __importStar(__require("games/chess-arena-360/index"))),
         'board-arena': () => Promise.resolve().then(() => __importStar(__require("games/board-arena/index"))),
         'puzzle-forge': () => Promise.resolve().then(() => __importStar(__require("games/puzzle-forge/index"))),
         'motion-beat': () => Promise.resolve().then(() => __importStar(__require("games/motion-beat/index"))),
@@ -345,7 +352,7 @@
             defeat: 'No modo sequência, atingir o limite de erros; nos demais modos, o desafio permanece aberto até a solução.',
             howToPlay: ['Escolha a experiência e a dificuldade.', 'Use clique ou toque nas grades de caminho, circuito e sequência.', 'No labirinto, mova com teclado, toque ou gamepad.', 'Abra o Editor para montar e testar um labirinto 7×7 próprio.'],
             controls: ['Mouse/toque: selecionar células.', 'Teclado: WASD ou setas no labirinto; P para pausar.', 'Celular: direcional em quatro sentidos.'],
-            structure: ['Caminhos rotativos 5×5.', 'Circuito lógico 5×5 com vizinhança ortogonal.', 'Sequência de memória 4×4.', 'Labirinto 7×7 com editor de paredes.'],
+            structure: ['Três desafios de Caminhos rotativos 5×5.', 'Três Circuitos lógicos 5×5.', 'Três Sequências de memória 4×4.', 'Três Labirintos 7×7 + editor personalizado.'],
             scoring: ['Pontos por acertos e progresso.', 'Bônus por concluir com poucos movimentos e erros.', 'Tempo, erros e movimentos reduzem o bônus final.'],
             logic: ['Matrizes guardam células e estados.', 'Vizinhança ortogonal altera o circuito.', 'Cursores validam a ordem da sequência.', 'O labirinto valida limites, paredes e posição do jogador.'],
         },
@@ -371,16 +378,16 @@
         },
         'block-reactor': {
             objective: 'Desmontar o reator de blocos usando rebotes, bônus e leitura de trajetória.',
-            victory: 'Concluir as três fases ou a fase personalizada.', defeat: 'Perder todas as vidas antes de remover os blocos.',
+            victory: 'Concluir as cinco fases da campanha ou a fase personalizada.', defeat: 'Perder todas as vidas antes de remover os blocos.',
             howToPlay: ['Mova a raquete sob a bola.', 'Lance a bola e ajuste o rebote pela posição do contato.', 'Capture power-ups e evite deixar a bola sair pela base.'],
             controls: ['Teclado: A/D ou ←/→; Espaço para lançar.', 'Celular: esquerda, lançar e direita.'],
-            structure: ['Três fases orientadas a dados.', 'Blocos comuns, resistentes, explosivos e de bônus.', 'Editor 8 × 5 integrado.'],
+            structure: ['Cinco fases orientadas a dados.', 'Blocos comuns, resistentes, explosivos e de bônus.', 'Editor 8 × 5 integrado.'],
             scoring: ['Pontos por bloco removido.', 'Bônus por combos e power-ups.', 'Recompensa adicional ao concluir a fase.'],
             logic: ['Colisão AABB.', 'Reflexão vetorial.', 'Layouts serializáveis e editor desacoplado.'],
         },
         'orbital-sentinel': {
-            objective: 'Defender a estação contra formações invasoras e atravessar quatro ondas.',
-            victory: 'Eliminar as quatro formações.', defeat: 'Perder todas as vidas ou permitir que a formação alcance a estação.',
+            objective: 'Defender a estação contra formações invasoras em campanhas de quatro, cinco ou seis ondas.',
+            victory: 'Eliminar todas as formações da campanha selecionada.', defeat: 'Perder todas as vidas ou permitir que a formação alcance a estação.',
             howToPlay: ['Mova a sentinela horizontalmente.', 'Dispare mantendo o limite de projéteis.', 'Use as barreiras como proteção temporária.'],
             controls: ['Teclado: A/D ou ←/→; Espaço para disparar.', 'Celular: esquerda, disparar e direita.'],
             structure: ['45 inimigos por onda.', 'Três tipos de unidades e barreiras destrutíveis.', 'Velocidade aumenta conforme a formação diminui.'],
@@ -388,38 +395,38 @@
             logic: ['Formação em matriz.', 'Escolha determinística de atiradores.', 'Colisão de projéteis e dificuldade emergente.'],
         },
         'vector-fleet': {
-            objective: 'Sobreviver a cinco ondas controlando rotação, impulso e inércia no espaço.',
-            victory: 'Concluir a quinta onda.', defeat: 'Perder todas as naves.',
+            objective: 'Sobreviver a campanhas de cinco, seis ou sete ondas controlando rotação, impulso e inércia no espaço.',
+            victory: 'Concluir a onda-alvo da dificuldade selecionada.', defeat: 'Perder todas as naves.',
             howToPlay: ['Gire a nave para definir a direção.', 'Acelere em pulsos para controlar a inércia.', 'Dispare e use as bordas conectadas do espaço.'],
             controls: ['Teclado: A/D ou ←/→; W/↑ para propulsor; Espaço para disparar.', 'Celular: girar, propulsor e disparar.'],
-            structure: ['Cinco ondas progressivas.', 'Asteroides fragmentáveis.', 'Espaço toroidal com objetos reaparecendo na borda oposta.'],
+            structure: ['Campanhas de cinco, seis ou sete ondas progressivas.', 'Asteroides fragmentáveis.', 'Espaço toroidal com objetos reaparecendo na borda oposta.'],
             scoring: ['Pontos por fragmento destruído.', 'Bônus ao limpar ondas rapidamente.'],
             logic: ['Vetores, ângulos e inércia.', 'Fragmentação orientada a estados.', 'Colisões circulares.'],
         },
         'data-maze': {
             objective: 'Coletar todos os dados do labirinto enquanto drones com personalidades distintas perseguem o jogador.',
-            victory: 'Limpar os três labirintos.', defeat: 'Perder todas as vidas para os drones.',
+            victory: 'Limpar os cinco labirintos.', defeat: 'Perder todas as vidas para os drones.',
             howToPlay: ['Escolha a direção antes das curvas.', 'Colete nós de energia para tornar drones vulneráveis.', 'Use túneis laterais e rotas alternativas.'],
             controls: ['Teclado: WASD ou setas.', 'Celular: direcional em quatro sentidos.'],
-            structure: ['Três mapas autorais.', 'Quatro drones com estratégias diferentes.', 'Nós de energia, bônus e túneis conectados.'],
+            structure: ['Cinco mapas autorais.', 'Quatro drones com estratégias diferentes.', 'Nós de energia, bônus e túneis conectados.'],
             scoring: ['Pontos por dados e nós de energia.', 'Combo crescente ao capturar drones vulneráveis.', 'Bônus de conclusão de mapa.'],
             logic: ['Tilemap e busca em largura.', 'Fila de direção.', 'Patrulha, perseguição, vulnerabilidade e retorno.'],
         },
         'room-quest': {
-            objective: 'Explorar oito salas, montar o inventário e recuperar o Núcleo de Memória.',
-            victory: 'Levar o núcleo de volta ao Observatório.', defeat: 'Esgotar a energia da expedição.',
+            objective: 'Explorar doze salas, estabilizar a rede, montar o inventário e recuperar o Núcleo de Memória.',
+            victory: 'Aplicar o selo de estabilidade e levar o núcleo de volta ao Observatório.', defeat: 'Esgotar a energia da expedição.',
             howToPlay: ['Explore as saídas disponíveis em cada sala.', 'Colete itens e ative terminais.', 'Use chaves, flags e combinações para liberar novas passagens.'],
             controls: ['Teclado: WASD ou setas; E para interagir.', 'Celular: direcional e botão interagir.'],
-            structure: ['Oito salas conectadas como grafo.', 'Inventário persistente.', 'Objetivo de ida e volta com alterações permanentes.'],
+            structure: ['Doze salas conectadas como grafo.', 'Inventário e flags persistentes.', 'Objetivo de ida e volta com nova ala de estabilização.'],
             scoring: ['Pontos por sala descoberta, item e terminal.', 'Bônus ao recuperar e devolver o núcleo.'],
             logic: ['Grafo de salas.', 'Flags globais.', 'Condições de passagem e inventário serializável.'],
         },
         'raster-rally': {
-            objective: 'Completar três circuitos pseudo-3D antes do cronômetro terminar.',
-            victory: 'Finalizar as três pistas.', defeat: 'Esgotar o tempo ou perder toda a integridade.',
+            objective: 'Completar cinco circuitos pseudo-3D, administrando aderência, rivais, integridade e cronômetro até a final do campeonato.',
+            victory: 'Finalizar as cinco pistas e concluir o campeonato Raster.', defeat: 'Esgotar o tempo ou perder toda a integridade.',
             howToPlay: ['Acelere nas retas e prepare a entrada das curvas.', 'Freie para preservar aderência.', 'Ultrapasse rivais e atravesse checkpoints para ganhar tempo.'],
             controls: ['Teclado: W/↑ acelerar; S/↓ frear; A/D ou ←/→ esterçar.', 'Celular: esquerda, acelerar, frear e direita.'],
-            structure: ['Três pistas autorais com duas voltas.', 'Curvas, elevação, clima e rivais.', 'Projeção por segmentos e sprites escalados.'],
+            structure: ['Cinco pistas autorais: três com duas voltas e duas finais com três voltas.', 'Curvas, elevação, clima e rivais.', 'Projeção por segmentos e sprites escalados.'],
             scoring: ['Pontos por distância, ultrapassagem e checkpoint.', 'Bônus de tempo e melhor volta.', 'Penalidade por colisões e saída da pista.'],
             logic: ['Interpolação de segmentos.', 'Perspectiva pseudo-3D.', 'Aderência e força centrífuga.'],
         },
@@ -433,29 +440,29 @@
             logic: ['Matrizes.', 'Rotação e wall kick.', 'Detecção e remoção de linhas.'],
         },
         'trap-lab': {
-            objective: 'Superar três circuitos de plataforma e programar a sequência correta dos portões.',
-            victory: 'Concluir a terceira fase.', defeat: 'Perder todas as vidas nas armadilhas.',
+            objective: 'Superar seis circuitos de plataforma e programar a sequência correta dos portões.',
+            victory: 'Concluir a sexta fase.', defeat: 'Perder todas as vidas nas armadilhas.',
             howToPlay: ['Mova e salte entre plataformas.', 'Ative checkpoints antes de trechos difíceis.', 'Interaja com terminais e aplique a sequência lógica.'],
             controls: ['Teclado: A/D ou ←/→; W/↑/Espaço para pular; E para interagir.', 'Celular: esquerda, pular, interagir e direita.'],
-            structure: ['Três fases 42 × 14.', 'Armadilhas temporizadas.', 'Editor de sequência aguardar → desativar → abrir.'],
+            structure: ['Seis fases 42 × 14.', 'Armadilhas temporizadas e checkpoints múltiplos.', 'Editor de sequência aguardar → desativar → abrir.'],
             scoring: ['Pontos por fragmento, checkpoint e portão.', 'Bônus de conclusão e penalidade por reinício.'],
             logic: ['Física por subpassos.', 'Eventos, temporizadores e checkpoints.', 'Sequência de comandos validada como dados.'],
         },
         'state-quest-rpg': {
-            objective: 'Concluir três missões, evoluir o personagem e decidir o destino do Núcleo.',
+            objective: 'Concluir cinco missões, explorar cinco mapas, evoluir o personagem e decidir o destino do Núcleo.',
             victory: 'Alcançar um dos dois finais.', defeat: 'Perder todos os pontos de vida sem recursos de recuperação.',
-            howToPlay: ['Explore os três mapas e converse com NPCs.', 'Equipe itens e enfrente inimigos por turnos.', 'Escolha respostas que alteram missões e o final.'],
+            howToPlay: ['Explore os cinco mapas e converse com NPCs.', 'Equipe itens e enfrente inimigos por turnos.', 'Complete Arquivo de Ecos e Torre de Sincronização antes da decisão final.'],
             controls: ['Teclado: WASD/setas; E interagir; Enter/Espaço confirmar; Esc/Q alternativa.', 'Celular: direcional, interagir, confirmar e alternativa.'],
-            structure: ['Três mapas e três missões encadeadas.', 'Inventário, equipamentos, atributos e experiência.', 'Diálogos ramificados e dois finais.'],
+            structure: ['Cinco mapas e cinco missões encadeadas.', 'Inventário, equipamentos, atributos e experiência.', 'Diálogos ramificados e dois finais.'],
             scoring: ['Pontos por missão, batalha, descoberta e decisão.', 'Experiência aumenta nível e atributos.'],
             logic: ['Máquinas de estado de missões.', 'Árvores de diálogo.', 'Combate por turnos e persistência do mundo.'],
         },
         'bit-bridge-16': {
             objective: 'Atravessar uma mesma fase alternando entre apresentações de 8 e 16 bits.',
-            victory: 'Coletar oito fragmentos e alcançar o portal.', defeat: 'Perder todas as vidas.',
-            howToPlay: ['Mova e salte pelas quatro zonas.', 'Colete fragmentos e registre checkpoints.', 'Alterne a geração para comparar gráficos sem reiniciar a lógica.'],
+            victory: 'Coletar doze fragmentos e alcançar o portal.', defeat: 'Perder todas as vidas.',
+            howToPlay: ['Mova e salte pelas seis zonas.', 'Colete fragmentos e registre checkpoints.', 'Alterne a geração para comparar gráficos sem reiniciar a lógica.'],
             controls: ['Teclado: A/D ou ←/→; W/↑/Espaço pular; C/X alternar.', 'Celular: esquerda, pular, 8↔16 e direita.'],
-            structure: ['Uma simulação compartilhada.', 'Apresentação 8 bits e 16 bits.', 'Quatro zonas, checkpoints e nove fragmentos.'],
+            structure: ['Uma simulação compartilhada.', 'Apresentação 8 bits e 16 bits.', 'Seis zonas, cinco checkpoints e quinze fragmentos.'],
             scoring: ['Pontos por fragmento, checkpoint e troca comparativa.', 'Bônus por conclusão e vidas restantes.'],
             logic: ['Renderização desacoplada.', 'Paletas, sprites, paralaxe e canais de áudio comparados.'],
         },
@@ -478,13 +485,82 @@
             logic: ['Posição e missão independentes da câmera.', 'Matrizes lookAt e perspectiva.', 'Offsets, alvos, órbita, visão superior e câmera fixa por setores.', 'FOV alterando projeção sem reiniciar a simulação.'],
         },
         'raycast-corridors': {
-            objective: 'Explorar um complexo 2.5D, obter duas chaves, ativar três terminais e alcançar a extração.',
-            victory: 'Entrar na área de extração após sincronizar os três terminais.', defeat: 'Perder todas as vidas nos pulsos ou deixar o tempo acabar.',
+            objective: 'Concluir três operações 2.5D em mapas diferentes, coletando chaves, ativando terminais e alcançando cada extração.',
+            victory: 'Concluir as três operações e extrair do Núcleo Espectral.', defeat: 'Perder todas as vidas nos pulsos ou deixar o tempo acabar.',
             howToPlay: ['Avance e recue pelos corredores.', 'Gire a câmera, encontre chaves e abra portas.', 'Ative terminais para criar checkpoints e liberar a saída.', 'Alterne entre primeira pessoa, mapa e tela dividida.'],
             controls: ['Teclado: W/↑ avançar; S/↓ recuar; A/D ou ←/→ girar; E interagir; M alternar visão.', 'Celular: girar, avançar/recuar, interagir e visão.'],
-            structure: ['Mapa 24 × 18 como fonte única do mundo.', 'Duas chaves, duas portas, três terminais e duas zonas de pulso.', 'Raycasting DDA com resolução adaptada ao modo gráfico.'],
+            structure: ['Três mapas 24 × 18 usando a mesma técnica de raycasting.', 'Requisitos variáveis de chaves e terminais por operação.', 'Raycasting DDA com resolução adaptada ao modo gráfico.'],
             scoring: ['225 pontos por chave.', '175 por porta e 350 por terminal.', 'Bônus de extração, tempo restante e exploração; penalidade por dano.'],
             logic: ['DDA por coluna.', 'Correção perpendicular contra olho-de-peixe.', 'Colisão circular na grade.', 'Objetos projetados com teste de oclusão.'],
+        },
+        'chess-arena-360': {
+            objective: 'Vencer uma partida de xadrez 3D por xeque-mate ou conduzir a posição a um dos empates previstos pelas regras.',
+            victory: 'Aplicar xeque-mate ao rei adversário. Em modo CPU, o jogador controla as brancas.',
+            defeat: 'Receber xeque-mate. Afogamento, repetição tripla, regra dos 50 lances e material insuficiente encerram em empate.',
+            howToPlay: ['Escolha dois jogadores locais ou uma das quatro CPUs.', 'Selecione uma peça e depois um destino destacado.', 'Use a câmera orbital para inspecionar o tabuleiro ou C para alternar para a visão superior.', 'Roque, en passant e promoção são tratados pelo motor de regras; na promoção, escolha Dama, Torre, Bispo ou Cavalo.'],
+            controls: ['Mouse/toque: selecionar peça e destino; arraste para orbitar a câmera; roda para zoom.', 'Teclado: C alterna câmera; N inicia nova partida; Esc cancela a seleção.'],
+            structure: ['Tabuleiro 8×8 em Three.js com peças low-poly autorais.', 'Motor de regras serializável independente da cena 3D.', 'Multiplayer local e quatro níveis de CPU com busca alpha-beta.'],
+            scoring: ['O foco é o resultado da partida e o histórico de lances, não pontuação arcade.', 'O save local preserva a posição, direitos de roque, en passant, contadores e histórico de repetição.'],
+            logic: ['Geração de jogadas pseudo-legais seguida de filtro de segurança do rei.', 'Detecção de casas atacadas para xeque e roque.', 'CPU por avaliação material, centro e mobilidade com minimax/alpha-beta progressivo.'],
+        },
+        'mundo-plataforma-ds-360': {
+            objective: 'Concluir cinco regiões persistentes e alcançar o topo da Torre Central, sincronizando três consoles e ativando o Núcleo Central.',
+            victory: 'Concluir Vale, Vila, Floresta e Região Industrial; sincronizar 3/3 consoles da Torre, ativar o Núcleo e atravessar o portal final.',
+            defeat: 'Não há derrota definitiva: quedas, campos Glitch e patrulhas descontam vida e devolvem o jogador ao último checkpoint.',
+            howToPlay: ['Mova o explorador pelo hub radial e escolha qualquer direção para começar.', 'Gire a câmera livremente arrastando a cena ou usando o analógico direito.', 'Use C ou o botão 360° para entrar em Panorama e observar o entorno sem mover o personagem.', 'Suba nas plataformas para alcançar Orbes e Balizas e ative checkpoints pelo caminho.', 'Quando 6 Orbes e 3 Balizas estiverem sincronizados, retorne ao Portal Nexus no centro.'],
+            controls: ['Teclado: WASD/setas mover; Espaço pular; arraste para câmera; C panorama 360°; R reiniciar.', 'Celular: direcional, Pular e botão 360°; arraste sobre a cena para olhar.', 'Gamepad: analógico esquerdo mover, direito controlar câmera, A pular e Y alternar Panorama.'],
+            structure: ['Cinco regiões persistentes com exploração radial, missões e conclusão vertical.', 'A Torre Central possui cinco patamares, elevadores, plataformas externas e um Núcleo no topo.', 'O mesmo núcleo de simulação preserva física, checkpoints e save entre todas as regiões.'],
+            scoring: ['350 pontos por Orbe, 500 por Baliza e 125 por checkpoint.', '2.200 pontos ao estabilizar o Vale e atravessar o portal final.', 'Penalidade de 175 pontos ao sofrer dano.'],
+            logic: ['Simulação serializável independente de Three.js.', 'Movimento convertido do espaço local da câmera para X/Z do mundo.', 'Plataformas móveis em X/Y/Z sustentam exploração horizontal e ascensão vertical.', 'Save schema 5 migra as quatro regiões anteriores e preserva a campanha.'],
+        },
+        'plataforma-poligonal-ds-3d': {
+            objective: 'Atravessar quatro áreas tridimensionais, coletar doze fragmentos e alcançar o Núcleo de Render.',
+            victory: 'Coletar três fragmentos em cada área e atravessar o portal final da Torre do Render.',
+            defeat: 'Perder as vidas por contato com patrulhas ou quedas; a campanha preserva os fragmentos das áreas já concluídas.',
+            howToPlay: ['Mova o explorador em terceira pessoa usando WASD ou setas.', 'Gire a câmera arrastando a cena ou pelo analógico direito.', 'Use plataformas fixas e móveis para alcançar três fragmentos por área.', 'Ative checkpoints e evite inimigos patrulhando.', 'Com três fragmentos da área, alcance o portal para avançar.'],
+            controls: ['Teclado: WASD/setas mover; Espaço pular; R reiniciar área.', 'Celular: direcional + botão Pular; arraste para câmera.', 'Gamepad: analógico esquerdo mover, direito girar câmera e A pular.'],
+            structure: ['Quatro áreas: Praça Poligonal, Bosque Low-Poly, Fábrica de Malhas e Torre do Render.', 'Doze fragmentos, quatro checkpoints, quatro plataformas móveis e oito inimigos.', 'Three.js local com geometria procedural e carregamento sob demanda.'],
+            scoring: ['300 pontos por fragmento e 150 por checkpoint.', '700 pontos por área concluída e 1.800 pelo portal final.', 'Penalidade de 150 pontos ao sofrer dano.'],
+            logic: ['Movimento relativo à câmera em X/Z.', 'Gravidade e colisão pelo topo de volumes 3D.', 'Plataformas móveis senoidais e patrulhas.', 'Câmera follow suavizada e save versionado.'],
+        },
+        'hexa-reactor': {
+            objective: 'Estabilizar doze redes hexagonais rotacionando conexões para energizar todos os receptores sem vazamentos ou sobrecarga.',
+            victory: 'Energizar todos os receptores dourados, manter células instáveis fora do fluxo e fechar todas as conexões energizadas.', defeat: 'Esgotar o limite de giros antes de estabilizar o circuito.',
+            howToPlay: ['Gire peças hexagonais em incrementos de 60°.', 'Conecte fontes ciano aos receptores dourados.', 'Evite energizar células vermelhas de sobrecarga.', 'Nas fases finais coordene múltiplas fontes e caminhos simultâneos.'],
+            controls: ['Mouse/toque: clique para girar horário; botão direito para anti-horário.', 'Teclado: H destaca uma peça; R reinicia a fase.'],
+            structure: ['Grade axial com até 19 posições e seis vizinhos por célula.', 'Campanha de doze níveis com múltiplas fontes, receptores e células instáveis.', 'Backdrop Three.js e tabuleiro DOM 3D/2.5D.'],
+            scoring: ['Uma a três estrelas por eficiência de giros.', 'Progresso e estrelas persistidos localmente.'],
+            logic: ['Rotação modular em seis estados.', 'Busca em largura para propagação do fluxo.', 'Detecção de vazamentos, receptores energizados e sobrecarga.'],
+        },
+        'crystal-cascade-3d': {
+            objective: 'Estabilizar doze câmaras prismáticas combinando cristais, criando peças especiais, quebrando gelo e cumprindo metas dentro do limite de movimentos.',
+            victory: 'Cumprir pontuação, coletas e bloqueadores definidos pela fase antes de esgotar os movimentos.',
+            defeat: 'Esgotar os movimentos sem cumprir todos os objetivos; a fase pode ser reiniciada sem perder estrelas anteriores.',
+            howToPlay: ['Selecione dois cristais vizinhos para trocá-los.', 'Somente trocas que formam combinações ou ativam uma peça especial são consumidas.', 'Combinações de quatro criam limpadores de linha/coluna; cinco criam uma explosão prismática.', 'Cascatas aumentam o combo e a pontuação.', 'Quebre todo o gelo e cumpra as coletas indicadas no HUD.'],
+            controls: ['Mouse/toque: selecionar e trocar dois cristais adjacentes.', 'R ou botão Reiniciar: reiniciar a fase; Esc/P: pausar pelo portal.'],
+            structure: ['Campanha autoral de 12 fases em tabuleiro 8×8.', 'Seis famílias de cristais, gelo, peças especiais e metas combinadas.', 'Backdrop WebGL em Three.js e tabuleiro DOM 3D/2.5D para manter legibilidade e acessibilidade.'],
+            scoring: ['100 pontos por cristal limpo multiplicados pela profundidade da cascata.', 'Bônus por gelo quebrado, cascatas e movimentos restantes.', '1 a 3 estrelas conforme movimentos restantes e melhor combo.'],
+            logic: ['Detecção horizontal e vertical de combinações.', 'Queda por coluna e preenchimento determinístico.', 'Validação de jogada possível e embaralhamento automático.', 'Save por fase, estrelas e estado do tabuleiro.'],
+        },
+        'plataforma-classica-ds': {
+            objective: 'Conduzir Nexo pelas seis fases do Mundo 1 — Campo dos Pixels, coletando chips, ativando checkpoints, descobrindo segredos e enfrentando o Guardião do Clock.',
+            victory: 'Coletar todos os chips obrigatórios de cada fase, atravessar os seis portais e, no Castelo do Kernel, derrotar o Guardião do Clock com três saltos antes da saída final.',
+            defeat: 'Não existe game over permanente: tocar perigos, inimigos ou cair restaura Nexo no último checkpoint e reduz a pontuação.',
+            howToPlay: ['Escolha visual Histórico ou Moderno; a física é idêntica nos dois modos.', 'Use A/D ou setas para mover e W, ↑ ou Espaço para pular.', 'Pise sobre Bugbots, Saltadores e o Guardião para derrotá-los; evite contato lateral.', 'Colete todos os chips amarelos, procure o fragmento secreto e ative o checkpoint antes do portal.', 'R reinicia a fase; P pausa. Gamepad e controles touch são aceitos.'],
+            controls: ['A/D ou ←/→: mover', 'W, ↑ ou Espaço: pular', 'R: reiniciar fase · P/Esc: pausar', 'Gamepad: direcional/analógico + A/B; celular: botões touch'],
+            structure: ['Mundo 1 · Campo dos Pixels com 6 fases.', '3 famílias de inimigos: Bugbot, Saltador Glitch e Sentinela.', '6 fragmentos secretos, checkpoints, molas e desafio final.', 'Modo Histórico e Moderno usam a mesma simulação e o mesmo save.'],
+            scoring: ['Chips, segredos, inimigos e checkpoints concedem pontos.', 'Quedas e contatos perigosos aplicam penalidade sem apagar a campanha.', 'Medalha final considera quedas e quantidade de segredos encontrados.'],
+            logic: ['Física AABB com gravidade, coyote time e jump buffer.', 'Câmera lateral segue o jogador em mundos maiores que a viewport.', 'Inimigos usam patrulha, salto periódico ou projéteis simples.', 'Fases são orientadas a dados em levels.json e o save registra progresso da campanha.'],
+        },
+        'duo-elementos-ds': {
+            objective: 'Coordenar Ígneo e Aqua em oito fases de plataforma cooperativa, usando afinidades elementais, relés, gates e troca de personagem.',
+            victory: 'Coletar todos os núcleos da fase, cumprir os relés obrigatórios e levar os dois personagens às saídas correspondentes até estabilizar a Câmara Nexus.',
+            defeat: 'Não há game over definitivo: tocar um fluxo incompatível ou cair restaura o personagem no último ponto seguro e aplica penalidade de pontuação.',
+            howToPlay: ['Escolha Solo ou 2 jogadores locais.', 'No Solo, mova o personagem ativo e use Q/Tab para alternar entre Ígneo e Aqua.', 'No modo local, Jogador 1 usa A/D/W e Jogador 2 usa setas.', 'Ative relés compatíveis, colete os núcleos e reúna os dois personagens nas saídas.'],
+            controls: ['Solo: A/D para mover, W ou Espaço para pular, Q/Tab para trocar personagem, R reinicia a fase.', '2 jogadores: J1 A/D/W; J2 ←/→/↑; dois gamepads são reconhecidos no runtime.', 'Celular: controles touch próprios aparecem dentro da experiência.'],
+            structure: ['Campanha autoral de 8 fases.', 'Dois personagens com afinidades Ígneo e Aqua.', 'Relés persistentes, gates condicionais, perigos elementais e checkpoints.', 'Multiplayer Local Core reutilizável para jogos futuros.'],
+            scoring: ['Núcleos e relés concedem pontos.', 'Conclusão rápida e com poucas quedas aumenta o bônus da fase.', 'Quedas retiram pontos sem apagar o progresso global da campanha.'],
+            logic: ['A simulação usa colisão AABB, gravidade, coyote time e jump buffer.', 'O núcleo de entrada separa ações do Jogador 1, Jogador 2, modo solo e gamepads.', 'Relés e gates são orientados a dados em levels.json.', 'O save guarda fase, pontuação, quedas, núcleos, relés e posições.'],
         },
         'voxelcraft-ds': {
             objective: 'Explorar um mundo procedural, coletar recursos tecnológicos e construir estruturas enquanto observa chunks, física, câmera e renderização trabalhando juntos.',
@@ -840,6 +916,48 @@
     exports.ARCADE_ROADMAP = void 0;
     exports.ARCADE_ROADMAP = [
         {
+            id:'chess-arena-360', phase:'Fase 7.28 · v0.39.0', title:'Chess Arena 360', status:'concluido', category:'Estratégia e tabuleiro', dimension:'3D/360', engine:'Three.js + motor de xadrez autoral',
+            gameModes:['2 jogadores locais','CPU Iniciante','CPU Normal','CPU Estratégica','CPU Mestre'], controls:['Mouse','Toque','Teclado'], graphics:['Baixo','Médio','Alto','Ultra'],
+            learning:['Matriz 8×8','Geração de movimentos','Busca em árvore','Alpha-beta','Máquina de estados'], technology:['iframe sob demanda','Three.js local','engine.js','ai.js','save versionado'],
+            summary:'Xadrez 3D completo com roque, en passant, promoção, xeque-mate, empates, câmera orbital/superior, multiplayer local e CPU progressiva.',
+            next:'Adicionar análise pós-partida e desafios táticos curtos.'
+        },
+        {
+            id:'mundo-plataforma-ds-360', phase:'Fase 7.26 · v0.38.5', title:'Mundo Plataforma DS 360 · Torre Central', status:'concluido', category:'Mundo plataforma 360', dimension:'3D/360', engine:'Three.js + simulação modular',
+            gameModes:['Exploração radial','Panorama 360°'], controls:['Teclado','Toque','Gamepad'], graphics:['Baixo','Médio','Alto','Ultra'],
+            learning:['Vetores 3D','Câmera orbital','Bússola','Exploração radial','Persistência'], technology:['iframe sob demanda','Three.js local','simulation.mjs','render.mjs','save versionado'],
+            summary:'Mundo 3D/360 com cinco regiões persistentes: Vale Nexus, Vila Tecnológica, Floresta de Circuitos, Região Industrial e Torre Central, com ascensão vertical até o Núcleo.',
+            next:'Expandir o mundo com Torre Central e fechamento da campanha.'
+        },
+        {
+            id:'plataforma-poligonal-ds-3d', phase:'Fase 7.21 · v0.38.0', title:'Plataforma Poligonal DS 3D · Campanha', status:'concluido', category:'Plataforma 3D', dimension:'3D', engine:'Three.js + física autoral',
+            summary:'Quatro áreas conectadas em terceira pessoa com plataformas móveis, inimigos, checkpoints e 12 fragmentos.',
+            next:'Expandir a trilogia para Mundo Plataforma DS 360.'
+        },
+        {
+            id:'hexa-reactor', phase:'Fase 7.27 · v0.38.6', title:'Hexa Reactor · Campanha', status:'concluido', category:'Puzzle de conexão', dimension:'2D/3D', engine:'DOM + Three.js + motor de grafos',
+            objective:'Estabilizar 12 circuitos hexagonais com múltiplas fontes, receptores e sobrecarga.',
+            next:'Expandir com desafios diários e editor de circuitos.'
+        },
+        {
+            id:'crystal-cascade-3d', phase:'Fase 7.20 · v0.37.2', title:'Crystal Cascade 3D · Ato Prismático', status:'concluido', category:'Match-3 moderno', dimension:'3D/2.5D', engine:'Three.js + DOM 3D + motor autoral',
+            gameModes:['Campanha 12 fases'], controls:['Mouse','Toque'], graphics:['Baixo','Médio','Alto','Ultra'],
+            learning:['Matrizes','Busca de combinações','Cascatas','Probabilidade','Máquina de estados'], technology:['iframe sob demanda','Three.js local','CSS 3D','motor match-3','save versionado'],
+            summary:'Match-3 autoral com doze fases, gelo, coletas, peças especiais, cascatas, combos e estrelas, apoiado por cenário WebGL carregado somente ao abrir.',
+        },
+        {
+            id:'plataforma-classica-ds', phase:'Fase 7.19 · v0.37.1', title:'Plataforma Clássica DS · Mundo 1', status:'concluido', category:'Plataforma lateral', dimension:'2D', engine:'Canvas 2D + módulo isolado',
+            gameModes:['Histórico','Moderno'], controls:['Teclado','Toque','Gamepad'], graphics:['Histórico','Baixo','Médio','Alto','Ultra'],
+            learning:['Física lateral','Câmera follow','IA simples','Dados de fase','Evolução visual'], technology:['iframe sob demanda','Canvas 2D','Gamepad API','AABB','levels.json','save versionado'],
+            summary:'Primeiro mundo da trilogia de plataforma: seis fases, Nexo, três famílias de inimigos, chips, segredos, checkpoints, molas e Guardião do Clock.',
+        },
+        {
+            id: 'duo-elementos-ds', phase: 'Fase 7.18 · v0.37.0', title: 'Duo Elementos DS + Multiplayer Local Core', status: 'concluido', category: 'Plataforma cooperativa', dimension: '2D', engine: 'Canvas 2D + módulo isolado',
+            gameModes: ['Solo com troca', '2 jogadores locais', 'Dois gamepads', 'Touch'], controls: ['Teclado', 'Toque', 'Gamepad'], graphics: ['Baixo', 'Médio', 'Alto', 'Ultra'],
+            learning: ['Cooperação', 'Mapeamento de ações', 'Colisão', 'Máquina de estados', 'Dados de fase'], technology: ['iframe sob demanda', 'Gamepad API', 'AABB', 'levels.json', 'save versionado'],
+            summary: 'Primeiro jogo novo do ciclo de expansão: oito fases autorais com Ígneo e Aqua, relés elementais, gates, núcleos, checkpoints e núcleo reutilizável de multiplayer local.',
+        },
+        {
             id: 'fase-6-1', phase: 'Fase 6.1 · v0.18.1', title: 'Portal, catálogo inteligente e planejamento educacional', status: 'concluido', category: 'Estrutura', dimension: 'Híbrido', engine: 'TypeScript + DOM + Canvas/WebGL sob demanda',
             gameModes: ['Catálogo', 'Museu', 'Roadmap', 'Controle de versão'], controls: ['Mouse', 'Toque', 'Teclado'], graphics: ['Baixo', 'Médio', 'Alto', 'Ultra'],
             learning: ['Evolução dos jogos', 'Classificação por gênero', 'História da tecnologia', 'Comparação de engines'], technology: ['Filtros', 'version.json', 'PWA', 'museus'],
@@ -1110,7 +1228,7 @@
       atualizar o painel técnico comparativo
     
     PARA CONCLUIR:
-      coletar oito fragmentos de memória
+      coletar doze fragmentos de memória
       registrar checkpoints
       alcançar o portal final com a ponte estabilizada`;
     exports.BIT_BRIDGE_COMPARISON = [
@@ -1376,6 +1494,10 @@
                 const platformWidth = platform.width * scale;
                 if (x + platformWidth < 0 || x > width)
                     continue;
+                if (!historical) {
+                    graphics.fillStyle(0x071019, 0.42);
+                    graphics.fillRect(x + 4 * scale, worldY(platform.y) + 8 * scale, platformWidth, platform.height * scale);
+                }
                 graphics.fillStyle(historical ? 0xb86f3d : 0x9f5b3b, 1);
                 graphics.fillRect(x, worldY(platform.y), platformWidth, platform.height * scale);
                 graphics.fillStyle(historical ? 0xe3ba5d : 0xf0c85d, 1);
@@ -1394,6 +1516,10 @@
                 for (let index = 0; index < spikes; index += 1) {
                     const left = x + index * (hazard.width / spikes) * scale;
                     const spikeWidth = (hazard.width / spikes) * scale;
+                    if (!historical && this.#context?.graphicsMode !== 'baixo') {
+                        graphics.fillStyle(0xff526f, 0.12);
+                        graphics.fillCircle(left + spikeWidth / 2, worldY(bit_bridge_simulation_1.BIT_BRIDGE_GROUND_Y - 8), spikeWidth * 0.62);
+                    }
                     graphics.fillStyle(historical ? 0xd94b4b : 0xff526f, 1);
                     graphics.fillTriangle(left, worldY(bit_bridge_simulation_1.BIT_BRIDGE_GROUND_Y), left + spikeWidth / 2, worldY(bit_bridge_simulation_1.BIT_BRIDGE_GROUND_Y - 24), left + spikeWidth, worldY(bit_bridge_simulation_1.BIT_BRIDGE_GROUND_Y));
                 }
@@ -1403,6 +1529,10 @@
                 if (x < -30 || x > width + 30)
                     continue;
                 const active = checkpoint <= state.checkpointX;
+                if (active && !historical && this.#context?.graphicsMode !== 'baixo') {
+                    graphics.fillStyle(0x68e7ff, 0.10);
+                    graphics.fillCircle(x + 4 * scale, worldY(bit_bridge_simulation_1.BIT_BRIDGE_GROUND_Y - 65), 38 * scale);
+                }
                 graphics.fillStyle(active ? 0x68e7ff : 0x526173, 1);
                 graphics.fillRect(x, worldY(bit_bridge_simulation_1.BIT_BRIDGE_GROUND_Y - 95), Math.max(2, 5 * scale), 95 * scale);
                 graphics.fillStyle(active ? 0xeafaff : 0x8996a7, active ? 0.95 : 0.6);
@@ -1432,14 +1562,21 @@
                 graphics.lineStyle(Math.max(3, 8 * scale), ready ? 0x6fffe9 : 0x6c6175, 0.9);
                 graphics.strokeRoundedRect(portalX - 38 * scale, worldY(bit_bridge_simulation_1.BIT_BRIDGE_GROUND_Y - 118), 76 * scale, 118 * scale, 22 * scale);
                 if (ready && !historical) {
+                    const aura = 0.12 + Math.sin(this.#time * 0.005) * 0.035;
+                    graphics.fillStyle(0x6fffe9, aura);
+                    graphics.fillCircle(portalX, worldY(bit_bridge_simulation_1.BIT_BRIDGE_GROUND_Y - 58), 72 * scale);
                     graphics.fillStyle(0x6fffe9, 0.18 + Math.sin(this.#time * 0.005) * 0.06);
                     graphics.fillRoundedRect(portalX - 31 * scale, worldY(bit_bridge_simulation_1.BIT_BRIDGE_GROUND_Y - 109), 62 * scale, 105 * scale, 18 * scale);
                 }
             }
+            if (!historical) {
+                graphics.fillStyle(0x000000, 0.30);
+                graphics.fillEllipse(worldX(state.player.x) + 11 * scale, worldY(bit_bridge_simulation_1.BIT_BRIDGE_GROUND_Y - 2), 32 * scale, 8 * scale);
+            }
             this.#drawPlayer(graphics, worldX(state.player.x), worldY(state.player.y), scale, state);
             const spec = bit_bridge_simulation_1.BIT_GENERATION_SPECS[state.generation];
             this.#title?.setText(`PONTE 8→16 BITS · ${state.generation.toUpperCase()}`);
-            this.#stats?.setText(`PONTOS ${state.score}   VIDAS ${state.lives}   FRAGMENTOS ${state.fragments.length}/${bit_bridge_simulation_1.BIT_BRIDGE_REQUIRED_FRAGMENTS}   ZONA ${state.zone}/4   TROCAS ${state.switches}`);
+            this.#stats?.setText(`PONTOS ${state.score}   VIDAS ${state.lives}   FRAGMENTOS ${state.fragments.length}/${bit_bridge_simulation_1.BIT_BRIDGE_REQUIRED_FRAGMENTS}   ZONA ${state.zone}/6   TROCAS ${state.switches}`);
             this.#tech?.setText([
                 spec.internalResolution,
                 `${spec.paletteColors} cores`,
@@ -1573,9 +1710,9 @@
             estimatedMemoryKb: 256,
         },
     };
-    exports.BIT_BRIDGE_WORLD_WIDTH = 4200;
+    exports.BIT_BRIDGE_WORLD_WIDTH = 6300;
     exports.BIT_BRIDGE_GROUND_Y = 520;
-    exports.BIT_BRIDGE_REQUIRED_FRAGMENTS = 8;
+    exports.BIT_BRIDGE_REQUIRED_FRAGMENTS = 12;
     exports.BIT_BRIDGE_PLATFORMS = [
         { x: 240, y: 450, width: 220, height: 22 },
         { x: 540, y: 415, width: 230, height: 22 },
@@ -1588,6 +1725,12 @@
         { x: 2920, y: 425, width: 250, height: 22 },
         { x: 3260, y: 400, width: 260, height: 22 },
         { x: 3630, y: 445, width: 220, height: 22 },
+        { x: 3970, y: 400, width: 250, height: 22 },
+        { x: 4310, y: 445, width: 230, height: 22 },
+        { x: 4640, y: 395, width: 280, height: 22 },
+        { x: 5030, y: 430, width: 240, height: 22 },
+        { x: 5380, y: 390, width: 280, height: 22 },
+        { x: 5760, y: 440, width: 240, height: 22 },
     ];
     exports.BIT_BRIDGE_FRAGMENTS = [
         { id: 0, x: 350, y: 410 },
@@ -1599,6 +1742,12 @@
         { id: 6, x: 2690, y: 350 },
         { id: 7, x: 3400, y: 360 },
         { id: 8, x: 3750, y: 405 },
+        { id: 9, x: 4080, y: 360 },
+        { id: 10, x: 4440, y: 405 },
+        { id: 11, x: 4810, y: 355 },
+        { id: 12, x: 5150, y: 390 },
+        { id: 13, x: 5540, y: 350 },
+        { id: 14, x: 5900, y: 400 },
     ];
     exports.BIT_BRIDGE_HAZARDS = [
         { x: 790, width: 60 },
@@ -1606,8 +1755,12 @@
         { x: 2165, width: 68 },
         { x: 2850, width: 72 },
         { x: 3550, width: 74 },
+        { x: 3930, width: 60 },
+        { x: 4570, width: 70 },
+        { x: 5310, width: 72 },
+        { x: 6000, width: 70 },
     ];
-    exports.BIT_BRIDGE_CHECKPOINTS = [1050, 2050, 3200];
+    exports.BIT_BRIDGE_CHECKPOINTS = [1050, 2050, 3200, 4300, 5450];
     const BIT_BRIDGE_COYOTE_MS = 130;
     const BIT_BRIDGE_JUMP_BUFFER_MS = 150;
     const MODE_START_GENERATION = {
@@ -1626,7 +1779,7 @@
         start() {
             if (this.#state.status !== 'ready')
                 return;
-            this.#state = { ...this.#state, status: 'playing', message: 'Colete oito fragmentos e atravesse a Ponte de Bits.' };
+            this.#state = { ...this.#state, status: 'playing', message: 'Colete doze fragmentos e atravesse as seis zonas da Ponte de Bits.' };
         }
         restart(mode = this.#state.mode) {
             this.#state = initialState(mode);
@@ -1747,9 +1900,9 @@
                 next = { ...next, checkpointX: reachedCheckpoint, score: next.score + 120, message: 'Checkpoint geracional registrado.' };
                 events.push('checkpoint');
             }
-            const zone = Math.min(4, Math.floor(next.player.x / 1050) + 1);
+            const zone = Math.min(6, Math.floor(next.player.x / 1050) + 1);
             if (zone !== next.zone) {
-                next = { ...next, zone, score: next.score + 100, message: `Zona ${zone}/4 alcançada.` };
+                next = { ...next, zone, score: next.score + 100, message: `Zona ${zone}/6 alcançada.` };
                 events.push('zone-changed');
             }
             const touchingHazard = next.player.invulnerableMs <= 0 && exports.BIT_BRIDGE_HAZARDS.some((hazard) => overlaps(next.player.x, next.player.y, next.player.width, next.player.height, hazard.x, exports.BIT_BRIDGE_GROUND_Y - 24, hazard.width, 24));
@@ -1928,7 +2081,7 @@
     SE A BOLA SAIR DA ARENA:
       remover uma vida e preparar novo lançamento`;
     exports.BLOCK_REACTOR_COMPARISON = [
-        ['Objetivo', 'Remover uma parede usando bola e raquete', 'Campanha autoral de três fases e laboratório personalizado'],
+        ['Objetivo', 'Remover uma parede usando bola e raquete', 'Campanha autoral de cinco fases e laboratório personalizado'],
         ['Blocos', 'Fileiras com valores e resistência definidos pelo hardware', 'Comuns, resistentes, explosivos e blocos de bônus'],
         ['Controle', 'Controlador físico dedicado', 'Teclado, toque responsivo e pausa automática'],
         ['Progressão', 'Pontuação e número limitado de bolas', 'Vidas, sequência, multiplicador e três power-ups temporários'],
@@ -2172,6 +2325,16 @@
             graphics.fillStyle(historical ? 0x050505 : 0x030710, 1);
             graphics.fillRect(0, 0, width, height);
             if (!historical && mode !== 'baixo') {
+                const cx = width * 0.5;
+                const cy = height * 0.48;
+                for (let ring = 4; ring >= 1; ring -= 1) {
+                    graphics.lineStyle(Math.max(1, minSize * 0.0025), ring % 2 ? primary : accent, 0.035 + ring * 0.012);
+                    graphics.strokeCircle(cx, cy, minSize * (0.1 + ring * 0.11));
+                }
+                graphics.fillStyle(accent, mode === 'ultra' ? 0.065 : 0.035);
+                graphics.fillCircle(cx, cy, minSize * 0.22);
+            }
+            if (!historical && mode !== 'baixo') {
                 graphics.lineStyle(1, primary, 0.07);
                 const step = Math.max(34, Math.floor(minSize / 11));
                 for (let x = 0; x < width; x += step)
@@ -2209,6 +2372,10 @@
                 graphics.lineStyle(Math.max(2, radius * 0.7), accent, 0.28);
                 graphics.lineBetween(ballX, ballY, ballX - state.ball.vx * minSize * 0.1, ballY - state.ball.vy * minSize * 0.1);
             }
+            if (!historical && mode !== 'baixo') {
+                graphics.fillStyle(accent, mode === 'ultra' ? 0.16 : 0.09);
+                graphics.fillCircle(ballX, ballY, radius * (mode === 'ultra' ? 3.4 : 2.5));
+            }
             graphics.fillStyle(historical ? 0xffffff : 0xf7fbff, 1);
             graphics.fillCircle(ballX, ballY, radius);
             const activeEffects = [state.effects.widePaddleMs, state.effects.doubleScoreMs, state.effects.slowBallMs].filter((value) => value > 0).length;
@@ -2223,6 +2390,10 @@
             const blockWidth = block.width * width;
             const blockHeight = block.height * height;
             const color = blockColor(block, historical);
+            if (!historical) {
+                graphics.fillStyle(0x000000, 0.3);
+                graphics.fillRoundedRect(x + Math.max(1, blockHeight * 0.12), y + Math.max(1, blockHeight * 0.16), blockWidth, blockHeight, Math.max(2, blockHeight * 0.12));
+            }
             graphics.fillStyle(color, historical ? 0.9 : block.hits < block.maxHits ? 0.5 : 0.88);
             graphics.fillRoundedRect(x, y, blockWidth, blockHeight, historical ? 0 : Math.max(2, blockHeight * 0.12));
             graphics.lineStyle(Math.max(1, blockHeight * 0.055), historical ? 0x111111 : 0xffffff, historical ? 0.5 : 0.26);
@@ -2473,7 +2644,7 @@
             return events;
         }
         restore(state) {
-            if (state.schemaVersion !== 1)
+            if (state.schemaVersion !== 1 && state.schemaVersion !== 2)
                 throw new Error('Save do Reator de Blocos incompatível');
             if (!(state.mode in MODE_SPECS))
                 throw new Error('Modo salvo inválido');
@@ -2484,13 +2655,13 @@
             if (state.customLayout && !(0, block_layout_1.isValidEditorLayout)(state.customLayout))
                 throw new Error('Fase personalizada inválida');
             this.#paddleDirection = 0;
-            this.#state = cloneState(state);
+            this.#state = cloneState({ ...state, schemaVersion: 2 });
         }
         #initialState(mode, seed, customLayout) {
             const safeLayout = customLayout && (0, block_layout_1.isValidEditorLayout)(customLayout) ? customLayout : undefined;
             const blocks = safeLayout ? blocksFromEditorLayout(safeLayout, 1) : createLevel(1, 1);
             return {
-                schemaVersion: 1,
+                schemaVersion: 2,
                 mode,
                 status: 'ready',
                 paddleX: 0.5,
@@ -2868,6 +3039,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
             graphics.clear();
             graphics.fillGradientStyle(historical ? 0x050505 : 0x071126, historical ? 0x050505 : 0x0b1730, 0x030610, 0x030610, 1);
             graphics.fillRect(0, 0, width, height);
+            if (!historical) {
+                graphics.fillStyle(0x49e7ff, .035);
+                graphics.fillCircle(width * .16, height * .24, Math.min(width, height) * .34);
+                graphics.fillStyle(0xa46fff, .035);
+                graphics.fillCircle(width * .84, height * .7, Math.min(width, height) * .38);
+            }
             graphics.lineStyle(1, historical ? 0x343434 : 0x17314e, .42);
             for (let x = 0; x < width; x += 36)
                 graphics.lineBetween(x, 0, x, height);
@@ -2893,6 +3070,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
         }
         #drawTicTacToe(graphics, geometry, state, time) {
             const pulse = .45 + Math.sin(time * .008) * .2;
+            if (this.#graphicsMode !== 'historico') {
+                graphics.fillStyle(0x000000, .34);
+                graphics.fillRoundedRect(geometry.x - 5, geometry.y + 5, geometry.cell * 3 + 24, geometry.cell * 3 + 24, 20);
+                graphics.fillStyle(0x49e7ff, .055);
+                graphics.fillRoundedRect(geometry.x - 18, geometry.y - 18, geometry.cell * 3 + 36, geometry.cell * 3 + 36, 22);
+            }
             graphics.fillStyle(0x07172a, .98);
             graphics.fillRoundedRect(geometry.x - 12, geometry.y - 12, geometry.cell * 3 + 24, geometry.cell * 3 + 24, 18);
             if (state.cpuThinking) {
@@ -2924,6 +3107,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 const cx = x + geometry.cell / 2;
                 const cy = y + geometry.cell / 2;
                 const radius = geometry.cell * .27;
+                if (this.#graphicsMode !== 'historico') {
+                    graphics.fillStyle(piece === 'X' ? 0x49e7ff : 0xa46fff, .11);
+                    graphics.fillCircle(cx, cy, radius * 1.45);
+                }
                 if (piece === 'X') {
                     graphics.lineStyle(Math.max(5, geometry.cell * .055), 0x49e7ff, 1);
                     graphics.lineBetween(cx - radius, cy - radius, cx + radius, cy + radius);
@@ -2975,6 +3162,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
                     const cx = cellX + geometry.cell / 2;
                     const cy = cellY + geometry.cell / 2;
                     const player = piece.toLowerCase() === 'r';
+                    if (this.#graphicsMode !== 'historico') {
+                        graphics.fillStyle(0x000000, .28);
+                        graphics.fillEllipse(cx, cy + geometry.cell * .29, geometry.cell * .58, geometry.cell * .18);
+                        graphics.fillStyle(player ? 0xff5d73 : 0x8ea1bf, .09);
+                        graphics.fillCircle(cx, cy, geometry.cell * .43);
+                    }
                     graphics.fillStyle(player ? 0xff5d73 : 0x151922, 1);
                     graphics.fillCircle(cx, cy, geometry.cell * .34);
                     graphics.lineStyle(Math.max(2, geometry.cell * .035), player ? 0xffb7c1 : 0x8ea1bf, 1);
@@ -4070,7 +4263,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         title: 'A câmera deixa de observar e passa a dirigir a experiência',
         paragraphs: [
             'A consolidação do 3D nos anos 1990 transformou a câmera em parte central do projeto dos jogos. Câmeras fixas favoreciam composição e suspense; primeira pessoa reforçava precisão e presença; terceira pessoa ampliava leitura corporal, exploração e combate.',
-            'Câmeras em Evolução é um laboratório autoral do Fliperama DS. A mesma arena, missão e simulação podem ser observadas por câmera fixa por setores, orbital, primeira pessoa, terceira pessoa, perseguição e visão superior.',
+            'Câmeras em Evolução é um laboratório autoral do Fliperama DS. A mesma arena é percorrida em três experimentos progressivos e pode ser observada por câmera fixa por setores, orbital, primeira pessoa, terceira pessoa, perseguição e visão superior.',
             'O laboratório também compara campos de visão de 45°, 60° e 75°, mostrando como enquadramento, percepção de velocidade, navegação, visibilidade de obstáculos e conforto mudam sem alterar as regras do mundo.',
         ],
         sourceUrl: 'https://www.playstation.com/en-us/playstation-history/1994-ps-one/',
@@ -4091,7 +4284,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
       alternar fixa, orbital, primeira pessoa, terceira pessoa, perseguição e superior
     
     SALVAR
-      estado da missão, câmera, FOV e câmeras visitadas`;
+      experimento atual, missão, câmera, FOV e câmeras visitadas`;
     exports.CAMERA_EVOLUTION_COMPARISON = [
         ['Câmera fixa', 'Composição por sala ou setor e controle parcialmente desacoplado', 'Pontos altos reposicionados conforme o setor do avatar'],
         ['Primeira pessoa', 'Visão alinhada ao personagem e leitura precisa da direção', 'Câmera na altura dos olhos com alvo frontal'],
@@ -4182,7 +4375,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         }
         start() {
             if (this.#state.status === 'ready')
-                this.#state = { ...this.#state, status: 'playing', message: 'Colete três lentes, experimente as seis câmeras, compare os três FOVs e alcance o portal.' };
+                this.#state = { ...this.#state, status: 'playing', message: cameraExperimentMessage(this.#state.campaignStage) };
         }
         restart(difficulty = this.#state.difficulty) {
             this.#state = initialState(difficulty);
@@ -4330,8 +4523,13 @@ semente aleatória, capturas, tempo e jogada anterior`;
             if (safelyGrounded) state.lastSafePosition = { ...state.player, verticalVelocity: 0 };
             if (distance2(state.player, exports.POLYGON_EXIT) < 1.12) {
                 if (isPortalUnlocked(state)) {
-                    state = { ...state, status: 'won', score: state.score + 1500 + Math.floor(state.remainingMs / 100), message: 'Laboratório concluído: seis câmeras, três campos de visão e navegação foram comparados.' };
-                    events.push('finished');
+                    if (state.campaignStage < 3) {
+                        state = advanceCameraExperiment(state, spec);
+                        events.push('stage-complete', 'stage-changed');
+                    } else {
+                        state = { ...state, status: 'won', completedStages: 3, score: state.score + 1800 + Math.floor(state.remainingMs / 100), message: 'Laboratório concluído: três experimentos de câmera comparados e validados.' };
+                        events.push('finished');
+                    }
                 } else state = { ...state, message: missingRequirements(state) };
             }
             if (state.remainingMs <= 0 && state.status === 'playing') {
@@ -4342,13 +4540,15 @@ semente aleatória, capturas, tempo e jogada anterior`;
             return events;
         }
         restore(state) {
-            if (state.schemaVersion !== 1 && state.schemaVersion !== 2) throw new Error('Versão de save incompatível');
+            if (![1, 2, 3].includes(state.schemaVersion)) throw new Error('Versão de save incompatível');
             const player = normalizePlayer(state.player, START);
             const checkpoint = normalizePlayer(state.checkpoint, START);
             this.#state = cloneState({
                 ...initialState(state.difficulty in DIFFICULTIES ? state.difficulty : 'piloto'),
                 ...state,
-                schemaVersion: 2,
+                schemaVersion: 3,
+                campaignStage: Number.isInteger(state.campaignStage) ? Math.max(1, Math.min(3, state.campaignStage)) : (state.status === 'won' ? 3 : 1),
+                completedStages: Number.isInteger(state.completedStages) ? Math.max(0, Math.min(3, state.completedStages)) : (state.status === 'won' ? 3 : 0),
                 player,
                 checkpoint,
                 lastSafePosition: normalizePlayer(state.lastSafePosition, checkpoint),
@@ -4412,13 +4612,49 @@ semente aleatória, capturas, tempo e jogada anterior`;
         return exports.ARENA_BOXES.some((box) => Math.abs(x - box.x) < box.width / 2 + 0.14 && Math.abs(z - box.z) < box.depth / 2 + 0.14 && y < box.height + 0.18);
     }
     function isPortalUnlocked(state) {
-        return state.collectedCores.length >= exports.POLYGON_CORES_REQUIRED && state.visitedCameras.length >= 6 && state.visitedFovs.length >= 3;
+        if (state.campaignStage === 1) return state.collectedCores.length >= exports.POLYGON_CORES_REQUIRED && state.visitedCameras.length >= 2;
+        if (state.campaignStage === 2) return state.visitedFovs.length >= 3 && state.activatedCheckpoints.length >= 2;
+        return state.visitedCameras.length >= 6 && state.collectedCores.length >= exports.POLYGON_CORES_REQUIRED;
     }
     function missingRequirements(state) {
-        const cores = Math.max(0, exports.POLYGON_CORES_REQUIRED - state.collectedCores.length);
+        if (state.campaignStage === 1) {
+            const lenses = Math.max(0, exports.POLYGON_CORES_REQUIRED - state.collectedCores.length);
+            const cameras = Math.max(0, 2 - state.visitedCameras.length);
+            return `Experimento 1/3 · faltam ${lenses} lentes e ${cameras} câmeras para validar enquadramento.`;
+        }
+        if (state.campaignStage === 2) {
+            const fovs = Math.max(0, 3 - state.visitedFovs.length);
+            const checkpoints = Math.max(0, 2 - state.activatedCheckpoints.length);
+            return `Experimento 2/3 · faltam ${fovs} FOVs e ${checkpoints} pontos de enquadramento.`;
+        }
         const cameras = Math.max(0, 6 - state.visitedCameras.length);
-        const fovs = Math.max(0, 3 - state.visitedFovs.length);
-        return `Portal bloqueado: faltam ${cores} lentes, ${cameras} câmeras e ${fovs} FOVs.`;
+        const lenses = Math.max(0, exports.POLYGON_CORES_REQUIRED - state.collectedCores.length);
+        return `Experimento 3/3 · faltam ${cameras} câmeras e ${lenses} lentes para o relatório final.`;
+    }
+    function cameraExperimentMessage(stage) {
+        return stage === 1
+            ? 'Experimento 1/3 — Enquadramento: colete três lentes, compare ao menos duas câmeras e alcance o portal.'
+            : stage === 2
+                ? 'Experimento 2/3 — Campo de Visão: registre FOV 45°, 60° e 75°, ative os dois pontos de enquadramento e retorne ao portal.'
+                : 'Experimento 3/3 — Sistema Completo: registre as seis câmeras, recupere as três lentes e finalize o laboratório.';
+    }
+    function advanceCameraExperiment(state, spec) {
+        const nextStage = Math.min(3, state.campaignStage + 1);
+        return {
+            ...state,
+            campaignStage: nextStage,
+            completedStages: Math.max(state.completedStages || 0, nextStage - 1),
+            player: { ...START }, checkpoint: { ...START }, lastSafePosition: { ...START },
+            moveForward: false, moveBackward: false, turnLeft: false, turnRight: false,
+            collectedCores: nextStage === 3 ? [] : state.collectedCores,
+            activatedCheckpoints: nextStage === 2 ? [] : state.activatedCheckpoints,
+            visitedCameras: nextStage === 3 ? ['third-person'] : state.visitedCameras,
+            visitedFovs: nextStage === 2 ? [60] : state.visitedFovs,
+            fovDegrees: nextStage === 2 ? 60 : state.fovDegrees,
+            remainingMs: Math.min(spec.timeMs, state.remainingMs + 45_000),
+            score: state.score + 900, damageCooldownMs: 1200,
+            message: cameraExperimentMessage(nextStage),
+        };
     }
     function validPlayer(player) {
         return Number.isFinite(player.x) && Number.isFinite(player.y) && Number.isFinite(player.z) && Number.isFinite(player.angle) && player.y > -2 && !collides(player.x, player.z, player.y);
@@ -4429,7 +4665,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
         const safeDifficulty = difficulty in DIFFICULTIES ? difficulty : 'piloto';
         const spec = DIFFICULTIES[safeDifficulty];
         return {
-            schemaVersion: 2,
+            schemaVersion: 3,
+            campaignStage: 1, completedStages: 0,
             difficulty: safeDifficulty,
             status: 'ready',
             player: { ...START }, checkpoint: { ...START }, lastSafePosition: { ...START },
@@ -4441,7 +4678,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             fovDegrees: 60,
             visitedCameras: ['third-person'],
             visitedFovs: [60],
-            message: 'Laboratório pronto. Compare seis sistemas de câmera, três campos de visão e uma única simulação.',
+            message: cameraExperimentMessage(1),
         };
     }
     function cloneState(state) {
@@ -4611,6 +4848,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const pulse = this.#reducedMotion ? 1 : 0.75 + Math.sin(nowMs * 0.004) * 0.25;
             this.#drawCube(transform(0, -0.28, 0, 20, 0.5, 16), historical ? [0.08, 0.16, 0.1] : [0.09, 0.14, 0.22], materialMode);
             this.#drawGrid(materialMode, historical);
+            this.#drawCameraLabAtmosphere(materialMode, historical, nowMs, state);
             camera_evolution_simulation_1.ARENA_BOXES.forEach((box, index) => {
                 const baseColor = box.kind === 'pillar'
                     ? historical ? [0.18, 0.5, 0.28] : [0.18 + (index % 2) * 0.05, 0.42, 0.62]
@@ -4682,6 +4920,26 @@ semente aleatória, capturas, tempo e jogada anterior`;
             for (let z = camera_evolution_simulation_1.ARENA_BOUNDS.minZ + 1; z < camera_evolution_simulation_1.ARENA_BOUNDS.maxZ; z += 1) {
                 this.#drawCube(transform(0, 0.006, z, 19, 0.012, 0.018), historical ? [0.08, 0.32, 0.14] : [0.08, 0.34, 0.48], materialMode, 0.08);
             }
+        }
+        #drawCameraLabAtmosphere(materialMode, historical, nowMs, state) {
+            if (this.#graphicsMode === 'baixo')
+                return;
+            const pulse = this.#reducedMotion ? 0.7 : 0.55 + Math.sin(nowMs * 0.0021) * 0.15;
+            const lensColor = historical ? [0.32, 0.8, 0.38] : [0.98, 0.62, 0.18];
+            const railColor = historical ? [0.12, 0.46, 0.22] : [0.18, 0.62, 0.92];
+            for (let lane = -6; lane <= 6; lane += 3) {
+                this.#drawCube(transform(lane, 0.024, -7.55, 1.5, 0.03, 0.055), railColor, 'flat', 0.14, 0.58);
+                this.#drawCube(transform(lane, 0.024, 7.55, 1.5, 0.03, 0.055), lensColor, 'flat', 0.14, 0.5);
+            }
+            const fovScale = Math.max(0.45, Math.min(1.25, (state.fovDegrees ?? 70) / 70));
+            [-1, 1].forEach((side) => {
+                const x = side * 8.9;
+                this.#drawCube(transform(x, 1.25, -4.6, 0.1, 2.5, 0.1), railColor, materialMode, 0.12 + pulse * 0.12);
+                this.#drawCube(transform(x, 1.25, 4.6, 0.1, 2.5, 0.1), lensColor, materialMode, 0.12 + pulse * 0.12);
+                if (this.#graphicsMode === 'alto' || this.#graphicsMode === 'ultra') {
+                    this.#drawCube(transform(x, 2.65, 0, 0.24 * fovScale, 0.24, 0.24 * fovScale, 0, nowMs * 0.00045 * side, 0), lensColor, materialMode, 0.32);
+                }
+            });
         }
         #drawPlayer(state, materialMode, historical) {
             const player = state.player;
@@ -5040,7 +5298,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         }
         snapshot() {
             const state = this.#simulation.state;
-            return { schemaVersion: 2, gameId: this.id, elapsedMs: state.elapsedMs, score: state.score, payload: { ...state } };
+            return { schemaVersion: 3, gameId: this.id, elapsedMs: state.elapsedMs, score: state.score, payload: { ...state } };
         }
         restore(snapshot) {
             if (snapshot.gameId !== this.id)
@@ -5123,6 +5381,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
                             elapsed: Math.round(current.elapsedMs / 1000),
                             cameras: current.visitedCameras.length,
                             fov: current.fovDegrees,
+                            stage: current.campaignStage,
+                            stages: current.completedStages || (current.status === 'won' ? 3 : 0),
                         },
                     });
                 }
@@ -5138,6 +5398,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
                             camera: current.cameraMode,
                             fov: current.fovDegrees,
                             cameras: current.visitedCameras.length,
+                            stage: current.campaignStage,
+                            stages: current.completedStages || 0,
                         },
                     });
                 }
@@ -5162,7 +5424,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 return;
             const state = this.#simulation.state;
             const camera = cameraRuntimeLabel(state.cameraMode);
-            this.#overlay.innerHTML = `<span>${camera}</span><span>FOV ${state.fovDegrees}° · ${state.visitedFovs.length}/3</span><span>${state.visitedCameras.length}/6 CÂMERAS</span><span>${state.collectedCores.length}/${camera_evolution_simulation_1.POLYGON_CORES_REQUIRED} LENTES</span><span>SENS. ${state.turnSensitivity.toUpperCase()}</span><span>${this.#lastStats.drawCalls} DRAWS · ${this.#lastStats.triangles} TRI</span><small>${state.message}</small>`;
+            this.#overlay.innerHTML = `<span>EXPERIMENTO ${state.campaignStage}/3</span><span>${camera}</span><span>FOV ${state.fovDegrees}° · ${state.visitedFovs.length}/3</span><span>${state.visitedCameras.length}/6 CÂMERAS</span><span>${state.collectedCores.length}/${camera_evolution_simulation_1.POLYGON_CORES_REQUIRED} LENTES</span><span>SENS. ${state.turnSensitivity.toUpperCase()}</span><span>${this.#lastStats.drawCalls} DRAWS · ${this.#lastStats.triangles} TRI</span><small>${state.message}</small>`;
         }
     }
     exports.CameraEvolutionRuntime = CameraEvolutionRuntime;
@@ -5237,7 +5499,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         paragraphs: [
             'Em 1980, os jogos de labirinto ganharam enorme visibilidade nos arcades. O jogador precisava ler rotas, coletar elementos e reagir a perseguidores que pareciam tomar decisões diferentes dentro da mesma grade.',
             'PAC-MAN, criado por Toru Iwatani e lançado pela Namco, tornou-se uma referência histórica dessa mudança ao combinar tilemap, túneis, itens de poder, pontuação e quatro perseguidores com padrões próprios.',
-            'Labirinto de Dados é uma reconstrução educacional autoral. O núcleo controlável, os drones, os três mapas, as cores, o áudio, a lógica, a arte e o código são próprios; a obra comercial aparece somente como contexto histórico e técnico.',
+            'Labirinto de Dados é uma reconstrução educacional autoral. O núcleo controlável, os drones, os cinco mapas, as cores, o áudio, a lógica, a arte e o código são próprios; a obra comercial aparece somente como contexto histórico e técnico.',
         ],
         sourceUrl: 'https://www.bandainamco.co.jp/en/about/history/namco.html',
     };
@@ -5262,9 +5524,9 @@ semente aleatória, capturas, tempo e jogada anterior`;
     
     AO COLETAR TODOS OS DADOS:
       carregar o próximo labirinto
-      após o terceiro mapa, concluir a campanha`;
+      após o quinto mapa, concluir a campanha`;
     exports.DATA_MAZE_COMPARISON = [
-        ['Mapa', 'Labirinto em grade formado por tiles reutilizados', 'Três mapas autorais gerados por corredores e dados versionados'],
+        ['Mapa', 'Labirinto em grade formado por tiles reutilizados', 'Cinco mapas autorais gerados por corredores e dados versionados'],
         ['Perseguição', 'Padrões distintos criavam a sensação de personalidades', 'Quatro drones com alvos, estados e busca de rota próprios'],
         ['Energia', 'Itens especiais invertiam temporariamente a relação de risco', 'Nós de energia, combo progressivo e estado vulnerável serializável'],
         ['Tecnologia', 'Hardware arcade de 8 bits, sprites e memória restrita', 'TypeScript determinístico, busca em largura e Phaser sob demanda'],
@@ -5350,6 +5612,37 @@ semente aleatória, capturas, tempo e jogada anterior`;
             { column: 8, row: 13 }, { column: 14, row: 13 },
         ],
     });
+    const levelFourLayout = buildLayout({
+        horizontalRows: [1, 4, 7, 9, 11, 14, 17],
+        verticalColumns: [1, 4, 7, 11, 15, 18, 21],
+        tunnelRow: 9,
+        extraCarves: [
+            { column: 9, row: 6 }, { column: 10, row: 6 }, { column: 12, row: 6 }, { column: 13, row: 6 },
+            { column: 9, row: 12 }, { column: 10, row: 12 }, { column: 12, row: 12 }, { column: 13, row: 12 },
+            { column: 11, row: 5 }, { column: 11, row: 13 },
+        ],
+        extraWalls: [
+            { column: 7, row: 4 }, { column: 15, row: 4 },
+            { column: 4, row: 14 }, { column: 18, row: 14 },
+        ],
+    });
+    const levelFiveLayout = buildLayout({
+        horizontalRows: [1, 3, 5, 8, 10, 13, 15, 17],
+        verticalColumns: [1, 5, 8, 11, 14, 17, 21],
+        tunnelRow: 10,
+        extraCarves: [
+            { column: 3, row: 9 }, { column: 4, row: 9 },
+            { column: 6, row: 11 }, { column: 7, row: 11 },
+            { column: 15, row: 11 }, { column: 16, row: 11 },
+            { column: 18, row: 9 }, { column: 19, row: 9 },
+            { column: 10, row: 6 }, { column: 12, row: 6 },
+            { column: 10, row: 12 }, { column: 12, row: 12 },
+        ],
+        extraWalls: [
+            { column: 5, row: 5 }, { column: 17, row: 5 },
+            { column: 8, row: 15 }, { column: 14, row: 15 },
+        ],
+    });
     exports.DATA_MAZE_LEVELS = [
         {
             id: 1,
@@ -5386,6 +5679,30 @@ semente aleatória, capturas, tempo e jogada anterior`;
             ],
             powerNodes: [{ column: 1, row: 1 }, { column: 21, row: 1 }, { column: 1, row: 13 }, { column: 21, row: 17 }],
             bonusNode: { column: 11, row: 11 },
+        },
+        {
+            id: 4,
+            name: 'Matriz Espelhada',
+            layout: levelFourLayout,
+            tunnelRow: 9,
+            playerStart: { column: 1, row: 17 },
+            enemyStarts: [
+                { column: 11, row: 9 }, { column: 7, row: 9 }, { column: 15, row: 9 }, { column: 11, row: 7 },
+            ],
+            powerNodes: [{ column: 1, row: 1 }, { column: 21, row: 1 }, { column: 1, row: 14 }, { column: 21, row: 14 }],
+            bonusNode: { column: 11, row: 12 },
+        },
+        {
+            id: 5,
+            name: 'Cache Fantasma',
+            layout: levelFiveLayout,
+            tunnelRow: 10,
+            playerStart: { column: 1, row: 17 },
+            enemyStarts: [
+                { column: 11, row: 10 }, { column: 8, row: 10 }, { column: 14, row: 10 }, { column: 11, row: 8 },
+            ],
+            powerNodes: [{ column: 1, row: 1 }, { column: 21, row: 1 }, { column: 1, row: 15 }, { column: 21, row: 17 }],
+            bonusNode: { column: 11, row: 13 },
         },
     ];
     function tileAt(level, column, row) {
@@ -5680,6 +5997,15 @@ semente aleatória, capturas, tempo e jogada anterior`;
             graphics.clear();
             graphics.fillStyle(historical ? 0x050505 : 0x020611, 1);
             graphics.fillRect(0, 0, width, height);
+            if (!historical) {
+                graphics.fillStyle(0x0a2454, low ? 0.12 : 0.26);
+                graphics.fillRoundedRect(originX - padding * 0.65, originY - padding * 0.65, mazeWidth + padding * 1.3, mazeHeight + padding * 1.3, padding * 0.45);
+                if (!low) {
+                    const scanY = originY + ((state.elapsedMs * 0.05) % Math.max(1, mazeHeight));
+                    graphics.fillStyle(primary, 0.035);
+                    graphics.fillRect(originX, scanY, mazeWidth, Math.max(2, tile * 0.22));
+                }
+            }
             if (!historical && !low) {
                 graphics.lineStyle(1, primary, 0.035);
                 for (let x = originX; x <= originX + mazeWidth; x += tile)
@@ -5692,6 +6018,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
                     const x = originX + column * tile;
                     const y = originY + row * tile;
                     if ((0, data_maze_levels_1.tileAt)(level, column, row) === '#') {
+                        if (!historical && !low) {
+                            graphics.fillStyle(wall, 0.09);
+                            graphics.fillRoundedRect(x + tile * 0.02, y + tile * 0.02, tile * 0.96, tile * 0.96, tile * 0.22);
+                        }
                         graphics.fillStyle(wallFill, 1);
                         graphics.fillRoundedRect(x + tile * 0.08, y + tile * 0.08, tile * 0.84, tile * 0.84, tile * 0.18);
                         graphics.lineStyle(Math.max(1, tile * 0.06), wall, historical ? 0.8 : 0.72);
@@ -5738,6 +6068,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const x = originX + (state.player.column + 0.5) * tile;
             const y = originY + (state.player.row + 0.5) * tile;
             const size = tile * 0.38;
+            if (!historical) {
+                graphics.fillStyle(0x000000, 0.32);
+                graphics.fillEllipse(x, y + size * 0.72, size * 1.65, size * 0.48);
+                graphics.fillStyle(accent, 0.09);
+                graphics.fillCircle(x, y, size * 1.45);
+            }
             graphics.fillStyle(primary, 1);
             graphics.fillTriangle(x, y - size, x - size, y, x + size, y);
             graphics.fillTriangle(x, y + size, x - size, y, x + size, y);
@@ -6454,6 +6790,14 @@ semente aleatória, capturas, tempo e jogada anterior`;
             graphics.clear();
             graphics.fillGradientStyle(historical ? 0x050505 : 0x041020, historical ? 0x050505 : 0x0c1630, 0x02040a, 0x02040a, 1);
             graphics.fillRect(0, 0, width, height);
+            if (!historical) {
+                graphics.fillStyle(0x8a6cff, low ? .025 : .07);
+                graphics.fillCircle(width * .2, height * .18, Math.min(width, height) * .36);
+                graphics.fillStyle(0xff6fab, low ? .02 : .06);
+                graphics.fillCircle(width * .8, height * .28, Math.min(width, height) * .34);
+                graphics.fillStyle(0x49e7ff, low ? .018 : .045);
+                graphics.fillTriangle(width * .5, top, width * .12, hitY + 46, width * .88, hitY + 46);
+            }
             if (!low) {
                 graphics.lineStyle(1, historical ? 0x242424 : 0x17314f, .35);
                 for (let x = 0; x < width; x += 32)
@@ -6467,8 +6811,14 @@ semente aleatória, capturas, tempo e jogada anterior`;
             this.#judgement?.setPosition(width / 2, 62).setText(`${state.lastJudgement} · ${this.#simulation.accuracy()}%`).setColor(judgementColor);
             for (let lane = 0; lane < 4; lane += 1) {
                 const x = startX + lane * laneWidth;
+                graphics.fillStyle(0x000000, .28);
+                graphics.fillRoundedRect(x + 8, top + 8, laneWidth - 6, hitY - top + 42, 9);
                 graphics.fillStyle(lane % 2 === 0 ? 0x07172a : 0x0a1930, .94);
                 graphics.fillRect(x + 3, top, laneWidth - 6, hitY - top + 42);
+                if (!historical && !low) {
+                    graphics.fillStyle(laneColors[lane] ?? 0xffffff, .035);
+                    graphics.fillRect(x + laneWidth * .2, top, laneWidth * .6, hitY - top + 42);
+                }
                 graphics.lineStyle(2, laneColors[lane] ?? 0xffffff, accessible ? .72 : .38);
                 graphics.strokeRect(x + 4, top, laneWidth - 8, hitY - top + 42);
                 graphics.fillStyle(laneColors[lane] ?? 0xffffff, .22);
@@ -6488,6 +6838,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 const x = startX + note.lane * laneWidth;
                 const color = laneColors[note.lane] ?? 0xffffff;
                 const glow = accessible ? 18 : 12;
+                graphics.fillStyle(color, historical ? .08 : .22);
+                graphics.fillRoundedRect(x + 5, y - glow * 1.35, laneWidth - 10, glow * 2.7, glow * 1.2);
                 graphics.fillStyle(color, .16);
                 graphics.fillRoundedRect(x + 8, y - glow, laneWidth - 16, glow * 2, glow);
                 graphics.fillStyle(color, 1);
@@ -6826,7 +7178,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
       iniciar a próxima onda
       após a quarta onda, concluir a missão`;
     exports.ORBITAL_SENTINEL_COMPARISON = [
-        ['Estrutura', 'Formação fixa que desce e acelera', 'Formação autoral em quatro ondas determinísticas'],
+        ['Estrutura', 'Formação fixa que desce e acelera', 'Formações autorais em campanhas de quatro a seis ondas'],
         ['Defesa', 'Escudos pixelados e destrutíveis', 'Células de barreira com dois níveis de integridade'],
         ['Tecnologia', 'Intel 8080, framebuffer raster e assembly', 'TypeScript determinístico com renderização Phaser isolada'],
         ['Controle', 'Gabinete arcade com movimento e disparo', 'Teclado, toque, pausa automática e tela cheia móvel'],
@@ -7053,6 +7405,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
             graphics.clear();
             graphics.fillStyle(historical ? 0x030303 : 0x02060d, 1);
             graphics.fillRect(0, 0, width, height);
+            if (!historical) {
+                graphics.fillStyle(0x183e80, mode === 'ultra' ? .11 : .055);
+                graphics.fillCircle(width * .18, height * .22, minSize * .34);
+                graphics.fillStyle(0x6d2ec8, mode === 'ultra' ? .10 : .045);
+                graphics.fillCircle(width * .82, height * .42, minSize * .42);
+            }
             if (!historical && mode !== 'baixo') {
                 graphics.lineStyle(1, primary, 0.065);
                 const grid = Math.max(32, Math.floor(minSize / 12));
@@ -7067,17 +7425,37 @@ semente aleatória, capturas, tempo e jogada anterior`;
             }
             state.enemies.filter((enemy) => enemy.alive).forEach((enemy) => this.#drawEnemy(graphics, enemy, width, height, enemyColors[enemy.kind - 1]));
             state.barriers.filter((cell) => cell.health > 0).forEach((cell) => {
+                const bx = (cell.x - cell.width / 2) * width;
+                const by = (cell.y - cell.height / 2) * height;
+                const bw = Math.max(2, cell.width * width);
+                const bh = Math.max(2, cell.height * height);
+                if (!historical) {
+                    graphics.fillStyle(0x000000, .28);
+                    graphics.fillRect(bx + 2, by + 3, bw, bh);
+                    graphics.fillStyle(cell.health === 2 ? 0x4ee0a8 : 0x237e66, .16);
+                    graphics.fillRect(bx - 2, by - 2, bw + 4, bh + 4);
+                }
                 graphics.fillStyle(historical ? (cell.health === 2 ? 0xe4e4e4 : 0x898989) : (cell.health === 2 ? 0x4ee0a8 : 0x237e66), 0.95);
-                graphics.fillRect((cell.x - cell.width / 2) * width, (cell.y - cell.height / 2) * height, Math.max(2, cell.width * width), Math.max(2, cell.height * height));
+                graphics.fillRect(bx, by, bw, bh);
             });
             state.shots.forEach((shot) => {
                 const color = shot.owner === 'player' ? primary : historical ? 0xaaaaaa : 0xff5d7a;
+                if (!historical) {
+                    graphics.lineStyle(Math.max(5, minSize * 0.009), color, .12);
+                    graphics.lineBetween(shot.x * width, shot.y * height - minSize * 0.022, shot.x * width, shot.y * height + minSize * 0.022);
+                }
                 graphics.lineStyle(Math.max(2, minSize * 0.004), color, 1);
                 graphics.lineBetween(shot.x * width, shot.y * height - minSize * 0.013, shot.x * width, shot.y * height + minSize * 0.013);
             });
             if (state.invulnerableMs <= 0 || Math.floor(state.invulnerableMs / 90) % 2 === 0) {
                 const x = state.playerX * width;
                 const y = 0.91 * height;
+                if (!historical) {
+                    graphics.fillStyle(primary, .11);
+                    graphics.fillCircle(x, y, minSize * .075);
+                    graphics.fillStyle(0x000000, .32);
+                    graphics.fillEllipse(x, y + minSize * .034, minSize * .105, minSize * .024);
+                }
                 graphics.fillStyle(primary, 1);
                 graphics.fillTriangle(x, y - minSize * 0.035, x - minSize * 0.047, y + minSize * 0.027, x + minSize * 0.047, y + minSize * 0.027);
                 graphics.fillStyle(historical ? 0x030303 : 0x02060d, 1);
@@ -7090,6 +7468,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const size = Math.min(width, height) * 0.024;
             const x = enemy.x * width;
             const y = enemy.y * height;
+            graphics.fillStyle(0x000000, .28);
+            graphics.fillEllipse(x, y + size * .9, size * 2.4, size * .5);
+            graphics.fillStyle(color, 0.10);
+            graphics.fillCircle(x, y, size * 1.65);
             graphics.fillStyle(color, 0.95);
             if (enemy.kind === 3) {
                 graphics.fillCircle(x, y, size);
@@ -7462,7 +7844,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         paragraphs: [
             'Na primeira metade da década de 1990, consoles, computadores e arcades passaram a dedicar mais processamento à transformação de vértices, projeção de triângulos, câmeras e superfícies texturizadas. O cenário deixou de ser apenas uma imagem simulando profundidade e passou a existir como geometria navegável.',
             'Setor Poligonal 94 é um laboratório autoral do Fliperama DS. A arena, o explorador, os núcleos, os obstáculos, os shaders, a física e o código foram criados para explicar a passagem ao 3D em tempo real sem reutilizar mapas, personagens ou recursos comerciais.',
-            'A experiência permite alternar câmera fixa, primeira pessoa e terceira pessoa, além de comparar cor plana, textura procedural e iluminação especular didática. O objetivo é mostrar que a mesma simulação pode receber diferentes câmeras e materiais sem alterar suas regras.',
+            'A experiência permite alternar câmera fixa, primeira pessoa e terceira pessoa, além de comparar cor plana, textura procedural e iluminação especular didática. A campanha em três protocolos mostra que a mesma simulação pode receber diferentes câmeras e materiais sem alterar suas regras físicas.',
         ],
         sourceUrl: 'https://www.playstation.com/en-us/playstation-history/1994-ps-one/',
     };
@@ -7485,7 +7867,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
       desenhar a mesma simulação com a apresentação escolhida
     
     SALVAR
-      posição, câmera, material, núcleos, vidas, tempo e pontuação`;
+      protocolo atual, posição, câmera, material, núcleos, vidas, tempo e pontuação`;
     exports.POLYGON_SECTOR_COMPARISON = [
         ['Geometria', 'Cenários construídos com poucos polígonos e forte limitação de memória', 'Arena autoral com volumes simples, rampas e métricas visíveis'],
         ['Câmera', 'Câmeras frequentemente vinculadas ao gênero e às limitações do hardware', 'Troca imediata entre fixa, primeira e terceira pessoa'],
@@ -7576,7 +7958,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         }
         start() {
             if (this.#state.status === 'ready')
-                this.#state = { ...this.#state, status: 'playing', message: 'Colete três núcleos, compare ao menos duas câmeras e os três materiais, depois alcance o portal.' };
+                this.#state = { ...this.#state, status: 'playing', message: polygonStageMessage(this.#state.campaignStage) };
         }
         restart(difficulty = this.#state.difficulty) {
             this.#state = initialState(difficulty);
@@ -7724,8 +8106,13 @@ semente aleatória, capturas, tempo e jogada anterior`;
             if (safelyGrounded) state.lastSafePosition = { ...state.player, verticalVelocity: 0 };
             if (distance2(state.player, exports.POLYGON_EXIT) < 1.12) {
                 if (isPortalUnlocked(state)) {
-                    state = { ...state, status: 'won', score: state.score + 1500 + Math.floor(state.remainingMs / 100), message: 'Setor concluído: polígonos, câmeras, materiais e física foram sincronizados.' };
-                    events.push('finished');
+                    if (state.campaignStage < 3) {
+                        state = advancePolygonStage(state, spec);
+                        events.push('stage-complete', 'stage-changed');
+                    } else {
+                        state = { ...state, status: 'won', completedStages: 3, score: state.score + 1800 + Math.floor(state.remainingMs / 100), message: 'Campanha concluída: três protocolos poligonais sincronizados.' };
+                        events.push('finished');
+                    }
                 } else state = { ...state, message: missingRequirements(state) };
             }
             if (state.remainingMs <= 0 && state.status === 'playing') {
@@ -7736,13 +8123,15 @@ semente aleatória, capturas, tempo e jogada anterior`;
             return events;
         }
         restore(state) {
-            if (state.schemaVersion !== 1 && state.schemaVersion !== 2) throw new Error('Versão de save incompatível');
+            if (![1, 2, 3].includes(state.schemaVersion)) throw new Error('Versão de save incompatível');
             const player = normalizePlayer(state.player, START);
             const checkpoint = normalizePlayer(state.checkpoint, START);
             this.#state = cloneState({
                 ...initialState(state.difficulty in DIFFICULTIES ? state.difficulty : 'piloto'),
                 ...state,
-                schemaVersion: 2,
+                schemaVersion: 3,
+                campaignStage: Number.isInteger(state.campaignStage) ? Math.max(1, Math.min(3, state.campaignStage)) : (state.status === 'won' ? 3 : 1),
+                completedStages: Number.isInteger(state.completedStages) ? Math.max(0, Math.min(3, state.completedStages)) : (state.status === 'won' ? 3 : 0),
                 player,
                 checkpoint,
                 lastSafePosition: normalizePlayer(state.lastSafePosition, checkpoint),
@@ -7805,13 +8194,46 @@ semente aleatória, capturas, tempo e jogada anterior`;
         return exports.ARENA_BOXES.some((box) => Math.abs(x - box.x) < box.width / 2 + 0.14 && Math.abs(z - box.z) < box.depth / 2 + 0.14 && y < box.height + 0.18);
     }
     function isPortalUnlocked(state) {
-        return state.collectedCores.length >= exports.POLYGON_CORES_REQUIRED && state.visitedCameras.length >= 2 && state.visitedMaterials.length >= 3;
+        if (state.campaignStage === 1) return state.collectedCores.length >= exports.POLYGON_CORES_REQUIRED;
+        if (state.campaignStage === 2) return state.visitedMaterials.length >= 3 && state.activatedCheckpoints.length >= 2;
+        return state.visitedCameras.length >= 3 && state.collectedCores.length >= exports.POLYGON_CORES_REQUIRED;
     }
     function missingRequirements(state) {
+        if (state.campaignStage === 1) {
+            const cores = Math.max(0, exports.POLYGON_CORES_REQUIRED - state.collectedCores.length);
+            return `Protocolo 1/3 · portal bloqueado: faltam ${cores} núcleos geométricos.`;
+        }
+        if (state.campaignStage === 2) {
+            const materials = Math.max(0, 3 - state.visitedMaterials.length);
+            const checkpoints = Math.max(0, 2 - state.activatedCheckpoints.length);
+            return `Protocolo 2/3 · faltam ${materials} materiais e ${checkpoints} checkpoints.`;
+        }
+        const cameras = Math.max(0, 3 - state.visitedCameras.length);
         const cores = Math.max(0, exports.POLYGON_CORES_REQUIRED - state.collectedCores.length);
-        const cameras = Math.max(0, 2 - state.visitedCameras.length);
-        const materials = Math.max(0, 3 - state.visitedMaterials.length);
-        return `Portal bloqueado: faltam ${cores} núcleos, ${cameras} câmeras e ${materials} materiais.`;
+        return `Protocolo 3/3 · faltam ${cameras} câmeras e ${cores} núcleos finais.`;
+    }
+    function polygonStageMessage(stage) {
+        return stage === 1
+            ? 'Protocolo 1/3 — Geometria Base: colete os três núcleos e alcance o portal.'
+            : stage === 2
+                ? 'Protocolo 2/3 — Materiais e Rotas: teste flat, textura e PBR, ative os dois checkpoints e retorne ao portal.'
+                : 'Protocolo 3/3 — Câmeras de Produção: registre as três câmeras, recupere os três núcleos e conclua o setor.';
+    }
+    function advancePolygonStage(state, spec) {
+        const nextStage = Math.min(3, state.campaignStage + 1);
+        return {
+            ...state,
+            campaignStage: nextStage,
+            completedStages: Math.max(state.completedStages || 0, nextStage - 1),
+            player: { ...START }, checkpoint: { ...START }, lastSafePosition: { ...START },
+            moveForward: false, moveBackward: false, turnLeft: false, turnRight: false,
+            collectedCores: nextStage === 3 ? [] : state.collectedCores,
+            activatedCheckpoints: nextStage === 2 ? [] : state.activatedCheckpoints,
+            visitedCameras: nextStage === 3 ? ['third-person'] : state.visitedCameras,
+            remainingMs: Math.min(spec.timeMs, state.remainingMs + 45_000),
+            score: state.score + 900, damageCooldownMs: 1200,
+            message: polygonStageMessage(nextStage),
+        };
     }
     function validPlayer(player) {
         return Number.isFinite(player.x) && Number.isFinite(player.y) && Number.isFinite(player.z) && Number.isFinite(player.angle) && player.y > -2 && !collides(player.x, player.z, player.y);
@@ -7822,7 +8244,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
         const safeDifficulty = difficulty in DIFFICULTIES ? difficulty : 'piloto';
         const spec = DIFFICULTIES[safeDifficulty];
         return {
-            schemaVersion: 2,
+            schemaVersion: 3,
+            campaignStage: 1, completedStages: 0,
             difficulty: safeDifficulty,
             status: 'ready',
             player: { ...START }, checkpoint: { ...START }, lastSafePosition: { ...START },
@@ -7833,7 +8256,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             cameraMode: 'third-person', cameraPitch: 0, turnSensitivity: 'media', materialMode: 'flat',
             visitedCameras: ['third-person'],
             visitedMaterials: ['flat'],
-            message: 'Setor pronto. Explore câmeras, materiais, rampas e objetivos na arena poligonal.',
+            message: polygonStageMessage(1),
         };
     }
     function cloneState(state) {
@@ -8004,6 +8427,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const pulse = this.#reducedMotion ? 1 : 0.75 + Math.sin(nowMs * 0.004) * 0.25;
             this.#drawCube(transform(0, -0.28, 0, 20, 0.5, 16), historical ? [0.08, 0.16, 0.1] : [0.09, 0.14, 0.22], materialMode);
             this.#drawGrid(materialMode, historical);
+            this.#drawAtmosphere(materialMode, historical, nowMs);
             polygon_sector_simulation_1.ARENA_BOXES.forEach((box, index) => {
                 const baseColor = box.kind === 'pillar'
                     ? historical ? [0.18, 0.5, 0.28] : [0.18 + (index % 2) * 0.05, 0.42, 0.62]
@@ -8074,6 +8498,23 @@ semente aleatória, capturas, tempo e jogada anterior`;
             }
             for (let z = polygon_sector_simulation_1.ARENA_BOUNDS.minZ + 1; z < polygon_sector_simulation_1.ARENA_BOUNDS.maxZ; z += 1) {
                 this.#drawCube(transform(0, 0.006, z, 19, 0.012, 0.018), historical ? [0.08, 0.32, 0.14] : [0.08, 0.34, 0.48], materialMode, 0.08);
+            }
+        }
+        #drawAtmosphere(materialMode, historical, nowMs) {
+            if (this.#graphicsMode === 'baixo')
+                return;
+            const pulse = this.#reducedMotion ? 0.75 : 0.58 + Math.sin(nowMs * 0.0018) * 0.17;
+            const cornerColor = historical ? [0.18, 0.62, 0.28] : [0.18, 0.78, 0.98];
+            const accentColor = historical ? [0.15, 0.45, 0.22] : [0.72, 0.22, 0.92];
+            const corners = [[-9.1,-7.1], [9.1,-7.1], [-9.1,7.1], [9.1,7.1]];
+            corners.forEach(([x,z], index) => {
+                this.#drawCube(transform(x, 1.15, z, 0.12, 2.3, 0.12), cornerColor, materialMode, 0.18 + pulse * 0.18);
+                if (this.#graphicsMode === 'alto' || this.#graphicsMode === 'ultra')
+                    this.#drawGeometry(this.#octahedron, transform(x, 2.7, z, 0.22, 0.32, 0.22, 0, nowMs * 0.0004 * (index + 1), 0), accentColor, materialMode, 0.3);
+            });
+            for (let lane = -6; lane <= 6; lane += 4) {
+                this.#drawCube(transform(lane, 0.022, -7.55, 2.2, 0.025, 0.06), accentColor, 'flat', 0.18, 0.62);
+                this.#drawCube(transform(lane, 0.022, 7.55, 2.2, 0.025, 0.06), cornerColor, 'flat', 0.16, 0.56);
             }
         }
         #drawPlayer(state, materialMode, historical) {
@@ -8421,7 +8862,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         }
         snapshot() {
             const state = this.#simulation.state;
-            return { schemaVersion: 2, gameId: this.id, elapsedMs: state.elapsedMs, score: state.score, payload: { ...state } };
+            return { schemaVersion: 3, gameId: this.id, elapsedMs: state.elapsedMs, score: state.score, payload: { ...state } };
         }
         restore(snapshot) {
             if (snapshot.gameId !== this.id)
@@ -8502,6 +8943,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
                             cores: current.collectedCores.length,
                             checkpoints: current.activatedCheckpoints.length,
                             elapsed: Math.round(current.elapsedMs / 1000),
+                            stage: current.campaignStage,
+                            stages: current.completedStages || (current.status === 'won' ? 3 : 0),
                         },
                     });
                 }
@@ -8516,6 +8959,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
                             checkpoints: current.activatedCheckpoints.length,
                             camera: current.cameraMode,
                             material: current.materialMode,
+                            stage: current.campaignStage,
+                            stages: current.completedStages || 0,
                         },
                     });
                 }
@@ -8541,7 +8986,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const state = this.#simulation.state;
             const camera = state.cameraMode === 'first-person' ? '1ª PESSOA' : state.cameraMode === 'fixed' ? 'FIXA' : '3ª PESSOA';
             const material = state.materialMode === 'flat' ? 'FLAT' : state.materialMode === 'texture' ? 'TEXTURA' : 'PBR DIDÁTICO';
-            this.#overlay.innerHTML = `<span>${camera} ${state.visitedCameras.length}/2</span><span>${material} ${state.visitedMaterials.length}/3</span><span>${state.collectedCores.length}/${polygon_sector_simulation_1.POLYGON_CORES_REQUIRED} NÚCLEOS</span><span>SENS. ${state.turnSensitivity.toUpperCase()}</span><span>${this.#lastStats.drawCalls} DRAWS · ${this.#lastStats.triangles} TRI</span><small>${state.message}</small>`;
+            this.#overlay.innerHTML = `<span>PROTOCOLO ${state.campaignStage}/3</span><span>${camera} ${state.visitedCameras.length}/3</span><span>${material} ${state.visitedMaterials.length}/3</span><span>${state.collectedCores.length}/${polygon_sector_simulation_1.POLYGON_CORES_REQUIRED} NÚCLEOS</span><span>SENS. ${state.turnSensitivity.toUpperCase()}</span><span>${this.#lastStats.drawCalls} DRAWS · ${this.#lastStats.triangles} TRI</span><small>${state.message}</small>`;
         }
     }
     exports.PolygonSectorRuntime = PolygonSectorRuntime;
@@ -8558,7 +9003,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         title: 'Quebra-cabeças digitais, matrizes e algoritmos de busca',
         paragraphs: [
             'Quebra-cabeças digitais evoluíram de problemas abstratos em terminais e tabuleiros para experiências visuais com física, circuitos, caminhos, lógica espacial e editores de fases.',
-            'Puzzle Forge DS transforma quatro estruturas clássicas — caminho, circuito, sequência e labirinto — em um laboratório educacional autoral para estudar matrizes, vizinhança, estados, memória e busca de rotas.',
+            'Puzzle Forge DS transforma quatro estruturas clássicas — caminho, circuito, sequência e labirinto — em quatro minicampanhas de três desafios, além do editor 7×7, para estudar matrizes, vizinhança, estados, memória e busca de rotas.',
         ],
         sourceUrl: 'https://www.computerhistory.org/timeline/graphics-games/',
     };
@@ -8772,7 +9217,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             this.#context?.onEvent?.({ type: 'progress', detail: { mode: state.mode, moves: state.moves, mistakes: state.mistakes, score: state.score, stage: state.stage, progress: state.mode === 'sequencia' ? state.sequenceCursor : 0, event: events.includes('invalid') ? 'invalid' : events.includes('finished') ? 'completed' : events[0] ?? 'move' } });
             if (events.includes('finished')) {
                 this.state = 'finished';
-                this.#context?.onEvent?.({ type: 'finished', detail: { winner: state.status === 'won' ? 'player' : 'cpu', score: state.score, moves: state.moves, mistakes: state.mistakes, mode: state.mode } });
+                this.#context?.onEvent?.({ type: 'finished', detail: { winner: state.status === 'won' ? 'player' : 'cpu', score: state.score, moves: state.moves, mistakes: state.mistakes, stars: state.stars ?? 0, mode: state.mode } });
             }
         }
         #drawCurrent() {
@@ -8792,12 +9237,20 @@ semente aleatória, capturas, tempo e jogada anterior`;
             graphics.clear();
             graphics.fillGradientStyle(historical ? 0x050505 : 0x061125, historical ? 0x050505 : 0x0c1933, 0x02050c, 0x02050c, 1);
             graphics.fillRect(0, 0, width, height);
+            if (!historical) {
+                graphics.fillStyle(0x49e7ff, .035);
+                graphics.fillCircle(width * .22, height * .25, Math.min(width, height) * .38);
+                graphics.fillStyle(0xa46fff, .032);
+                graphics.fillCircle(width * .78, height * .72, Math.min(width, height) * .42);
+                graphics.fillStyle(0x000000, .22);
+                graphics.fillRoundedRect(geometry.x - 11, geometry.y + 8, geometry.cell * geometry.size + 22, geometry.cell * geometry.size + 18, 18);
+            }
             graphics.lineStyle(1, historical ? 0x333333 : 0x16304f, .4);
             for (let x = 0; x < width; x += 36)
                 graphics.lineBetween(x, 0, x, height);
             for (let y = 0; y < height; y += 36)
                 graphics.lineBetween(0, y, width, y);
-            this.#title?.setPosition(width / 2, 18).setText(titleFor(state.mode));
+            this.#title?.setPosition(width / 2, 18).setText(`${titleFor(state.mode)} · DESAFIO ${state.stage}/${state.campaignStages}`);
             this.#message?.setPosition(width / 2, height - 52).setText(state.message).setWordWrapWidth(Math.min(800, width - 32));
             if (state.mode !== 'sequencia' && this.#sequenceLabels.length > 0) {
                 this.#sequenceLabels.forEach((label) => label.destroy());
@@ -8820,8 +9273,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 const y = geometry.y + row * geometry.cell;
                 const cx = x + geometry.cell / 2;
                 const cy = y + geometry.cell / 2;
+                graphics.fillStyle(0x000000, .22);
+                graphics.fillRoundedRect(x + 6, y + 7, geometry.cell - 7, geometry.cell - 7, Math.max(5, geometry.cell * .1));
                 graphics.fillStyle(0x08192d, .96);
                 graphics.fillRoundedRect(x + 3, y + 3, geometry.cell - 6, geometry.cell - 6, Math.max(5, geometry.cell * .1));
+                graphics.lineStyle(Math.max(1, geometry.cell * .018), index === 0 || index === state.goalIndex ? violet : cyan, .22);
+                graphics.strokeRoundedRect(x + 5, y + 5, geometry.cell - 10, geometry.cell - 10, Math.max(4, geometry.cell * .08));
                 graphics.lineStyle(Math.max(4, geometry.cell * .09), index === 0 || index === state.goalIndex ? violet : cyan, .9);
                 const orientation = state.board[index] ?? 0;
                 if (orientation % 2 === 0)
@@ -8839,6 +9296,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 const x = geometry.x + col * geometry.cell;
                 const y = geometry.y + row * geometry.cell;
                 const active = state.board[index] === 1;
+                if (active) {
+                    graphics.fillStyle(cyan, .10);
+                    graphics.fillCircle(x + geometry.cell / 2, y + geometry.cell / 2, geometry.cell * .46);
+                }
+                graphics.fillStyle(0x000000, .2);
+                graphics.fillRoundedRect(x + 8, y + 9, geometry.cell - 10, geometry.cell - 10, geometry.cell * .15);
                 graphics.fillStyle(active ? cyan : 0x101a2d, active ? .82 : .95);
                 graphics.fillRoundedRect(x + 5, y + 5, geometry.cell - 10, geometry.cell - 10, geometry.cell * .15);
                 graphics.lineStyle(2, active ? 0xffffff : violet, active ? .85 : .45);
@@ -8951,31 +9414,50 @@ semente aleatória, capturas, tempo e jogada anterior`;
         constructor(mode = 'caminho', difficulty = 'aprendiz', customLayout) {
             this.#state = PuzzleForgeSimulation.initialState(mode, difficulty, customLayout);
         }
-        static initialState(mode, difficulty, customLayout) {
+        static initialState(mode, difficulty, customLayout, stage = 1) {
+            const safeStage = Math.max(1, Math.min(3, Number(stage) || 1));
+            const campaignStages = customLayout ? 1 : 3;
             if (mode === 'caminho') {
-                const scramble = difficulty === 'aprendiz'
-                    ? PATH_TARGET.map((orientation, index) => index % 3 === 0 ? (orientation + 1) % 4 : orientation)
-                    : PATH_TARGET.map((orientation, index) => (orientation + ((index * 3 + 1) % 4)) % 4);
-                return baseState(mode, difficulty, scramble, [...PATH_TARGET], PATH_START, PATH_GOAL, [], 'Gire as peças para criar uma rota contínua do núcleo até a saída.');
+                const offsets = difficulty === 'aprendiz'
+                    ? [[1, 0, 0], [1, 2, 0], [3, 1, 2]][safeStage - 1]
+                    : [[1, 2, 3], [3, 1, 2], [2, 3, 1]][safeStage - 1];
+                const scramble = PATH_TARGET.map((orientation, index) => (orientation + offsets[index % offsets.length]) % 4);
+                return baseState(mode, difficulty, scramble, [...PATH_TARGET], PATH_START, PATH_GOAL, [], `Desafio ${safeStage}/${campaignStages}: conecte o núcleo até a saída.`, safeStage, campaignStages);
             }
             if (mode === 'circuito') {
                 const target = Array(CIRCUIT_SIZE * CIRCUIT_SIZE).fill(1);
-                const board = difficulty === 'aprendiz'
-                    ? [1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1]
-                    : [0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1];
-                return baseState(mode, difficulty, board, target, 0, board.length - 1, [], 'Ative todos os nós. Cada toque alterna a célula e seus vizinhos.');
+                const patterns = difficulty === 'aprendiz'
+                    ? [
+                        [1,0,1,1,1,0,0,1,0,1,1,1,1,1,1,1,0,1,0,0,1,1,1,0,1],
+                        [0,1,1,0,1,1,1,0,1,0,1,0,1,1,1,0,1,1,0,1,1,0,1,0,0],
+                        [1,0,0,1,0,0,1,1,0,1,1,0,1,0,1,0,1,0,1,0,1,1,0,0,1],
+                    ]
+                    : [
+                        [0,1,0,0,1,1,0,1,0,0,0,0,1,1,0,1,0,0,1,0,0,1,0,0,1],
+                        [0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,1,0,1,0,0,0,0],
+                        [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0],
+                    ];
+                const board = patterns[safeStage - 1];
+                return baseState(mode, difficulty, board, target, 0, board.length - 1, [], `Desafio ${safeStage}/${campaignStages}: energize todos os nós.`, safeStage, campaignStages);
             }
             if (mode === 'sequencia') {
-                const sequence = difficulty === 'aprendiz' ? [0, 5, 10, 15, 6, 9] : [3, 12, 5, 10, 1, 14, 7, 8, 0, 15];
-                return baseState(mode, difficulty, Array(SEQUENCE_SIZE * SEQUENCE_SIZE).fill(0), [], 0, 0, sequence, 'Repita a sequência indicada pelos números, na ordem correta.');
+                const apprentice = [[0,5,10,15,6,9], [1,4,7,10,13,14,11,8], [0,1,5,9,10,6,7,11,15]];
+                const challenge = [[3,12,5,10,1,14,7,8,0,15], [0,6,12,9,3,5,10,15,14,8,2], [15,10,5,0,1,6,11,14,9,4,3,8]];
+                const sequence = (difficulty === 'aprendiz' ? apprentice : challenge)[safeStage - 1];
+                return baseState(mode, difficulty, Array(SEQUENCE_SIZE * SEQUENCE_SIZE).fill(0), [], 0, 0, sequence, `Desafio ${safeStage}/${campaignStages}: repita a sequência sem quebrar a ordem.`, safeStage, campaignStages);
             }
-            const maze = sanitizeMaze(customLayout);
-            return baseState(mode, difficulty, [...maze].map((cell) => cell === '#' ? 1 : 0), [], 0, MAZE_SIZE * MAZE_SIZE - 1, [], 'Leve o marcador até a saída usando o menor caminho possível.');
+            const mazeLayouts = [
+                DEFAULT_MAZE,
+                ['.......','.#####.','.....#.','###..#.','...#...','.#.###.','.......'].join(''),
+                ['.......','###.##.','...#...','.#.#.##','.#.....','.#####.','.......'].join(''),
+            ];
+            const maze = sanitizeMaze(customLayout ?? mazeLayouts[safeStage - 1]);
+            return baseState(mode, difficulty, [...maze].map((cell) => cell === '#' ? 1 : 0), [], 0, MAZE_SIZE * MAZE_SIZE - 1, [], `Desafio ${safeStage}/${campaignStages}: encontre a saída pelo menor caminho possível.`, safeStage, campaignStages);
         }
         get state() { return this.#state; }
         start() {
             if (this.#state.status === 'won' || this.#state.status === 'lost') {
-                this.#state = PuzzleForgeSimulation.initialState(this.#state.mode, this.#state.difficulty, this.#state.mode === 'labirinto' ? this.#mazeLayout() : undefined);
+                this.#state = PuzzleForgeSimulation.initialState(this.#state.mode, this.#state.difficulty, this.#state.mode === 'labirinto' && this.#state.campaignStages === 1 ? this.#mazeLayout() : undefined, 1);
             }
             this.#state = { ...this.#state, status: 'playing' };
         }
@@ -9010,19 +9492,22 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 return this.#invalid('Há uma parede nessa direção.');
             const moves = this.#state.moves + 1;
             if (next === this.#state.goalIndex) {
-                this.#state = { ...this.#state, playerIndex: next, moves, score: this.#finishScore(900), status: 'won', message: 'Saída encontrada. Labirinto concluído!' };
-                return ['move', 'finished'];
+                this.#state = { ...this.#state, playerIndex: next, moves };
+                return ['move', ...this.#completeStage(900, 'Saída encontrada. Campanha de labirintos concluída!')];
             }
             this.#state = { ...this.#state, playerIndex: next, moves, score: this.#state.score + 15, message: 'Continue analisando as rotas disponíveis.' };
             return ['move'];
         }
         restore(state) {
-            if (state.schemaVersion !== 1)
+            if (state.schemaVersion !== 1 && state.schemaVersion !== 2)
                 throw new Error('Save do Puzzle Forge incompatível');
             const expected = state.mode === 'caminho' || state.mode === 'circuito' ? 25 : state.mode === 'sequencia' ? 16 : 49;
             if (!Array.isArray(state.board) || state.board.length !== expected)
                 throw new Error('Grade salva inválida');
-            this.#state = { ...state, board: [...state.board], target: [...state.target], sequence: [...state.sequence] };
+            const migrated = state.schemaVersion === 1
+                ? { ...state, schemaVersion: 2, stage: state.stage ?? 1, campaignStages: 1 }
+                : state;
+            this.#state = { ...migrated, board: [...migrated.board], target: [...migrated.target], sequence: [...migrated.sequence] };
         }
         #rotatePath(index) {
             if (index < 0 || index >= PATH_SIZE * PATH_SIZE)
@@ -9032,8 +9517,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const moves = this.#state.moves + 1;
             const solved = board.every((value, cell) => value === this.#state.target[cell]);
             if (solved) {
-                this.#state = { ...this.#state, board, moves, score: this.#finishScore(1100), status: 'won', message: 'Rota de energia conectada com sucesso!' };
-                return ['rotate', 'finished'];
+                this.#state = { ...this.#state, board, moves };
+                return ['rotate', ...this.#completeStage(1100, 'Rotas de energia concluídas nos três desafios!')];
             }
             this.#state = { ...this.#state, board, moves, score: this.#state.score + 8, message: 'Peça girada. Verifique se os segmentos estão conectados.' };
             return ['rotate'];
@@ -9054,8 +9539,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
             }
             const moves = this.#state.moves + 1;
             if (board.every((value) => value === 1)) {
-                this.#state = { ...this.#state, board, moves, score: this.#finishScore(1200), status: 'won', message: 'Todos os terminais receberam energia!' };
-                return ['toggle', 'finished'];
+                this.#state = { ...this.#state, board, moves };
+                return ['toggle', ...this.#completeStage(1200, 'Os três circuitos foram energizados!')];
             }
             this.#state = { ...this.#state, board, moves, score: this.#state.score + 10, message: 'Circuito alterado. Observe o efeito nos vizinhos.' };
             return ['toggle'];
@@ -9081,11 +9566,33 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const cursor = this.#state.sequenceCursor + 1;
             const moves = this.#state.moves + 1;
             if (cursor === this.#state.sequence.length) {
-                this.#state = { ...this.#state, sequenceCursor: cursor, moves, score: this.#finishScore(1000), status: 'won', message: 'Sequência completa. Memória lógica validada!' };
-                return ['sequence-hit', 'finished'];
+                this.#state = { ...this.#state, sequenceCursor: cursor, moves };
+                return ['sequence-hit', ...this.#completeStage(1000, 'As três sequências foram validadas!')];
             }
             this.#state = { ...this.#state, sequenceCursor: cursor, moves, score: this.#state.score + 75, message: `Acerto ${cursor}/${this.#state.sequence.length}. Continue.` };
             return ['sequence-hit'];
+        }
+        #completeStage(base, finalMessage) {
+            const completedStage = this.#state.stage ?? 1;
+            const campaignStages = this.#state.campaignStages ?? 1;
+            const stageScore = this.#finishScore(base);
+            if (completedStage < campaignStages) {
+                const nextStage = completedStage + 1;
+                const next = PuzzleForgeSimulation.initialState(this.#state.mode, this.#state.difficulty, undefined, nextStage);
+                this.#state = {
+                    ...next,
+                    status: 'playing',
+                    score: stageScore + 250,
+                    elapsedMs: this.#state.elapsedMs,
+                    moves: this.#state.moves,
+                    mistakes: this.#state.mistakes,
+                    message: `Desafio ${completedStage}/${campaignStages} concluído. Iniciando desafio ${nextStage}/${campaignStages}.`,
+                };
+                return ['stage-complete'];
+            }
+            const stars = this.#state.mistakes === 0 && this.#state.moves <= 90 ? 3 : this.#state.mistakes <= 2 ? 2 : 1;
+            this.#state = { ...this.#state, score: stageScore + 500 + stars * 150, stars, status: 'won', message: `${finalMessage} Avaliação: ${stars}/3 estrelas.` };
+            return ['finished'];
         }
         #invalid(message) {
             this.#state = { ...this.#state, mistakes: this.#state.mistakes + 1, message };
@@ -9099,9 +9606,9 @@ semente aleatória, capturas, tempo e jogada anterior`;
         }
     }
     exports.PuzzleForgeSimulation = PuzzleForgeSimulation;
-    function baseState(mode, difficulty, board, target, playerIndex, goalIndex, sequence, message) {
+    function baseState(mode, difficulty, board, target, playerIndex, goalIndex, sequence, message, stage = 1, campaignStages = 3) {
         return {
-            schemaVersion: 1,
+            schemaVersion: 2,
             mode,
             difficulty,
             status: 'ready',
@@ -9111,11 +9618,13 @@ semente aleatória, capturas, tempo e jogada anterior`;
             goalIndex,
             sequence: [...sequence],
             sequenceCursor: 0,
-            stage: 1,
+            stage,
+            campaignStages,
             moves: 0,
             mistakes: 0,
             elapsedMs: 0,
             score: 0,
+            stars: 0,
             message,
         };
     }
@@ -9269,7 +9778,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         paragraphs: [
             'No começo dos anos 1980, máquinas de arcade ainda não desenhavam pistas com grandes quantidades de polígonos. A sensação de profundidade era criada projetando faixas horizontais, alterando a largura da estrada e escalando carros e objetos conforme a distância.',
             'Pole Position, desenvolvido pela Namco e lançado em 1982, tornou-se uma referência importante da corrida pseudo-3D ao combinar perspectiva de pista, classificação, cronômetro e um gabinete dedicado com volante e pedais.',
-            'Raster Rally é um laboratório autoral do Fliperama DS. As três pistas, veículos, regras, paisagens, interface, áudio e código são próprios; a referência histórica é utilizada somente para explicar a evolução técnica do gênero.',
+            'Raster Rally é um laboratório autoral do Fliperama DS. As cinco pistas, veículos, regras, paisagens, interface, áudio e código são próprios; a referência histórica é utilizada somente para explicar a evolução técnica do gênero.',
         ],
         sourceUrl: 'https://www.arcadearchives.com/en/title/aca-263/',
     };
@@ -9298,13 +9807,13 @@ semente aleatória, capturas, tempo e jogada anterior`;
       registrar o tempo da volta
       preservar a melhor marca
     
-    AO TERMINAR DUAS VOLTAS:
+    AO TERMINAR AS VOLTAS DA PISTA:
       liberar a próxima pista
-      após a terceira pista, concluir o campeonato`;
+      após a quinta pista, concluir o campeonato`;
     exports.RASTER_RALLY_COMPARISON = [
         ['Profundidade', 'Faixas raster e sprites escalados simulavam uma estrada tridimensional', 'Segmentos autorais são projetados em tempo real com largura, curva e elevação'],
         ['Controle', 'Gabinetes dedicados usavam volante, acelerador e freio', 'Teclado e toque alimentam ações normalizadas e independentes do renderizador'],
-        ['Corrida', 'Cronômetro, classificação e rivais criavam pressão contínua', 'Três pistas, checkpoints, voltas, rivais, ultrapassagens e integridade do veículo'],
+        ['Corrida', 'Cronômetro, classificação e rivais criavam pressão contínua', 'Cinco pistas, checkpoints, doze voltas, rivais, ultrapassagens e integridade do veículo'],
         ['Visual', 'Baixa resolução, paleta restrita e repetição de sprites', 'Modo Histórico reduz detalhes; modos DS acrescentam camadas, clima e partículas leves'],
         ['Lógica', 'Hardware e código específicos para arcade', 'Simulação TypeScript serializável, testada sem Phaser e desenhada sob demanda'],
         ['Identidade', 'Obra comercial histórica de 1982', 'Pistas, carros, paisagens, áudio, regras visuais e código próprios'],
@@ -9566,6 +10075,17 @@ semente aleatória, capturas, tempo e jogada anterior`;
             graphics.clear();
             this.#drawSky(graphics, width, horizon, track, historical, low);
             this.#drawBackdrop(graphics, width, horizon, track, state.elapsedMs, historical, low);
+            if (!historical && !low && state.speed > 78) {
+                const intensity = Math.min(1, (state.speed - 78) / 120);
+                graphics.lineStyle(1, track.accent, 0.05 + intensity * 0.12);
+                const streaks = high ? 20 : 10;
+                for (let index = 0; index < streaks; index += 1) {
+                    const y = horizon + ((index * 79 + state.elapsedMs * 0.22) % Math.max(1, roadHeight));
+                    const side = index % 2 === 0 ? 1 : -1;
+                    const x = side > 0 ? width * (0.76 + (index % 4) * 0.055) : width * (0.24 - (index % 4) * 0.055);
+                    graphics.lineBetween(x, y, x + side * (18 + intensity * 46), y + 3);
+                }
+            }
             const projections = this.#projectRoad(width, horizon, roadHeight, track, state.progress, state.lateral, historical, high);
             for (let index = projections.length - 2; index >= 0; index -= 1) {
                 const far = projections[index + 1];
@@ -9609,6 +10129,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 if (!low && index % (historical ? 12 : 8) === 0) {
                     this.#drawScenery(graphics, near, segment.scenery, track, historical, index);
                 }
+            }
+            if (!historical && high) {
+                graphics.fillStyle(track.accent, 0.035);
+                graphics.fillTriangle(width * 0.5, horizon, width * 0.2, height, width * 0.8, height);
             }
             this.#drawOpponents(graphics, projections, width, height, state, track, historical);
             this.#drawPlayerCar(graphics, width, height, state.lateral, track.accent, historical, state.damage);
@@ -10175,6 +10699,30 @@ semente aleatória, capturas, tempo e jogada anterior`;
         ...repeat(10, -0.45, -0.3, 0.88, 'city'),
         ...transition(10, -0.45, 0, -0.3, 0, 0.9, 'city'),
     ];
+    const neonSegments = [
+        ...repeat(14, 0, 0, 0.88, 'city'),
+        ...transition(12, 0, 0.62, 0, 0.18, 0.84, 'city'),
+        ...repeat(10, 0.62, 0.18, 0.82, 'city'),
+        ...transition(12, 0.62, -0.78, 0.18, 0.38, 0.8, 'city'),
+        ...repeat(12, -0.78, 0.38, 0.78, 'city'),
+        ...transition(12, -0.78, 0.9, 0.38, -0.22, 0.76, 'coast'),
+        ...repeat(12, 0.9, -0.22, 0.78, 'coast'),
+        ...transition(12, 0.9, -0.42, -0.22, 0.12, 0.82, 'city'),
+        ...repeat(14, -0.42, 0.12, 0.86, 'city'),
+        ...transition(10, -0.42, 0, 0.12, 0, 0.88, 'city'),
+    ];
+    const eclipseSegments = [
+        ...repeat(12, 0, 0, 0.9, 'mountain'),
+        ...transition(14, 0, -0.82, 0, 0.48, 0.82, 'mountain'),
+        ...repeat(12, -0.82, 0.48, 0.78, 'forest'),
+        ...transition(14, -0.82, 0.96, 0.48, 0.88, 0.74, 'mountain'),
+        ...repeat(11, 0.96, 0.88, 0.72, 'mountain'),
+        ...transition(12, 0.96, -0.92, 0.88, 0.05, 0.72, 'forest'),
+        ...repeat(12, -0.92, 0.05, 0.74, 'forest'),
+        ...transition(12, -0.92, 0.5, 0.05, -0.4, 0.8, 'coast'),
+        ...repeat(12, 0.5, -0.4, 0.84, 'coast'),
+        ...transition(12, 0.5, 0, -0.4, 0, 0.9, 'mountain'),
+    ];
     exports.RASTER_RALLY_TRACKS = [
         {
             id: 'aurora-coast',
@@ -10223,6 +10771,38 @@ semente aleatória, capturas, tempo e jogada anterior`;
             accent: 0xb997ff,
             weather: 'rain',
             segments: tempestSegments,
+        },
+        {
+            id: 'metro-neon',
+            title: 'Anel Metro Neon',
+            subtitle: 'Curvas urbanas noturnas, viadutos e reflexos de cidade',
+            laps: 3,
+            segmentLength: 49,
+            timeLimitMs: 156_000,
+            skyTop: 0x05051c,
+            skyBottom: 0x40145f,
+            ground: 0x111629,
+            road: 0x1d2233,
+            shoulder: 0xff4fd8,
+            accent: 0x4df7ff,
+            weather: 'clear',
+            segments: neonSegments,
+        },
+        {
+            id: 'eclipse-pass',
+            title: 'Passo do Eclipse',
+            subtitle: 'Final técnico com serras, curvas cegas e grandes mudanças de elevação',
+            laps: 3,
+            segmentLength: 48,
+            timeLimitMs: 178_000,
+            skyTop: 0x070814,
+            skyBottom: 0x6a3b46,
+            ground: 0x1b3129,
+            road: 0x222832,
+            shoulder: 0xffbb55,
+            accent: 0xff6b8e,
+            weather: 'mist',
+            segments: eclipseSegments,
         },
     ];
     function trackLength(track) {
@@ -10313,7 +10893,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
     AO INTERAGIR:
       se houver porta e uma chave disponível, abrir
       se houver terminal, ativar e registrar checkpoint
-      liberar a extração após três terminais
+      liberar a extração após cumprir os requisitos da operação
     
     AO TROCAR VISÃO:
       preservar posição, inventário, portas e tempo
@@ -10323,9 +10903,9 @@ semente aleatória, capturas, tempo e jogada anterior`;
         ['Projeção', 'Uma faixa vertical por raio emitido', 'Contagem de raios dinâmica conforme o modo gráfico e o tamanho da tela'],
         ['Distorção', 'Distância direta poderia causar efeito olho-de-peixe', 'Distância perpendicular corrigida pelo ângulo entre câmera e raio'],
         ['Texturas', 'Paredes e portas com padrões simples repetidos', 'Texturas procedurais próprias, sem arquivos pesados no núcleo'],
-        ['Interação', 'Chaves, portas e interruptores em mapas compactos', 'Duas chaves, três terminais, checkpoints, pulsos e extração autoral'],
+        ['Interação', 'Chaves, portas e interruptores em mapas compactos', 'Três operações com chaves, terminais, checkpoints, pulsos e extrações autorais'],
         ['Visão técnica', 'Jogador via apenas a câmera em muitos títulos', 'Primeira pessoa, mapa superior e tela dividida alternáveis em tempo real'],
-        ['Identidade', 'Referência à evolução do gênero em 1992', 'Mapa, missão, símbolos, áudio, interface e código inteiramente próprios'],
+        ['Identidade', 'Referência à evolução do gênero em 1992', 'Três mapas, missões, símbolos, áudio, interface e código inteiramente próprios'],
     ];
     
   };
@@ -10504,14 +11084,19 @@ semente aleatória, capturas, tempo e jogada anterior`;
             for (const event of events) {
                 if (event === 'finished') {
                     this.state = 'finished';
+                    const mission = raycast_corridors_simulation_1.RAYCAST_MISSIONS[current.mapIndex];
                     this.#context?.onEvent?.({
                         type: 'finished',
                         detail: {
                             winner: current.status === 'won' ? 'player' : 'system',
                             score: current.score,
                             lives: current.lives,
+                            operation: current.mapIndex + 1,
+                            operationTotal: raycast_corridors_simulation_1.RAYCAST_MISSIONS.length,
                             keys: current.keys.length,
+                            keysRequired: mission.keysRequired,
                             terminals: current.activeTerminals.length,
+                            terminalsRequired: mission.terminalsRequired,
                             doors: current.openedDoors.length,
                             elapsed: Math.round(current.elapsedMs / 1000),
                         },
@@ -10557,15 +11142,28 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 this.#drawMiniMap(graphics, width - Math.min(190, width * 0.34) - 12, contentTop + 12, Math.min(190, width * 0.34), Math.min(145, contentHeight * 0.32), state);
             }
             this.#title?.setText(`CORREDORES RAYCAST · ${state.viewMode === 'first-person' ? '1ª PESSOA' : state.viewMode === 'split' ? 'TELA DIVIDIDA' : 'MAPA TÉCNICO'}`);
-            this.#stats?.setText(`PONTOS ${state.score}   VIDAS ${state.lives}   CHAVES ${state.keys.length}/${raycast_corridors_simulation_1.RAYCAST_KEYS_TOTAL}   TERMINAIS ${state.activeTerminals.length}/${raycast_corridors_simulation_1.RAYCAST_TERMINALS_REQUIRED}   TEMPO ${Math.ceil(state.remainingMs / 1000)}s`);
+            const mission = raycast_corridors_simulation_1.RAYCAST_MISSIONS[state.mapIndex];
+            this.#stats?.setText(`OP ${state.mapIndex + 1}/${raycast_corridors_simulation_1.RAYCAST_MISSIONS.length}   PONTOS ${state.score}   VIDAS ${state.lives}   CHAVES ${state.keys.length}/${mission.keysRequired}   TERMINAIS ${state.activeTerminals.length}/${mission.terminalsRequired}   TEMPO ${Math.ceil(state.remainingMs / 1000)}s`);
             this.#message?.setText(state.message).setPosition(18, Math.max(76, height - 35));
         }
         #drawFirstPerson(graphics, x, y, width, height, state) {
             const historical = this.#context?.graphicsMode === 'historico';
-            graphics.fillStyle(historical ? 0x050505 : 0x071122, 1);
-            graphics.fillRect(x, y, width, height / 2);
-            graphics.fillStyle(historical ? 0x151515 : 0x111620, 1);
-            graphics.fillRect(x, y + height / 2, width, height / 2);
+            if (historical) {
+                graphics.fillStyle(0x050505, 1);
+                graphics.fillRect(x, y, width, height / 2);
+                graphics.fillStyle(0x151515, 1);
+                graphics.fillRect(x, y + height / 2, width, height / 2);
+            }
+            else {
+                graphics.fillGradientStyle(0x071122, 0x0b1730, 0x0b0e18, 0x111620, 1);
+                graphics.fillRect(x, y, width, height);
+                if (this.#context?.graphicsMode !== 'baixo') {
+                    graphics.fillStyle(0x4de7ff, 0.055);
+                    graphics.fillRect(x, y + height * 0.47, width, Math.max(3, height * 0.06));
+                    graphics.fillStyle(0x9b6dff, 0.025);
+                    graphics.fillRect(x, y + height * 0.5, width, height * 0.5);
+                }
+            }
             if (!historical && this.#context?.graphicsMode !== 'baixo') {
                 graphics.lineStyle(1, 0x4de7ff, 0.08);
                 for (let line = 1; line < 7; line += 1) {
@@ -10585,6 +11183,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 const base = hit.tile === 'D' ? [0xe08a3b, 0x9a5027] : historical ? [0xe8e8e8, 0x858585] : [0x48d6ff, 0x244a8c];
                 const stripe = Math.floor(hit.textureOffset * 8) % 2 === 0;
                 const color = stripe ? base[0] : base[1];
+                if (!historical && this.#context?.graphicsMode !== 'baixo') {
+                    graphics.fillStyle(0x000000, 0.16 * (1 - distanceShade));
+                    graphics.fillRect(x + index * columnWidth, top + wallHeight * 0.92, Math.ceil(columnWidth + 0.5), wallHeight * 0.08);
+                }
                 graphics.fillStyle(color, distanceShade * sideShade);
                 graphics.fillRect(x + index * columnWidth, top, Math.ceil(columnWidth + 0.5), wallHeight);
                 if (!historical && this.#context?.graphicsMode !== 'baixo' && stripe) {
@@ -10593,7 +11195,11 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 }
             });
             this.#drawProjectedObjects(graphics, x, y, width, height, state, rays);
-            graphics.lineStyle(1, historical ? 0xffffff : 0x7deaff, 0.65);
+            if (!historical && this.#context?.graphicsMode !== 'baixo') {
+                graphics.lineStyle(1, 0x7deaff, 0.20);
+                graphics.strokeCircle(x + width / 2, y + height / 2, 15);
+            }
+            graphics.lineStyle(1, historical ? 0xffffff : 0x7deaff, 0.72);
             graphics.lineBetween(x + width / 2 - 8, y + height / 2, x + width / 2 + 8, y + height / 2);
             graphics.lineBetween(x + width / 2, y + height / 2 - 8, x + width / 2, y + height / 2 + 8);
         }
@@ -10601,7 +11207,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const objects = [];
             for (let row = 0; row < raycast_corridors_simulation_1.RAYCAST_ROWS; row += 1)
                 for (let column = 0; column < raycast_corridors_simulation_1.RAYCAST_COLUMNS; column += 1) {
-                    const tile = (0, raycast_corridors_simulation_1.tileAt)(column, row);
+                    const tile = (0, raycast_corridors_simulation_1.tileAt)(column, row, state.mapIndex);
                     const key = (0, raycast_corridors_simulation_1.pointKey)(column, row);
                     if (tile === 'K' && !state.keys.includes(key))
                         objects.push({ column, row, tile });
@@ -10633,6 +11239,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 const size = Math.min(height * 0.42, height / object.distance * 0.72);
                 const baseY = y + height / 2 + size * 0.45;
                 const color = object.tile === 'K' ? 0xffdd67 : object.tile === 'T' ? 0x63f5b8 : object.tile === 'E' ? 0xd16cff : 0xff536b;
+                if (this.#context?.graphicsMode !== 'historico' && this.#context?.graphicsMode !== 'baixo') {
+                    graphics.fillStyle(color, object.tile === 'H' ? 0.07 : 0.12);
+                    graphics.fillCircle(screenX, baseY - size * 0.42, Math.max(8, size * 0.38));
+                }
                 graphics.fillStyle(color, object.tile === 'H' && !(0, raycast_corridors_simulation_1.hazardActive)(state.elapsedMs, 1600) ? 0.25 : 0.92);
                 if (object.tile === 'K') {
                     graphics.fillCircle(screenX, baseY - size * 0.48, size * 0.18);
@@ -10664,7 +11274,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const originY = y + (height - mapHeight) / 2;
             for (let row = 0; row < raycast_corridors_simulation_1.RAYCAST_ROWS; row += 1)
                 for (let column = 0; column < raycast_corridors_simulation_1.RAYCAST_COLUMNS; column += 1) {
-                    const tile = raycast_corridors_simulation_1.RAYCAST_MAP[row][column];
+                    const tile = raycast_corridors_simulation_1.RAYCAST_MISSIONS[state.mapIndex].map[row][column];
                     const key = (0, raycast_corridors_simulation_1.pointKey)(column, row);
                     const cellX = originX + column * tileSize;
                     const cellY = originY + row * tileSize;
@@ -10734,7 +11344,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
   __modules["games/raycast-corridors/simulation/raycast-corridors-simulation"] = (module, exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.RaycastCorridorsSimulation = exports.RAYCAST_KEYS_TOTAL = exports.RAYCAST_TERMINALS_REQUIRED = exports.RAYCAST_ROWS = exports.RAYCAST_COLUMNS = exports.RAYCAST_MAP = void 0;
+    exports.RaycastCorridorsSimulation = exports.RAYCAST_MISSIONS = exports.RAYCAST_KEYS_TOTAL = exports.RAYCAST_TERMINALS_REQUIRED = exports.RAYCAST_ROWS = exports.RAYCAST_COLUMNS = exports.RAYCAST_MAP = void 0;
     exports.castRay = castRay;
     exports.castView = castView;
     exports.tileAt = tileAt;
@@ -10762,6 +11372,51 @@ semente aleatória, capturas, tempo e jogada anterior`;
         '#.........#....H.....E.#',
         '########################',
     ];
+    const RAYCAST_MAP_ARCHIVE = [
+        '########################',
+        '#S......#..............#',
+        '#.####..#.######.#####.#',
+        '#....#..#....K.#.....#.#',
+        '###..#..####...#####.#.#',
+        '#....#.......#.....#...#',
+        '#.####.#####.#.###.###.#',
+        '#......#...D.#...#.....#',
+        '#.######.##T.###.#.###.#',
+        '#........##....#.#...#.#',
+        '#.######.#####.#.###.#.#',
+        '#T.....#....H..#.....#.#',
+        '#####..#.#####.#####.#.#',
+        '#....K.#.....#.....#...#',
+        '#.######.###.#####.###.#',
+        '#....D.....#....T......#',
+        '#..H.......#..........E#',
+        '########################',
+    ];
+    const RAYCAST_MAP_CORE = [
+        '########################',
+        '#S....#................#',
+        '#.##..#.######.#######.#',
+        '#..K..#....T.#.......#.#',
+        '####.#####.#.#####.#.#.#',
+        '#....#.....#.....#.#...#',
+        '#.##.#.#########.#.###.#',
+        '#.#..D.....#.....#.....#',
+        '#.#.#####T.#.#####.###.#',
+        '#.#.....#..#.....#...#.#',
+        '#.#####.#.#####.###.#..#',
+        '#K....#.#..H..#.....##.#',
+        '#####.#.#######.###....#',
+        '#T..#.#....K....#.###..#',
+        '#.#.#.#######.#.#...#..#',
+        '#...D.....T...#...H....#',
+        '#.............#.......E#',
+        '########################',
+    ];
+    exports.RAYCAST_MISSIONS = [
+        { id: 'gateway', title: 'Operação 1 · Nó de Entrada', map: exports.RAYCAST_MAP, start: { x: 1.5, y: 1.5, angle: 0 }, keysRequired: 2, terminalsRequired: 3 },
+        { id: 'archive', title: 'Operação 2 · Arquivo Submerso', map: RAYCAST_MAP_ARCHIVE, start: { x: 1.5, y: 1.5, angle: 0 }, keysRequired: 2, terminalsRequired: 3 },
+        { id: 'spectral-core', title: 'Operação 3 · Núcleo Espectral', map: RAYCAST_MAP_CORE, start: { x: 1.5, y: 1.5, angle: 0 }, keysRequired: 3, terminalsRequired: 4 },
+    ];
     exports.RAYCAST_COLUMNS = exports.RAYCAST_MAP[0].length;
     exports.RAYCAST_ROWS = exports.RAYCAST_MAP.length;
     exports.RAYCAST_TERMINALS_REQUIRED = 3;
@@ -10783,7 +11438,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         }
         start() {
             if (this.#state.status === 'ready')
-                this.#state = { ...this.#state, status: 'playing', message: 'Localize duas chaves, ative três terminais e alcance a extração.' };
+                this.#state = { ...this.#state, status: 'playing', message: `Inicie ${exports.RAYCAST_MISSIONS[this.#state.mapIndex].title}: encontre chaves, ative terminais e alcance a extração.` };
         }
         restart(difficulty = this.#state.difficulty) {
             this.#state = initialState(difficulty);
@@ -10809,7 +11464,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const targetX = Math.floor(this.#state.player.x + Math.cos(this.#state.player.angle) * 0.85);
             const targetY = Math.floor(this.#state.player.y + Math.sin(this.#state.player.angle) * 0.85);
             const key = pointKey(targetX, targetY);
-            const tile = tileAt(targetX, targetY);
+            const tile = tileAt(targetX, targetY, this.#state.mapIndex);
             if (tile === 'D' && !this.#state.openedDoors.includes(key)) {
                 const availableKeys = this.#state.keys.length - this.#state.openedDoors.length;
                 if (availableKeys <= 0) {
@@ -10821,14 +11476,15 @@ semente aleatória, capturas, tempo e jogada anterior`;
             }
             else if (tile === 'T' && !this.#state.activeTerminals.includes(key)) {
                 const activeTerminals = [...this.#state.activeTerminals, key];
-                const unlocked = activeTerminals.length >= exports.RAYCAST_TERMINALS_REQUIRED && this.#state.activeTerminals.length < exports.RAYCAST_TERMINALS_REQUIRED;
+                const required = exports.RAYCAST_MISSIONS[this.#state.mapIndex].terminalsRequired;
+                const unlocked = activeTerminals.length >= required && this.#state.activeTerminals.length < required;
                 this.#state = {
                     ...this.#state,
                     activeTerminals,
                     checkpoint: { ...this.#state.player },
                     score: this.#state.score + 350,
                     remainingMs: Math.min(DIFFICULTIES[this.#state.difficulty].timeMs, this.#state.remainingMs + 18_000),
-                    message: unlocked ? 'Todos os terminais ativos: a rota de extração foi liberada.' : `Terminal ${activeTerminals.length}/${exports.RAYCAST_TERMINALS_REQUIRED} sincronizado e salvo como checkpoint.`,
+                    message: unlocked ? 'Todos os terminais ativos: a rota de extração foi liberada.' : `Terminal ${activeTerminals.length}/${required} sincronizado e salvo como checkpoint.`,
                 };
                 events.push('terminal-activated');
                 if (unlocked)
@@ -10861,18 +11517,18 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 const distance = direction * spec.moveSpeed * dt;
                 const nextX = x + Math.cos(angle) * distance;
                 const nextY = y + Math.sin(angle) * distance;
-                if (!isSolid(nextX, y, state.openedDoors))
+                if (!isSolid(nextX, y, state.openedDoors, state.mapIndex))
                     x = nextX;
-                if (!isSolid(x, nextY, state.openedDoors))
+                if (!isSolid(x, nextY, state.openedDoors, state.mapIndex))
                     y = nextY;
             }
             state = { ...state, player: { x, y, angle }, steps: state.steps + (direction !== 0 ? 1 : 0) };
             const cellX = Math.floor(x);
             const cellY = Math.floor(y);
             const cellKey = pointKey(cellX, cellY);
-            const tile = tileAt(cellX, cellY);
+            const tile = tileAt(cellX, cellY, state.mapIndex);
             if (tile === 'K' && !state.keys.includes(cellKey)) {
-                state = { ...state, keys: [...state.keys, cellKey], score: state.score + 225, message: `Chave ${state.keys.length + 1}/${exports.RAYCAST_KEYS_TOTAL} coletada.` };
+                state = { ...state, keys: [...state.keys, cellKey], score: state.score + 225, message: `Chave ${state.keys.length + 1}/${exports.RAYCAST_MISSIONS[state.mapIndex].keysRequired} coletada.` };
                 events.push('key-collected');
             }
             if (tile === 'H' && state.damageCooldownMs <= 0 && hazardActive(state.elapsedMs, spec.hazardPeriodMs)) {
@@ -10888,12 +11544,33 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 }
             }
             if (tile === 'E') {
-                if (state.activeTerminals.length >= exports.RAYCAST_TERMINALS_REQUIRED) {
-                    state = { ...state, status: 'won', score: state.score + 1200 + Math.floor(state.remainingMs / 100), message: 'Extração concluída: o mapa 2D gerou uma missão completa em primeira pessoa.' };
-                    events.push('finished');
+                const mission = exports.RAYCAST_MISSIONS[state.mapIndex];
+                if (state.activeTerminals.length >= mission.terminalsRequired && state.keys.length >= mission.keysRequired) {
+                    if (state.mapIndex < exports.RAYCAST_MISSIONS.length - 1) {
+                        const nextIndex = state.mapIndex + 1;
+                        const nextMission = exports.RAYCAST_MISSIONS[nextIndex];
+                        state = {
+                            ...state,
+                            mapIndex: nextIndex,
+                            player: { ...nextMission.start },
+                            checkpoint: { ...nextMission.start },
+                            keys: [], openedDoors: [], activeTerminals: [],
+                            remainingMs: DIFFICULTIES[state.difficulty].timeMs,
+                            score: state.score + 1400 + Math.floor(state.remainingMs / 120),
+                            message: `${mission.title} concluída. Iniciando ${nextMission.title}.`,
+                            damageCooldownMs: 1200,
+                        };
+                        events.push('mission-complete', 'map-changed');
+                    }
+                    else {
+                        state = { ...state, status: 'won', score: state.score + 2200 + Math.floor(state.remainingMs / 100), message: 'As três operações foram concluídas. Complexo Raycast estabilizado.' };
+                        events.push('finished');
+                    }
                 }
                 else {
-                    state = { ...state, message: `Extração bloqueada: faltam ${exports.RAYCAST_TERMINALS_REQUIRED - state.activeTerminals.length} terminais.` };
+                    const missingTerminals = Math.max(0, mission.terminalsRequired - state.activeTerminals.length);
+                    const missingKeys = Math.max(0, mission.keysRequired - state.keys.length);
+                    state = { ...state, message: `Extração bloqueada: faltam ${missingTerminals} terminais e ${missingKeys} chaves.` };
                 }
             }
             if (state.remainingMs <= 0 && state.status === 'playing') {
@@ -10904,15 +11581,18 @@ semente aleatória, capturas, tempo e jogada anterior`;
             return events;
         }
         restore(state) {
-            if (state.schemaVersion !== 1)
+            if (state.schemaVersion !== 1 && state.schemaVersion !== 2)
                 throw new Error('Save dos Corredores Raycast incompatível');
             if (!(state.difficulty in DIFFICULTIES))
                 throw new Error('Dificuldade salva inválida');
-            if (!['ready', 'playing', 'won', 'lost'].includes(state.status))
+            const migrated = state.schemaVersion === 1 ? { ...state, schemaVersion: 2, mapIndex: 0 } : state;
+            if (migrated.mapIndex < 0 || migrated.mapIndex >= exports.RAYCAST_MISSIONS.length)
+                throw new Error('Operação salva inválida');
+            if (!['ready', 'playing', 'won', 'lost'].includes(migrated.status))
                 throw new Error('Estado salvo inválido');
-            if (isSolid(state.player.x, state.player.y, state.openedDoors))
+            if (isSolid(migrated.player.x, migrated.player.y, migrated.openedDoors, migrated.mapIndex))
                 throw new Error('Posição salva inválida');
-            this.#state = cloneState(state);
+            this.#state = cloneState(migrated);
         }
     }
     exports.RaycastCorridorsSimulation = RaycastCorridorsSimulation;
@@ -10943,7 +11623,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 mapY += stepY;
                 side = 'horizontal';
             }
-            tile = tileAt(mapX, mapY);
+            tile = tileAt(mapX, mapY, state.mapIndex);
             if (tile === '#' || (tile === 'D' && !state.openedDoors.includes(pointKey(mapX, mapY)))) {
                 distance = side === 'vertical'
                     ? (mapX - posX + (1 - stepX) / 2) / (Math.abs(dirX) < 1e-9 ? 1e-9 : dirX)
@@ -10973,15 +11653,16 @@ semente aleatória, capturas, tempo e jogada anterior`;
             return castRay(state, state.player.angle - fov / 2 + t * fov, state.player.angle);
         });
     }
-    function tileAt(column, row) {
+    function tileAt(column, row, mapIndex = 0) {
         if (row < 0 || row >= exports.RAYCAST_ROWS || column < 0 || column >= exports.RAYCAST_COLUMNS)
             return '#';
-        return exports.RAYCAST_MAP[row]?.[column] ?? '#';
+        const map = exports.RAYCAST_MISSIONS[mapIndex]?.map ?? exports.RAYCAST_MAP;
+        return map[row]?.[column] ?? '#';
     }
     function pointKey(column, row) {
         return `${column},${row}`;
     }
-    function isSolid(x, y, openedDoors) {
+    function isSolid(x, y, openedDoors, mapIndex = 0) {
         const radius = 0.2;
         const samples = [
             [x - radius, y - radius], [x + radius, y - radius],
@@ -10990,7 +11671,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         return samples.some(([sampleX, sampleY]) => {
             const column = Math.floor(sampleX);
             const row = Math.floor(sampleY);
-            const tile = tileAt(column, row);
+            const tile = tileAt(column, row, mapIndex);
             return tile === '#' || (tile === 'D' && !openedDoors.includes(pointKey(column, row)));
         });
     }
@@ -11002,11 +11683,13 @@ semente aleatória, capturas, tempo e jogada anterior`;
         return elapsedMs % periodMs < periodMs * 0.48;
     }
     function initialState(difficulty) {
+        const mission = exports.RAYCAST_MISSIONS[0];
         return {
-            schemaVersion: 1,
+            schemaVersion: 2,
             difficulty,
+            mapIndex: 0,
             status: 'ready',
-            player: { ...START },
+            player: { ...mission.start },
             moveForward: false,
             moveBackward: false,
             turnLeft: false,
@@ -11014,7 +11697,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             keys: [],
             openedDoors: [],
             activeTerminals: [],
-            checkpoint: { ...START },
+            checkpoint: { ...mission.start },
             lives: DIFFICULTIES[difficulty].lives,
             score: 0,
             elapsedMs: 0,
@@ -11133,7 +11816,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
       interagir com o console principal
       concluir a campanha e calcular a pontuação final`;
     exports.ROOM_QUEST_COMPARISON = [
-        ['Mundo', 'Salas conectadas e labirintos representavam um reino maior que a tela', 'Oito salas autorais organizadas como grafo com múltiplas rotas'],
+        ['Mundo', 'Salas conectadas e labirintos representavam um reino maior que a tela', 'Doze salas autorais organizadas como grafo com múltiplas rotas'],
         ['Objetos', 'Chaves e objetos alteravam as possibilidades de exploração', 'Inventário persistente com chave, fusível, engrenagem, prisma e núcleo'],
         ['Condições', 'Portas e castelos dependiam de objetos ou estados', 'Saídas consultam itens e flags globais antes de mudar de sala'],
         ['Persistência', 'O cartucho precisava representar o mundo com poucos dados', 'Save serializável preserva sala, itens, flags, visitas e entidades'],
@@ -11182,8 +11865,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 { id: 'observatory-east', column: 15, row: 5, targetRoom: 'gallery', targetPosition: { column: 1, row: 5 }, direction: 'right', label: 'Galeria Central' },
             ],
             entities: [
-                { id: 'observatory-console', column: 8, row: 4, type: 'goal', label: 'Console de restauração', requiresItem: 'memory-core', score: 2500, message: 'O Núcleo de Memória foi reinserido. A rede histórica está restaurada.' },
-                { id: 'observatory-map', column: 2, row: 2, type: 'lore', label: 'Mapa do complexo', score: 100, message: 'O complexo forma um grafo de oito salas. Portas e terminais alteram o caminho disponível.' },
+                { id: 'observatory-console', column: 8, row: 4, type: 'goal', label: 'Console de restauração', requiresItem: 'memory-core', requiresFlag: 'system-sealed', score: 3200, message: 'O Núcleo de Memória foi reinserido e a malha de doze salas está estabilizada. A rede histórica foi restaurada.' },
+                { id: 'observatory-map', column: 2, row: 2, type: 'lore', label: 'Mapa do complexo', score: 100, message: 'O complexo forma um grafo de doze salas. Portas, terminais e flags alteram o caminho disponível.' },
             ],
         },
         gallery: {
@@ -11205,6 +11888,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 { id: 'gallery-south', column: 8, row: 9, targetRoom: 'garden', targetPosition: { column: 8, row: 1 }, direction: 'down', label: 'Jardim de Circuitos' },
                 { id: 'gallery-north', column: 8, row: 0, targetRoom: 'archive', targetPosition: { column: 8, row: 8 }, direction: 'up', label: 'Arquivo Submerso', requiresItem: 'copper-key' },
                 { id: 'gallery-vault', column: 1, row: 1, targetRoom: 'vault', targetPosition: { column: 13, row: 8 }, direction: 'up', label: 'Cofre de Memória', requiresFlags: ['power-online', 'signal-aligned'] },
+                { id: 'gallery-relay', column: 14, row: 8, targetRoom: 'relay-hall', targetPosition: { column: 1, row: 5 }, direction: 'right', label: 'Relé de Rede', requiresFlag: 'power-online' },
             ],
             entities: [
                 { id: 'gallery-plaque', column: 8, row: 5, type: 'lore', label: 'Placa central', score: 100, message: 'Cada sala preserva seu estado: itens coletados, portas abertas e terminais ativados continuam alterados.' },
@@ -11320,6 +12004,93 @@ semente aleatória, capturas, tempo e jogada anterior`;
             entities: [
                 { id: 'signal-terminal', column: 13, row: 2, type: 'terminal', label: 'Mecanismo de alinhamento', requiresItem: 'signal-gear', grantsFlag: 'signal-aligned', score: 600, message: 'Engrenagem acoplada. A torre enviou o padrão correto ao cofre.' },
                 { id: 'tower-lore', column: 12, row: 7, type: 'lore', label: 'Antena histórica', score: 100, message: 'As salas não formam uma sequência linear: o jogador escolhe a ordem e o grafo orienta a exploração.' },
+            ],
+        },
+        'relay-hall': {
+            id: 'relay-hall',
+            title: 'Relé de Rede',
+            subtitle: 'Sincronize os repetidores para abrir a ala de refrigeração.',
+            accent: 0x5fffd7,
+            background: 0x061713,
+            start: { column: 1, row: 5 },
+            obstacles: points([
+                { column: 4, row: 2 }, { column: 4, row: 3 }, { column: 4, row: 6 }, { column: 4, row: 7 },
+                { column: 8, row: 3 }, { column: 8, row: 4 }, { column: 8, row: 5 },
+                { column: 11, row: 6 }, { column: 12, row: 6 },
+            ]),
+            hazards: [],
+            exits: [
+                { id: 'relay-west', column: 0, row: 5, targetRoom: 'gallery', targetPosition: { column: 13, row: 8 }, direction: 'left', label: 'Galeria Central' },
+                { id: 'relay-east', column: 15, row: 5, targetRoom: 'cooling-lab', targetPosition: { column: 1, row: 5 }, direction: 'right', label: 'Laboratório de Refrigeração', requiresFlag: 'relay-synced' },
+            ],
+            entities: [
+                { id: 'relay-terminal', column: 12, row: 3, type: 'terminal', label: 'Sincronizador de relé', requiresItem: 'signal-gear', grantsFlag: 'relay-synced', score: 650, message: 'Relés sincronizados. A ala de refrigeração recebeu o padrão correto.' },
+                { id: 'relay-lore', column: 6, row: 7, type: 'lore', label: 'Painel de topologia', score: 120, message: 'A expansão usa o mesmo estado global: novas salas consultam flags criadas em setores anteriores.' },
+            ],
+        },
+        'cooling-lab': {
+            id: 'cooling-lab',
+            title: 'Laboratório de Refrigeração',
+            subtitle: 'Estabilize a temperatura antes de seguir para o diagnóstico.',
+            accent: 0x7ac7ff,
+            background: 0x07131d,
+            start: { column: 1, row: 5 },
+            obstacles: points([
+                { column: 5, row: 2 }, { column: 6, row: 2 }, { column: 9, row: 2 }, { column: 10, row: 2 },
+                { column: 5, row: 7 }, { column: 6, row: 7 }, { column: 9, row: 7 }, { column: 10, row: 7 },
+                { column: 12, row: 4 }, { column: 12, row: 5 },
+            ]),
+            hazards: points([{ column: 7, row: 4 }, { column: 8, row: 4 }, { column: 7, row: 5 }, { column: 8, row: 5 }]),
+            exits: [
+                { id: 'cooling-west', column: 0, row: 5, targetRoom: 'relay-hall', targetPosition: { column: 14, row: 5 }, direction: 'left', label: 'Relé de Rede' },
+                { id: 'cooling-east', column: 15, row: 5, targetRoom: 'diagnostic-bay', targetPosition: { column: 1, row: 5 }, direction: 'right', label: 'Baia de Diagnóstico', requiresFlag: 'cooling-online' },
+            ],
+            entities: [
+                { id: 'cooling-terminal', column: 12, row: 7, type: 'terminal', label: 'Controle térmico', requiresFlag: 'power-online', grantsFlag: 'cooling-online', score: 700, message: 'Refrigeração estabilizada. O núcleo pode operar sob carga prolongada.' },
+                { id: 'cooling-lore', column: 3, row: 2, type: 'lore', label: 'Sensor térmico', score: 120, message: 'O estado térmico funciona como pré-condição lógica para liberar a próxima transição.' },
+            ],
+        },
+        'diagnostic-bay': {
+            id: 'diagnostic-bay',
+            title: 'Baia de Diagnóstico',
+            subtitle: 'Cruze os estados anteriores e valide a malha.',
+            accent: 0xff9d5f,
+            background: 0x1a0d07,
+            start: { column: 1, row: 5 },
+            obstacles: points([
+                { column: 4, row: 2 }, { column: 5, row: 2 }, { column: 10, row: 2 }, { column: 11, row: 2 },
+                { column: 4, row: 7 }, { column: 5, row: 7 }, { column: 10, row: 7 }, { column: 11, row: 7 },
+                { column: 7, row: 4 }, { column: 8, row: 4 },
+            ]),
+            hazards: [],
+            exits: [
+                { id: 'diagnostic-west', column: 0, row: 5, targetRoom: 'cooling-lab', targetPosition: { column: 14, row: 5 }, direction: 'left', label: 'Laboratório de Refrigeração' },
+                { id: 'diagnostic-east', column: 15, row: 5, targetRoom: 'core-chamber', targetPosition: { column: 1, row: 5 }, direction: 'right', label: 'Câmara do Núcleo', requiresFlags: ['relay-synced', 'cooling-online'] },
+            ],
+            entities: [
+                { id: 'diagnostic-terminal', column: 12, row: 4, type: 'terminal', label: 'Autodiagnóstico', requiresFlag: 'cooling-online', grantsFlag: 'diagnostics-passed', score: 750, message: 'Autodiagnóstico concluído. A malha está pronta para receber o selo final.' },
+                { id: 'diagnostic-lore', column: 3, row: 7, type: 'lore', label: 'Log de testes', score: 120, message: 'A sequência demonstra validação de pré-condições, persistência e transições entre estados.' },
+            ],
+        },
+        'core-chamber': {
+            id: 'core-chamber',
+            title: 'Câmara do Núcleo',
+            subtitle: 'Aplique o selo de estabilidade antes de retornar ao Observatório.',
+            accent: 0xf3f5ff,
+            background: 0x0e1018,
+            start: { column: 1, row: 5 },
+            obstacles: points([
+                { column: 5, row: 2 }, { column: 6, row: 2 }, { column: 9, row: 2 }, { column: 10, row: 2 },
+                { column: 5, row: 7 }, { column: 6, row: 7 }, { column: 9, row: 7 }, { column: 10, row: 7 },
+                { column: 7, row: 4 }, { column: 8, row: 4 },
+            ]),
+            hazards: [],
+            exits: [
+                { id: 'core-west', column: 0, row: 5, targetRoom: 'diagnostic-bay', targetPosition: { column: 14, row: 5 }, direction: 'left', label: 'Baia de Diagnóstico' },
+            ],
+            entities: [
+                { id: 'core-seal-terminal', column: 12, row: 5, type: 'terminal', label: 'Selo de estabilidade', requiresFlag: 'diagnostics-passed', grantsFlag: 'system-sealed', score: 900, message: 'Selo aplicado. Retorne ao Observatório e reinsira o Núcleo de Memória.' },
+                { id: 'core-lore', column: 3, row: 2, type: 'lore', label: 'Registro final', score: 150, message: 'A campanha agora conecta doze salas em um grafo de dependências, itens e flags persistentes.' },
             ],
         },
         vault: {
@@ -11597,6 +12368,14 @@ semente aleatória, capturas, tempo e jogada anterior`;
             graphics.clear();
             graphics.fillStyle(0x02040a, 1);
             graphics.fillRect(0, 0, width, height);
+            if (!historical) {
+                graphics.fillStyle(room.accent, reduced ? .025 : .06);
+                graphics.fillCircle(width * .16, height * .2, Math.min(width, height) * .35);
+                graphics.fillStyle(room.accent, reduced ? .02 : .045);
+                graphics.fillCircle(width * .82, height * .72, Math.min(width, height) * .42);
+                graphics.fillStyle(0x000000, .34);
+                graphics.fillRoundedRect(originX + 3, originY + 8, roomWidth + 8, roomHeight + 8, 10);
+            }
             graphics.fillStyle(background, 1);
             graphics.fillRoundedRect(originX - 4, originY - 4, roomWidth + 8, roomHeight + 8, historical ? 0 : 8);
             for (let row = 0; row < room_quest_levels_1.ROOM_ROWS; row += 1) {
@@ -11638,6 +12417,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
             }
             const px = originX + (state.player.column + 0.5) * tile;
             const py = originY + (state.player.row + 0.5) * tile;
+            if (!historical) {
+                graphics.fillStyle(0x000000, .32);
+                graphics.fillEllipse(px, py + tile * .34, tile * .58, tile * .18);
+                graphics.fillStyle(0x7dfcff, reduced ? .06 : .12);
+                graphics.fillCircle(px, py, tile * .52);
+            }
             graphics.fillStyle(historical ? 0xffffff : 0x7dfcff, 1);
             graphics.fillRoundedRect(px - tile * 0.28, py - tile * 0.28, tile * 0.56, tile * 0.56, tile * 0.12);
             graphics.lineStyle(Math.max(1, tile * 0.06), historical ? 0x111111 : 0x03101d, 1);
@@ -11652,7 +12437,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             graphics.fillRoundedRect(originX, originY + roomHeight + 12, energyWidth, 12, 6);
             graphics.fillStyle(accent, 1);
             graphics.fillRoundedRect(originX, originY + roomHeight + 12, energyWidth * (state.energy / energyMax), 12, 6);
-            this.#title?.setText(`${room.title.toUpperCase()} · SALA ${state.visitedRooms.length}/8`);
+            this.#title?.setText(`${room.title.toUpperCase()} · SALA ${state.visitedRooms.length}/12`);
             this.#title?.setPosition(Math.max(20, originX), 18);
             this.#message?.setText(state.message);
             this.#message?.setPosition(Math.max(20, originX), originY + roomHeight + 36);
@@ -11680,6 +12465,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
         const x = originX + (entity.column + 0.5) * tile;
         const y = originY + (entity.row + 0.5) * tile;
         const color = historical ? 0xffffff : activated ? 0x77ff8f : entity.type === 'item' ? 0xffdb67 : entity.type === 'goal' ? 0x7dfcff : accent;
+        if (!historical) {
+            graphics.fillStyle(color, activated ? .05 : .11);
+            graphics.fillCircle(x, y, tile * .46);
+            graphics.fillStyle(0x000000, .26);
+            graphics.fillEllipse(x, y + tile * .34, tile * .48, tile * .14);
+        }
         if (entity.type === 'item') {
             graphics.fillStyle(color, 1);
             graphics.fillTriangle(x, y - tile * 0.3, x - tile * 0.28, y, x, y + tile * 0.3);
@@ -11805,7 +12596,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             return events;
         }
         restore(state) {
-            if (state.schemaVersion !== 1)
+            if (state.schemaVersion !== 1 && state.schemaVersion !== 2)
                 throw new Error('Save da Aventura de Salas incompatível');
             if (!(state.mode in MODES))
                 throw new Error('Modo salvo inválido');
@@ -11815,7 +12606,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 throw new Error('Estado salvo inválido');
             if (state.energy < 0 || state.steps < 0)
                 throw new Error('Progresso salvo inválido');
-            this.#state = cloneState(state);
+            const roomEntries = Object.fromEntries(room_quest_levels_1.ROOM_QUEST_ROOM_IDS.map((id) => [id, Number.isFinite(state.roomEntries?.[id]) ? state.roomEntries[id] : (id === state.roomId ? 1 : 0)]));
+            this.#state = cloneState({ ...state, schemaVersion: 2, roomEntries });
         }
         #move(state) {
             const direction = state.player.queuedDirection;
@@ -11840,7 +12632,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
                         events: ['door-locked'],
                     };
                 }
-                const roomEntries = { ...nextState.roomEntries, [exit.targetRoom]: nextState.roomEntries[exit.targetRoom] + 1 };
+                const roomEntries = { ...nextState.roomEntries, [exit.targetRoom]: (nextState.roomEntries[exit.targetRoom] ?? 0) + 1 };
                 const visitedRooms = nextState.visitedRooms.includes(exit.targetRoom) ? nextState.visitedRooms : [...nextState.visitedRooms, exit.targetRoom];
                 nextState = {
                     ...nextState,
@@ -11928,6 +12720,14 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 this.#state = { ...this.#state, message: 'O console aguarda o Núcleo de Memória guardado no cofre.' };
                 return ['door-locked'];
             }
+            if (entity.requiresFlag && !this.#state.flags.includes(entity.requiresFlag)) {
+                this.#state = { ...this.#state, message: 'A malha ainda não recebeu o selo de estabilidade da Câmara do Núcleo.' };
+                return ['door-locked'];
+            }
+            if (entity.requiresFlags?.some((flag) => !this.#state.flags.includes(flag))) {
+                this.#state = { ...this.#state, message: 'Ainda existem condições globais pendentes antes da restauração final.' };
+                return ['door-locked'];
+            }
             this.#state = {
                 ...this.#state,
                 status: 'victory',
@@ -11954,7 +12754,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const roomEntries = Object.fromEntries(room_quest_levels_1.ROOM_QUEST_ROOM_IDS.map((id) => [id, id === 'observatory' ? 1 : 0]));
             const start = room_quest_levels_1.ROOM_QUEST_ROOMS.observatory.start;
             return {
-                schemaVersion: 1,
+                schemaVersion: 2,
                 mode,
                 status: 'ready',
                 roomId: 'observatory',
@@ -12303,6 +13103,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
             graphics.fillStyle(historical ? 0x020a04 : 0x050914, 1);
             graphics.fillRect(0, 0, width, height);
             if (!historical && mode !== 'baixo') {
+                graphics.fillStyle(0x442a9a, mode === 'ultra' ? 0.12 : 0.065);
+                graphics.fillCircle(width * 0.2, height * 0.2, Math.min(width, height) * 0.34);
+                graphics.fillStyle(0x126d91, mode === 'ultra' ? 0.11 : 0.055);
+                graphics.fillCircle(width * 0.74, height * 0.7, Math.min(width, height) * 0.4);
+            }
+            if (!historical && mode !== 'baixo') {
                 graphics.fillStyle(0x7fefff, mode === 'ultra' ? 0.32 : 0.18);
                 const stars = mode === 'ultra' ? 80 : 34;
                 for (let index = 0; index < stars; index += 1) {
@@ -12310,6 +13116,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
                     const y = (index * 53 + 17) % Math.max(1, Math.floor(height));
                     graphics.fillCircle(x, y, index % 7 === 0 ? 1.5 : 0.7);
                 }
+            }
+            if (!historical) {
+                graphics.fillStyle(0x000000, 0.42);
+                graphics.fillRoundedRect(originX - 8, originY + 8, boardWidth + 16, boardHeight + 10, 10);
+                graphics.lineStyle(3, 0x49e7ff, mode === 'ultra' ? 0.24 : 0.12);
+                graphics.strokeRoundedRect(originX - 5, originY - 5, boardWidth + 10, boardHeight + 10, 8);
             }
             graphics.fillStyle(historical ? 0x031108 : 0x081226, 0.96);
             graphics.fillRect(originX, originY, boardWidth, boardHeight);
@@ -12340,8 +13152,16 @@ semente aleatória, capturas, tempo e jogada anterior`;
     exports.SpaceBlocksRuntime = SpaceBlocksRuntime;
     function drawCell(graphics, x, y, size, color, historical) {
         const inset = Math.max(1, Math.floor(size * 0.08));
+        if (!historical) {
+            graphics.fillStyle(0x000000, 0.28);
+            graphics.fillRect(x + inset + Math.max(1, size * 0.07), y + inset + Math.max(1, size * 0.08), size - inset * 2, size - inset * 2);
+        }
         graphics.fillStyle(color, historical ? 0.82 : 0.92);
         graphics.fillRect(x + inset, y + inset, size - inset * 2, size - inset * 2);
+        if (!historical) {
+            graphics.fillStyle(0xffffff, 0.17);
+            graphics.fillRect(x + inset * 1.5, y + inset * 1.5, size - inset * 3, Math.max(1, size * 0.09));
+        }
         graphics.lineStyle(Math.max(1, size * 0.045), historical ? 0xc7ffd5 : 0xffffff, historical ? 0.35 : 0.24);
         graphics.strokeRect(x + inset + 1, y + inset + 1, size - inset * 2 - 2, size - inset * 2 - 2);
     }
@@ -12718,17 +13538,17 @@ semente aleatória, capturas, tempo e jogada anterior`;
       conceder experiência e créditos ao derrotar o inimigo
       subir de nível quando a experiência atingir o limite
     
-    AO CONCLUIR AS DUAS MISSÕES:
-      liberar o passe para a Instalação do Núcleo
-      abrir a missão final
+    AO CONCLUIR AS MISSÕES DA VILA:
+      liberar o Arquivo de Ecos e recuperar o fragmento
+      sincronizar a Torre e então liberar a Instalação do Núcleo
     
     NO CONSOLE DO NÚCLEO:
       escolher PRESERVAR ou REINICIAR
       registrar um dos dois finais e concluir a campanha`;
     exports.STATE_QUEST_COMPARISON = [
-        ['Mundo', 'Tilemaps compactos representavam vilas, campos e masmorras', 'Três mapas autorais conectados, com visitas e mudanças persistentes'],
+        ['Mundo', 'Tilemaps compactos representavam vilas, campos e masmorras', 'Cinco mapas autorais conectados, com visitas e mudanças persistentes'],
         ['Personagem', 'Atributos numéricos definiam força e sobrevivência', 'HP, nível, experiência, ataque, defesa, créditos e equipamentos serializáveis'],
-        ['Missões', 'Diálogos e flags controlavam o avanço da narrativa', 'Três missões encadeadas, recompensas e estados locked/available/active/ready/completed'],
+        ['Missões', 'Diálogos e flags controlavam o avanço da narrativa', 'Cinco missões encadeadas, recompensas e estados locked/available/active/ready/completed'],
         ['Combate', 'Menus por turno tornavam decisões legíveis em hardware limitado', 'Ataque, defesa, poção, inimigos escalados por modo e progressão de nível'],
         ['Escolhas', 'Histórias lineares começaram a incorporar decisões e consequências', 'O Console do Núcleo oferece dois finais persistentes e claramente distintos'],
         ['Identidade', 'Obra comercial histórica de 1986', 'Mundo, personagens, monstros, narrativa, arte, áudio e código próprios'],
@@ -12789,6 +13609,34 @@ semente aleatória, capturas, tempo e jogada anterior`;
         '#................#',
         '##################',
     ];
+    const ARCHIVE_TILES = [
+        '##################',
+        '#................#',
+        '#..####....####..#',
+        '#................#',
+        '#....##....##....#',
+        '#....##....##....#',
+        '#................#',
+        '#..####....####..#',
+        '#................#',
+        '#................#',
+        '#................#',
+        '##################',
+    ];
+    const RELAY_TILES = [
+        '##################',
+        '#................#',
+        '#...###....###...#',
+        '#................#',
+        '#.##..........##.#',
+        '#.##...####...##.#',
+        '#......#..#......#',
+        '#......####......#',
+        '#................#',
+        '#................#',
+        '#................#',
+        '##################',
+    ];
     exports.STATE_QUEST_MAPS = {
         village: {
             id: 'village',
@@ -12825,7 +13673,47 @@ semente aleatória, capturas, tempo e jogada anterior`;
             ],
             exits: [
                 { id: 'wilds-to-village', column: 1, row: 9, targetMap: 'village', target: { column: 15, row: 9 }, label: 'Retorno à Vila de Itera' },
-                { id: 'wilds-to-core', column: 16, row: 9, targetMap: 'core', target: { column: 1, row: 9 }, label: 'Portão da Instalação', requiresFlag: 'facility-pass' },
+                { id: 'wilds-to-archive', column: 16, row: 9, targetMap: 'archive', target: { column: 1, row: 9 }, label: 'Portão do Arquivo de Ecos', requiresFlag: 'archive-pass' },
+            ],
+        },
+        archive: {
+            id: 'archive',
+            title: 'Arquivo de Ecos',
+            subtitle: 'Registros fragmentados repetem versões incompletas da história da vila.',
+            tiles: ARCHIVE_TILES,
+            start: { column: 1, row: 9 },
+            accent: 0x59d8ff,
+            background: 0x071426,
+            entities: [
+                { id: 'curator-nara', type: 'npc', column: 4, row: 3, label: 'Curadora Nara', color: 0x68dfff, questId: 'archive-recovery' },
+                { id: 'echo-wraith-a', type: 'enemy', column: 12, row: 3, label: 'Eco Corrompido A', color: 0x7a7cff, enemyId: 'echo-wraith-a' },
+                { id: 'echo-wraith-b', type: 'enemy', column: 14, row: 8, label: 'Eco Corrompido B', color: 0x9f69ff, enemyId: 'echo-wraith-b' },
+                { id: 'echo-shard', type: 'item', column: 4, row: 8, label: 'Fragmento de Eco', color: 0x62f6ff, itemId: 'echo-shard', questId: 'archive-recovery' },
+                { id: 'memory-cache', type: 'item', column: 15, row: 8, label: 'Cache de Memória opcional', color: 0xffdf72, itemId: 'memory-cache' },
+                { id: 'archive-potion', type: 'item', column: 10, row: 9, label: 'Poção de dados', color: 0xa97cff, itemId: 'potion' },
+            ],
+            exits: [
+                { id: 'archive-to-wilds', column: 1, row: 9, targetMap: 'wilds', target: { column: 15, row: 9 }, label: 'Retorno ao Campo de Ruído' },
+                { id: 'archive-to-relay', column: 16, row: 9, targetMap: 'relay', target: { column: 1, row: 9 }, label: 'Elevador para a Torre de Sincronização', requiresFlag: 'echo-restored' },
+            ],
+        },
+        relay: {
+            id: 'relay',
+            title: 'Torre de Sincronização',
+            subtitle: 'Uma rede vertical sincroniza sinais antes da passagem ao Núcleo.',
+            tiles: RELAY_TILES,
+            start: { column: 1, row: 9 },
+            accent: 0xffca58,
+            background: 0x201407,
+            entities: [
+                { id: 'relay-guard-a', type: 'enemy', column: 5, row: 3, label: 'Guardião de Fase', color: 0xff825f, enemyId: 'relay-guard-a' },
+                { id: 'relay-guard-b', type: 'enemy', column: 13, row: 8, label: 'Guardião de Clock', color: 0xffb95f, enemyId: 'relay-guard-b' },
+                { id: 'relay-console', type: 'console', column: 9, row: 3, label: 'Console de Sincronização', color: 0xffd45f, questId: 'relay-sync' },
+                { id: 'relay-potion', type: 'item', column: 15, row: 2, label: 'Poção de dados', color: 0xa97cff, itemId: 'potion' },
+            ],
+            exits: [
+                { id: 'relay-to-archive', column: 1, row: 9, targetMap: 'archive', target: { column: 15, row: 9 }, label: 'Retorno ao Arquivo de Ecos' },
+                { id: 'relay-to-core', column: 16, row: 9, targetMap: 'core', target: { column: 1, row: 9 }, label: 'Passagem para a Instalação do Núcleo', requiresFlag: 'facility-pass' },
             ],
         },
         core: {
@@ -12843,7 +13731,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 { id: 'core-potion', type: 'item', column: 15, row: 9, label: 'Poção de dados', color: 0xa97cff, itemId: 'potion' },
             ],
             exits: [
-                { id: 'core-to-wilds', column: 1, row: 9, targetMap: 'wilds', target: { column: 15, row: 9 }, label: 'Retorno ao Campo de Ruído' },
+                { id: 'core-to-relay', column: 1, row: 9, targetMap: 'relay', target: { column: 15, row: 9 }, label: 'Retorno à Torre de Sincronização' },
             ],
         },
     };
@@ -12851,6 +13739,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
         'glitch-a': { id: 'glitch-a', label: 'Glitch Alfa', hp: 15, attack: 5, defense: 1, xp: 28, gold: 5 },
         'glitch-b': { id: 'glitch-b', label: 'Glitch Beta', hp: 18, attack: 6, defense: 1, xp: 32, gold: 6 },
         'glitch-c': { id: 'glitch-c', label: 'Glitch Gama', hp: 21, attack: 7, defense: 2, xp: 38, gold: 7 },
+        'echo-wraith-a': { id: 'echo-wraith-a', label: 'Eco Corrompido A', hp: 23, attack: 7, defense: 2, xp: 40, gold: 8 },
+        'echo-wraith-b': { id: 'echo-wraith-b', label: 'Eco Corrompido B', hp: 26, attack: 8, defense: 3, xp: 45, gold: 9 },
+        'relay-guard-a': { id: 'relay-guard-a', label: 'Guardião de Fase', hp: 29, attack: 8, defense: 3, xp: 50, gold: 10 },
+        'relay-guard-b': { id: 'relay-guard-b', label: 'Guardião de Clock', hp: 32, attack: 9, defense: 4, xp: 55, gold: 11 },
         'sentinel-a': { id: 'sentinel-a', label: 'Sentinela Vetorial', hp: 28, attack: 8, defense: 3, xp: 48, gold: 10 },
         'sentinel-b': { id: 'sentinel-b', label: 'Sentinela de Estado', hp: 34, attack: 9, defense: 4, xp: 58, gold: 12 },
     };
@@ -13129,19 +14021,43 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const originY = width < 560 ? 98 : 82;
             const accent = historical ? 0xe8e8e8 : map.accent;
             graphics.clear();
-            graphics.fillStyle(0x02040b, 1);
-            graphics.fillRect(0, 0, width, height);
+            if (historical) {
+                graphics.fillStyle(0x020202, 1);
+                graphics.fillRect(0, 0, width, height);
+            }
+            else {
+                graphics.fillGradientStyle(0x02040b, 0x071225, 0x06101d, 0x02040b, 1);
+                graphics.fillRect(0, 0, width, height);
+                if (!low) {
+                    graphics.fillStyle(accent, 0.035);
+                    graphics.fillCircle(width * 0.16, height * 0.2, Math.max(90, width * 0.18));
+                    graphics.fillStyle(0x7968ff, 0.025);
+                    graphics.fillCircle(width * 0.82, height * 0.72, Math.max(100, width * 0.22));
+                }
+            }
+            graphics.fillStyle(0x000000, historical ? 0.55 : 0.42);
+            graphics.fillRoundedRect(originX - 11, originY - 8, mapWidth + 22, mapHeight + 23, historical ? 0 : 13);
             graphics.fillStyle(historical ? 0x090909 : map.background, 1);
             graphics.fillRoundedRect(originX - 5, originY - 5, mapWidth + 10, mapHeight + 10, historical ? 0 : 10);
+            if (!historical && !low) {
+                graphics.lineStyle(2, accent, 0.22);
+                graphics.strokeRoundedRect(originX - 5, originY - 5, mapWidth + 10, mapHeight + 10, 10);
+            }
             for (let row = 0; row < state_quest_world_1.STATE_QUEST_ROWS; row += 1) {
                 for (let column = 0; column < state_quest_world_1.STATE_QUEST_COLUMNS; column += 1) {
                     const symbol = map.tiles[row]?.[column] ?? '#';
                     const x = originX + column * tile;
                     const y = originY + row * tile;
                     if (symbol === '#') {
+                        if (!historical && !low) {
+                            graphics.fillStyle(0x02060b, 0.65);
+                            graphics.fillRect(x + tile * 0.10, y + tile * 0.14, tile * 0.84, tile * 0.84);
+                        }
                         graphics.fillStyle(historical ? 0x555555 : 0x17324d, 1);
                         graphics.fillRect(x + 1, y + 1, tile - 2, tile - 2);
                         if (!historical && !low) {
+                            graphics.fillStyle(0x3d7194, 0.32);
+                            graphics.fillRect(x + 2, y + 2, tile - 4, Math.max(2, tile * 0.08));
                             graphics.lineStyle(1, 0x315b7d, 0.7);
                             graphics.strokeRect(x + 3, y + 3, tile - 6, tile - 6);
                         }
@@ -13150,6 +14066,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
                         const checker = (row + column) % 2 === 0;
                         graphics.fillStyle(historical ? (checker ? 0x171717 : 0x1e1e1e) : (checker ? 0x0b1822 : 0x0d1d28), 1);
                         graphics.fillRect(x, y, tile, tile);
+                        if (!historical && !low) {
+                            graphics.lineStyle(1, 0x6fe8ff, 0.035);
+                            graphics.lineBetween(x, y + tile - 1, x + tile, y + tile - 1);
+                        }
                         if (symbol === '~') {
                             graphics.fillStyle(historical ? 0x777777 : 0x7a2e91, 0.8);
                             graphics.fillRect(x + tile * 0.12, y + tile * 0.38, tile * 0.76, tile * 0.24);
@@ -13170,6 +14090,14 @@ semente aleatória, capturas, tempo e jogada anterior`;
             });
             const playerX = originX + state.player.column * tile;
             const playerY = originY + state.player.row * tile;
+            if (!historical) {
+                graphics.fillStyle(0x000000, 0.42);
+                graphics.fillEllipse(playerX + tile / 2, playerY + tile * 0.78, tile * 0.64, tile * 0.22);
+                if (!low) {
+                    graphics.fillStyle(0x65f5c5, 0.15);
+                    graphics.fillCircle(playerX + tile / 2, playerY + tile / 2, tile * 0.52);
+                }
+            }
             graphics.fillStyle(historical ? 0xffffff : 0x65f5c5, 1);
             graphics.fillCircle(playerX + tile / 2, playerY + tile / 2, tile * 0.31);
             graphics.lineStyle(Math.max(1, tile * 0.07), historical ? 0x222222 : 0x07151b, 1);
@@ -13197,6 +14125,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
     exports.StateQuestRuntime = StateQuestRuntime;
     function drawEntity(graphics, entity, x, y, tile, historical) {
         const color = historical ? 0xd8d8d8 : entity.color;
+        if (!historical) {
+            graphics.fillStyle(0x000000, 0.34);
+            graphics.fillEllipse(x + tile / 2, y + tile * 0.78, tile * 0.62, tile * 0.2);
+            graphics.fillStyle(color, entity.type === 'enemy' ? 0.10 : 0.075);
+            graphics.fillCircle(x + tile / 2, y + tile / 2, tile * 0.48);
+        }
         if (entity.type === 'npc') {
             graphics.fillStyle(color, 1);
             graphics.fillCircle(x + tile / 2, y + tile * 0.42, tile * 0.24);
@@ -13352,6 +14286,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
     const QUEST_LABELS = {
         'light-source': 'Fonte de Luz',
         'lost-signal': 'Sinal Perdido',
+        'archive-recovery': 'Arquivo de Ecos',
+        'relay-sync': 'Sincronização da Torre',
         'core-choice': 'Decisão do Núcleo',
     };
     class StateQuestSimulation {
@@ -13486,8 +14422,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
             if (dialogue.context === 'complete-signal') {
                 if (!primary)
                     return this.#closeDialogue('Teo aguardará a confirmação para emitir o passe.');
-                const quests = { ...this.#state.quests, 'lost-signal': 'completed', 'core-choice': 'available' };
-                const flags = addUnique(addUnique(this.#state.flags, 'signal-restored'), 'facility-pass');
+                const quests = { ...this.#state.quests, 'lost-signal': 'completed', 'archive-recovery': 'available' };
+                const flags = addUnique(addUnique(this.#state.flags, 'signal-restored'), 'archive-pass');
                 const rewarded = this.#awardExperience({
                     ...this.#state,
                     status: 'playing',
@@ -13496,8 +14432,40 @@ semente aleatória, capturas, tempo e jogada anterior`;
                     flags,
                     equipment: { ...this.#state.equipment, armor: 'signal-shield' },
                     score: this.#state.score + 1200,
-                    message: 'Sinal restaurado. O Escudo de Sinal e o passe da instalação foram liberados.',
+                    message: 'Sinal restaurado. O Escudo de Sinal e o passe do Arquivo de Ecos foram liberados.',
                 }, 70);
+                this.#state = rewarded.state;
+                return rewarded.leveled ? ['quest-completed', 'level-up'] : ['quest-completed'];
+            }
+            if (dialogue.context === 'accept-archive') {
+                if (primary) {
+                    this.#state = { ...this.#state, status: 'playing', dialogue: undefined, quests: { ...this.#state.quests, 'archive-recovery': 'active' }, message: 'Missão Arquivo de Ecos iniciada: encontre o Fragmento de Eco no setor sul.' };
+                    return ['quest-started'];
+                }
+                return this.#closeDialogue('Nara manterá o arquivo aberto para quando você estiver pronto.');
+            }
+            if (dialogue.context === 'complete-archive') {
+                if (!primary)
+                    return this.#closeDialogue('Nara aguardará o Fragmento de Eco.');
+                const quests = { ...this.#state.quests, 'archive-recovery': 'completed', 'relay-sync': 'available' };
+                const flags = addUnique(this.#state.flags, 'echo-restored');
+                const rewarded = this.#awardExperience({ ...this.#state, status: 'playing', dialogue: undefined, quests, flags, inventory: { ...this.#state.inventory, echoShard: Math.max(0, (this.#state.inventory.echoShard ?? 0) - 1) }, score: this.#state.score + 1350, message: 'Arquivo restaurado. O elevador para a Torre de Sincronização foi liberado.' }, 80);
+                this.#state = rewarded.state;
+                return rewarded.leveled ? ['quest-completed', 'level-up'] : ['quest-completed'];
+            }
+            if (dialogue.context === 'accept-relay') {
+                if (primary) {
+                    this.#state = { ...this.#state, status: 'playing', dialogue: undefined, quests: { ...this.#state.quests, 'relay-sync': 'active' }, message: 'Missão Sincronização iniciada: neutralize os dois Guardiões da Torre.' };
+                    return ['quest-started'];
+                }
+                return this.#closeDialogue('O console aguardará a sincronização.');
+            }
+            if (dialogue.context === 'complete-relay') {
+                if (!primary)
+                    return this.#closeDialogue('A sincronização pode ser concluída quando você estiver pronto.');
+                const quests = { ...this.#state.quests, 'relay-sync': 'completed', 'core-choice': 'available' };
+                const flags = addUnique(addUnique(this.#state.flags, 'relay-stable'), 'facility-pass');
+                const rewarded = this.#awardExperience({ ...this.#state, status: 'playing', dialogue: undefined, quests, flags, score: this.#state.score + 1600, message: 'Torre sincronizada. A Instalação do Núcleo foi liberada.' }, 95);
                 this.#state = rewarded.state;
                 return rewarded.leveled ? ['quest-completed', 'level-up'] : ['quest-completed'];
             }
@@ -13536,7 +14504,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             return this.#closeDialogue(dialogue.text);
         }
         restore(state) {
-            if (state.schemaVersion !== 1)
+            if (state.schemaVersion !== 1 && state.schemaVersion !== 2)
                 throw new Error('Save do State Quest RPG incompatível');
             if (!(state.mode in MODE_SPECS))
                 throw new Error('Modo salvo inválido');
@@ -13546,7 +14514,25 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 throw new Error('Estado salvo inválido');
             if (state.player.hp < 0 || state.player.maxHp <= 0 || state.player.level < 1)
                 throw new Error('Atributos salvos inválidos');
-            this.#state = cloneState(state);
+            let migrated = state;
+            if (state.schemaVersion === 1) {
+                const oldCore = state.quests?.['core-choice'];
+                const legacyAtCore = oldCore === 'available' || oldCore === 'active' || oldCore === 'completed' || state.mapId === 'core';
+                migrated = {
+                    ...state,
+                    schemaVersion: 2,
+                    inventory: { ...state.inventory, echoShard: state.inventory?.echoShard ?? 0, memoryCache: state.inventory?.memoryCache ?? 0 },
+                    quests: {
+                        ...state.quests,
+                        'archive-recovery': legacyAtCore ? 'completed' : state.quests?.['lost-signal'] === 'completed' ? 'available' : 'locked',
+                        'relay-sync': legacyAtCore ? 'completed' : 'locked',
+                    },
+                    flags: legacyAtCore
+                        ? ['archive-pass', 'echo-restored', 'relay-stable', 'facility-pass'].reduce((flags, flag) => addUnique(flags, flag), [...state.flags])
+                        : [...state.flags],
+                };
+            }
+            this.#state = cloneState(migrated);
         }
         #move(state) {
             const direction = state.player.queuedDirection;
@@ -13575,7 +14561,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             if (exit) {
                 if (exit.requiresFlag && !nextState.flags.includes(exit.requiresFlag)) {
                     return {
-                        state: { ...state, player: { ...state.player, facing: direction }, message: `${exit.label} bloqueado: conclua a missão Sinal Perdido.` },
+                        state: { ...state, player: { ...state.player, facing: direction }, message: `${exit.label} bloqueado: conclua a missão necessária para esta passagem.` },
                         events: ['door-locked'],
                     };
                 }
@@ -13622,11 +14608,37 @@ semente aleatória, capturas, tempo e jogada anterior`;
                     return this.#openDialogue('Engenheiro Teo', 'O sinal foi estabilizado. Deseja receber o passe e o Escudo de Sinal?', 'CONCLUIR', 'DEPOIS', 'complete-signal');
                 return this.#openDialogue('Engenheiro Teo', 'O canal está limpo e o portão da instalação reconhece seu passe.', 'FECHAR', 'FECHAR', 'close');
             }
+            if (entity.id === 'curator-nara') {
+                const stage = this.#state.quests['archive-recovery'];
+                if (stage === 'locked')
+                    return this.#openDialogue('Curadora Nara', 'O Arquivo ainda não recebeu autorização da vila.', 'FECHAR', 'FECHAR', 'close');
+                if (stage === 'available')
+                    return this.#openDialogue('Curadora Nara', 'Um Fragmento de Eco pode reconstruir os registros quebrados. Você aceita recuperá-lo?', 'ACEITAR', 'AGORA NÃO', 'accept-archive');
+                if (stage === 'active')
+                    return this.#openDialogue('Curadora Nara', 'O Fragmento de Eco está no setor sul, além das estantes corrompidas.', 'ENTENDI', 'FECHAR', 'close');
+                if (stage === 'ready')
+                    return this.#openDialogue('Curadora Nara', 'O fragmento responde. Deseja restaurar o Arquivo e liberar a Torre?', 'RESTAURAR', 'DEPOIS', 'complete-archive');
+                return this.#openDialogue('Curadora Nara', 'Os registros estão íntegros e a Torre reconhece sua assinatura.', 'FECHAR', 'FECHAR', 'close');
+            }
             return this.#openDialogue('Curadora Aya', 'Posso restaurar seus pontos de vida por 5 créditos.', 'CURAR', 'CANCELAR', 'heal');
         }
-        #interactConsole(_entity) {
+        #interactConsole(entity) {
+            if (entity.id === 'relay-console') {
+                const stage = this.#state.quests['relay-sync'];
+                if (stage === 'locked')
+                    return this.#openDialogue('Console de Sincronização', 'Acesso negado: restaure primeiro o Arquivo de Ecos.', 'FECHAR', 'FECHAR', 'close');
+                if (stage === 'available')
+                    return this.#openDialogue('Console de Sincronização', 'Dois Guardiões interrompem o clock da Torre. Iniciar operação?', 'INICIAR', 'DEPOIS', 'accept-relay');
+                if (stage === 'active') {
+                    const remaining = 2 - this.#relayDefeated(this.#state);
+                    return this.#openDialogue('Console de Sincronização', `Ainda restam ${Math.max(0, remaining)} Guardiões ativos.`, 'FECHAR', 'FECHAR', 'close');
+                }
+                if (stage === 'ready')
+                    return this.#openDialogue('Console de Sincronização', 'Os canais estão livres. Aplicar sincronização final e liberar o Núcleo?', 'SINCRONIZAR', 'DEPOIS', 'complete-relay');
+                return this.#openDialogue('Console de Sincronização', 'Clock estável. A passagem ao Núcleo permanece liberada.', 'FECHAR', 'FECHAR', 'close');
+            }
             if (this.#state.quests['core-choice'] === 'locked') {
-                return this.#openDialogue('Console do Núcleo', 'Acesso negado. As missões da vila ainda não foram concluídas.', 'FECHAR', 'FECHAR', 'close');
+                return this.#openDialogue('Console do Núcleo', 'Acesso negado. As cinco missões da campanha ainda não foram concluídas.', 'FECHAR', 'FECHAR', 'close');
             }
             if (this.#state.quests['core-choice'] === 'available') {
                 this.#state = { ...this.#state, quests: { ...this.#state.quests, 'core-choice': 'active' } };
@@ -13640,22 +14652,40 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 this.#state = { ...this.#state, message: 'O Cristal de Luz está dormente. Converse com a Arquivista Lina.' };
                 return [];
             }
-            const inventory = {
-                ...this.#state.inventory,
-                [entity.itemId === 'potion' ? 'potion' : 'lightCrystal']: entity.itemId === 'potion' ? this.#state.inventory.potion + 1 : this.#state.inventory.lightCrystal + 1,
-            };
-            const quests = entity.itemId === 'light-crystal'
-                ? { ...this.#state.quests, 'light-source': 'ready' }
-                : this.#state.quests;
-            this.#state = {
-                ...this.#state,
-                inventory,
-                quests,
-                collectedEntities: [...this.#state.collectedEntities, entity.id],
-                score: this.#state.score + (entity.itemId === 'potion' ? 120 : 450),
-                message: entity.itemId === 'potion' ? 'Poção de dados coletada.' : 'Cristal de Luz coletado. Retorne à Arquivista Lina.',
-            };
-            return entity.itemId === 'light-crystal' ? ['item-collected', 'quest-ready'] : ['item-collected'];
+            if (entity.itemId === 'echo-shard' && this.#state.quests['archive-recovery'] !== 'active') {
+                this.#state = { ...this.#state, message: 'O Fragmento de Eco está protegido. Converse com a Curadora Nara.' };
+                return [];
+            }
+            let inventory = { ...this.#state.inventory };
+            let quests = this.#state.quests;
+            let message = 'Item coletado.';
+            let reward = 120;
+            let questReady = false;
+            if (entity.itemId === 'potion') {
+                inventory.potion += 1;
+                message = 'Poção de dados coletada.';
+            }
+            else if (entity.itemId === 'light-crystal') {
+                inventory.lightCrystal += 1;
+                quests = { ...quests, 'light-source': 'ready' };
+                message = 'Cristal de Luz coletado. Retorne à Arquivista Lina.';
+                reward = 450;
+                questReady = true;
+            }
+            else if (entity.itemId === 'echo-shard') {
+                inventory.echoShard = (inventory.echoShard ?? 0) + 1;
+                quests = { ...quests, 'archive-recovery': 'ready' };
+                message = 'Fragmento de Eco coletado. Retorne à Curadora Nara.';
+                reward = 600;
+                questReady = true;
+            }
+            else if (entity.itemId === 'memory-cache') {
+                inventory.memoryCache = (inventory.memoryCache ?? 0) + 1;
+                message = 'Cache de Memória opcional recuperado: bônus de exploração concedido.';
+                reward = 800;
+            }
+            this.#state = { ...this.#state, inventory, quests, collectedEntities: [...this.#state.collectedEntities, entity.id], score: this.#state.score + reward, message };
+            return questReady ? ['item-collected', 'quest-ready'] : ['item-collected'];
         }
         #beginCombat(state, enemy) {
             const scale = MODE_SPECS[state.mode].enemyScale;
@@ -13752,6 +14782,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 quests = { ...quests, 'lost-signal': 'ready' };
                 events.push('quest-ready');
             }
+            if (this.#state.quests['relay-sync'] === 'active' && this.#relayDefeated({ ...this.#state, defeatedEnemies }) >= 2) {
+                quests = { ...quests, 'relay-sync': 'ready' };
+                events.push('quest-ready');
+            }
             const rewarded = this.#awardExperience({
                 ...this.#state,
                 status: 'playing',
@@ -13762,7 +14796,9 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 score: this.#state.score + combat.xp * 12 + damage * 8,
                 message: quests['lost-signal'] === 'ready'
                     ? 'Os três Glitches foram neutralizados. Retorne ao Engenheiro Teo.'
-                    : `${combat.label} neutralizado. +${combat.xp} XP e +${combat.gold} créditos.`,
+                    : quests['relay-sync'] === 'ready'
+                        ? 'Os dois Guardiões foram neutralizados. Retorne ao Console de Sincronização.'
+                        : `${combat.label} neutralizado. +${combat.xp} XP e +${combat.gold} créditos.`,
             }, combat.xp);
             this.#state = rewarded.state;
             if (rewarded.leveled)
@@ -13807,10 +14843,13 @@ semente aleatória, capturas, tempo e jogada anterior`;
         #glitchesDefeated(state) {
             return ['glitch-a', 'glitch-b', 'glitch-c'].filter((id) => state.defeatedEnemies.includes(id)).length;
         }
+        #relayDefeated(state) {
+            return ['relay-guard-a', 'relay-guard-b'].filter((id) => state.defeatedEnemies.includes(id)).length;
+        }
         #initialState(mode) {
             const spec = MODE_SPECS[mode];
             return {
-                schemaVersion: 1,
+                schemaVersion: 2,
                 mode,
                 status: 'ready',
                 mapId: 'village',
@@ -13826,9 +14865,9 @@ semente aleatória, capturas, tempo e jogada anterior`;
                     defense: 2,
                     gold: 8,
                 },
-                inventory: { potion: spec.startingPotions, lightCrystal: 0 },
+                inventory: { potion: spec.startingPotions, lightCrystal: 0, echoShard: 0, memoryCache: 0 },
                 equipment: { weapon: 'training-blade', armor: 'cloth-coat' },
-                quests: { 'light-source': 'available', 'lost-signal': 'locked', 'core-choice': 'locked' },
+                quests: { 'light-source': 'available', 'lost-signal': 'locked', 'archive-recovery': 'locked', 'relay-sync': 'locked', 'core-choice': 'locked' },
                 flags: [],
                 collectedEntities: [],
                 defeatedEnemies: [],
@@ -13972,9 +15011,9 @@ semente aleatória, capturas, tempo e jogada anterior`;
     
     AO ALCANÇAR A SAÍDA:
       carregar a próxima fase
-      após a terceira fase, concluir o laboratório`;
+      após a sexta fase, concluir o laboratório`;
     exports.TRAP_LAB_COMPARISON = [
-        ['Cenário', 'Tiles reutilizados para formar fases laterais', 'Três mapas autorais orientados a dados e desenhados proceduralmente'],
+        ['Cenário', 'Tiles reutilizados para formar fases laterais', 'Seis mapas autorais orientados a dados e desenhados proceduralmente'],
         ['Movimento', 'Aceleração, salto e colisão ajustados ao hardware de 8 bits', 'Física determinística em TypeScript, separada do Phaser'],
         ['Progressão', 'Obstáculos ensinados pela ordem das fases', 'Checkpoints, portões, terminais e sequência lógica editável'],
         ['Tecnologia', 'Ricoh 2A03/6502, sprites e tilemaps', 'Tilemap serializável, subpassos de física e renderização dinâmica'],
@@ -14077,6 +15116,76 @@ semente aleatória, capturas, tempo e jogada anterior`;
             set(grid, 8, 29, 'C');
             set(grid, 6, 36, '*');
             set(grid, 12, 38, 'T');
+            set(grid, 12, 41, 'E');
+        }),
+        freezeLevel(4, 'Poço de impulso', 'Leia os vãos, use os dois checkpoints e programe o portão antes da reta final.', (grid) => {
+            fill(grid, 13, 0, 41, '#');
+            fill(grid, 13, 9, 10, '.');
+            fill(grid, 13, 22, 23, '.');
+            fill(grid, 10, 6, 11, '#');
+            fill(grid, 9, 15, 20, '#');
+            fill(grid, 11, 25, 30, '#');
+            fill(grid, 9, 34, 37, '#');
+            fill(grid, 9, 33, 33, 'G');
+            fill(grid, 10, 33, 33, 'G');
+            fill(grid, 11, 33, 33, 'G');
+            fill(grid, 12, 33, 33, 'G');
+            set(grid, 12, 2, 'S');
+            set(grid, 9, 8, '*');
+            set(grid, 8, 17, 'C');
+            set(grid, 12, 21, '^');
+            set(grid, 10, 27, '*');
+            set(grid, 12, 29, 'T');
+            set(grid, 12, 31, 'C');
+            set(grid, 8, 36, '*');
+            set(grid, 12, 40, 'E');
+        }),
+        freezeLevel(5, 'Corredor binário', 'Alterne saltos curtos e longos; o segundo terminal protege o trecho mais rápido.', (grid) => {
+            fill(grid, 13, 0, 41, '#');
+            fill(grid, 13, 7, 9, '.');
+            fill(grid, 13, 18, 20, '.');
+            fill(grid, 13, 29, 31, '.');
+            fill(grid, 11, 4, 7, '#');
+            fill(grid, 9, 11, 15, '#');
+            fill(grid, 10, 22, 26, '#');
+            fill(grid, 8, 32, 36, '#');
+            fill(grid, 8, 37, 37, 'G');
+            fill(grid, 9, 37, 37, 'G');
+            fill(grid, 10, 37, 37, 'G');
+            fill(grid, 11, 37, 37, 'G');
+            fill(grid, 12, 37, 37, 'G');
+            set(grid, 12, 2, 'S');
+            set(grid, 10, 6, '*');
+            set(grid, 8, 13, 'C');
+            set(grid, 12, 17, '^');
+            set(grid, 9, 24, '*');
+            set(grid, 12, 28, '^');
+            set(grid, 12, 34, 'T');
+            set(grid, 7, 34, 'C');
+            set(grid, 12, 40, 'E');
+        }),
+        freezeLevel(6, 'Núcleo de saída', 'Fase final: preserve vidas, registre os checkpoints e abra o último portão.', (grid) => {
+            fill(grid, 13, 0, 41, '#');
+            fill(grid, 13, 10, 12, '.');
+            fill(grid, 13, 25, 27, '.');
+            fill(grid, 10, 5, 9, '#');
+            fill(grid, 8, 14, 18, '#');
+            fill(grid, 11, 21, 24, '#');
+            fill(grid, 9, 28, 32, '#');
+            fill(grid, 7, 35, 39, '#');
+            fill(grid, 8, 40, 40, 'G');
+            fill(grid, 9, 40, 40, 'G');
+            fill(grid, 10, 40, 40, 'G');
+            fill(grid, 11, 40, 40, 'G');
+            fill(grid, 12, 40, 40, 'G');
+            set(grid, 12, 2, 'S');
+            set(grid, 9, 7, '*');
+            set(grid, 7, 16, 'C');
+            set(grid, 12, 20, '^');
+            set(grid, 10, 23, '*');
+            set(grid, 8, 30, 'C');
+            set(grid, 12, 33, 'T');
+            set(grid, 6, 37, '*');
             set(grid, 12, 41, 'E');
         }),
     ];
@@ -14320,6 +15429,25 @@ semente aleatória, capturas, tempo e jogada anterior`;
             graphics.clear();
             graphics.fillStyle(historical ? 0x050505 : 0x050914, 1);
             graphics.fillRect(0, 0, width, height);
+            if (!historical) {
+                graphics.fillStyle(0x0a1c33, low ? 0.22 : 0.48);
+                graphics.fillRect(0, 0, width, height * 0.32);
+                graphics.fillStyle(0x07111f, 0.82);
+                graphics.fillRect(0, height * 0.32, width, height * 0.68);
+                if (!low) {
+                    const pulse = 0.09 + (Math.sin(state.elapsedMs / 420) + 1) * 0.035;
+                    for (let index = 0; index < 9; index += 1) {
+                        const x = ((index * 173 + 61) % Math.max(1, Math.floor(width)));
+                        graphics.fillStyle(index % 3 === 0 ? secondary : primary, pulse);
+                        graphics.fillCircle(x, height * (0.12 + (index % 3) * 0.06), tileSize * (index % 2 ? 0.42 : 0.58));
+                    }
+                    graphics.lineStyle(Math.max(1, tileSize * 0.025), danger, 0.16);
+                    for (let stripe = -2; stripe < width / tileSize + 3; stripe += 1) {
+                        const x = stripe * tileSize * 1.2 - ((state.elapsedMs * 0.018) % (tileSize * 1.2));
+                        graphics.lineBetween(x, height - tileSize * 0.24, x + tileSize * 0.7, height);
+                    }
+                }
+            }
             if (!historical && !low) {
                 graphics.lineStyle(1, primary, 0.055);
                 for (let column = Math.floor(cameraX); column <= Math.ceil(cameraX + visibleColumns); column += 1) {
@@ -14385,6 +15513,14 @@ semente aleatória, capturas, tempo e jogada anterior`;
             }
             const playerX = worldX(state.player.x) - tileSize * 0.31;
             const playerY = worldY(state.player.y) - tileSize * 0.44;
+            if (!historical) {
+                graphics.fillStyle(0x000000, 0.36);
+                graphics.fillEllipse(playerX + tileSize * 0.31, playerY + tileSize * 0.93, tileSize * 0.72, tileSize * 0.22);
+                if (!low) {
+                    graphics.fillStyle(primary, 0.09);
+                    graphics.fillCircle(playerX + tileSize * 0.31, playerY + tileSize * 0.42, tileSize * 0.66);
+                }
+            }
             graphics.fillStyle(primary, 1);
             graphics.fillRoundedRect(playerX, playerY, tileSize * 0.62, tileSize * 0.88, tileSize * 0.12);
             graphics.fillStyle(historical ? 0x050505 : 0x050914, 1);
@@ -14856,12 +15992,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
     
     SE A ARENA FICAR VAZIA:
       iniciar a próxima onda
-      após a quinta onda, concluir a missão`;
+      após a onda-alvo da dificuldade, concluir a missão`;
     exports.VECTOR_FLEET_COMPARISON = [
         ['Representação', 'Linhas monocromáticas em display vetorial', 'Geometria vetorial responsiva com modos Histórico e DS'],
         ['Movimento', 'Rotação, propulsão e inércia', 'Simulação determinística com velocidade limitada'],
         ['Arena', 'Objetos reaparecem no lado oposto', 'Espaço toroidal preservado em qualquer resolução'],
-        ['Progressão', 'Sobrevivência e pontuação', 'Cinco ondas, três dificuldades e save independente'],
+        ['Progressão', 'Sobrevivência e pontuação', 'Cinco a sete ondas, três dificuldades e save independente'],
         ['Aprendizagem', 'Regras percebidas durante o jogo', 'Vetores, ângulos e colisões explicados em pseudocódigo'],
     ];
     
@@ -15067,6 +16203,14 @@ semente aleatória, capturas, tempo e jogada anterior`;
             graphics.clear();
             graphics.fillStyle(historical ? 0x010703 : 0x030710, 1);
             graphics.fillRect(0, 0, width, height);
+            if (!historical && mode !== 'baixo') {
+                graphics.fillStyle(0x2942a8, mode === 'ultra' ? 0.11 : 0.065);
+                graphics.fillCircle(width * 0.18, height * 0.24, minSize * 0.34);
+                graphics.fillStyle(0x7a3fd0, mode === 'ultra' ? 0.095 : 0.05);
+                graphics.fillCircle(width * 0.78, height * 0.68, minSize * 0.42);
+                graphics.fillStyle(0x1ad6c3, 0.035);
+                graphics.fillCircle(width * 0.52, height * 0.42, minSize * 0.28);
+            }
             if (mode !== 'baixo') {
                 const stars = mode === 'ultra' ? 110 : mode === 'alto' ? 72 : 38;
                 for (let index = 0; index < stars; index += 1) {
@@ -15101,6 +16245,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const left = pointAt(x, y, angle + 2.45, size);
             const notch = pointAt(x, y, angle + Math.PI, size * 0.42);
             const right = pointAt(x, y, angle - 2.45, size);
+            if (!historical) {
+                graphics.fillStyle(primary, 0.12);
+                graphics.fillTriangle(nose.x, nose.y, left.x, left.y, right.x, right.y);
+                graphics.fillStyle(accent, 0.08);
+                graphics.fillCircle(x, y, size * 1.25);
+            }
             graphics.lineStyle(historical ? 1.5 : 2, primary, 0.98);
             graphics.beginPath();
             graphics.moveTo(nose.x, nose.y);
@@ -15131,6 +16281,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
                     graphics.lineTo(px, py);
             }
             graphics.closePath();
+            if (!historical) {
+                graphics.fillStyle(asteroid.tier === 1 ? accent : primary, 0.055);
+                graphics.fillPath();
+            }
             graphics.strokePath();
         }
     }
@@ -15691,17 +16845,37 @@ semente aleatória, capturas, tempo e jogada anterior`;
                     graphics.lineBetween(0, y, width, y);
                 graphics.fillStyle(0x49e7ff, .08);
                 graphics.fillCircle(state.ballX * width, state.ballY * height, Math.max(18, width * .025));
+                if (graphicsMode !== 'baixo') {
+                    graphics.fillStyle(0x9273ff, graphicsMode === 'ultra' ? .09 : .045);
+                    graphics.fillEllipse(width * .5, height * .52, width * .68, height * .32);
+                    graphics.lineStyle(Math.max(1, scale), 0x49e7ff, .09);
+                    graphics.strokeEllipse(width * .5, height * .52, width * .62, height * .28);
+                }
             }
             graphics.lineStyle(Math.max(1, scale), historical ? 0xffffff : 0x23415f, 0.8);
             graphics.strokeRect(1, 1, width - 2, height - 2);
             for (let y = 76; y < height; y += 28)
                 graphics.lineBetween(width / 2, y, width / 2, Math.min(y + 13, height));
+            if (!historical) {
+                graphics.fillStyle(0x000000, .32);
+                graphics.fillRoundedRect(width * 0.05 + paddleWidth * .45, state.leftY * height - paddleHeight / 2 + 5, paddleWidth, paddleHeight, 4);
+                graphics.fillRoundedRect(width * 0.95 - paddleWidth + paddleWidth * .45, state.rightY * height - paddleHeight / 2 + 5, paddleWidth, paddleHeight, 4);
+            }
             graphics.fillStyle(historical ? 0xffffff : 0x49e7ff, 1);
             graphics.fillRoundedRect(width * 0.05, state.leftY * height - paddleHeight / 2, paddleWidth, paddleHeight, historical ? 0 : 3);
             graphics.fillStyle(historical ? 0xffffff : 0x9273ff, 1);
             graphics.fillRoundedRect(width * 0.95 - paddleWidth, state.rightY * height - paddleHeight / 2, paddleWidth, paddleHeight, historical ? 0 : 3);
+            const ballPx = state.ballX * width;
+            const ballPy = state.ballY * height;
+            const ballRadius = Math.max(5, width * 0.009);
+            if (!historical) {
+                graphics.fillStyle(0x49e7ff, graphicsMode === 'ultra' ? .16 : .1);
+                graphics.fillCircle(ballPx, ballPy, ballRadius * 3.2);
+                graphics.fillStyle(0xffffff, .22);
+                graphics.fillCircle(ballPx - ballRadius * .28, ballPy - ballRadius * .28, ballRadius * .42);
+            }
             graphics.fillStyle(0xffffff, 1);
-            graphics.fillCircle(state.ballX * width, state.ballY * height, Math.max(5, width * 0.009));
+            graphics.fillCircle(ballPx, ballPy, ballRadius);
             const rightLabel = state.opponent === 'local' ? 'J2' : 'CPU';
             this.#scoreText?.setPosition(width / 2, 12).setText(`J1 ${state.playerScore}  ·  ${rightLabel} ${state.cpuScore}  ·  META ${state.targetScore}`);
             const status = state.opponent === 'local'
@@ -16047,6 +17221,274 @@ semente aleatória, capturas, tempo e jogada anterior`;
     }
 
   };
+  __modules["games/mundo-plataforma-ds-360/index"] = (module, exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.createRuntime = createRuntime;
+    const runtime_1 = __require("games/mundo-plataforma-ds-360/runtime");
+    function createRuntime() { return new runtime_1.MundoPlataforma360Runtime(); }
+  };
+  __modules["games/mundo-plataforma-ds-360/runtime"] = (module, exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.MundoPlataforma360Runtime = void 0;
+    const QUALITY_MAP={automatico:'medio',baixo:'baixo',medio:'medio',alto:'alto',ultra:'ultra',historico:'baixo'};
+    class MundoPlataforma360Runtime {
+      id='mundo-plataforma-ds-360'; state='not-loaded'; #context; #frame; #listener; #summary={region:1,regions:5,orbs:0,beacons:0,mission:1,data:0,nodes:0,power:0,cargo:0,sync:0,lives:3,score:0,completed:false};
+      async mount(context){this.state='loading';this.#context=context;const frame=document.createElement('iframe');frame.className='duo-elementos-runtime-frame mundo-plataforma-360-runtime-frame';frame.title='Mundo Plataforma DS 360';frame.allow='fullscreen; gamepad';frame.setAttribute('allowfullscreen','');frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms allow-modals');const url=new URL('./games/mundo-plataforma-ds-360/index.html',window.location.href);url.searchParams.set('embed','1');url.searchParams.set('quality',QUALITY_MAP[context.graphicsMode]??'medio');url.searchParams.set('reduced',context.reducedMotion?'1':'0');url.searchParams.set('muted',context.muted?'1':'0');frame.src=url.toString();context.container.replaceChildren(frame);this.#frame=frame;await new Promise((resolve,reject)=>{const timeout=window.setTimeout(()=>reject(new Error('Mundo Plataforma DS 360 não respondeu ao carregamento.')),12000);this.#listener=(event)=>{if((location.origin!=='null'&&event.origin!==location.origin)||event.source!==frame.contentWindow||event.data?.source!=='fliperama-ds-mundo-plataforma-360')return;const type=String(event.data.type??'');const detail=event.data.detail&&typeof event.data.detail==='object'?event.data.detail:{};if(type==='ready'){window.clearTimeout(timeout);this.state='tutorial';context.onEvent?.({type:'ready',detail:{renderer:'three',runtime:this.id,regions:5,mode360:true,village:true,forest:true,industrial:true,tower:true}});resolve();}else if(type==='progress'||type==='region-change'||type==='mission'){this.#summary={...this.#summary,...detail};context.onEvent?.({type:'progress',detail:{event:type==='progress'?'world-360-progress':type,...detail}});}else if(type==='victory'){this.state='finished';this.#summary={...this.#summary,...detail,region:5,regions:5,missions:6,completed:true};context.onEvent?.({type:'finished',detail});}};window.addEventListener('message',this.#listener);frame.addEventListener('error',()=>{window.clearTimeout(timeout);reject(new Error('Falha ao carregar Mundo Plataforma DS 360.'));},{once:true});});}
+      start(){this.state='running';this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type:'start'},location.origin==='null'?'*':location.origin)}
+      pause(){this.state='paused';this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type:'pause'},location.origin==='null'?'*':location.origin)}
+      resume(){this.state='running';this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type:'resume'},location.origin==='null'?'*':location.origin)}
+      restart(){this.state='running';this.#summary={region:1,regions:5,orbs:0,beacons:0,mission:1,data:0,nodes:0,power:0,cargo:0,sync:0,lives:3,score:0,completed:false};this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type:'restart'},location.origin==='null'?'*':location.origin)}
+      getSnapshot(){return {...this.#summary}}
+      dispose(){if(this.#listener)window.removeEventListener('message',this.#listener);this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type:'shutdown'},location.origin==='null'?'*':location.origin);this.#frame?.remove();this.#frame=undefined;this.#listener=undefined;this.state='disposed'}
+    }
+    exports.MundoPlataforma360Runtime=MundoPlataforma360Runtime;
+  };
+  __modules["games/plataforma-poligonal-ds-3d/index"] = (module, exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.createRuntime = createRuntime;
+    const runtime_1 = __require("games/plataforma-poligonal-ds-3d/runtime");
+    function createRuntime() { return new runtime_1.PlataformaPoligonal3DRuntime(); }
+  };
+  __modules["games/plataforma-poligonal-ds-3d/runtime"] = (module, exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.PlataformaPoligonal3DRuntime = void 0;
+    const QUALITY_MAP={automatico:'medio',baixo:'baixo',medio:'medio',alto:'alto',ultra:'ultra',historico:'baixo'};
+    class PlataformaPoligonal3DRuntime {
+      id='plataforma-poligonal-ds-3d'; state='not-loaded'; #context; #frame; #listener; #summary={area:1,totalAreas:4,shards:0,lives:3,score:0,completed:false};
+      async mount(context){this.state='loading';this.#context=context;const frame=document.createElement('iframe');frame.className='duo-elementos-runtime-frame plataforma-poligonal-runtime-frame';frame.title='Plataforma Poligonal DS 3D';frame.allow='fullscreen; gamepad';frame.setAttribute('allowfullscreen','');frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms allow-modals');const url=new URL('./games/plataforma-poligonal-ds-3d/index.html',window.location.href);url.searchParams.set('embed','1');url.searchParams.set('quality',QUALITY_MAP[context.graphicsMode]??'medio');url.searchParams.set('reduced',context.reducedMotion?'1':'0');url.searchParams.set('muted',context.muted?'1':'0');frame.src=url.toString();context.container.replaceChildren(frame);this.#frame=frame;await new Promise((resolve,reject)=>{const timeout=window.setTimeout(()=>reject(new Error('Plataforma Poligonal DS 3D não respondeu ao carregamento.')),12000);this.#listener=(event)=>{if((location.origin!=='null'&&event.origin!==location.origin)||event.source!==frame.contentWindow||event.data?.source!=='fliperama-ds-plataforma-poligonal')return;const type=String(event.data.type??'');const detail=event.data.detail&&typeof event.data.detail==='object'?event.data.detail:{};if(type==='ready'){window.clearTimeout(timeout);this.state='tutorial';context.onEvent?.({type:'ready',detail:{renderer:'three',runtime:this.id,areas:4}});resolve();}else if(type==='progress'||type==='area-complete'){this.#summary={...this.#summary,...detail};context.onEvent?.({type:'progress',detail:{event:type,...detail}});}else if(type==='victory'){this.state='finished';this.#summary={...this.#summary,...detail,area:4,shards:12,completed:true};context.onEvent?.({type:'finished',detail});}};window.addEventListener('message',this.#listener);frame.addEventListener('error',()=>{window.clearTimeout(timeout);reject(new Error('Falha ao carregar Plataforma Poligonal DS 3D.'));},{once:true});});}
+      start(){this.state='running';this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type:'start'},location.origin==='null'?'*':location.origin)}
+      pause(){this.state='paused';this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type:'pause'},location.origin==='null'?'*':location.origin)}
+      resume(){this.state='running';this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type:'resume'},location.origin==='null'?'*':location.origin)}
+      restart(){this.state='running';this.#summary={area:1,totalAreas:4,shards:0,lives:3,score:0,completed:false};this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type:'restart'},location.origin==='null'?'*':location.origin)}
+      getSnapshot(){return {...this.#summary}}
+      dispose(){if(this.#listener)window.removeEventListener('message',this.#listener);this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type:'shutdown'},location.origin==='null'?'*':location.origin);this.#frame?.remove();this.#frame=undefined;this.#listener=undefined;this.state='disposed'}
+    }
+    exports.PlataformaPoligonal3DRuntime=PlataformaPoligonal3DRuntime;
+  };
+  __modules["games/chess-arena-360/index"] = (module, exports) => {
+    "use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.createRuntime=createRuntime;const runtime_1=__require("games/chess-arena-360/runtime");function createRuntime(){return new runtime_1.ChessArena360Runtime();}
+  };
+  __modules["games/chess-arena-360/runtime"] = (module, exports) => {
+    "use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.ChessArena360Runtime=void 0;
+    const QUALITY_MAP={automatico:'medio',baixo:'baixo',medio:'medio',alto:'alto',ultra:'ultra',historico:'baixo'};
+    class ChessArena360Runtime{ id='chess-arena-360';state='not-loaded';#context;#frame;#listener;#summary={turn:'w',moves:0,status:'playing',winner:null,mode:'cpu-normal'};
+      async mount(context){this.state='loading';this.#context=context;const frame=document.createElement('iframe');frame.className='duo-elementos-runtime-frame chess-arena-360-runtime-frame';frame.title='Chess Arena 360';frame.allow='fullscreen';frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms allow-modals');const url=new URL('./games/chess-arena-360/index.html',window.location.href);url.searchParams.set('embed','1');url.searchParams.set('quality',QUALITY_MAP[context.graphicsMode]??'medio');url.searchParams.set('reduced',context.reducedMotion?'1':'0');url.searchParams.set('muted',context.muted?'1':'0');url.searchParams.set('mode',String(context.parameters?.mode??'cpu-normal'));frame.src=url.toString();context.container.replaceChildren(frame);this.#frame=frame;await new Promise((resolve,reject)=>{const timeout=window.setTimeout(()=>reject(new Error('Chess Arena 360 não respondeu ao carregamento.')),12000);this.#listener=(event)=>{if((location.origin!=='null'&&event.origin!==location.origin)||event.source!==frame.contentWindow||event.data?.source!=='fliperama-ds-chess-arena-360')return;const type=String(event.data.type??''),detail=event.data.detail&&typeof event.data.detail==='object'?event.data.detail:{};if(type==='ready'){window.clearTimeout(timeout);this.state='tutorial';context.onEvent?.({type:'ready',detail:{renderer:'three',runtime:this.id,rules:'complete'}});resolve();}else if(type==='progress'){this.#summary={...this.#summary,...detail};context.onEvent?.({type:'progress',detail:{event:'chess-progress',...detail}});}else if(type==='victory'){this.state='finished';this.#summary={...this.#summary,...detail};context.onEvent?.({type:'finished',detail});}};window.addEventListener('message',this.#listener);frame.addEventListener('error',()=>{window.clearTimeout(timeout);reject(new Error('Falha ao carregar Chess Arena 360.'));},{once:true});});}
+      start(){this.#post('start');this.state='playing';}pause(){if(this.state!=='playing')return;this.#post('pause');this.state='paused';}resume(){if(this.state!=='paused'&&this.state!=='tutorial')return;this.#post('resume');this.state='playing';}dispatch(input){if(input.action==='pause'&&input.active){this.state==='playing'?this.pause():this.resume();}}snapshot(){return{schemaVersion:1,gameId:this.id,score:0,elapsedMs:0,payload:{...this.#summary}}}restore(snapshot){if(snapshot?.gameId!==this.id)throw new Error('Save pertence a outro jogo');this.#summary={...this.#summary,...(snapshot.payload||{})};this.state=this.#summary.status==='playing'?'tutorial':'finished';return true}dispose(){this.#post('shutdown');if(this.#listener)window.removeEventListener('message',this.#listener);this.#frame?.remove();this.#frame=null;this.#listener=null;this.state='disposed';}#post(type,detail={}){this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type,detail},location.origin==='null'?'*':location.origin)}}exports.ChessArena360Runtime=ChessArena360Runtime;
+  };
+  __modules["games/hexa-reactor/index"] = (module, exports) => {
+    "use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.createRuntime=createRuntime;const runtime_1=__require("games/hexa-reactor/runtime");function createRuntime(){return new runtime_1.HexaReactorRuntime();}
+  };
+  __modules["games/hexa-reactor/runtime"] = (module, exports) => {
+    "use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.HexaReactorRuntime=void 0;const QUALITY_MAP={automatico:'medio',baixo:'baixo',medio:'medio',alto:'alto',ultra:'ultra'};
+    class HexaReactorRuntime{ id='hexa-reactor';state='not-loaded';#context;#frame;#listener;#summary={level:1,levels:12,stars:0,movesLeft:0,completed:false};
+      async mount(context){this.state='loading';this.#context=context;const frame=document.createElement('iframe');frame.className='duo-elementos-runtime-frame hexa-reactor-runtime-frame';frame.title='Hexa Reactor';frame.allow='fullscreen';frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms allow-modals');const url=new URL('./games/hexa-reactor/index.html',window.location.href);url.searchParams.set('embed','1');url.searchParams.set('quality',QUALITY_MAP[context.graphicsMode]??'medio');url.searchParams.set('reduced',context.reducedMotion?'1':'0');url.searchParams.set('muted',context.muted?'1':'0');frame.src=url.toString();context.container.replaceChildren(frame);this.#frame=frame;await new Promise((resolve,reject)=>{const timeout=window.setTimeout(()=>reject(new Error('Hexa Reactor não respondeu ao carregamento.')),12000);this.#listener=(event)=>{if((location.origin!=='null'&&event.origin!==location.origin)||event.source!==frame.contentWindow||event.data?.source!=='fliperama-ds-hexa-reactor')return;const type=String(event.data.type??'');const detail=event.data.detail&&typeof event.data.detail==='object'?event.data.detail:{};if(type==='ready'){window.clearTimeout(timeout);this.state='tutorial';context.onEvent?.({type:'ready',detail:{renderer:'three+dom',runtime:this.id,levels:12,hex:true}});resolve();}else if(type==='progress'||type==='level-complete'){this.#summary={...this.#summary,...detail};context.onEvent?.({type:'progress',detail:{event:type,...detail}});}else if(type==='victory'){this.state='finished';this.#summary={...this.#summary,...detail,level:12,completed:true};context.onEvent?.({type:'finished',detail});}else if(type==='defeat'){context.onEvent?.({type:'progress',detail:{event:'attempt-ended',...detail}});}};window.addEventListener('message',this.#listener);frame.addEventListener('error',()=>{window.clearTimeout(timeout);reject(new Error('Falha ao carregar Hexa Reactor.'));},{once:true});});}
+      pause(){this.#post('pause');if(this.state==='running')this.state='paused';}resume(){this.#post('resume');if(this.state==='paused'||this.state==='tutorial')this.state='running';}start(){this.#post('start');this.state='running';}restart(){this.#post('restart');this.state='running';}getSnapshot(){return{schemaVersion:1,state:this.state,summary:{...this.#summary}}}restore(snapshot){if(snapshot?.summary)this.#summary={...this.#summary,...snapshot.summary};return true}getSummary(){return{...this.#summary}}dispose(){this.#post('shutdown');if(this.#listener)window.removeEventListener('message',this.#listener);this.#frame?.remove();this.#frame=null;this.#listener=null;this.state='disposed';}#post(type,detail={}){this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type,detail},location.origin==='null'?'*':location.origin)}}exports.HexaReactorRuntime=HexaReactorRuntime;
+  };
+  __modules["games/crystal-cascade-3d/index"] = (module, exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.createRuntime = createRuntime;
+    const runtime_1 = __require("games/crystal-cascade-3d/runtime");
+    function createRuntime() { return new runtime_1.CrystalCascadeRuntime(); }
+
+  };
+  __modules["games/crystal-cascade-3d/runtime"] = (module, exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.CrystalCascadeRuntime = void 0;
+    const QUALITY_MAP = { automatico:'medio', baixo:'baixo', medio:'medio', alto:'alto', ultra:'ultra', historico:'baixo' };
+    class CrystalCascadeRuntime {
+      id='crystal-cascade-3d'; state='not-loaded'; #context; #frame; #listener; #summary={level:1,levels:12,score:0,stars:0,completed:false};
+      async mount(context){this.state='loading';this.#context=context;const frame=document.createElement('iframe');frame.className='duo-elementos-runtime-frame crystal-cascade-runtime-frame';frame.title='Crystal Cascade 3D';frame.allow='fullscreen';frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms allow-modals');const url=new URL('./games/crystal-cascade-3d/index.html',window.location.href);url.searchParams.set('embed','1');url.searchParams.set('quality',QUALITY_MAP[context.graphicsMode]??'medio');url.searchParams.set('reduced',context.reducedMotion?'1':'0');url.searchParams.set('muted',context.muted?'1':'0');frame.src=url.toString();context.container.replaceChildren(frame);this.#frame=frame;await new Promise((resolve,reject)=>{const timeout=window.setTimeout(()=>reject(new Error('Crystal Cascade 3D não respondeu ao carregamento.')),12000);this.#listener=(event)=>{if((location.origin!=='null'&&event.origin!==location.origin)||event.source!==frame.contentWindow||event.data?.source!=='fliperama-ds-crystal-cascade')return;const type=String(event.data.type??'');const detail=event.data.detail&&typeof event.data.detail==='object'?event.data.detail:{};if(type==='ready'){window.clearTimeout(timeout);this.state='tutorial';context.onEvent?.({type:'ready',detail:{renderer:'three+dom',runtime:this.id,levels:12}});resolve();}else if(type==='progress'){this.#summary={...this.#summary,...detail};context.onEvent?.({type:'progress',detail:{event:'crystal-progress',...detail}});}else if(type==='level-complete'){this.#summary={...this.#summary,...detail};context.onEvent?.({type:'progress',detail:{event:'level-complete',...detail}});}else if(type==='victory'){this.state='finished';this.#summary={...this.#summary,...detail,level:12,completed:true};context.onEvent?.({type:'finished',detail});}else if(type==='defeat'){context.onEvent?.({type:'progress',detail:{event:'attempt-ended',...detail}});}};window.addEventListener('message',this.#listener);frame.addEventListener('error',()=>{window.clearTimeout(timeout);reject(new Error('Falha ao carregar Crystal Cascade 3D.'));},{once:true});});}
+      start(){this.#post('start');this.state='playing';}
+      pause(){if(this.state!=='playing')return;this.#post('pause');this.state='paused';}
+      resume(){if(this.state!=='paused'&&this.state!=='tutorial')return;this.#post('resume');this.state='playing';}
+      dispatch(input){if(input.action==='pause'&&input.active){this.state==='playing'?this.pause():this.resume();}}
+      snapshot(){return{schemaVersion:1,gameId:this.id,score:Number(this.#summary.score||0),elapsedMs:0,payload:{...this.#summary}};}
+      restore(snapshot){if(snapshot.gameId!==this.id)throw new Error('Save pertence a outro jogo');this.#summary={...this.#summary,...(snapshot.payload||{})};this.state=this.#summary.completed?'finished':'tutorial';}
+      dispose(){this.#post('shutdown');if(this.#listener)window.removeEventListener('message',this.#listener);this.#frame?.remove();this.#frame=undefined;this.#listener=undefined;this.state='disposed';}
+      #post(type,detail={}){this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type,detail},location.origin==='null'?'*':location.origin);}
+    }
+    exports.CrystalCascadeRuntime=CrystalCascadeRuntime;
+
+  };
+  __modules["games/plataforma-classica-ds/index"] = (module, exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.createRuntime = createRuntime;
+    const runtime_1 = __require("games/plataforma-classica-ds/runtime");
+    function createRuntime() { return new runtime_1.PlataformaClassicaRuntime(); }
+
+  };
+  __modules["games/plataforma-classica-ds/runtime"] = (module, exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.PlataformaClassicaRuntime = void 0;
+    const QUALITY_MAP = { automatico: 'medium', baixo: 'low', medio: 'medium', alto: 'high', ultra: 'ultra', historico: 'low' };
+    class PlataformaClassicaRuntime {
+        id = 'plataforma-classica-ds';
+        state = 'not-loaded';
+        #context; #frame; #listener; #restored;
+        #summary = { visualStyle:'moderno', levelIndex:0, level:1, levels:6, score:0, deaths:0, elapsedMs:0, chips:0, chipsTotal:0, secrets:0, completed:false };
+        async mount(context) {
+            this.state='loading'; this.#context=context;
+            const visualStyle=String(context.parameters?.style ?? 'moderno') === 'historico' ? 'historico' : 'moderno';
+            const quality=QUALITY_MAP[context.graphicsMode] ?? 'medium'; this.#summary.visualStyle=visualStyle;
+            const frame=document.createElement('iframe'); frame.className='duo-elementos-runtime-frame plataforma-classica-runtime-frame'; frame.title='Plataforma Clássica DS'; frame.allow='fullscreen; gamepad'; frame.setAttribute('allowfullscreen',''); frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms allow-modals');
+            const url=new URL('./games/plataforma-classica-ds/index.html',window.location.href); url.searchParams.set('embed','1'); url.searchParams.set('style',visualStyle); url.searchParams.set('quality',quality); url.searchParams.set('reduced',context.reducedMotion?'1':'0'); url.searchParams.set('muted',context.muted?'1':'0'); frame.src=url.toString(); context.container.replaceChildren(frame); this.#frame=frame;
+            await new Promise((resolve,reject)=>{ const timeout=window.setTimeout(()=>reject(new Error('Plataforma Clássica DS não respondeu ao carregamento.')),12000); this.#listener=(event)=>{ if((location.origin!=='null'&&event.origin!==location.origin)||event.source!==frame.contentWindow||event.data?.source!=='fliperama-ds-plataforma-classica')return; const type=String(event.data.type??''); const detail=event.data.detail&&typeof event.data.detail==='object'?event.data.detail:{};
+                if(type==='ready'){window.clearTimeout(timeout);this.state='tutorial';context.onEvent?.({type:'ready',detail:{renderer:'canvas2d',runtime:this.id,levels:6,visualStyle}});resolve();}
+                else if(type==='started'){this.state='playing';context.onEvent?.({type:'serve',detail:{visualStyle}});}
+                else if(type==='progress'){this.#summary={...this.#summary,...detail,visualStyle};context.onEvent?.({type:'progress',detail:{event:'platform-progress',...detail}});}
+                else if(type==='level-complete'){context.onEvent?.({type:'progress',detail:{event:'level-complete',...detail}});}
+                else if(type==='finished'){this.state='finished';this.#summary={...this.#summary,...detail,levelIndex:5,level:6,completed:true};context.onEvent?.({type:'finished',detail});}
+                else if(type==='pause-changed'){context.onEvent?.({type:'pause-changed',detail});}
+            }; window.addEventListener('message',this.#listener); frame.addEventListener('error',()=>{window.clearTimeout(timeout);reject(new Error('Falha ao carregar Plataforma Clássica DS.'));},{once:true}); });
+        }
+        start(){ if(this.#summary.completed){this.#summary={visualStyle:this.#summary.visualStyle,levelIndex:0,level:1,levels:6,score:0,deaths:0,elapsedMs:0,chips:0,chipsTotal:0,secrets:0,completed:false};this.#restored=undefined;this.#post('restart');}else{this.#post('start',this.#restored?{restore:this.#restored}:{});this.#restored=undefined;}this.state='playing'; }
+        pause(){if(this.state!=='playing')return;this.#post('pause');this.state='paused';}
+        resume(){if(this.state!=='paused'&&this.state!=='tutorial')return;this.#post('resume');this.state='playing';}
+        dispatch(input){if(input.action==='pause'&&input.active){this.state==='playing'?this.pause():this.resume();return;}if(this.state!=='playing')return;this.#post('input',{action:input.action,active:input.active,value:input.value});}
+        snapshot(){return{schemaVersion:1,gameId:this.id,elapsedMs:Number(this.#summary.elapsedMs??0),score:Number(this.#summary.score??0),payload:{...this.#summary}};}
+        restore(snapshot){if(snapshot.gameId!==this.id)throw new Error('Save pertence a outro jogo');const payload=snapshot.payload&&typeof snapshot.payload==='object'?snapshot.payload:{};this.#summary={...this.#summary,...payload,visualStyle:payload.visualStyle==='historico'?'historico':'moderno'};this.#restored={...this.#summary};this.state=this.#summary.completed?'finished':'tutorial';}
+        dispose(){this.#post('shutdown');if(this.#listener)window.removeEventListener('message',this.#listener);this.#frame?.remove();this.#listener=undefined;this.#frame=undefined;this.state='disposed';}
+        #post(type,detail={}){this.#frame?.contentWindow?.postMessage({source:'fliperama-ds',type,detail},location.origin==='null'?'*':location.origin);}
+    }
+    exports.PlataformaClassicaRuntime=PlataformaClassicaRuntime;
+
+  };
+  __modules["games/duo-elementos-ds/index"] = (module, exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.createRuntime = createRuntime;
+    const duo_runtime_1 = __require("games/duo-elementos-ds/runtime");
+    function createRuntime() { return new duo_runtime_1.DuoElementosRuntime(); }
+
+  };
+  __modules["games/duo-elementos-ds/runtime"] = (module, exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.DuoElementosRuntime = void 0;
+    const QUALITY_MAP = { automatico: 'medium', baixo: 'low', medio: 'medium', alto: 'high', ultra: 'ultra', historico: 'low' };
+    class DuoElementosRuntime {
+        id = 'duo-elementos-ds';
+        state = 'not-loaded';
+        #context;
+        #frame;
+        #listener;
+        #restored;
+        #summary = { mode: 'solo', levelIndex: 0, level: 1, levels: 8, score: 0, deaths: 0, elapsedMs: 0, shards: 0, shardsTotal: 0, activePlayer: 0, completed: false };
+        async mount(context) {
+            this.state = 'loading';
+            this.#context = context;
+            const mode = String(context.parameters?.mode ?? 'solo') === 'local' ? 'local' : 'solo';
+            const quality = QUALITY_MAP[context.graphicsMode] ?? 'medium';
+            this.#summary.mode = mode;
+            const frame = document.createElement('iframe');
+            frame.className = 'duo-elementos-runtime-frame';
+            frame.title = 'Duo Elementos DS';
+            frame.allow = 'fullscreen; gamepad';
+            frame.setAttribute('allowfullscreen', '');
+            frame.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-modals');
+            const url = new URL('./games/duo-elementos-ds/index.html', window.location.href);
+            url.searchParams.set('embed', '1');
+            url.searchParams.set('mode', mode);
+            url.searchParams.set('quality', quality);
+            url.searchParams.set('reduced', context.reducedMotion ? '1' : '0');
+            url.searchParams.set('muted', context.muted ? '1' : '0');
+            frame.src = url.toString();
+            context.container.replaceChildren(frame);
+            this.#frame = frame;
+            await new Promise((resolve, reject) => {
+                const timeout = window.setTimeout(() => reject(new Error('Duo Elementos não respondeu ao carregamento.')), 12000);
+                this.#listener = (event) => {
+                    if ((location.origin !== 'null' && event.origin !== location.origin) || event.source !== frame.contentWindow || event.data?.source !== 'fliperama-ds-duo-elementos') return;
+                    const type = String(event.data.type ?? '');
+                    const detail = event.data.detail && typeof event.data.detail === 'object' ? event.data.detail : {};
+                    if (type === 'ready') {
+                        window.clearTimeout(timeout);
+                        this.state = 'tutorial';
+                        context.onEvent?.({ type: 'ready', detail: { renderer: 'canvas2d', runtime: 'duo-elementos-ds', multiplayer: true } });
+                        resolve();
+                    } else if (type === 'started') {
+                        this.state = 'playing';
+                        context.onEvent?.({ type: 'serve', detail: { mode } });
+                    } else if (type === 'progress') {
+                        this.#summary = { ...this.#summary, ...detail, mode };
+                        context.onEvent?.({ type: 'progress', detail: { event: 'duo-progress', ...detail } });
+                    } else if (type === 'level-complete') {
+                        context.onEvent?.({ type: 'progress', detail: { event: 'level-complete', ...detail } });
+                    } else if (type === 'finished') {
+                        this.state = 'finished';
+                        this.#summary = { ...this.#summary, ...detail, levelIndex: 7, level: 8, completed: true };
+                        context.onEvent?.({ type: 'finished', detail });
+                    }
+                };
+                window.addEventListener('message', this.#listener);
+                frame.addEventListener('error', () => { window.clearTimeout(timeout); reject(new Error('Falha ao carregar os arquivos do Duo Elementos.')); }, { once: true });
+            });
+        }
+        start() {
+            if (this.#summary.completed) {
+                this.#summary = { mode: this.#summary.mode, levelIndex: 0, level: 1, levels: 8, score: 0, deaths: 0, elapsedMs: 0, shards: 0, shardsTotal: 0, activePlayer: 0, completed: false };
+                this.#restored = undefined;
+                this.#post('restart');
+            } else {
+                this.#post('start', this.#restored ? { restore: this.#restored } : {});
+                this.#restored = undefined;
+            }
+            this.state = 'playing';
+        }
+        pause() {
+            if (this.state !== 'playing') return;
+            this.#post('pause');
+            this.state = 'paused';
+            this.#context?.onEvent?.({ type: 'pause-changed', detail: { paused: true } });
+        }
+        resume() {
+            if (this.state !== 'paused' && this.state !== 'tutorial') return;
+            this.#post('resume');
+            this.state = 'playing';
+            this.#context?.onEvent?.({ type: 'pause-changed', detail: { paused: false } });
+        }
+        dispatch(input) {
+            if (input.action === 'pause' && input.active) {
+                this.state === 'playing' ? this.pause() : this.resume();
+                return;
+            }
+            if (this.state !== 'playing') return;
+            this.#post('input', { action: input.action, active: input.active, value: input.value });
+        }
+        snapshot() {
+            return { schemaVersion: 1, gameId: this.id, elapsedMs: Number(this.#summary.elapsedMs ?? 0), score: Number(this.#summary.score ?? 0), payload: { ...this.#summary } };
+        }
+        restore(snapshot) {
+            if (snapshot.gameId !== this.id) throw new Error('Save pertence a outro jogo');
+            const payload = snapshot.payload && typeof snapshot.payload === 'object' ? snapshot.payload : {};
+            this.#summary = { ...this.#summary, ...payload, mode: payload.mode === 'local' ? 'local' : 'solo' };
+            this.#restored = { ...this.#summary };
+            this.state = this.#summary.completed ? 'finished' : 'tutorial';
+        }
+        dispose() {
+            this.#post('shutdown');
+            if (this.#listener) window.removeEventListener('message', this.#listener);
+            this.#frame?.remove();
+            this.#listener = undefined;
+            this.#frame = undefined;
+            this.state = 'disposed';
+        }
+        #post(type, detail = {}) {
+            const target = location.origin === 'null' ? '*' : location.origin;
+            this.#frame?.contentWindow?.postMessage({ source: 'fliperama-ds', type, detail }, target);
+        }
+    }
+    exports.DuoElementosRuntime = DuoElementosRuntime;
+
+  };
   __modules["games/voxelcraft-ds/index"] = (module, exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
@@ -16066,7 +17508,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         #context;
         #frame;
         #listener;
-        #summary = { mode: 'learning', quality: 'auto', xp: 0, progress: 0, chunks: 0, triangles: 0, edits: 0, savedAt: 0 };
+        #summary = { mode: 'learning', quality: 'auto', xp: 0, progress: 0, chunks: 0, triangles: 0, edits: 0, stage: 1, stages: 3, savedAt: 0 };
         async mount(context) {
             this.state = 'loading';
             this.#context = context;
@@ -16109,7 +17551,9 @@ semente aleatória, capturas, tempo e jogada anterior`;
                         this.#summary.progress = Number(detail.progress ?? this.#summary.progress) || 0;
                         this.#summary.chunks = Number(detail.chunks ?? this.#summary.chunks) || 0;
                         this.#summary.triangles = Number(detail.triangles ?? this.#summary.triangles) || 0;
-                        context.onEvent?.({ type: 'progress', detail: { event: 'voxel-progress', xp: this.#summary.xp, progress: this.#summary.progress, chunks: this.#summary.chunks, triangles: this.#summary.triangles } });
+                        this.#summary.stage = Number(detail.stage ?? this.#summary.stage) || 1;
+                        this.#summary.stages = Number(detail.stages ?? this.#summary.stages) || 3;
+                        context.onEvent?.({ type: 'progress', detail: { event: 'voxel-progress', xp: this.#summary.xp, progress: this.#summary.progress, chunks: this.#summary.chunks, triangles: this.#summary.triangles, stage: this.#summary.stage, stages: this.#summary.stages } });
                     }
                     else if (type === 'saved') {
                         this.#summary.xp = Number(detail.xp ?? this.#summary.xp) || 0;
@@ -16404,7 +17848,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
       },
       "trap-lab": {
         "experienceType": "Jogo de plataforma e laboratório de lógica",
-        "stageLabel": "3 fases concluíveis com checkpoints",
+        "stageLabel": "6 fases concluíveis com checkpoints",
         "modes": [
           "Explorador",
           "Programador",
@@ -16425,7 +17869,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
         "progression": [
           "Fase 1: movimento e leitura do cenário",
           "Fase 2: portões, saltos e interação",
-          "Fase 3: armadilhas combinadas e terminal final"
+          "Fase 3: armadilhas combinadas e terminal final",
+          "Fase 4: poços, dois checkpoints e portão lógico",
+          "Fase 5: corredor binário com três vãos",
+          "Fase 6: núcleo de saída e sequência final"
         ],
         "historyFacts": [
           "Trap Lab estuda a evolução dos jogos de plataforma de 8 bits.",
@@ -16446,7 +17893,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
       },
       "data-maze": {
         "experienceType": "Labirinto de coleta autoral",
-        "stageLabel": "3 mapas validados e concluíveis",
+        "stageLabel": "5 mapas validados e concluíveis",
         "modes": [
           "Campanha",
           "Treinamento",
@@ -16467,7 +17914,9 @@ semente aleatória, capturas, tempo e jogada anterior`;
         "progression": [
           "Mapa 1: Memória Central",
           "Mapa 2: Barramento Cruzado",
-          "Mapa 3: Núcleo Recursivo"
+          "Mapa 3: Núcleo Recursivo",
+          "Mapa 4: Matriz Espelhada",
+          "Mapa 5: Cache Fantasma"
         ],
         "historyFacts": [
           "O gênero de labirinto e coleta ganhou grande popularidade nos arcades do início dos anos 1980.",
@@ -16488,7 +17937,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
       },
       "room-quest": {
         "experienceType": "Aventura de exploração baseada em estados",
-        "stageLabel": "8 salas conectadas por itens e condições",
+        "stageLabel": "12 salas conectadas por itens, flags e condições",
         "modes": [
           "Campanha",
           "Exploração",
@@ -16507,10 +17956,11 @@ semente aleatória, capturas, tempo e jogada anterior`;
           "Automático"
         ],
         "progression": [
-          "Explorar salas iniciais",
-          "Coletar chaves e ativar terminais",
-          "Combinar flags para abrir passagens",
-          "Alcançar a sala de conclusão"
+          "Explorar as oito salas históricas iniciais",
+          "Ativar energia, sinal e abrir o cofre",
+          "Entrar na nova ala de relé e refrigeração",
+          "Executar diagnóstico e aplicar o selo do núcleo",
+          "Retornar ao Observatório com o Núcleo de Memória"
         ],
         "historyFacts": [
           "Aventura de Salas estuda jogos de exploração e aventura baseados em comandos, itens e estados.",
@@ -16617,7 +18067,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
       },
       "bit-bridge-16": {
         "experienceType": "Simulador jogável de evolução gráfica",
-        "stageLabel": "4 zonas e portal final",
+        "stageLabel": "6 zonas e portal final",
         "modes": [
           "8 bits",
           "16 bits",
@@ -16640,7 +18090,9 @@ semente aleatória, capturas, tempo e jogada anterior`;
           "Zona 1: movimento básico",
           "Zona 2: saltos e coleta",
           "Zona 3: perigos e checkpoint",
-          "Zona 4: fragmentos finais e portal"
+          "Zona 4: alternância de geração sob pressão",
+          "Zona 5: sequência longa de plataformas e riscos",
+          "Zona 6: fragmentos finais e portal"
         ],
         "historyFacts": [
           "A experiência compara a transição de 8 para 16 bits no fim dos anos 1980 e início dos anos 1990.",
@@ -16661,7 +18113,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
       },
       "polygon-sector-94": {
         "experienceType": "Laboratório jogável de plataforma 3D",
-        "stageLabel": "Missão única com objetivos técnicos",
+        "stageLabel": "3 protocolos progressivos na mesma arena 3D",
         "modes": [
           "Exploração",
           "Comparação de materiais",
@@ -16681,10 +18133,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
           "Automático"
         ],
         "progression": [
-          "Treinar movimento, salto e câmera",
-          "Coletar três núcleos",
-          "Experimentar materiais e duas câmeras",
-          "Usar a rampa e alcançar o portal"
+          "Protocolo 1 · Geometria Base — coletar três núcleos e validar a malha",
+          "Protocolo 2 · Materiais e Rotas — testar flat/textura/PBR e ativar dois checkpoints",
+          "Protocolo 3 · Câmeras de Produção — registrar três câmeras, recuperar núcleos e finalizar o setor",
+          "Concluir 3/3 protocolos no portal final"
         ],
         "historyFacts": [
           "A experiência representa a popularização doméstica do 3D poligonal nos anos 1990.",
@@ -16705,7 +18157,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
       },
       "camera-evolution": {
         "experienceType": "Simulador jogável de câmeras 3D",
-        "stageLabel": "6 câmeras, 3 FOVs e portal educativo",
+        "stageLabel": "3 experimentos progressivos de câmera e enquadramento",
         "modes": [
           "Fixa",
           "Orbital",
@@ -16728,10 +18180,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
           "Automático"
         ],
         "progression": [
-          "Aprender movimento e arraste",
-          "Testar as seis câmeras",
-          "Comparar FOV 45°, 60° e 75°",
-          "Coletar lentes e alcançar a saída"
+          "Experimento 1 · Enquadramento — coletar três lentes e comparar ao menos duas câmeras",
+          "Experimento 2 · Campo de Visão — registrar 45°, 60° e 75° e os dois checkpoints",
+          "Experimento 3 · Sistema Completo — registrar seis câmeras, recuperar lentes e finalizar",
+          "Concluir 3/3 experimentos no portal final"
         ],
         "historyFacts": [
           "O laboratório representa a consolidação das câmeras em mundos 3D nos anos 1990.",
@@ -16793,9 +18245,270 @@ semente aleatória, capturas, tempo e jogada anterior`;
           "Alto: maior resolução, texturas e iluminação."
         ]
       },
+      "chess-arena-360": {
+      "experienceType": "Xadrez tridimensional autoral com CPU progressiva",
+      "stageLabel": "Partida completa · local ou CPU",
+      "modes": [
+            "2 jogadores locais",
+            "CPU Iniciante",
+            "CPU Normal",
+            "CPU Estratégica",
+            "CPU Mestre"
+      ],
+      "difficulties": [
+            "Aleatoriedade controlada",
+            "Avaliação de 1 lance",
+            "Minimax 2 camadas",
+            "Alpha-beta 3 camadas"
+      ],
+      "graphics": [
+            "Baixo",
+            "Médio",
+            "Alto",
+            "Ultra",
+            "Automático"
+      ],
+      "progression": [
+            "Desenvolver peças e controlar o centro",
+            "Proteger o rei e reconhecer xeques",
+            "Usar roque, en passant e promoção quando aplicáveis",
+            "Converter vantagem em xeque-mate ou reconhecer condições de empate"
+      ],
+      "historyFacts": [
+            "Programas de xadrez são exemplos clássicos de busca em árvore e avaliação heurística.",
+            "Chess Arena 360 implementa regras, CPU, peças low-poly e interface próprias do Fliperama DS."
+      ],
+      "curiosities": [
+            "A posição inicial possui 20 jogadas legais; após dois meios-lances existem 400 posições possíveis.",
+            "A poda alpha-beta pode evitar analisar ramos que não alterariam a decisão final."
+      ],
+      "codeTitle": "Poda alpha-beta em uma árvore de jogadas",
+      "codeLanguage": "JavaScript",
+      "codeExample": "for (const move of legalMoves) {\n  const score = search(next(move), depth - 1, alpha, beta);\n  alpha = Math.max(alpha, score);\n  if (beta <= alpha) break;\n}",
+      "qualityNotes": [
+            "Three.js local e carregamento sob demanda.",
+            "Perfis baixos reduzem antialias e pixel ratio sem alterar regras.",
+            "O motor de xadrez não depende da cena 3D."
+      ]
+},
+      "mundo-plataforma-ds-360": {
+        "experienceType": "Mundo plataforma 3D/360 autoral com exploração radial, NPCs, missões, indústria e torre vertical",
+        "stageLabel": "Regiões 1–5 · Vale Nexus + Vila Tecnológica + Floresta de Circuitos + Região Industrial + Torre Central",
+        "modes": [
+          "Exploração em terceira pessoa",
+          "Panorama 360° orbital"
+        ],
+        "difficulties": [
+          "Orientação espacial em cinco regiões conectadas",
+          "Plataformas, campos Glitch, patrulhas, esteiras, elevadores e ascensão vertical"
+        ],
+        "graphics": [
+          "Baixo",
+          "Médio",
+          "Alto",
+          "Ultra",
+          "Automático"
+        ],
+        "progression": [
+          "Vale Nexus · 6 Orbes + 3 Balizas",
+          "Portal Nexus",
+          "Vila Tecnológica · Praça de Conexão",
+          "Missão 1 · Oficina em Sincronia",
+          "Missão 2 · Pacotes Perdidos",
+          "Missão 3 · Rede da Vila",
+          "Portal de Continuidade",
+          "Floresta de Circuitos · 3 Nós de Energia",
+          "Região Industrial · Energia → Logística → Controle",
+          "Torre Central · 3 Consoles → Núcleo → Portal final"
+        ],
+        "historyFacts": [
+          "Mundos 3D ampliaram o problema de orientação do jogador e tornaram a câmera uma parte central do design de níveis.",
+          "Esta experiência usa exploração em 360° e câmera orbital com ambiente, personagem, objetivos e código próprios."
+        ],
+        "curiosities": [
+          "Os objetivos são distribuídos radialmente para impedir que a campanha seja resolvida apenas seguindo um corredor.",
+          "A câmera e o renderizador não armazenam o estado da missão: a simulação pode ser salva sem serializar objetos Three.js."
+        ],
+        "codeTitle": "Movimento relativo à câmera em espaço tridimensional",
+        "codeLanguage": "JavaScript",
+        "codeExample": "const worldX = localX * cosYaw + localZ * sinYaw;\nconst worldZ = localX * sinYaw - localZ * cosYaw;\nsimulation.tick(dt, { x: worldX, z: worldZ, jump });",
+        "qualityNotes": [
+          "Three.js local e carregamento somente ao abrir o jogo.",
+          "Perfis baixos reduzem pixel ratio, sombras e densidade decorativa sem alterar a geometria jogável.",
+          "Simulação, renderização e entrada permanecem em módulos separados."
+        ]
+      },
+      "plataforma-poligonal-ds-3d": {
+        "experienceType": "Plataforma 3D autoral em terceira pessoa",
+        "stageLabel": "Campanha · 4 áreas · 12 fragmentos",
+        "modes": ["Campanha progressiva", "Exploração em terceira pessoa"],
+        "difficulties": ["Progressão por altura", "Patrulhas e plataformas móveis"],
+        "graphics": ["Baixo", "Médio", "Alto", "Ultra", "Automático"],
+        "progression": ["Praça Poligonal", "Bosque Low-Poly", "Fábrica de Malhas", "Torre do Render"],
+        "historyFacts": ["A transição para plataformas 3D acrescentou profundidade, navegação espacial e desafios de câmera.", "A experiência usa personagem, áreas, inimigos e código próprios."],
+        "curiosities": ["A câmera segue um alvo suavizado acima do personagem.", "Perfis gráficos mudam sombras e densidade decorativa sem mudar a geometria jogável."],
+        "codeTitle": "Câmera em terceira pessoa suavizada",
+        "codeLanguage": "JavaScript",
+        "codeExample": "camera.position.lerp(desired, 1 - Math.exp(-dt * 6));\ncamera.lookAt(target);",
+        "qualityNotes": ["Three.js local e carregamento sob demanda.", "Sombras apenas nos perfis superiores.", "Geometria low-poly procedural reduz peso de download."]
+      },
+      "hexa-reactor": {
+              "experienceType": "Puzzle hexagonal autoral com fluxo de energia e ambientação 3D",
+              "stageLabel": "Campanha · 12 níveis",
+              "modes": [
+                      "Campanha progressiva",
+                      "Estrelas por eficiência"
+              ],
+              "difficulties": [
+                      "Giros limitados",
+                      "Múltiplas fontes",
+                      "Sobrecarga"
+              ],
+              "graphics": [
+                      "Baixo",
+                      "Médio",
+                      "Alto",
+                      "Ultra",
+                      "Automático"
+              ],
+              "progression": [
+                      "Pulso de Partida",
+                      "Bifurcação Azul",
+                      "Anel de Retorno",
+                      "Três Saídas",
+                      "Ponte de Fase",
+                      "Malha em Y",
+                      "Circuito Espelhado",
+                      "Núcleo de Seis Faces",
+                      "Fontes Gêmeas",
+                      "Sobreposição Controlada",
+                      "Matriz de Segurança",
+                      "Coração Hexagonal"
+              ],
+              "historyFacts": [
+                      "Grades hexagonais usam seis vizinhos e transformam conectividade em um problema espacial.",
+                      "Hexa Reactor possui níveis, arte e código próprios."
+              ],
+              "curiosities": [
+                      "O fluxo usa BFS a partir de todas as fontes.",
+                      "Rotação é tratada como aritmética modular em seis estados."
+              ],
+              "codeTitle": "Propagação por BFS",
+              "codeLanguage": "JavaScript",
+              "codeExample": "while (queue.length) {\n  const cell = queue.shift();\n  visitarVizinhosConectados(cell);\n}",
+              "qualityNotes": [
+                      "Three.js local apenas para ambientação.",
+                      "Tabuleiro DOM preserva toque e acessibilidade."
+              ]
+      },
+      "crystal-cascade-3d": {
+        "experienceType": "Match-3 autoral com cenário WebGL",
+        "stageLabel": "Ato Prismático · 12 fases",
+        "modes": ["Campanha progressiva", "Desafio de estrelas por eficiência"],
+        "difficulties": ["Movimentos limitados", "Metas combinadas", "Bloqueadores crescentes"],
+        "graphics": ["Baixo", "Médio", "Alto", "Ultra", "Automático"],
+        "progression": ["Pulso Inicial", "Prisma Duplo", "Câmara de Eco", "Anel Congelado", "Ressonância", "Grade de Pressão", "Prisma Quebrado", "Órbita Violeta", "Cascata Quântica", "Núcleo Hexa", "Tempestade Prismática", "Coração da Cascata"],
+        "historyFacts": ["Jogos de combinação em grade exploram reconhecimento de padrões, planejamento de movimentos e cascatas.", "Crystal Cascade 3D usa identidade, cristais, níveis, código e apresentação próprios, sem reproduzir tabuleiros ou assets de obras comerciais."],
+        "curiosities": ["O motor impede que uma troca sem combinação consuma movimento.", "Quando não existe nenhuma jogada válida, as peças são embaralhadas automaticamente para evitar estados impossíveis."],
+        "codeTitle": "Detecção de sequência em uma matriz",
+        "codeLanguage": "JavaScript",
+        "codeExample": "for (const row of rows) {\n  localizarSequencias(row, 3);\n}\nfor (const column of columns) {\n  localizarSequencias(column, 3);\n}\naplicarGravidadeECascata();",
+        "qualityNotes": ["O tabuleiro usa profundidade CSS 3D para preservar acessibilidade e toque.", "Um cenário Three.js local adiciona cristais, luz, névoa e movimento sem participar da lógica do tabuleiro.", "Perfis baixos reduzem quantidade de malhas e pixel ratio do WebGL."]
+      },
+      "plataforma-classica-ds": {
+        "experienceType": "Plataforma lateral autoral · evolução visual histórica/moderna",
+        "stageLabel": "Mundo 1 · Campo dos Pixels · 6 fases",
+        "modes": [
+          "Histórico · leitura pixel/8–16 bits",
+          "Moderno · parallax, glow e partículas"
+        ],
+        "difficulties": [
+          "Progressão por fase",
+          "Desafio final do Guardião do Clock"
+        ],
+        "graphics": [
+          "Histórico",
+          "Baixo",
+          "Médio",
+          "Alto",
+          "Ultra",
+          "Automático"
+        ],
+        "progression": [
+          "1-1 Sinal de Partida",
+          "1-2 Bosque de Bits",
+          "1-3 Cavernas de Cache",
+          "1-4 Fábrica de Clock",
+          "1-5 Torres de Render",
+          "1-6 Castelo do Kernel"
+        ],
+        "historyFacts": [
+          "Jogos de plataforma laterais consolidaram salto, inimigos patrulhando, colecionáveis, checkpoints e mundos progressivos como uma linguagem reconhecível do videogame.",
+          "Plataforma Clássica DS usa essa gramática como estudo histórico, mas emprega personagem, inimigos, mapas, nomes, arte, áudio e código próprios."
+        ],
+        "curiosities": [
+          "O modo Histórico troca a linguagem de renderização sem alterar coordenadas, colisões ou regras.",
+          "Coyote time e jump buffer tornam o controle mais tolerante sem mudar o desenho das fases."
+        ],
+        "codeTitle": "Coyote time e jump buffer",
+        "codeLanguage": "JavaScript",
+        "codeExample": "if (grounded) coyoteMs = 105;\nif (jumpPressed) jumpBufferMs = 125;\n\nif (coyoteMs > 0 && jumpBufferMs > 0) {\n  velocityY = -jumpSpeed;\n  coyoteMs = 0;\n  jumpBufferMs = 0;\n}",
+        "qualityNotes": [
+          "Histórico usa formas rígidas, scanlines e pixelização intencional.",
+          "Moderno acrescenta parallax, sombras, partículas e iluminação sem mudar a simulação.",
+          "Perfis baixos reduzem partículas para preservar desempenho em dispositivos escolares."
+        ]
+      },
+      "duo-elementos-ds": {
+        "experienceType": "Jogo cooperativo de plataforma autoral",
+        "stageLabel": "Campanha de 8 fases · Solo ou 2 jogadores locais",
+        "modes": [
+          "Solo com troca de personagem",
+          "2 jogadores locais",
+          "Dois gamepads",
+          "Controles touch"
+        ],
+        "difficulties": [
+          "Progressão guiada",
+          "Desafio cooperativo"
+        ],
+        "graphics": [
+          "Baixo",
+          "Médio",
+          "Alto",
+          "Ultra",
+          "Automático"
+        ],
+        "progression": [
+          "Estação de Sincronia",
+          "Travas Térmicas",
+          "Fluxos Cruzados",
+          "Relé Duplo",
+          "Câmara de Pressão",
+          "Arquivo de Núcleos",
+          "Torres Gêmeas",
+          "Câmara Nexus"
+        ],
+        "historyFacts": [
+          "Jogos cooperativos de plataforma popularizaram personagens com habilidades complementares e puzzles que exigem coordenação.",
+          "Duo Elementos DS usa essa ideia de gênero com personagens, mapas, arte, regras e código próprios, sem reproduzir fases ou assets de obras comerciais."
+        ],
+        "curiosities": [
+          "No modo Solo, deixar um personagem parado em uma posição útil e alternar o controle reproduz o raciocínio cooperativo com uma pessoa.",
+          "O Multiplayer Local Core separa ações lógicas dos dispositivos físicos, permitindo reutilizar teclado, toque e gamepads em outros jogos."
+        ],
+        "codeTitle": "Entrada independente por jogador",
+        "codeLanguage": "JavaScript",
+        "codeExample": "const p1 = input.state(0);\nconst p2 = input.state(1);\n\nupdatePlayer(ember, p1, dt);\nupdatePlayer(tide, p2, dt);\n\nif (solo && switchPressed) {\n  activePlayer = 1 - activePlayer;\n}",
+        "qualityNotes": [
+          "Baixo reduz partículas e brilhos sem modificar colisões ou objetivos.",
+          "Médio/Alto adicionam halos, partículas e maior profundidade de cenário.",
+          "Ultra amplia efeitos visuais, mantendo a mesma simulação e o mesmo save."
+        ]
+      },
       "voxelcraft-ds": {
         "experienceType": "Laboratório 3D de mundo voxel",
-        "stageLabel": "Mundo persistente com missões por modo",
+        "stageLabel": "3 etapas progressivas por modo, com mundo persistente",
         "modes": [
           "Aprendizagem",
           "Livre",
@@ -16814,10 +18527,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
           "Automático seguro"
         ],
         "progression": [
-          "Carregar chunks próximos",
-          "Quebrar blocos e coletar recursos",
-          "Selecionar inventário e construir",
-          "Explorar a distância exigida e concluir a missão"
+          "Etapa 1 · Streaming/cartografia de chunks",
+          "Etapa 2 · Recursos, mineração e inventário",
+          "Etapa 3 · Construção/engenharia e navegação",
+          "Persistir etapa, XP, inventário, posição e alterações do mundo"
         ],
         "historyFacts": [
           "VoxelCraft DS estuda mundos de blocos, geração procedural e carregamento por chunks.",
@@ -17114,7 +18827,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         'data-maze': {
             optionLabel: 'Dificuldade', optionParameter: 'difficulty',
             options: { aprendiz: 'Aprendiz', operador: 'Operador', arquiteto: 'Arquiteto' }, defaultOption: 'operador',
-            tutorialTitle: 'Colete todos os dados em três labirintos',
+            tutorialTitle: 'Colete todos os dados em cinco labirintos',
             tutorialSteps: ['Mova com WASD, setas ou toque', 'Use os nós de energia para inverter o risco', 'Observe como cada drone escolhe uma rota diferente'],
             keyboardHelp: 'WASD ou setas: mover · P: pausar',
             touchControls: [
@@ -17131,7 +18844,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         'room-quest': {
             optionLabel: 'Modo', optionParameter: 'mode',
             options: { explorador: 'Explorador', cartografo: 'Cartógrafo', arquivista: 'Arquivista' }, defaultOption: 'cartografo',
-            tutorialTitle: 'Explore oito salas e restaure o Núcleo de Memória',
+            tutorialTitle: 'Explore doze salas e estabilize a rede histórica',
             tutorialSteps: ['Mova com WASD, setas ou toque', 'Use E ou INTERAGIR perto de itens e terminais', 'Observe como inventário e flags liberam novas rotas'],
             keyboardHelp: 'WASD ou setas: mover · E: interagir · P: pausar',
             touchControls: [
@@ -17144,13 +18857,13 @@ semente aleatória, capturas, tempo e jogada anterior`;
             keyActions: { ArrowUp: 'move-up', KeyW: 'move-up', ArrowDown: 'move-down', KeyS: 'move-down', ArrowLeft: 'move-left', KeyA: 'move-left', ArrowRight: 'move-right', KeyD: 'move-right', KeyE: 'interact', Space: 'interact', KeyP: 'pause' },
             hud: ['PONTOS', 'ENERGIA', 'SALAS'], history: room_quest_content_1.ROOM_QUEST_HISTORY, historyEyebrow: '1980 · AVENTURA E EXPLORAÇÃO',
             logicTitle: 'Grafos, inventário e condições persistentes', logicIntro: 'As salas, saídas, objetos, flags e entidades são dados serializáveis. O Phaser representa apenas a sala atual e encaminha ações.',
-            pseudocode: room_quest_content_1.ROOM_QUEST_PSEUDOCODE, concepts: ['Grafo de oito salas', 'Inventário persistente', 'Flags globais', 'Condições de passagem'], comparison: room_quest_content_1.ROOM_QUEST_COMPARISON,
+            pseudocode: room_quest_content_1.ROOM_QUEST_PSEUDOCODE, concepts: ['Grafo de doze salas', 'Inventário persistente', 'Flags globais', 'Condições de passagem'], comparison: room_quest_content_1.ROOM_QUEST_COMPARISON,
         },
         'raster-rally': {
             optionLabel: 'Dificuldade', optionParameter: 'difficulty',
             options: { novato: 'Novato', piloto: 'Piloto', campeao: 'Campeão' }, defaultOption: 'piloto',
-            tutorialTitle: 'Complete três pistas pseudo-3D antes do tempo acabar',
-            tutorialSteps: ['Acelere com W, seta para cima ou toque', 'Esterce com A/D ou setas laterais', 'Freie com S ou seta para baixo e preserve a integridade'],
+            tutorialTitle: 'Complete cinco pistas pseudo-3D e conquiste o campeonato',
+            tutorialSteps: ['Acelere com W, seta para cima ou toque', 'Esterce com A/D ou setas e freie antes das curvas', 'Complete cinco pistas; Metro Neon e Passo do Eclipse possuem três voltas'],
             keyboardHelp: 'W/↑: acelerar · S/↓: frear · A/D ou ←/→: esterçar · P: pausar',
             touchControls: [
                 { action: 'move-left', label: '◀', aria: 'Esterçar para esquerda' },
@@ -17166,8 +18879,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
         'state-quest-rpg': {
             optionLabel: 'Modo', optionParameter: 'mode',
             options: { viajante: 'Viajante', estrategista: 'Estrategista', cronista: 'Cronista' }, defaultOption: 'estrategista',
-            tutorialTitle: 'Conclua três missões e decida o destino do Núcleo',
-            tutorialSteps: ['Mova com WASD, setas ou toque', 'Use E/INTERAGIR para conversar e examinar objetos', 'Em diálogos e combates, confirme com Enter/Espaço ou escolha a alternativa com Esc/Q'],
+            tutorialTitle: 'Conclua cinco missões e decida o destino do Núcleo',
+            tutorialSteps: ['Explore cinco mapas com WASD, setas ou toque', 'Use E/INTERAGIR para conversar, examinar objetos e ativar consoles', 'Conclua as cinco missões; em combate confirme para atacar e use a alternativa para defender ou usar poção', 'No Arquivo de Ecos, procure o Cache de Memória opcional para obter bônus sem bloquear o final'],
             keyboardHelp: 'WASD/setas: mover · E: interagir · Enter/Espaço: confirmar/atacar · Esc/Q: alternativa/defender · P: pausar',
             touchControls: [
                 { action: 'move-up', label: '▲', aria: 'Mover herói para cima' },
@@ -17181,7 +18894,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             keyActions: { ArrowUp: 'move-up', KeyW: 'move-up', ArrowDown: 'move-down', KeyS: 'move-down', ArrowLeft: 'move-left', KeyA: 'move-left', ArrowRight: 'move-right', KeyD: 'move-right', KeyE: 'interact', Enter: 'confirm', Space: 'confirm', Escape: 'cancel', KeyQ: 'cancel', KeyP: 'pause' },
             hud: ['PONTOS', 'HP', 'NÍVEL'], history: state_quest_content_1.STATE_QUEST_HISTORY, historyEyebrow: '1986 · RPG, MISSÕES E ESTADOS',
             logicTitle: 'Atributos, missões e consequências persistentes', logicIntro: 'Mapas, personagem, inventário, equipamentos, diálogos, combates e missões vivem em uma simulação serializável. O Phaser apenas desenha o estado e encaminha ações.',
-            pseudocode: state_quest_content_1.STATE_QUEST_PSEUDOCODE, concepts: ['Três mapas por tilemap', 'Máquina de estados de missões', 'Atributos e progressão', 'Diálogos ramificados', 'Dois finais persistentes'], comparison: state_quest_content_1.STATE_QUEST_COMPARISON,
+            pseudocode: state_quest_content_1.STATE_QUEST_PSEUDOCODE, concepts: ['Cinco mapas por tilemap', 'Máquina de estados de missões', 'Atributos e progressão', 'Diálogos ramificados', 'Dois finais persistentes'], comparison: state_quest_content_1.STATE_QUEST_COMPARISON,
         },
         'bit-bridge-16': {
             optionLabel: 'Apresentação', optionParameter: 'mode',
@@ -17203,8 +18916,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
         'polygon-sector-94': {
             optionLabel: 'Dificuldade', optionParameter: 'difficulty',
             options: { cadete: 'Cadete', piloto: 'Piloto', arquiteto: 'Arquiteto' }, defaultOption: 'piloto',
-            tutorialTitle: 'Explore a primeira arena poligonal e sincronize três núcleos',
-            tutorialSteps: ['Avance com W/↑ e recue com S/↓; arraste a arena para olhar', 'Gire com A/D ou setas; Espaço aplica salto com tolerância de borda', 'Use Q para materiais, C para câmera e E para sensibilidade; complete as comparações para liberar o portal'],
+            tutorialTitle: 'Conclua três protocolos na arena poligonal',
+            tutorialSteps: ['Protocolo 1: colete os três núcleos e valide a geometria', 'Protocolo 2: compare Flat, Textura e PBR e ative os dois checkpoints', 'Protocolo 3: registre as três câmeras, recupere os núcleos e finalize o portal'],
             keyboardHelp: 'W/↑: avançar · S/↓: recuar · A/D ou ←/→: girar · arrastar: olhar · Espaço: pular · Q: material · C: câmera · E: sensibilidade · P: pausar',
             touchControls: [
                 { action: 'move-left', label: '↶', aria: 'Girar para esquerda' },
@@ -17217,15 +18930,15 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 { action: 'move-right', label: '↷', aria: 'Girar para direita' },
             ],
             keyActions: { ArrowUp: 'move-up', KeyW: 'move-up', ArrowDown: 'move-down', KeyS: 'move-down', ArrowLeft: 'move-left', KeyA: 'move-left', ArrowRight: 'move-right', KeyD: 'move-right', Space: 'jump', KeyQ: 'primary-action', KeyC: 'secondary-action', KeyE: 'interact', KeyP: 'pause' },
-            hud: ['PONTOS', 'VIDAS', 'NÚCLEOS'], history: polygon_sector_content_1.POLYGON_SECTOR_HISTORY, historyEyebrow: '1994 · PRIMEIROS MUNDOS POLIGONAIS',
+            hud: ['PONTOS', 'VIDAS', 'PROTOCOLO'], history: polygon_sector_content_1.POLYGON_SECTOR_HISTORY, historyEyebrow: '1994 · PRIMEIROS MUNDOS POLIGONAIS',
             logicTitle: 'Vértices, câmeras e shaders em uma arena real', logicIntro: 'Movimento, física, objetivos e save vivem fora do WebGL. O renderer transforma malhas por matrizes e aplica materiais sem controlar as regras.',
             pseudocode: polygon_sector_content_1.POLYGON_SECTOR_PSEUDOCODE, concepts: ['Vértices e triângulos', 'Matrizes MVP', 'Câmeras 3D', 'Shaders e materiais', 'Colisão por volumes'], comparison: polygon_sector_content_1.POLYGON_SECTOR_COMPARISON,
         },
         'camera-evolution': {
             optionLabel: 'Dificuldade', optionParameter: 'difficulty',
             options: { cadete: 'Cadete', piloto: 'Piloto', arquiteto: 'Arquiteto' }, defaultOption: 'piloto',
-            tutorialTitle: 'Compare seis câmeras na mesma arena sem reiniciar a missão',
-            tutorialSteps: ['Avance com W/↑ e recue com S/↓; arraste a arena para olhar', 'Gire com A/D ou setas e salte com Espaço usando tolerância de borda', 'Use C para seis câmeras, Q para três FOVs e E para sensibilidade; registre todos para liberar o portal'],
+            tutorialTitle: 'Conclua três experimentos de câmera na mesma arena',
+            tutorialSteps: ['Experimento 1: colete três lentes e compare ao menos duas câmeras', 'Experimento 2: registre FOV 45°, 60° e 75° e os dois checkpoints', 'Experimento 3: registre as seis câmeras, recupere as lentes e finalize'],
             keyboardHelp: 'W/↑: avançar · S/↓: recuar · A/D ou ←/→: girar · arrastar: olhar · Espaço: pular · C: câmera · Q: FOV · E: sensibilidade · P: pausar',
             touchControls: [
                 { action: 'move-left', label: '↶', aria: 'Girar para esquerda' },
@@ -17238,15 +18951,15 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 { action: 'move-right', label: '↷', aria: 'Girar para direita' },
             ],
             keyActions: { ArrowUp: 'move-up', KeyW: 'move-up', ArrowDown: 'move-down', KeyS: 'move-down', ArrowLeft: 'move-left', KeyA: 'move-left', ArrowRight: 'move-right', KeyD: 'move-right', Space: 'jump', KeyQ: 'primary-action', KeyC: 'secondary-action', KeyE: 'interact', KeyP: 'pause' },
-            hud: ['PONTOS', 'VIDAS', 'CÂMERAS'], history: camera_evolution_content_1.CAMERA_EVOLUTION_HISTORY, historyEyebrow: '1996 · A CÂMERA COMO MECÂNICA',
+            hud: ['PONTOS', 'VIDAS', 'EXPERIMENTO'], history: camera_evolution_content_1.CAMERA_EVOLUTION_HISTORY, historyEyebrow: '1996 · A CÂMERA COMO MECÂNICA',
             logicTitle: 'Matrizes de visão, rigs e campo de visão', logicIntro: 'A missão e o avatar permanecem na simulação. Cada câmera calcula posição, alvo e projeção sem alterar as regras do mundo.',
             pseudocode: camera_evolution_content_1.CAMERA_EVOLUTION_PSEUDOCODE, concepts: ['Seis camera rigs', 'Matriz de visão', 'FOV 45°/60°/75°', 'Enquadramento e level design', 'Simulação preservada'], comparison: camera_evolution_content_1.CAMERA_EVOLUTION_COMPARISON,
         },
         'raycast-corridors': {
             optionLabel: 'Dificuldade', optionParameter: 'difficulty',
             options: { explorador: 'Explorador', operador: 'Operador', arquiteto: 'Arquiteto' }, defaultOption: 'operador',
-            tutorialTitle: 'Ative a rede e alcance a extração em primeira pessoa',
-            tutorialSteps: ['Avance com W/↑ e recue com S/↓', 'Gire com A/D ou setas laterais', 'Use E para portas e terminais; M alterna mapa, primeira pessoa e tela dividida'],
+            tutorialTitle: 'Conclua três operações Raycast e estabilize o complexo',
+            tutorialSteps: ['Cada operação usa um mapa 24×18 diferente', 'Avance/recuar com W/S ou setas e gire com A/D', 'Use E para portas e terminais; M alterna visão; conclua as três extrações'],
             keyboardHelp: 'W/↑: avançar · S/↓: recuar · A/D ou ←/→: girar · E: interagir · M: visão · P: pausar',
             touchControls: [
                 { action: 'move-left', label: '↶', aria: 'Girar para esquerda' },
@@ -17264,7 +18977,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         'trap-lab': {
             optionLabel: 'Modo', optionParameter: 'mode',
             options: { explorador: 'Explorador', programador: 'Programador', precisao: 'Precisão' }, defaultOption: 'programador',
-            tutorialTitle: 'Supere três fases e programe os terminais',
+            tutorialTitle: 'Supere seis fases e programe os terminais',
             tutorialSteps: ['Mova com A/D, setas ou toque', 'Salte com Espaço, W ou o botão PULAR', 'Use E ou INTERAGIR perto dos terminais'],
             keyboardHelp: 'A/D ou ←/→: mover · W/↑/Espaço: pular · E: interagir · P: pausar',
             touchControls: [
@@ -17315,8 +19028,8 @@ semente aleatória, capturas, tempo e jogada anterior`;
                 'labirinto-desafio': 'Labirinto 7×7 · Desafio',
             },
             defaultOption: 'caminho-aprendiz',
-            tutorialTitle: 'Resolva a grade usando lógica e observação',
-            tutorialSteps: ['Escolha um dos quatro tipos de puzzle', 'Toque ou clique nas células para alterar a grade', 'No labirinto, use setas, WASD ou o direcional móvel', 'Abra o Editor para criar e testar um labirinto próprio'],
+            tutorialTitle: 'Complete três desafios consecutivos em cada modalidade',
+            tutorialSteps: ['Escolha Caminhos, Circuitos, Sequência ou Labirinto e a dificuldade', 'Cada modalidade possui três desafios consecutivos; conclua os três para finalizar', 'Toque ou clique nas células; no labirinto use WASD, setas ou direcional móvel', 'O Editor continua disponível como desafio 7×7 personalizado independente', 'Ao concluir os três desafios, a campanha recebe de 1 a 3 estrelas conforme eficiência e erros'],
             keyboardHelp: 'Mouse/toque: selecionar · WASD/setas: labirinto · P: pausar',
             touchControls: [
                 { action: 'move-up', label: '▲', aria: 'Mover para cima no labirinto' },
@@ -17355,15 +19068,237 @@ semente aleatória, capturas, tempo e jogada anterior`;
             logicTitle: 'Matrizes, movimentos legais, multiplayer local e CPU probabilística', logicIntro: 'A simulação controla regras, turnos, capturas, modo local e decisões da CPU. O Phaser desenha o tabuleiro e converte clique ou toque em uma casa.',
             pseudocode: board_arena_content_1.BOARD_ARENA_PSEUDOCODE, concepts: ['Matriz 3×3 e 8×8', 'Máquina de estados', 'Dois jogadores locais', 'Movimentos legais', 'Captura obrigatória', 'Minimax e heurísticas', 'Aleatoriedade com semente', 'Persistência'], comparison: board_arena_content_1.BOARD_ARENA_COMPARISON,
         },
+        'chess-arena-360': {
+          "optionLabel": "Modo de partida",
+          "optionParameter": "mode",
+          "options": {
+                    "local": "2 jogadores locais",
+                    "cpu-iniciante": "CPU · Iniciante",
+                    "cpu-normal": "CPU · Normal",
+                    "cpu-estrategica": "CPU · Estratégica",
+                    "cpu-mestre": "CPU · Mestre"
+          },
+          "defaultOption": "cpu-normal",
+          "tutorialTitle": "Jogue xadrez completo em um tabuleiro tridimensional",
+          "tutorialSteps": [
+                    "Selecione uma peça e um destino legal destacado",
+                    "Use o modo local para duas pessoas no mesmo aparelho ou escolha uma CPU",
+                    "Arraste para orbitar a câmera; C alterna para visão superior",
+                    "Roque, en passant e promoção seguem as regras do xadrez",
+                    "Xeque-mate encerra a partida; afogamento, repetição, 50 lances e material insuficiente geram empate"
+          ],
+          "keyboardHelp": "Mouse/toque selecionar · arraste orbitar · C câmera · N nova partida · Esc cancelar seleção",
+          "touchControls": [],
+          "keyActions": {
+                    "KeyC": "camera",
+                    "KeyN": "reset-level",
+                    "Escape": "cancel"
+          },
+          "hud": [
+                    "TURNO",
+                    "ESTADO",
+                    "LANCES"
+          ],
+          "history": {
+                    "title": "Xadrez, busca em árvore e inteligência artificial",
+                    "paragraphs": [
+                              "O xadrez é um sistema de informação perfeita: todas as peças e movimentos são visíveis, mas o espaço de possibilidades cresce rapidamente.",
+                              "Chess Arena 360 usa regras e implementação próprias para estudar geração de movimentos, avaliação de posição e poda alpha-beta."
+                    ],
+                    "sourceUrl": "https://www.chessprogramming.org/Alpha-Beta"
+          },
+          "historyEyebrow": "XADREZ · BUSCA E ESTRATÉGIA",
+          "logicTitle": "Jogadas legais, segurança do rei e alpha-beta",
+          "logicIntro": "O motor produz movimentos pseudo-legais e descarta qualquer lance que deixe o próprio rei em xeque. A CPU explora a árvore de posições com profundidade progressiva.",
+          "pseudocode": "movimentos = gerarPseudoLegais()\nlegais = filtrar(movimento => !reiFicaEmXeque(movimento))\nse CPU:\n  melhor = alphaBeta(posicao, profundidade)\n  jogar(melhor)",
+          "concepts": [
+                    "Matriz 8×8",
+                    "Movimentos legais",
+                    "Xeque",
+                    "Roque",
+                    "En passant",
+                    "Promoção",
+                    "Minimax",
+                    "Alpha-beta",
+                    "Save versionado"
+          ],
+          "comparison": [
+                    [
+                              "Visual",
+                              "Tabuleiro 2D tradicional",
+                              "Arena Three.js orbital + visão superior"
+                    ],
+                    [
+                              "Oponentes",
+                              "2 jogadores locais",
+                              "4 níveis de CPU"
+                    ],
+                    [
+                              "Regras",
+                              "Conjunto completo da partida",
+                              "Inclui condições de empate e promoção"
+                    ]
+          ]
+},
+        'mundo-plataforma-ds-360': {
+          "optionLabel": "Exploração",
+          "optionParameter": "mode",
+          "options": {
+            "campanha": "Vale Nexus + Vila Tecnológica + Floresta de Circuitos + Região Industrial + Torre Central · Regiões 1–5"
+          },
+          "defaultOption": "campanha",
+          "tutorialTitle": "Explore cinco regiões 3D/360 e conclua a convergência na Torre Central",
+          "tutorialSteps": [
+            "WASD/setas movem o explorador; Espaço pula; E interage com NPCs e terminais",
+            "Arraste a cena ou use o analógico direito para girar a câmera livremente em 360°",
+            "No Vale Nexus, sincronize 6 Orbes e 3 Balizas para liberar a Vila Tecnológica",
+            "Na Vila, conclua Oficina, Estação de Dados e Rede; depois atravesse para a Floresta de Circuitos",
+            "Na Floresta, restaure 3 Nós de Energia; depois atravesse para a Região Industrial",
+            "Na Região Industrial, estabilize Energia, processe 3 Cargas e sincronize a Sala de Controle",
+            "Na Torre Central, sincronize 3 consoles, ative o Núcleo e atravesse o portal no topo; C ativa Panorama 360°"
+          ],
+          "keyboardHelp": "WASD/setas mover · Espaço pular · E interagir · arraste/analógico direito câmera · C panorama 360 · R reiniciar · gamepad e touch",
+          "touchControls": [],
+          "keyActions": {
+            "KeyW": "move-forward",
+            "ArrowUp": "move-forward",
+            "KeyS": "move-back",
+            "ArrowDown": "move-back",
+            "KeyA": "move-left",
+            "ArrowLeft": "move-left",
+            "KeyD": "move-right",
+            "ArrowRight": "move-right",
+            "Space": "jump",
+            "KeyC": "camera-360",
+            "KeyE": "interact",
+            "KeyR": "reset-level"
+          },
+          "hud": [
+            "ORBES/DADOS/NÓS/ENERGIA/CARGAS/SINCRONIA",
+            "BALIZAS/MISSÃO/REGIÃO",
+            "BÚSSOLA",
+            "VIDAS"
+          ],
+          "history": {
+            "title": "Do mundo 3D linear à exploração em todas as direções",
+            "paragraphs": [
+              "Mundos tridimensionais amplos exigem câmera orbital, orientação espacial, bússola, objetivos distribuídos e leitura do cenário em qualquer direção.",
+              "Mundo Plataforma DS 360 transforma esses conceitos em um laboratório autoral de exploração radial, sem reproduzir mapas, personagens ou assets de franquias comerciais."
+            ],
+            "sourceUrl": "https://threejs.org/manual/#en/cameras"
+          },
+          "historyEyebrow": "MUNDO 3D/360 · ORIENTAÇÃO E CÂMERA",
+          "logicTitle": "Simulação 3D separada da câmera orbital 360°",
+          "logicIntro": "A simulação mantém física, cinco regiões, missões, esteiras, logística, torre vertical e save como dados; Three.js apresenta o mundo e a câmera orbital sem se tornar fonte de verdade.",
+          "pseudocode": "lerEntradaRelativaACamera()\naplicarGravidadeEColisoes()\naplicarEsteirasElevadoresEPlataformas()\nexecutarMissaoDaRegiaoAtual()\nsalvarRegiaoMissaoECheckpoint()\nse objetivos completos: liberarPortalDaRegiao()",
+          "concepts": [
+            "Vetores 3D",
+            "Câmera orbital 360°",
+            "Bússola",
+            "Exploração radial",
+            "AABB 3D",
+            "Plataformas móveis",
+            "Patrulha determinística",
+            "Three.js",
+            "Save versionado"
+          ],
+          "comparison": [
+            [
+              "Estrutura",
+              "Plataforma 3D linear",
+              "Mundo radial com objetivos N/L/S/O"
+            ],
+            [
+              "Câmera",
+              "Follow em terceira pessoa",
+              "Follow + Panorama orbital 360°"
+            ],
+            [
+              "Identidade",
+              "Referência técnica ao gênero",
+              "Vale, personagem, objetivos e código autorais"
+            ]
+          ]
+        },
+        'plataforma-poligonal-ds-3d': {
+            optionLabel:'Campanha 3D', optionParameter:'mode', options:{campanha:'Campanha · 4 áreas conectadas'}, defaultOption:'campanha',
+            tutorialTitle:'Atravesse quatro áreas tridimensionais e sincronize 12 fragmentos',
+            tutorialSteps:['WASD/setas movem o explorador; Espaço pula','Arraste na cena ou use o analógico direito para girar a câmera','Colete 3 fragmentos em cada área para liberar o portal','Ative checkpoints e use plataformas móveis para alcançar níveis superiores','Evite patrulhas e conclua a Torre do Render'],
+            keyboardHelp:'WASD/setas mover · Espaço pular · arraste para câmera · R reiniciar área · gamepad e touch', touchControls:[],
+            keyActions:{KeyW:'move-forward',ArrowUp:'move-forward',KeyS:'move-back',ArrowDown:'move-back',KeyA:'move-left',ArrowLeft:'move-left',KeyD:'move-right',ArrowRight:'move-right',Space:'jump',KeyR:'reset-level'}, hud:['FRAGMENTOS','VIDAS','ÁREA'],
+            history:{title:'Da plataforma lateral ao espaço tridimensional',paragraphs:['A transição de plataformas 2D para 3D adicionou profundidade, câmera livre, navegação espacial e novos problemas de colisão.','Plataforma Poligonal DS 3D usa essa evolução como estudo técnico com personagem, áreas, inimigos e código próprios.'],sourceUrl:'https://threejs.org/manual/#en/cameras'},
+            historyEyebrow:'PLATAFORMA 3D · CÂMERA E ESPAÇO',logicTitle:'Movimento 3D, gravidade, plataformas e câmera follow',logicIntro:'A simulação mantém posição, velocidade, checkpoints e missão separadas do grafo Three.js; a câmera segue o jogador por um offset suavizado.',
+            pseudocode:'lerEntradaRelativaACamera()\naplicarGravidadeESalto()\nresolverTopoDasPlataformas()\natualizarPlataformasMoveisEInimigos()\ncoletarFragmentos()\nse 3 fragmentosDaArea: liberarPortal()',
+            concepts:['Vetores 3D','Câmera terceira pessoa','AABB 3D','Gravidade','Plataformas móveis','IA de patrulha','Three.js','Save versionado'], comparison:[['Dimensão','2D: eixo lateral','3D: X/Y/Z + câmera'],['Progressão','4 áreas técnicas','3 fragmentos por área'],['Identidade','Referência ao gênero plataforma 3D','Universo autoral']],
+        },
+        'hexa-reactor': {
+            optionLabel:'Campanha',optionParameter:'mode',options:{campanha:'Campanha · 12 níveis'},defaultOption:'campanha',
+            tutorialTitle:'Estabilize doze redes hexagonais rotacionando o fluxo',tutorialSteps:['Clique/toque para girar 60°','Conecte fontes aos receptores dourados','Evite células vermelhas de sobrecarga','Feche vazamentos energizados','H mostra uma dica e R reinicia'],
+            keyboardHelp:'Mouse/toque: girar · botão direito: anti-horário · H dica · R reiniciar',touchControls:[],keyActions:{KeyH:'hint',KeyR:'reset-level',KeyP:'pause'},hud:['GIROS','RECEPTORES','FASE'],
+            history:{title:'Grades hexagonais, grafos e puzzles de conexão',paragraphs:['Uma grade hexagonal oferece seis vizinhos e exige outra forma de pensar adjacência, caminhos e orientação.','Hexa Reactor converte essa estrutura em uma campanha autoral de fluxo e rotação.'],sourceUrl:'https://www.redblobgames.com/grids/hexagons/'},historyEyebrow:'HEXÁGONOS · GRAFOS E FLUXO',logicTitle:'Propagação de energia por BFS',logicIntro:'Peças usam coordenadas axiais q/r e portas rotacionáveis; a rede energizada é calculada a partir das fontes.',
+            pseudocode:'girarPeca()\npropagarFluxoComBFS()\nse todosReceptores && semSobrecarga && semVazamentos: vencer()',concepts:['Grade hexagonal','Coordenadas axiais','BFS','Grafos','Rotação modular','Sobrecarga','Three.js'],comparison:[['Vizinhança','Grade quadrada: 4 direções','Hexagonal: 6 direções'],['Objetivo','Caminho único','Múltiplas fontes e receptores'],['Render','DOM acessível','Backdrop Three.js']],
+        },
+        'crystal-cascade-3d': {
+            optionLabel:'Campanha', optionParameter:'mode', options:{campanha:'Campanha · 12 fases'}, defaultOption:'campanha',
+            tutorialTitle:'Estabilize doze câmaras prismáticas com combinações e cascatas',
+            tutorialSteps:['Selecione dois cristais adjacentes para trocar','Trocas sem combinação não gastam movimentos','Combine 4 para criar limpadores de linha/coluna e 5 para criar uma peça explosiva','Quebre gelo e cumpra as coletas mostradas no HUD','Cascatas aumentam o combo; conclua a fase antes de zerar os movimentos'],
+            keyboardHelp:'Mouse/toque: selecionar dois cristais vizinhos · R: reiniciar fase · P/Esc: pausar pelo portal', touchControls:[], keyActions:{KeyR:'reset-level',KeyP:'pause'}, hud:['MOVIMENTOS','PONTOS','COMBO'],
+            history:{title:'Puzzles de combinação e reconhecimento de padrões',paragraphs:['Jogos de combinação transformam matrizes em espaços de planejamento: cada troca altera relações locais e pode gerar cascatas.','Crystal Cascade 3D usa esse gênero como laboratório autoral de matrizes, busca, pontuação e renderização híbrida WebGL/DOM.'],sourceUrl:'https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array'},
+            historyEyebrow:'MATCH-3 · MATRIZES E CASCATAS', logicTitle:'Combinações, gravidade e peças especiais', logicIntro:'O motor mantém o tabuleiro como dados puros; o DOM desenha as células e o Three.js produz apenas a ambientação tridimensional.',
+            pseudocode:`trocar(a,b)
+se naoFormaMatch: desfazer()
+senao:
+  consumirMovimento()
+  enquanto existemMatches:
+    limparMatches()
+    criarPecaEspecialSeNecessario()
+    aplicarGravidade()
+    preencherColunas()
+  se semJogadasValidas: embaralhar()`,
+            concepts:['Matriz 8×8','Busca de padrões','Cascatas','Gravidade discreta','Peças especiais','Detecção de jogadas','Three.js','Save versionado'],
+            comparison:[['Identidade','Referência ao gênero match-3','Cristais, campanha e arte próprios'],['Renderização','Tabuleiro DOM 3D/2.5D','Backdrop Three.js WebGL'],['Progressão','12 fases com metas diferentes','Estrelas por desempenho']],
+        },
+        'plataforma-classica-ds': {
+            optionLabel: 'Apresentação visual', optionParameter: 'style',
+            options: { moderno: 'Moderno · efeitos e profundidade', historico: 'Histórico · leitura pixel' }, defaultOption: 'moderno',
+            tutorialTitle: 'Atravesse o Mundo 1 — Campo dos Pixels em seis fases',
+            tutorialSteps: ['Escolha Moderno ou Histórico; ambos usam a mesma física e os mesmos mapas', 'A/D ou setas movem Nexo; W, ↑ ou Espaço pulam', 'Pise sobre os inimigos para derrotá-los e evite espinhos ou contato lateral', 'Colete todos os chips; cada fase também esconde um fragmento opcional', 'Ative checkpoints, use molas e derrote o Guardião do Clock com três saltos na fase 1-6'],
+            keyboardHelp: 'A/D ou ←/→ mover · W/↑/Espaço pular · R reiniciar · P/Esc pausar · gamepad e touch',
+            touchControls: [], keyActions: { KeyA:'move-left', KeyD:'move-right', ArrowLeft:'move-left', ArrowRight:'move-right', KeyW:'jump', ArrowUp:'jump', Space:'jump', KeyR:'reset-level', KeyP:'pause' },
+            hud: ['PONTOS','QUEDAS','FASE'],
+            history: { title:'Plataformas laterais e a gramática do salto', paragraphs:['A plataforma lateral transformou movimento, salto, inimigos, colecionáveis e mundos em uma linguagem central da história dos videogames.','Plataforma Clássica DS recria conceitos do gênero com universo e implementação próprios, comparando uma leitura visual histórica a uma apresentação moderna.'], sourceUrl:'https://developer.mozilla.org/docs/Games/Techniques/2D_collision_detection' },
+            historyEyebrow: 'PLATAFORMA 2D · EVOLUÇÃO VISUAL', logicTitle:'Física lateral, câmera e fases orientadas a dados',
+            logicIntro:'A simulação mantém coordenadas, velocidade, colisões e progressão fora da camada visual. O mesmo level JSON pode ser desenhado como histórico ou moderno sem mudar jogabilidade.',
+            pseudocode:`lerEntrada()\naplicarAceleracaoHorizontal()\naplicarGravidade()\nresolverColisoesAABB()\nse saltoComCoyoteEBuffer: pular()\natualizarInimigos()\ncoletarChipsESegredos()\nse todosChips e chefeDerrotado: liberarPortal()`,
+            concepts:['Plataforma lateral','AABB','Gravidade','Coyote time','Jump buffer','Câmera follow','IA simples','Dados de fase','Save versionado'],
+            comparison:[['Visual','Histórico: pixelização e scanlines','Moderno: parallax, glow e partículas'],['Jogabilidade','Mesma física nos dois estilos','Nenhuma vantagem por perfil gráfico'],['Identidade','Referência ao gênero de plataforma','Nexo, inimigos, mapas e mundo autorais']],
+        },
+        'duo-elementos-ds': {
+            optionLabel: 'Modo de cooperação', optionParameter: 'mode',
+            options: { solo: 'Solo · alternar personagens', local: '2 jogadores locais' }, defaultOption: 'solo',
+            tutorialTitle: 'Coordene Ígneo e Aqua através de oito fases cooperativas',
+            tutorialSteps: ['Solo: A/D + W/Espaço movem o personagem ativo; Q ou Tab alterna entre Ígneo e Aqua', 'Local: Jogador 1 usa A/D/W e Jogador 2 usa ←/→/↑', 'Fluxos da mesma afinidade são seguros; o elemento oposto é reiniciado no checkpoint', 'Ative relés, abra gates e colete todos os núcleos antes de ocupar as duas saídas', 'R reinicia a fase; P pausa. Dois gamepads e controles touch são aceitos'],
+            keyboardHelp: 'Solo: A/D/W + Q/Tab · Local: J1 A/D/W · J2 setas · R reiniciar · P pausar',
+            touchControls: [],
+            keyActions: { KeyA: 'move-left', KeyD: 'move-right', KeyW: 'jump', Space: 'jump', KeyQ: 'switch-player', Tab: 'switch-player', ArrowLeft: 'p2-left', ArrowRight: 'p2-right', ArrowUp: 'p2-jump', KeyR: 'reset-level', KeyP: 'pause' },
+            hud: ['PONTOS', 'QUEDAS', 'FASE'],
+            history: { title: 'Plataforma cooperativa e habilidades complementares', paragraphs: ['Jogos cooperativos de plataforma exploram divisão de funções: cada personagem consegue atravessar situações diferentes e precisa contribuir para a solução do mesmo espaço.', 'Duo Elementos DS aplica o gênero em uma campanha autoral, com mapas, personagens, regras, arte e código próprios e com foco didático em entrada multimodal e lógica orientada a dados.'], sourceUrl: 'https://developer.mozilla.org/docs/Web/API/Gamepad_API' },
+            historyEyebrow: 'COOPERAÇÃO LOCAL · ENTRADA MULTIMODAL',
+            logicTitle: 'Dois jogadores, uma simulação compartilhada',
+            logicIntro: 'O Multiplayer Local Core converte teclado, toque ou gamepad em ações por jogador. A fase permanece independente dos dispositivos e descreve plataformas, relés, gates, perigos, núcleos e saídas em dados.',
+            pseudocode: `para cada quadro:\n  lerEntrada(jogador1, jogador2)\n  se modoSolo e trocar:\n    alternarPersonagemAtivo()\n  atualizarFisica(igneo)\n  atualizarFisica(aqua)\n  ativarRelesCompativeis()\n  abrirGatesQuandoRequisitosForemAtendidos()\n  se ambosNasSaidas e todosNucleos:\n    avancarFase()`,
+            concepts: ['Multiplayer local', 'Mapeamento de ações', 'AABB', 'Gravidade e salto', 'Máquina de estados', 'Levels orientados a dados', 'Save versionado'],
+            comparison: [['Identidade', 'Referência ao gênero de plataforma cooperativa', 'Personagens e universo autorais do Fliperama DS'], ['Controles', 'Cooperação no mesmo dispositivo', 'Teclado, touch e até dois gamepads'], ['Fases', 'Puzzles de habilidades complementares', '8 mapas próprios com gates e afinidades']],
+        },
         'voxelcraft-ds': {
             optionLabel: 'Modo', optionParameter: 'mode',
             options: { learning: 'Aprendizagem', free: 'Livre', challenge: 'Desafio' }, defaultOption: 'learning',
-            tutorialTitle: 'Explore, colete e construa no mundo voxel',
-            tutorialSteps: ['Escolha continuar ou criar um novo mundo dentro do jogo', 'Mova, olhe e pule usando teclado ou controles móveis', 'Quebre blocos, selecione recursos e construa', 'Acompanhe chunks, FPS, triângulos, XP e missões'],
+            tutorialTitle: 'Explore o mundo voxel em três etapas progressivas',
+            tutorialSteps: ['Etapa 1: carregue e explore chunks próximos', 'Etapa 2: quebre blocos, colete recursos e use o inventário', 'Etapa 3: construa, navegue e conclua a trilha do modo escolhido', 'A etapa atual é salva junto com XP, posição, inventário e edições'],
             keyboardHelp: 'WASD/setas · mouse: olhar · Espaço: pular · Shift: correr · C: agachar · cliques: quebrar/construir',
             touchControls: [],
             keyActions: { KeyP: 'pause' },
-            hud: ['XP', 'CHUNKS', 'EDIÇÕES'],
+            hud: ['XP', 'CHUNKS', 'ETAPA'],
             history: { title: 'Mundos voxel e construção procedural', paragraphs: ['Os mundos em blocos tornaram visíveis conceitos de grade tridimensional, geração procedural, streaming e persistência.', 'Nesta versão DS, o gênero é usado como laboratório educacional autoral de Three.js, chunks, inventário e desempenho adaptativo.'], sourceUrl: 'https://threejs.org/' },
             historyEyebrow: '2011 · MUNDOS VOXEL',
             logicTitle: 'Chunks, malhas e persistência', logicIntro: 'O mundo mantém regras e edições serializáveis; o Three.js transforma apenas os chunks próximos em geometria renderizável.',
@@ -17434,16 +19369,16 @@ semente aleatória, capturas, tempo e jogada anterior`;
     const graphicsLabels = { automatico: 'Automático', baixo: 'Baixo', medio: 'Médio', alto: 'Alto', ultra: 'Ultra', historico: 'Histórico' };
     const roadmapStatusLabels = { concluido: 'Concluído', 'em-andamento': 'Em andamento', 'proxima-fase': 'Próxima fase', planejado: 'Planejado' };
     const BUILD_INFO = {
-        version: '0.34.1',
-        label: 'v0.34.1',
-        phase: 'Fase 7.15R — Auditoria de CPU, multiplayer e qualidade',
-        channel: 'Estável · expansão controlada',
-        publishedAt: '2026-08-04T18:34:00-03:00',
+        version: '0.39.0',
+        label: 'v0.39.0',
+        phase: 'Fase 7.28 — Chess Arena 360 · Estratégia 3D',
+        channel: 'Estável · novos jogos',
+        publishedAt: '2026-08-08T15:54:00-03:00',
         notes: [
-            'Seis clássicos arcade receberam campanhas, ondas ou metas ampliadas.',
-            'Reator de Blocos agora possui cinco fases; Vector Fleet e Sentinela Orbital variam o total de ondas por dificuldade.',
-            'Space Blocks ganhou desafios Sprint e Maratona, e Motion Beat recebeu os modos Normal e Maratona.',
-            'Medalhas, estatísticas locais e tutorial de ações foram incorporados sem alterar os outros 12 jogos.',
+            'Chess Arena 360 entra como a 25ª experiência jogável, com tabuleiro Three.js, câmera orbital e visão superior.',
+            'O motor implementa roque, en passant, promoção, xeque, xeque-mate, afogamento, repetição tripla, regra dos 50 lances e material insuficiente.',
+            'Há multiplayer local e quatro níveis de CPU; os níveis Estratégica e Mestre usam minimax com poda alpha-beta.',
+            'As 24 experiências anteriores permanecem preservadas e o Chess Arena 360 carrega somente quando é aberto.',
         ],
     };
     const storage = new arcade_storage_1.ArcadeStorage();
@@ -17479,15 +19414,16 @@ semente aleatória, capturas, tempo e jogada anterior`;
     if (!app)
         throw new Error('Elemento #app não encontrado');
     app.innerHTML = `
-      <div id="intro-overlay" class="intro-overlay" hidden>
-        <div class="intro-shell">
+      <div id="intro-overlay" class="intro-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="intro-title">
+        <div class="intro-shell" tabindex="-1">
+          <button id="intro-close" class="intro-close icon-button" aria-label="Fechar abertura e entrar no Fliperama">×</button>
           <div class="intro-marquee"><span>FLIPERAMA DS</span><span>INSERT COIN · EDUCAÇÃO + JOGOS + HISTÓRIA</span></div>
           <div class="intro-cabinet" aria-hidden="true">
             <div class="cabinet-screen"><span>DS</span><small>READY PLAYER CLASS</small></div>
             <div class="cabinet-controls"><i></i><b></b><b></b><b></b></div>
           </div>
           <p class="eyebrow">ABERTURA DO FLIPERAMA</p>
-          <h2>Bem-vindo ao <span>Fliperama DS</span></h2>
+          <h2 id="intro-title">Bem-vindo ao <span>Fliperama DS</span></h2>
           <p>Entre em uma experiência organizada por épocas, tecnologias, museus e laboratórios jogáveis. A abertura aparece uma vez por sessão e pode ser revista nas configurações.</p>
           <div class="intro-progress"><span></span></div>
           <div class="intro-actions"><button id="intro-enter" class="button primary">Entrar no fliperama</button><button id="intro-skip" class="button secondary">Pular abertura</button></div>
@@ -18287,6 +20223,9 @@ semente aleatória, capturas, tempo e jogada anterior`;
         renderArcadeMission();
         const touch = query('#touch-controls');
         touch.dataset.game = activeGameId;
+        const visualStage = query('#game-stage');
+        visualStage.dataset.game = activeGameId;
+        visualStage.dataset.graphics = resolvedGraphicsMode();
         touch.innerHTML = profile.touchControls.map((control) => `<button data-action="${control.action}" aria-label="${control.aria}">${control.label}</button>`).join('');
         bindTouchControls();
         const presentation = (0, game_presentations_1.gamePresentation)(game);
@@ -18490,6 +20429,10 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const puzzleState = payload;
             candidate = `${puzzleState.mode ?? 'caminho'}-${puzzleState.difficulty ?? 'aprendiz'}`;
         }
+        else if (activeGameId === 'plataforma-classica-ds')
+            candidate = String(payload.visualStyle ?? 'moderno');
+        else if (activeGameId === 'duo-elementos-ds')
+            candidate = String(payload.mode ?? 'solo');
         else if (activeGameId === 'voxelcraft-ds')
             candidate = String(payload.mode ?? 'learning');
         else
@@ -18541,6 +20484,12 @@ semente aleatória, capturas, tempo e jogada anterior`;
             }
             if (activeGameId === 'vector-tennis' && event.detail?.event === 'cpu-decision')
                 query('#game-state').textContent = event.detail?.strategy ?? 'CPU ajustando a estratégia';
+            if (activeGameId === 'plataforma-classica-ds')
+                query('#game-state').textContent = event.detail?.event === 'level-complete' ? `Fase ${Math.min(6, Number(event.detail?.level ?? 1) + 1)}/6 liberada` : `Fase ${event.detail?.level ?? 1}/6 · ${event.detail?.chips ?? 0}/${event.detail?.chipsTotal ?? 0} chips · ${event.detail?.secrets ?? 0}/6 segredos`;
+            if (activeGameId === 'duo-elementos-ds')
+                query('#game-state').textContent = event.detail?.event === 'level-complete'
+                    ? `Fase ${Math.min(8, Number(event.detail?.level ?? 1) + 1)}/8 liberada`
+                    : `Fase ${event.detail?.level ?? 1}/8 · ${event.detail?.shards ?? 0}/${event.detail?.shardsTotal ?? 0} núcleos · ${event.detail?.deaths ?? 0} quedas`;
             if (activeGameId === 'voxelcraft-ds')
                 query('#game-state').textContent = `${event.detail?.progress ?? 0}% da missão · ${event.detail?.xp ?? 0} XP`;
             if (activeGameId === 'space-blocks')
@@ -18580,7 +20529,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
             if (activeGameId === 'room-quest') {
                 const progressEvent = event.detail?.event;
                 query('#game-state').textContent = progressEvent === 'room-changed'
-                    ? `${event.detail?.roomTitle ?? 'Nova sala'} · ${event.detail?.visited ?? 1}/8 visitadas`
+                    ? `${event.detail?.roomTitle ?? 'Nova sala'} · ${event.detail?.visited ?? 1}/12 visitadas`
                     : progressEvent === 'item-collected'
                         ? `Item coletado · inventário ${event.detail?.inventory ?? 0}`
                         : progressEvent === 'terminal-activated'
@@ -18617,7 +20566,11 @@ semente aleatória, capturas, tempo e jogada anterior`;
             }
             if (activeGameId === 'polygon-sector-94') {
                 const progressEvent = event.detail?.event;
-                query('#game-state').textContent = progressEvent === 'core-collected'
+                query('#game-state').textContent = progressEvent === 'stage-changed'
+                    ? `Protocolo ${event.detail?.stage ?? 1}/3 iniciado`
+                    : progressEvent === 'stage-complete'
+                        ? `Protocolo ${event.detail?.stages ?? 1}/3 concluído`
+                    : progressEvent === 'core-collected'
                     ? `${event.detail?.cores ?? 0}/3 núcleos sincronizados`
                     : progressEvent === 'checkpoint'
                         ? 'Checkpoint poligonal registrado'
@@ -18631,7 +20584,11 @@ semente aleatória, capturas, tempo e jogada anterior`;
             }
             if (activeGameId === 'camera-evolution') {
                 const progressEvent = event.detail?.event;
-                query('#game-state').textContent = progressEvent === 'camera-changed'
+                query('#game-state').textContent = progressEvent === 'stage-changed'
+                    ? `Experimento ${event.detail?.stage ?? 1}/3 iniciado`
+                    : progressEvent === 'stage-complete'
+                        ? `Experimento ${event.detail?.stages ?? 1}/3 concluído`
+                    : progressEvent === 'camera-changed'
                     ? `Câmera: ${event.detail?.camera ?? '3D'} · ${event.detail?.cameras ?? 1}/6 estudadas`
                     : progressEvent === 'fov-changed'
                         ? `Campo de visão: ${event.detail?.fov ?? 60}°`
@@ -18654,7 +20611,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
                             : progressEvent === 'life-lost'
                                 ? `${event.detail?.lives ?? 0} vidas restantes · retorno ao checkpoint`
                                 : progressEvent === 'zone-changed'
-                                    ? `Zona ${event.detail?.zone ?? 1}/4 alcançada`
+                                    ? `Zona ${event.detail?.zone ?? 1}/6 alcançada`
                                     : 'Ponte técnica atualizada';
             }
             if (activeGameId === 'raycast-corridors') {
@@ -18749,37 +20706,45 @@ semente aleatória, capturas, tempo e jogada anterior`;
             else if (activeGameId === 'raster-rally') {
                 const won = event.detail?.winner === 'player';
                 query('#result-title').textContent = won ? 'Campeonato Raster concluído!' : 'A corrida foi encerrada';
-                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · pista ${event.detail?.track ?? 1}/3 · ${event.detail?.overtakes ?? 0} ultrapassagens · integridade ${Math.max(0, 100 - Number(event.detail?.damage ?? 0))}%.`;
+                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · pista ${event.detail?.track ?? 1}/5 · ${event.detail?.overtakes ?? 0} ultrapassagens · integridade ${Math.max(0, 100 - Number(event.detail?.damage ?? 0))}%.`;
             }
             else if (activeGameId === 'state-quest-rpg') {
                 const ending = event.detail?.ending === 'reset' ? 'Novo Ciclo' : 'Memória Preservada';
                 query('#result-title').textContent = `State Quest concluído · ${ending}`;
-                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · nível ${event.detail?.level ?? 1} · ${event.detail?.quests ?? 3}/3 missões · ${event.detail?.maps ?? 3}/3 mapas · ${event.detail?.steps ?? 0} passos.`;
+                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · nível ${event.detail?.level ?? 1} · ${event.detail?.quests ?? 5}/5 missões · ${event.detail?.maps ?? 5}/5 mapas · ${event.detail?.steps ?? 0} passos.`;
+            }
+            else if (activeGameId === 'plataforma-classica-ds') {
+                query('#result-title').textContent = 'Mundo 1 — Campo dos Pixels concluído!';
+                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · 6/6 fases · ${event.detail?.secretsFound ?? 0}/6 segredos · ${event.detail?.deaths ?? 0} reinícios · medalha ${event.detail?.medal ?? 'bronze'}.`;
+            }
+            else if (activeGameId === 'duo-elementos-ds') {
+                query('#result-title').textContent = 'Câmara Nexus estabilizada!';
+                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · 8/8 fases · ${event.detail?.deaths ?? 0} quedas · medalha ${event.detail?.medal ?? 'bronze'}.`;
             }
             else if (activeGameId === 'polygon-sector-94') {
                 const won = event.detail?.winner === 'player';
                 query('#result-title').textContent = won ? 'Setor Poligonal sincronizado!' : 'A malha encerrou a exploração';
-                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · ${event.detail?.cores ?? 0}/3 núcleos · ${event.detail?.checkpoints ?? 0}/2 checkpoints · ${event.detail?.elapsed ?? 0}s.`;
+                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · ${event.detail?.stages ?? 0}/3 protocolos · ${event.detail?.cores ?? 0}/3 núcleos · ${event.detail?.checkpoints ?? 0}/2 checkpoints · ${event.detail?.elapsed ?? 0}s.`;
             }
             else if (activeGameId === 'camera-evolution') {
                 const won = event.detail?.winner === 'player';
                 query('#result-title').textContent = won ? 'Laboratório de câmeras concluído!' : 'A sessão de câmera foi encerrada';
-                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · ${event.detail?.cameras ?? 1}/6 câmeras · FOV ${event.detail?.fov ?? 60}° · ${event.detail?.cores ?? 0}/3 lentes · ${event.detail?.elapsed ?? 0}s.`;
+                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · ${event.detail?.stages ?? 0}/3 experimentos · ${event.detail?.cameras ?? 1}/6 câmeras · FOV ${event.detail?.fov ?? 60}° · ${event.detail?.cores ?? 0}/3 lentes · ${event.detail?.elapsed ?? 0}s.`;
             }
             else if (activeGameId === 'raycast-corridors') {
                 const won = event.detail?.winner === 'player';
                 query('#result-title').textContent = won ? 'Extração Raycast concluída!' : 'Missão encerrada pelo complexo';
-                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · ${event.detail?.keys ?? 0}/2 chaves · ${event.detail?.terminals ?? 0}/3 terminais · ${event.detail?.doors ?? 0}/2 portas · ${event.detail?.elapsed ?? 0}s.`;
+                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · operação ${event.detail?.operation ?? 3}/${event.detail?.operationTotal ?? 3} · ${event.detail?.keys ?? 0}/${event.detail?.keysRequired ?? 3} chaves · ${event.detail?.terminals ?? 0}/${event.detail?.terminalsRequired ?? 4} terminais · ${event.detail?.doors ?? 0} portas · ${event.detail?.elapsed ?? 0}s.`;
             }
             else if (activeGameId === 'bit-bridge-16') {
                 const won = event.detail?.winner === 'player';
                 query('#result-title').textContent = won ? 'Ponte 8→16 Bits estabilizada!' : 'A ponte perdeu estabilidade';
-                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · ${event.detail?.fragments ?? 0}/8 fragmentos · ${event.detail?.switches ?? 0} alternâncias · ${event.detail?.elapsed ?? 0}s.`;
+                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · ${event.detail?.fragments ?? 0}/12 fragmentos · ${event.detail?.switches ?? 0} alternâncias · ${event.detail?.elapsed ?? 0}s.`;
             }
             else if (activeGameId === 'room-quest') {
                 const won = event.detail?.winner === 'player';
                 query('#result-title').textContent = won ? 'Memória histórica restaurada!' : 'A energia da expedição terminou';
-                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · ${event.detail?.rooms ?? 1}/8 salas · ${event.detail?.steps ?? 0} passos · energia ${event.detail?.energy ?? 0}.`;
+                query('#result-summary').textContent = `${event.detail?.score ?? 0} pontos · ${event.detail?.rooms ?? 1}/12 salas · ${event.detail?.steps ?? 0} passos · energia ${event.detail?.energy ?? 0}.`;
             }
             else if (activeGameId === 'trap-lab') {
                 const won = event.detail?.winner === 'player';
@@ -18873,11 +20838,11 @@ semente aleatória, capturas, tempo e jogada anterior`;
         }
         else if (activeGameId === 'polygon-sector-94') {
             const state = snapshot?.payload;
-            setHud(state?.score ?? snapshot?.score ?? 0, state?.lives ?? 4, state?.collectedCores?.length ?? 0);
+            setHud(state?.score ?? snapshot?.score ?? 0, state?.lives ?? 4, `P${state?.campaignStage ?? 1}/3`);
         }
         else if (activeGameId === 'camera-evolution') {
             const state = snapshot?.payload;
-            setHud(state?.score ?? snapshot?.score ?? 0, state?.lives ?? 4, state?.visitedCameras?.length ?? 1);
+            setHud(state?.score ?? snapshot?.score ?? 0, state?.lives ?? 4, `E${state?.campaignStage ?? 1}/3`);
         }
         else if (activeGameId === 'vector-tennis') {
             const state = snapshot?.payload;
@@ -18887,9 +20852,17 @@ semente aleatória, capturas, tempo e jogada anterior`;
             const state = snapshot?.payload;
             setHud(state?.score ?? snapshot?.score ?? 0, state?.moveCount ?? 0, `${state?.playerCaptures ?? 0}×${state?.cpuCaptures ?? 0}`);
         }
+        else if (activeGameId === 'plataforma-classica-ds') {
+            const state = snapshot?.payload;
+            setHud(state?.score ?? snapshot?.score ?? 0, state?.deaths ?? 0, `${state?.level ?? 1}/6`);
+        }
+        else if (activeGameId === 'duo-elementos-ds') {
+            const state = snapshot?.payload;
+            setHud(state?.score ?? snapshot?.score ?? 0, state?.deaths ?? 0, `${state?.level ?? 1}/8`);
+        }
         else if (activeGameId === 'voxelcraft-ds') {
             const state = snapshot?.payload;
-            setHud(Number(state?.xp ?? snapshot?.score ?? 0), Number(state?.chunks ?? 0), Number(state?.edits ?? 0));
+            setHud(Number(state?.xp ?? snapshot?.score ?? 0), Number(state?.chunks ?? 0), `E${Number(state?.stage ?? 1)}/3`);
         }
         else if (activeGameId === 'raycast-corridors') {
             const state = snapshot?.payload;
@@ -18978,19 +20951,31 @@ semente aleatória, capturas, tempo e jogada anterior`;
     function themeLabel(theme) {
         return theme === 'claro' ? 'Claro' : theme === 'retro' ? 'Retrô' : 'Escuro';
     }
+    function safeSessionGet(key) {
+        try { return sessionStorage.getItem(key); }
+        catch { return null; }
+    }
+    function safeSessionSet(key, value) {
+        try { sessionStorage.setItem(key, value); }
+        catch { /* modo privado ou armazenamento bloqueado: a abertura continua funcional */ }
+    }
     function openIntro(force = false) {
-        if (!force && sessionStorage.getItem('fliperama-ds-intro-seen') === '1') {
+        if (!force && safeSessionGet('fliperama-ds-intro-seen') === '1') {
             introOverlay.hidden = true;
+            document.body.classList.remove('intro-open');
             return;
         }
         introOverlay.hidden = false;
-        requestAnimationFrame(() => introOverlay.classList.add('visible'));
+        requestAnimationFrame(() => {
+            introOverlay.classList.add('visible');
+            query('.intro-shell').focus({ preventScroll: true });
+        });
         document.body.classList.add('intro-open');
-        sessionStorage.setItem('fliperama-ds-intro-seen', '1');
+        safeSessionSet('fliperama-ds-intro-seen', '1');
     }
     function closeIntro() {
         introOverlay.classList.remove('visible');
-        window.setTimeout(() => { introOverlay.hidden = true; }, 260);
+        window.setTimeout(() => { introOverlay.hidden = true; }, settings.reducedMotion ? 0 : 260);
         document.body.classList.remove('intro-open');
     }
     function openMobileMenu() {
@@ -19118,6 +21103,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
     query('#map-version-shortcut').addEventListener('click', () => { void refreshVersionDialog(); versionDialog.showModal(); });
     query('#intro-enter').addEventListener('click', closeIntro);
     query('#intro-skip').addEventListener('click', closeIntro);
+    query('#intro-close').addEventListener('click', closeIntro);
     versionToggle.addEventListener('click', () => { void refreshVersionDialog(); versionDialog.showModal(); });
     query('#settings-close').addEventListener('click', () => { settingsPanel.hidden = true; settingsToggle.setAttribute('aria-expanded', 'false'); });
     document.querySelectorAll('.theme-option').forEach((button) => button.addEventListener('click', () => void updateSettings({ ...settings, theme: button.dataset.themeOption })));
@@ -19154,6 +21140,15 @@ semente aleatória, capturas, tempo e jogada anterior`;
     window.addEventListener('keydown', (event) => {
         if (event.key !== 'Escape')
             return;
+        if (!introOverlay.hidden) {
+            event.preventDefault();
+            closeIntro();
+            return;
+        }
+        if (!settingsPanel.hidden) {
+            settingsPanel.hidden = true;
+            settingsToggle.setAttribute('aria-expanded', 'false');
+        }
         if (mobileMenu.classList.contains('open'))
             closeMobileMenu();
         if (catalogSidebar.classList.contains('open'))
@@ -19163,7 +21158,7 @@ semente aleatória, capturas, tempo e jogada anterior`;
         if (!gameDialog.open || query('#panel-play').hidden || !query('#game-onboarding').hidden)
             return;
         const action = activeProfile().keyActions[event.code];
-        if (!action || (event.repeat && ['primary-action', 'secondary-action', 'pause'].includes(action)))
+        if (!action || (event.repeat && ['primary-action', 'secondary-action', 'pause', 'switch-player', 'reset-level'].includes(action)))
             return;
         event.preventDefault();
         dispatch(action, true);
@@ -19853,7 +21848,9 @@ semente aleatória, capturas, tempo e jogada anterior`;
           "streaming por setores",
           "grafos de missão",
           "ia de tráfego",
-          "persistência"
+          "persistência",
+          "máquina de estados de missão",
+          "interação contextual"
         ],
         "supportedGraphicsModes": [
           "automatico",
@@ -20512,6 +22509,353 @@ semente aleatória, capturas, tempo e jogada anterior`;
         "mobileReady": true,
         "packageSizeBudgetKb": 1050,
         "releasePhase": 7
+      },
+      {
+      "schemaVersion": 1,
+      "id": "chess-arena-360",
+      "slug": "chess-arena-360",
+      "title": "Chess Arena 360",
+      "subtitle": "Xadrez 3D completo · multiplayer local · CPU progressiva",
+      "era": "1950-atual",
+      "year": 2026,
+      "genre": [
+            "tabuleiro",
+            "estratégia",
+            "xadrez",
+            "3D"
+      ],
+      "technology": [
+            "Three.js",
+            "motor de xadrez",
+            "minimax",
+            "alpha-beta",
+            "save local"
+      ],
+      "runtime": "dom",
+      "status": "jogavel",
+      "fidelity": "jogo-inspirado",
+      "historicalReferences": [
+            {
+                  "title": "Xadrez computacional e busca em árvore",
+                  "year": 1950,
+                  "company": "Pesquisa acadêmica e indústria",
+                  "platform": "Mainframes, computadores pessoais e web",
+                  "originalTechnology": "Geração de movimentos, avaliação heurística e busca adversarial",
+                  "note": "Referência histórica e técnica; arena, código e apresentação são autorais."
+            }
+      ],
+      "educationalConcepts": [
+            "matriz 8×8",
+            "movimentos legais",
+            "árvore de busca",
+            "minimax",
+            "alpha-beta",
+            "máquina de estados"
+      ],
+      "supportedGraphicsModes": [
+            "automatico",
+            "baixo",
+            "medio",
+            "alto",
+            "ultra"
+      ],
+      "inputActions": [
+            "primary-action",
+            "camera",
+            "reset-level",
+            "pause"
+      ],
+      "mobileReady": true,
+      "packageSizeBudgetKb": 900,
+      "releasePhase": 7.28
+},
+      {
+        "schemaVersion": 1,
+        "id": "mundo-plataforma-ds-360",
+        "slug": "mundo-plataforma-ds-360",
+        "title": "Mundo Plataforma DS 360",
+        "subtitle": "Vale Nexus + Vila Tecnológica + Floresta de Circuitos + Região Industrial · mundo persistente · câmera 360°",
+        "era": "2000-atual",
+        "year": 2026,
+        "genre": [
+          "plataforma",
+          "3D",
+          "360",
+          "exploração",
+          "aventura"
+        ],
+        "technology": [
+          "Three.js",
+          "câmera orbital 360°",
+          "simulação modular",
+          "Gamepad API",
+          "save local",
+          "NPCs, missões, trilhas ramificadas e logística industrial"
+        ],
+        "runtime": "dom",
+        "status": "jogavel",
+        "fidelity": "jogo-inspirado",
+        "historicalReferences": [
+          {
+            "title": "Evolução dos mundos tridimensionais exploráveis",
+            "year": 1996,
+            "company": "Diversos estúdios",
+            "platform": "Consoles e computadores",
+            "originalTechnology": "Mundos poligonais, câmera orbital, analógicos e orientação espacial",
+            "note": "Referência à evolução técnica do gênero; Vale Nexus, personagem, missões, arte e código são autorais."
+          }
+        ],
+        "educationalConcepts": [
+          "vetores 3D",
+          "câmera orbital",
+          "orientação por bússola",
+          "exploração radial",
+          "AABB 3D",
+          "persistência",
+          "máquina de estados de missão",
+          "interação contextual"
+        ],
+        "supportedGraphicsModes": [
+          "automatico",
+          "baixo",
+          "medio",
+          "alto",
+          "ultra"
+        ],
+        "inputActions": [
+          "move-forward",
+          "move-back",
+          "move-left",
+          "move-right",
+          "jump",
+          "camera-360",
+          "interact",
+          "reset-level",
+          "pause"
+        ],
+        "mobileReady": true,
+        "packageSizeBudgetKb": 950,
+        "releasePhase": 7.26
+      },
+      {
+        "schemaVersion": 1,
+        "id": "plataforma-poligonal-ds-3d",
+        "slug": "plataforma-poligonal-ds-3d",
+        "title": "Plataforma Poligonal DS 3D",
+        "subtitle": "Quatro áreas conectadas · terceira pessoa · 12 fragmentos",
+        "era": "1990-atual",
+        "year": 2026,
+        "genre": ["plataforma", "3D", "ação", "aventura"],
+        "technology": ["Three.js", "câmera terceira pessoa", "AABB 3D", "Gamepad API", "save local"],
+        "runtime": "dom",
+        "status": "jogavel",
+        "fidelity": "jogo-inspirado",
+        "historicalReferences": [{"title":"Evolução das plataformas tridimensionais","year":1996,"company":"Diversos estúdios","platform":"Consoles e computadores","originalTechnology":"Geometria poligonal, câmeras em perspectiva e navegação 3D","note":"Referência ao gênero e à evolução técnica; personagem, áreas, inimigos, arte e código são autorais."}],
+        "educationalConcepts": ["vetores 3D", "perspectiva", "câmera follow", "gravidade", "AABB 3D", "estado"],
+        "supportedGraphicsModes": ["automatico", "baixo", "medio", "alto", "ultra"],
+        "inputActions": ["move-forward", "move-back", "move-left", "move-right", "jump", "reset-level", "pause"],
+        "mobileReady": true,
+        "packageSizeBudgetKb": 900,
+        "releasePhase": 7.21
+      },
+      {
+              "schemaVersion": 1,
+              "id": "hexa-reactor",
+              "slug": "hexa-reactor",
+              "title": "Hexa Reactor",
+              "subtitle": "Puzzle hexagonal autoral · 12 níveis de fluxo",
+              "era": "1980-atual",
+              "year": 2026,
+              "genre": [
+                      "puzzle",
+                      "lógica",
+                      "estratégia"
+              ],
+              "technology": [
+                      "DOM",
+                      "Three.js",
+                      "grade axial",
+                      "BFS",
+                      "save local"
+              ],
+              "runtime": "dom",
+              "status": "jogavel",
+              "fidelity": "jogo-inspirado",
+              "historicalReferences": [
+                      {
+                              "title": "Grades hexagonais e puzzles de conexão",
+                              "year": 1980,
+                              "company": "Diversos autores",
+                              "platform": "Tabuleiro, computador e web",
+                              "originalTechnology": "Grafos e rotação",
+                              "note": "Identidade autoral."
+                      }
+              ],
+              "educationalConcepts": [
+                      "grafos",
+                      "BFS",
+                      "coordenadas axiais",
+                      "rotação modular"
+              ],
+              "supportedGraphicsModes": [
+                      "automatico",
+                      "baixo",
+                      "medio",
+                      "alto",
+                      "ultra"
+              ],
+              "inputActions": [
+                      "primary-action",
+                      "hint",
+                      "reset-level",
+                      "pause"
+              ],
+              "mobileReady": true,
+              "packageSizeBudgetKb": 900,
+              "releasePhase": 7.27
+      },
+      {
+        "schemaVersion": 1,
+        "id": "crystal-cascade-3d",
+        "slug": "crystal-cascade-3d",
+        "title": "Crystal Cascade 3D",
+        "subtitle": "Match-3 autoral · 12 fases prismáticas",
+        "era": "2010-atual",
+        "year": 2026,
+        "genre": ["puzzle", "match-3", "casual", "estratégia"],
+        "technology": ["Three.js", "DOM 3D", "matriz 8×8", "cascatas", "save local"],
+        "runtime": "dom",
+        "status": "jogavel",
+        "fidelity": "jogo-inspirado",
+        "historicalReferences": [{"title":"Evolução dos puzzles de combinação em grade","year":2000,"company":"Diversos estúdios","platform":"Web, mobile e consoles","originalTechnology":"Matrizes, reconhecimento de padrões e animações de cascata","note":"Referência ao gênero; peças, níveis, código e identidade do Crystal Cascade 3D são autorais."}],
+        "educationalConcepts": ["matrizes", "busca de padrões", "cascatas", "estado", "probabilidade"],
+        "supportedGraphicsModes": ["automatico", "baixo", "medio", "alto", "ultra"],
+        "inputActions": ["primary-action", "reset-level", "pause"],
+        "mobileReady": true,
+        "packageSizeBudgetKb": 1250,
+        "releasePhase": 7.20
+      },
+      {
+        "schemaVersion": 1,
+        "id": "plataforma-classica-ds",
+        "slug": "plataforma-classica-ds",
+        "title": "Plataforma Clássica DS",
+        "subtitle": "Mundo 1 · Campo dos Pixels · seis fases autorais",
+        "era": "1980-1999",
+        "year": 1990,
+        "genre": [
+          "plataforma",
+          "ação",
+          "aventura"
+        ],
+        "technology": [
+          "Canvas 2D",
+          "câmera lateral",
+          "AABB",
+          "Gamepad API",
+          "levels orientados a dados"
+        ],
+        "runtime": "dom",
+        "status": "jogavel",
+        "fidelity": "jogo-inspirado",
+        "historicalReferences": [
+          {
+            "title": "Evolução dos jogos de plataforma laterais",
+            "year": 1985,
+            "company": "Diversos estúdios",
+            "platform": "Arcades e consoles",
+            "originalTechnology": "Sprites 2D, tilemaps, rolagem e física discreta",
+            "note": "Referência ao gênero e à evolução técnica; Nexo, inimigos, fases, arte e código são próprios do Fliperama DS."
+          }
+        ],
+        "educationalConcepts": [
+          "gravidade",
+          "colisão AABB",
+          "coyote time",
+          "jump buffer",
+          "câmera follow",
+          "máquina de estados"
+        ],
+        "supportedGraphicsModes": [
+          "automatico",
+          "baixo",
+          "medio",
+          "alto",
+          "ultra"
+        ],
+        "inputActions": [
+          "move-left",
+          "move-right",
+          "jump",
+          "reset-level",
+          "pause"
+        ],
+        "mobileReady": true,
+        "packageSizeBudgetKb": 850,
+        "releasePhase": 7.19
+      },
+      {
+              "schemaVersion": 1,
+              "id": "duo-elementos-ds",
+              "slug": "duo-elementos-ds",
+              "title": "Duo Elementos DS",
+              "subtitle": "Plataforma cooperativa autoral com dois personagens e oito fases",
+              "era": "2000-2009",
+              "year": 2009,
+              "genre": [
+                      "plataforma",
+                      "cooperativo",
+                      "puzzle",
+                      "multiplayer local"
+              ],
+              "technology": [
+                      "Canvas 2D",
+                      "multiplayer local",
+                      "Gamepad API",
+                      "colisão AABB",
+                      "levels orientados a dados"
+              ],
+              "runtime": "dom",
+              "status": "jogavel",
+              "fidelity": "jogo-inspirado",
+              "historicalReferences": [
+                      {
+                              "title": "Evolução dos jogos cooperativos de plataforma",
+                              "year": 2009,
+                              "company": "Diversos estúdios e jogos web",
+                              "platform": "Computadores e navegadores",
+                              "originalTechnology": "Plataforma 2D, puzzles cooperativos e controles compartilhados",
+                              "note": "Referência ao gênero; personagens, mapas, arte, regras, áudio e código do Duo Elementos DS são autorais."
+                      }
+              ],
+              "educationalConcepts": [
+                      "entrada por jogador",
+                      "máquina de estados",
+                      "colisão AABB",
+                      "cooperação e sincronização",
+                      "persistência de campanha"
+              ],
+              "supportedGraphicsModes": [
+                      "automatico",
+                      "baixo",
+                      "medio",
+                      "alto",
+                      "ultra"
+              ],
+              "inputActions": [
+                      "move-left",
+                      "move-right",
+                      "jump",
+                      "switch-player",
+                      "p2-left",
+                      "p2-right",
+                      "p2-jump",
+                      "reset-level",
+                      "pause"
+              ],
+              "mobileReady": true,
+              "packageSizeBudgetKb": 750,
+              "releasePhase": 7.18
       },
       {
         "schemaVersion": 1,

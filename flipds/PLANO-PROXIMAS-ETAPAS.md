@@ -1,59 +1,28 @@
-# Próximas etapas — Fliperama DS após a v0.34.1
+# Próximas etapas — Fliperama DS
 
-## Fase 7.15A — concluída
+## Estado atual
 
-Expansão controlada dos seis clássicos arcade com campanhas, modos, medalhas, estatísticas e tutorial de ações.
+- **v0.39.0 / Fase 7.28:** Chess Arena 360 concluído; 25 experiências jogáveis.
+- Primeiro arco do Mundo Plataforma DS 360 concluído com 5 regiões.
+- Bloco de novos jogos inclui Duo Elementos, Plataforma Clássica 2D, Crystal Cascade 3D, Plataforma Poligonal 3D, Mundo Plataforma 360, Hexa Reactor e Chess Arena 360.
 
-## Fase 7.15R — concluída
+## Próxima fase — v0.39.1 · Bridge Engineer DS
 
-Revisão funcional anterior à próxima expansão:
+1. editor 2D/2.5D de ponte;
+2. pontos de ancoragem e nós estruturais;
+3. vigas e cabos;
+4. materiais com custo, massa e resistência;
+5. cargas progressivas e veículo de teste;
+6. visualização de tração/compressão;
+7. ruptura quando tensão ultrapassa limite;
+8. campanha inicial de desafios curtos;
+9. orçamento e medalhas de eficiência;
+10. save e suíte de estabilidade estrutural.
 
-- dois jogadores locais no Board Arena e Vector Tennis;
-- CPU Surpresa com dificuldade e estratégia aleatórias;
-- tempo variável de análise e reação;
-- controles independentes;
-- migração de saves;
-- contexto, explicações e previews competitivos revisados;
-- 116 testes específicos e 508 verificações totais aprovadas.
+## Depois
 
-## Validação manual antes da próxima fase
+- v0.39.2 — Theme Park Architect;
+- v0.39.3 — Space Colony Builder;
+- v0.39.4 — Velocity Festival / bloco de corridas modernas.
 
-Executar o checklist v0.34.1 em computador e celular, principalmente:
-
-1. teclado simultâneo no Vector Tennis;
-2. dois jogadores no Jogo da Velha e na Dama;
-3. toque simultâneo dos controles virtuais;
-4. variação perceptível da CPU Surpresa;
-5. legibilidade do HUD e animações.
-
-## Fase 7.15B — labirintos e plataformas atuais
-
-Depois da validação manual:
-
-1. ampliar Labirinto de Dados para cinco mapas e desafio final;
-2. criar novos desafios concluíveis em Puzzle Forge e Aventura de Salas;
-3. ampliar Trap Lab e Ponte 8→16 Bits com fases opcionais;
-4. adicionar medalhas, objetivos secundários e estatísticas;
-5. validar matematicamente saídas, coletas, bandeiras e portais;
-6. executar testes físicos para saltos e pontos de recuperação.
-
-## Fase 7.16 — Plataforma Clássica DS 2D
-
-- jogo autoral inspirado na evolução do gênero;
-- mundos próprios;
-- comparação 8/16/32 bits;
-- no mínimo seis fases validadas.
-
-## Fase 7.17 — Plataforma Poligonal DS 3D
-
-- câmera em terceira pessoa;
-- missões e colecionáveis;
-- low-poly e gráficos modernos;
-- fases pequenas antes da expansão do mundo.
-
-## Fase 7.18 — Mundo Plataforma DS 360
-
-- regiões carregadas sob demanda;
-- ambiente realista adaptativo;
-- materiais PBR e fallback leve;
-- identidade completamente autoral.
+A regra continua sendo evolução modular: um jogo grande por fase, sem iniciar todo o Plano Master simultaneamente.

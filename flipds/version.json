@@ -1,14 +1,14 @@
 {
   "name": "Fliperama DS",
-  "version": "0.34.1",
-  "phase": "Fase 7.15R — Auditoria de CPU, multiplayer e qualidade",
-  "channel": "Estável · revisão funcional",
-  "publishedAt": "2026-08-04T21:46:53-03:00",
-  "codeBase": "v0.34.0 / Fase 7.15A — expansão dos clássicos arcade",
+  "version": "0.39.0",
+  "phase": "Fase 7.28 — Chess Arena 360 · Estratégia 3D",
+  "channel": "stable",
+  "publishedAt": "2026-08-08T15:54:00-03:00",
+  "codeBase": "v0.38.6 / Fase 7.27 — Hexa Reactor · Campanha 12 níveis",
   "notes": [
-    "Board Arena recebeu adversário local para dois jogadores, CPU Surpresa e quatro estratégias de CPU.",
-    "Vector Tennis recebeu dois jogadores locais, reação variável e estratégias probabilísticas sem rastreamento previsível.",
-    "Controles, saves, perfis, explicações, contexto histórico e previews competitivos foram revisados.",
-    "A Dama permanece uma variante didática simplificada e essa limitação agora é informada claramente."
+    "Chess Arena 360 entra como a 25ª experiência jogável com xadrez 3D completo.",
+    "Regras incluem roque, en passant, promoção e condições clássicas de empate.",
+    "Multiplayer local e quatro níveis de CPU com minimax/alpha-beta progressivo.",
+    "As 24 experiências anteriores permanecem preservadas."
   ]
 }

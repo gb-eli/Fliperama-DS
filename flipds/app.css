@@ -385,6 +385,7 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px
 @media (max-width: 720px) { .touch-controls[data-game="camera-evolution"] { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; } .touch-controls[data-game="camera-evolution"] button { min-height: 52px; } }
 
 .voxelcraft-runtime-frame{width:100%;height:100%;min-height:clamp(440px,70vh,820px);border:0;border-radius:18px;background:#06111d;display:block}.game-canvas:has(.voxelcraft-runtime-frame){padding:0;overflow:hidden}
+.duo-elementos-runtime-frame{width:100%;height:100%;min-height:clamp(420px,70vh,820px);border:0;border-radius:18px;background:#06111d;display:block}.game-canvas:has(.duo-elementos-runtime-frame){padding:0;overflow:hidden}
 
 /* Fase 6.1 · Catálogo inteligente, roadmap e museus */
 .topbar-actions { display: flex; align-items: center; gap: 10px; }
@@ -1348,3 +1349,210 @@ body {
 .result-medal b { color: #fff1bd; }
 .result-medal small { color: var(--muted); }
 @media (max-width: 620px) { .arcade-mission-card li { grid-template-columns: 52px 1fr; } .training-progress { max-height: 92px; overflow-y: auto; } }
+
+
+/* v0.34.2 · Hotfix UX/UI — abertura, overlays e viewports compactas */
+html { min-width: 0; }
+body { min-width: 0; overflow-x: clip; }
+button, select, input { max-width: 100%; }
+
+.intro-open { overflow: hidden; }
+.intro-overlay {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  align-items: safe center;
+  justify-items: center;
+  padding:
+    max(12px, env(safe-area-inset-top))
+    max(12px, env(safe-area-inset-right))
+    max(12px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
+}
+.intro-shell {
+  position: relative;
+  width: min(780px, 100%);
+  max-height: calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  margin: auto;
+  padding: clamp(22px, 4vw, 46px);
+  padding-top: clamp(58px, 7vw, 68px);
+}
+.intro-close {
+  position: sticky;
+  z-index: 4;
+  top: 0;
+  float: right;
+  margin: calc(clamp(58px, 7vw, 68px) * -1 + 10px) -2px 8px 12px;
+  background: rgba(7,11,23,.94);
+  backdrop-filter: blur(12px);
+}
+.intro-actions {
+  position: sticky;
+  z-index: 3;
+  bottom: -1px;
+  margin: 24px -8px -8px;
+  padding: 14px 8px 8px;
+  background: linear-gradient(to bottom, transparent, rgba(7,11,23,.96) 26%);
+}
+.intro-actions .button { min-height: 46px; }
+
+.game-dialog,
+.details-dialog {
+  max-height: min(94dvh, 940px);
+  overflow: hidden;
+}
+.game-shell { height: min(94dvh, 920px); }
+.game-panel { overscroll-behavior: contain; }
+.game-overlay {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  align-content: start;
+  place-content: start center;
+  padding-top: clamp(20px, 4vh, 42px);
+  padding-bottom: clamp(20px, 4vh, 42px);
+  scrollbar-gutter: stable;
+}
+.game-overlay .button { min-height: 46px; flex: 0 0 auto; }
+.game-overlay select { min-height: 44px; }
+.tutorial-steps { width: min(100%, 780px); }
+.arcade-mission-card { width: min(100%, 780px); }
+.result-session-stats, .arcade-session-stats { max-width: 100%; }
+
+.settings-panel,
+.mobile-menu {
+  padding-top: max(20px, env(safe-area-inset-top));
+  padding-right: max(20px, env(safe-area-inset-right));
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+}
+.settings-head,
+.mobile-menu-head { position: sticky; top: 0; z-index: 4; padding-top: 4px; background: inherit; }
+
+@media (max-height: 760px) {
+  .intro-shell { padding: 58px 22px 16px; }
+  .intro-cabinet { grid-template-columns: auto auto; align-items: center; gap: 14px; margin: 14px auto 12px; padding: 14px; max-width: 360px; }
+  .cabinet-screen { width: 150px; min-height: 94px; }
+  .cabinet-screen span { font-size: 2rem; }
+  .intro-shell h2 { margin: .55rem 0 .45rem; }
+  .intro-shell > p { line-height: 1.5; }
+  .intro-progress { margin-top: 12px; }
+  .intro-actions { margin-top: 12px; }
+  .game-header { padding-top: 10px; padding-bottom: 10px; }
+  .game-tabs button { padding-top: 10px; padding-bottom: 10px; }
+  .play-panel { grid-template-rows: minmax(210px, 1fr) auto auto; }
+  .game-overlay { gap: 10px; padding-top: 14px; padding-bottom: 14px; }
+  .tutorial-steps span { padding: 8px 10px; }
+}
+
+@media (max-width: 760px) {
+  .intro-overlay { place-items: stretch; }
+  .intro-shell { width: 100%; max-height: calc(100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); border-radius: 0; padding-left: 16px; padding-right: 16px; }
+  .intro-marquee { font-size: .62rem; letter-spacing: .07em; }
+  .intro-cabinet { margin: 16px auto 14px; padding: 16px 14px; }
+  .intro-actions { display: grid; grid-template-columns: 1fr; }
+  .intro-actions .button { width: 100%; }
+  .game-dialog, .details-dialog { max-width: 100vw; max-height: 100dvh; }
+  .game-shell { width: 100vw; height: 100dvh; max-height: 100dvh; }
+  .game-header { padding-top: max(10px, env(safe-area-inset-top)); }
+  .game-tabs { scrollbar-width: thin; }
+  .game-overlay { padding-left: 12px; padding-right: 12px; }
+  .game-overlay h3 { font-size: clamp(1.25rem, 7vw, 1.9rem); }
+  .tutorial-steps { grid-template-columns: 1fr; }
+  .touch-controls { padding-left: max(10px, env(safe-area-inset-left)); padding-right: max(10px, env(safe-area-inset-right)); }
+  .details-actions { flex-direction: column; }
+  .details-actions .button { width: 100%; }
+}
+
+@media (max-width: 420px) {
+  .topbar { padding-left: 10px; padding-right: 10px; }
+  .brand-mark { width: 34px; height: 34px; }
+  .brand strong { font-size: .72rem; }
+  .brand small { display: none; }
+  .topbar-actions .icon-button { width: 38px; height: 38px; }
+  .intro-shell { padding-left: 12px; padding-right: 12px; }
+  .intro-cabinet { grid-template-columns: 1fr; }
+  .cabinet-screen { width: min(100%, 180px); }
+  .game-header { grid-template-columns: minmax(0,1fr) auto; }
+  .game-header h2 { max-width: 56vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .lab-action { display: none; }
+  .scoreboard { gap: 10px; overflow-x: auto; justify-content: flex-start; padding-bottom: 2px; }
+  .scoreboard span { min-width: 70px; }
+  .game-tabs button { padding-left: 10px; padding-right: 10px; font-size: .62rem; }
+  .performance-overlay { right: max(8px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); max-width: calc(100vw - 16px); }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .intro-overlay { place-items: stretch; }
+  .intro-shell { width: 100%; max-height: calc(100dvh - 8px); display: grid; grid-template-columns: minmax(140px,.55fr) minmax(0,1fr); column-gap: 18px; align-items: center; text-align: left; padding: 52px 16px 12px; }
+  .intro-marquee, .intro-actions, .intro-progress { grid-column: 1 / -1; }
+  .intro-cabinet { grid-column: 1; grid-row: 2 / span 3; margin: 8px 0; }
+  .intro-shell > .eyebrow, .intro-shell > h2, .intro-shell > p { grid-column: 2; }
+  .intro-actions { grid-template-columns: 1fr 1fr; }
+  .game-header .eyebrow { display: none; }
+  .scoreboard { display: none; }
+  .game-tabs { min-height: 38px; }
+  .touch-controls button { min-height: 42px !important; }
+}
+
+
+/* v0.35.0 · Upgrade gráfico progressivo — Bloco 1/3 */
+.game-stage[data-game] .game-canvas{z-index:1}
+.game-stage[data-game]::before,.game-stage[data-game]::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.55;transition:opacity .25s ease}
+.game-stage[data-graphics="historico"]::before,.game-stage[data-graphics="historico"]::after{opacity:.14;filter:grayscale(1)}
+.game-stage[data-graphics="baixo"]::before,.game-stage[data-graphics="baixo"]::after{opacity:.22}
+.game-stage[data-graphics="ultra"]::before,.game-stage[data-graphics="ultra"]::after{opacity:.78}
+.game-stage[data-game="trap-lab"]::before{background:linear-gradient(180deg,rgba(53,142,207,.12),transparent 26%),repeating-linear-gradient(135deg,transparent 0 36px,rgba(255,93,122,.035) 36px 42px)}
+.game-stage[data-game="trap-lab"]::after{background:radial-gradient(circle at 18% 18%,rgba(73,231,255,.14),transparent 22%),radial-gradient(circle at 82% 72%,rgba(255,93,122,.1),transparent 25%),linear-gradient(90deg,rgba(0,0,0,.36),transparent 12%,transparent 88%,rgba(0,0,0,.36))}
+.game-stage[data-game="vector-fleet"]::before{background:radial-gradient(circle at 18% 22%,rgba(75,94,255,.2),transparent 30%),radial-gradient(circle at 78% 70%,rgba(169,139,255,.18),transparent 34%),radial-gradient(circle at 48% 42%,rgba(73,231,255,.08),transparent 20%)}
+.game-stage[data-game="vector-fleet"]::after{background:radial-gradient(ellipse at center,transparent 46%,rgba(0,0,0,.48) 100%)}
+.game-stage[data-game="space-blocks"]::before{background:radial-gradient(circle at 16% 18%,rgba(146,115,255,.2),transparent 28%),radial-gradient(circle at 76% 78%,rgba(73,231,255,.14),transparent 36%)}
+.game-stage[data-game="space-blocks"]::after{background:linear-gradient(90deg,rgba(0,0,0,.34),transparent 16%,transparent 76%,rgba(0,0,0,.28)),repeating-linear-gradient(0deg,transparent 0 5px,rgba(255,255,255,.012) 5px 6px)}
+.game-stage[data-game="data-maze"]::before{background:radial-gradient(circle at center,rgba(48,79,159,.18),transparent 55%),linear-gradient(135deg,rgba(77,231,255,.035),transparent 36%,rgba(101,240,173,.035))}
+.game-stage[data-game="data-maze"]::after{background:repeating-linear-gradient(0deg,transparent 0 7px,rgba(77,231,255,.012) 7px 8px),radial-gradient(ellipse at center,transparent 52%,rgba(0,0,0,.46))}
+.game-stage[data-game="block-reactor"]::before{background:radial-gradient(circle at 50% 48%,rgba(146,115,255,.18),transparent 19%,rgba(73,231,255,.07) 36%,transparent 58%)}
+.game-stage[data-game="block-reactor"]::after{background:repeating-radial-gradient(circle at 50% 48%,transparent 0 42px,rgba(73,231,255,.018) 43px 44px),radial-gradient(ellipse at center,transparent 54%,rgba(0,0,0,.44))}
+.game-stage[data-game="raster-rally"]::before{background:linear-gradient(180deg,rgba(255,180,94,.06),transparent 32%),radial-gradient(circle at 78% 18%,rgba(255,224,122,.1),transparent 14%)}
+.game-stage[data-game="raster-rally"]::after{background:linear-gradient(90deg,rgba(0,0,0,.32),transparent 11%,transparent 89%,rgba(0,0,0,.32)),linear-gradient(180deg,transparent 70%,rgba(73,231,255,.035))}
+html[data-motion="full"] .game-stage[data-game="vector-fleet"]::before,html[data-motion="full"] .game-stage[data-game="space-blocks"]::before{animation:game-atmosphere-drift 9s ease-in-out infinite alternate}
+html[data-motion="full"] .game-stage[data-game="block-reactor"]::before{animation:game-reactor-pulse 2.8s ease-in-out infinite}
+@keyframes game-atmosphere-drift{from{transform:scale(1) translate3d(-.4%,0,0)}to{transform:scale(1.035) translate3d(.5%,.4%,0)}}
+@keyframes game-reactor-pulse{0%,100%{opacity:.48;transform:scale(1)}50%{opacity:.72;transform:scale(1.025)}}
+@media (prefers-reduced-motion:reduce){.game-stage[data-game]::before,.game-stage[data-game]::after{animation:none!important;transition:none!important}}
+
+
+/* v0.35.1 · Upgrade gráfico progressivo — Bloco 2/3 */
+.game-stage[data-game="vector-tennis"]::before{background:radial-gradient(ellipse at 50% 54%,rgba(73,231,255,.11),transparent 36%),linear-gradient(90deg,rgba(73,231,255,.04),transparent 28%,transparent 72%,rgba(146,115,255,.05))}
+.game-stage[data-game="vector-tennis"]::after{background:radial-gradient(ellipse at center,transparent 54%,rgba(0,0,0,.42) 100%)}
+.game-stage[data-game="orbital-sentinel"]::before{background:radial-gradient(circle at 16% 18%,rgba(64,117,255,.16),transparent 31%),radial-gradient(circle at 82% 44%,rgba(146,115,255,.15),transparent 36%),radial-gradient(circle at 50% 76%,rgba(78,224,168,.05),transparent 28%)}
+.game-stage[data-game="orbital-sentinel"]::after{background:linear-gradient(180deg,transparent 72%,rgba(73,231,255,.045)),radial-gradient(ellipse at center,transparent 48%,rgba(0,0,0,.5))}
+.game-stage[data-game="room-quest"]::before{background:radial-gradient(circle at 14% 22%,rgba(73,231,255,.09),transparent 32%),radial-gradient(circle at 84% 70%,rgba(255,180,95,.07),transparent 32%)}
+.game-stage[data-game="room-quest"]::after{background:linear-gradient(90deg,rgba(0,0,0,.32),transparent 12%,transparent 88%,rgba(0,0,0,.32)),repeating-linear-gradient(0deg,transparent 0 9px,rgba(255,255,255,.008) 9px 10px)}
+.game-stage[data-game="board-arena"]::before{background:radial-gradient(circle at 20% 20%,rgba(73,231,255,.12),transparent 32%),radial-gradient(circle at 80% 75%,rgba(164,111,255,.12),transparent 34%)}
+.game-stage[data-game="board-arena"]::after{background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.45) 100%)}
+.game-stage[data-game="puzzle-forge"]::before{background:linear-gradient(135deg,rgba(73,231,255,.05),transparent 34%,rgba(164,111,255,.045)),radial-gradient(circle at 50% 50%,rgba(73,231,255,.055),transparent 42%)}
+.game-stage[data-game="puzzle-forge"]::after{background:repeating-linear-gradient(45deg,transparent 0 42px,rgba(255,255,255,.008) 42px 43px),radial-gradient(ellipse at center,transparent 56%,rgba(0,0,0,.43))}
+.game-stage[data-game="motion-beat"]::before{background:radial-gradient(circle at 18% 18%,rgba(138,108,255,.19),transparent 31%),radial-gradient(circle at 82% 25%,rgba(255,111,171,.16),transparent 29%),radial-gradient(circle at 50% 82%,rgba(73,231,255,.08),transparent 30%)}
+.game-stage[data-game="motion-beat"]::after{background:linear-gradient(180deg,transparent 60%,rgba(73,231,255,.045)),radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.42))}
+html[data-motion="full"] .game-stage[data-game="motion-beat"]::before{animation:game-beat-atmosphere 3.4s ease-in-out infinite}
+html[data-motion="full"] .game-stage[data-game="orbital-sentinel"]::before{animation:game-atmosphere-drift 10s ease-in-out infinite alternate}
+@keyframes game-beat-atmosphere{0%,100%{opacity:.46;transform:scale(1)}50%{opacity:.72;transform:scale(1.025)}}
+
+
+/* v0.35.2 · Upgrade gráfico progressivo — Bloco 3/3 */
+.game-stage[data-game="state-quest-rpg"]::before{background:radial-gradient(circle at 18% 20%,rgba(83,238,196,.14),transparent 30%),radial-gradient(circle at 82% 74%,rgba(125,92,255,.13),transparent 36%),linear-gradient(135deg,rgba(255,255,255,.018),transparent 42%)}
+.game-stage[data-game="state-quest-rpg"]::after{background:radial-gradient(ellipse at center,transparent 52%,rgba(0,0,0,.46)),repeating-linear-gradient(0deg,transparent 0 9px,rgba(93,238,210,.009) 9px 10px)}
+.game-stage[data-game="bit-bridge-16"]::before{background:radial-gradient(circle at 78% 17%,rgba(255,214,105,.11),transparent 18%),linear-gradient(180deg,rgba(74,174,255,.07),transparent 42%),linear-gradient(90deg,rgba(44,107,169,.03),transparent 30%,transparent 70%,rgba(72,220,196,.03))}
+.game-stage[data-game="bit-bridge-16"]::after{background:linear-gradient(90deg,rgba(0,0,0,.26),transparent 10%,transparent 90%,rgba(0,0,0,.26)),linear-gradient(180deg,transparent 68%,rgba(16,255,201,.025))}
+.game-stage[data-game="raycast-corridors"]::before{background:linear-gradient(180deg,rgba(31,102,190,.08),transparent 46%),radial-gradient(ellipse at 50% 52%,rgba(73,231,255,.055),transparent 33%)}
+.game-stage[data-game="raycast-corridors"]::after{background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.52)),repeating-linear-gradient(0deg,transparent 0 6px,rgba(73,231,255,.009) 6px 7px)}
+.game-stage[data-game="polygon-sector-94"]::before{background:radial-gradient(circle at 15% 18%,rgba(73,231,255,.16),transparent 30%),radial-gradient(circle at 82% 75%,rgba(211,83,255,.13),transparent 34%),linear-gradient(180deg,rgba(85,116,255,.04),transparent 42%)}
+.game-stage[data-game="polygon-sector-94"]::after{background:radial-gradient(ellipse at center,transparent 52%,rgba(0,0,0,.48)),repeating-linear-gradient(90deg,transparent 0 44px,rgba(73,231,255,.007) 44px 45px)}
+.game-stage[data-game="camera-evolution"]::before{background:radial-gradient(circle at 18% 22%,rgba(74,174,255,.14),transparent 32%),radial-gradient(circle at 82% 18%,rgba(255,178,72,.11),transparent 29%),linear-gradient(180deg,rgba(255,255,255,.018),transparent 45%)}
+.game-stage[data-game="camera-evolution"]::after{background:radial-gradient(ellipse at center,transparent 54%,rgba(0,0,0,.46)),linear-gradient(90deg,rgba(74,174,255,.02),transparent 24%,transparent 76%,rgba(255,178,72,.02))}
+.game-stage[data-game="voxelcraft-ds"]::before{background:linear-gradient(180deg,rgba(255,255,255,.035),transparent 34%),radial-gradient(circle at 78% 16%,rgba(255,226,144,.10),transparent 18%)}
+.game-stage[data-game="voxelcraft-ds"]::after{background:radial-gradient(ellipse at center,transparent 58%,rgba(0,0,0,.34))}
+html[data-motion="full"] .game-stage[data-game="polygon-sector-94"]::before,html[data-motion="full"] .game-stage[data-game="camera-evolution"]::before{animation:game-3d-atmosphere 8s ease-in-out infinite alternate}
+html[data-motion="full"] .game-stage[data-game="state-quest-rpg"]::before{animation:game-rpg-atmosphere 6.5s ease-in-out infinite alternate}
+@keyframes game-3d-atmosphere{from{opacity:.46;transform:scale(1)}to{opacity:.68;transform:scale(1.025)}}
+@keyframes game-rpg-atmosphere{from{opacity:.44;transform:translate3d(-.25%,0,0)}to{opacity:.64;transform:translate3d(.35%,.25%,0)}}

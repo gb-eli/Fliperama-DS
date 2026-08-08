@@ -1,53 +1,39 @@
-# Fliperama DS v0.34.1
+# Fliperama DS v0.39.0
 
-**Fase 7.15R — Auditoria de CPU, multiplayer e qualidade**
+**Fase 7.28 — Chess Arena 360 · Estratégia 3D.**
 
-## Publicação
+Release cumulativa para GitHub Pages, totalmente front-end e com `index.html` na raiz.
 
-O `index.html` está diretamente na raiz. Extraia o ZIP e envie todo o conteúdo para a raiz publicada no GitHub Pages.
+## Destaques
 
-## Destaques desta revisão
-
-- Board Arena com CPU ou dois jogadores locais;
-- Vector Tennis com CPU ou dois jogadores locais;
-- CPU Surpresa com dificuldade e personalidade aleatórias;
-- estratégias Ofensiva, Defensiva, Posicional e Imprevisível;
-- tempo de decisão separado da jogada do usuário;
-- controles independentes dos dois jogadores;
-- migração de saves antigos para schema 3;
-- regras, controles, contexto e previews competitivos revisados;
-- Dama identificada claramente como variante didática simplificada;
-- 18 experiências jogáveis preservadas.
+- **25 experiências jogáveis**;
+- novo **Chess Arena 360**;
+- regras completas de partida: roque, en passant, promoção, xeque-mate e empates;
+- multiplayer local;
+- quatro níveis de CPU;
+- minimax e poda alpha-beta nos níveis superiores;
+- tabuleiro e peças 3D autorais em Three.js local;
+- câmera orbital e visão superior;
+- save local da posição/histórico;
+- carregamento apenas quando o jogo é aberto.
 
 ## Validação
 
-- 116 testes específicos de CPU, multiplayer e qualidade;
-- 109 verificações gerais;
-- 37 testes da expansão arcade;
-- 120 verificações educacionais;
-- 62 testes do museu e da linha do tempo;
-- 22 testes do VoxelCraft;
-- 16 testes físicos;
-- 26 testes 3D;
-- **508 verificações aprovadas**;
-- **0 falhas automatizadas**;
-- 106 módulos no build;
-- 209 arquivos e rotas no pacote final.
+- auditoria geral: **25/25 experiências · 899/899 checks**;
+- Chess Arena 360: **67/67**;
+- regressão atual: **1407/1407**;
+- falhas automatizadas: **0**.
 
-## Limitação conhecida da validação
+Consulte `RELATORIO-VALIDACAO-FASE-7-28-v0.39.0.md`, `TESTES-CHESS-ARENA-360-v0.39.0.md` e `TESTES-REGRESSAO-v0.39.0.md`.
 
-O Chromium headless do ambiente não iniciou a camada gráfica por falha de DBus/GPU. O pacote inclui checklist manual para teclado simultâneo, toque, canvas, áudio e responsividade em navegador real.
+## Próxima etapa
 
-## Arquivos principais
+**v0.39.1 — Bridge Engineer DS**, com construção de pontes, cargas, materiais e análise estrutural didática.
 
-- `index.html` — entrada da plataforma;
-- `app.js` — bundle principal;
-- `app.css` — estilos responsivos;
-- `game-profiles.json` — modos, controles e configurações;
-- `education/game-learning.json` — curadoria educacional;
-- `version.json` — versão pública;
-- `sw.js` — cache v0.34.1;
-- `diagnostico.html` — diagnóstico técnico;
-- `diagnostico-jogos.html` — diagnóstico dos 18 jogos;
-- `validation/test-cpu-multiplayer-quality.js` — auditoria desta revisão;
-- `RELATORIO-AUDITORIA-CPU-MULTIPLAYER-QUALIDADE-v0.34.1.md` — relatório principal.
+## Integridade da publicação
+
+- 483 arquivos/rotas HTTP validados;
+- 47 scripts próprios, 80 JSONs e 107 SVGs válidos;
+- 101 referências do cache offline conferidas;
+- 20 arquivos adicionados, 26 modificados e nenhum removido em relação à v0.38.6;
+- 482 hashes internos no pacote final.
